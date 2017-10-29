@@ -139,7 +139,199 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/09/23/hexo와-github-pages로-블로그-만들기/">
+      <a href="/2017/10/28/linux/사용자-그룹-관리/">
+        사용자/그룹 관리
+      </a>
+    </h2>
+    
+    <time>
+      Oct 28, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/10/28/linux/프로세스/">
+        프로세스
+      </a>
+    </h2>
+    
+    <time>
+      Oct 28, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>작업 : 작성한 프로그램 + 프로그램 실행에 필요한 데이터<br>작업이 커널에 등록되어 커널의 관리하에 있게 되면 이를 프로세스라고 부른다.<br>일반적으로 실행중인 프로그램을 말한다.</p>
+<p>종속된 자식 프로세스는 부모 프로세스의 환경을 물려받으나 역은 성립하지 않는다.</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/10/28/linux/apt-명렁어/">
+        apt 명렁어
+      </a>
+    </h2>
+    
+    <time>
+      Oct 28, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h1 id="패키지란"><a href="#패키지란" class="headerlink" title="패키지란"></a>패키지란</h1><p>커널 및 라이브러리 버전의 배포판 환경에 맞추어 빌드한 실행파일을 압축한 것.</p>
+<h1 id="apt란"><a href="#apt란" class="headerlink" title="apt란"></a>apt란</h1><p>우분투에서 쓰이는 데비안 계열의 패키지를 관리하는데 쓰이는 도구이다.</p>
+<p>저장소 리스트 : /etc/apt/sources.list</p>
+<h3 id="패키지-리스트-업데이트"><a href="#패키지-리스트-업데이트" class="headerlink" title="패키지 리스트 업데이트"></a>패키지 리스트 업데이트</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get update</div></pre></td></tr></table></figure>
+<p>> 실제 패키지를 업그레이드 하는 것이 아니라 사용가능한 패키지 리스트의 정보를 업데이트</p>
+<h3 id="패키지-업데이트"><a href="#패키지-업데이트" class="headerlink" title="패키지 업데이트"></a>패키지 업데이트</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get upgrade</div></pre></td></tr></table></figure>
+<p>> 실제 설치되어 있는 패키지들을 최신 버전으로 업그레이드</p>
+<h3 id="패키지-설치"><a href="#패키지-설치" class="headerlink" title="패키지 설치"></a>패키지 설치</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install [패키지명]</div></pre></td></tr></table></figure>
+<h3 id="패키지-재설치"><a href="#패키지-재설치" class="headerlink" title="패키지 재설치"></a>패키지 재설치</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get --reinstall install [패키지명]</div></pre></td></tr></table></figure>
+<h3 id="패키지-삭제"><a href="#패키지-삭제" class="headerlink" title="패키지 삭제"></a>패키지 삭제</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">apt-get remove [패키지명] # 설정파일은 지우지 않음</div><div class="line">apt-get purge [패키지명] # 설정파일까지 지움</div></pre></td></tr></table></figure>
+<h3 id="패키지-검색"><a href="#패키지-검색" class="headerlink" title="패키지 검색"></a>패키지 검색</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-cache search [패키지명]</div></pre></td></tr></table></figure>
+<h3 id="패키지-정보"><a href="#패키지-정보" class="headerlink" title="패키지 정보"></a>패키지 정보</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-cache show [패키지명]</div></pre></td></tr></table></figure>
+<p>apt 명령어를 이용해 설치한 패키지는 \/var\/cache\/apt\/archives 에 설치된다.</p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/10/28/linux/bash-profile과-bashrc/">
+        bash_profile과 bashrc
+      </a>
+    </h2>
+    
+    <time>
+      Oct 28, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>리눅스에서 alias를 수정하거나 PATH를 변경할 떄 접하게 되는 대표적인 4가지의 파일들..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/profile, /etc/bashrc, ~\.bash_profile, ~\.bash_rc</div></pre></td></tr></table></figure>
+<p>각각의 파일에 대해 간단하게 알아보겠다.</p>
+<p>일단 이에 대해 알기전에 <strong>Login Shell</strong>과 <strong>Non-Login Shell</strong>의 차이에 대해 알아야 한다.</p>
+<h5 id="Login-Shell"><a href="#Login-Shell" class="headerlink" title="Login Shell"></a>Login Shell</h5><p>Shell을 실행할 때 로그인이 필요한 경우를 말한다.<br>ssh로 접속하거나, su 명령어로 다른계정을 들어갈 때 등이 해당된다.</p>
+<blockquote>
+<p>\/etc\/profile, ~\/.bash_profile 파일이 이 Shell이 뜰 때 실행되는 파일이다.</p>
+</blockquote>
+<h5 id="Non-Login-Shell"><a href="#Non-Login-Shell" class="headerlink" title="Non-Login Shell"></a>Non-Login Shell</h5><p>Shell을 실행할 떄 로그인이 필요하지 않은 경우를 말한다.<br>즉 Shell이 실행되는 모든 상황을 의미하게 됩니다.<br>GUI에서 터미널을 띄울때나, bash 명령어로 다시 bash를 실행하는 경우 등이 해당된다.</p>
+<blockquote>
+<p>\/etc\/bashrc, ~\/.bashrc 파일이 이 Shell이 뜰 때 실행되는 파일이다.</p>
+</blockquote>
+<p>Login Shell은 Non-Login Shell을 포함합니다.<br>Login Shell이 실행될 때 profile과 bashrc 파일이 모두 실행되게 되고,<br>Non-Login Shell이 실행될 때 bashrc 파일만 실행되게 됩니다.</p>
+<h3 id="profile"><a href="#profile" class="headerlink" title="profile"></a>profile</h3><p>\/etc\/profile 파일의 경우 전역적인 파일로 모든 사용자가 로그인 시 실행되며,<br>~\/.bash_profile 파일의 경우 지역적인 파일로 해당하는 사용자가 로그인 시만 실행된다.<br>또한 \/etc\/profile의 경우 어떠한 shell이든 상관없지만, ~\/.bash_profile의 경우 bash shell일 경우에만 해당된다.</p>
+<h3 id="bashrc"><a href="#bashrc" class="headerlink" title="bashrc"></a>bashrc</h3><p>profile과 달리 Login 과정이 없으므로 shell을 실행시키는 사용자로 구분한다.<br>\/etc\/bashrc의 경우 모든 사용자가 shell을 실행시킬 때 마다 실행되며,<br>~\/.bashrc의 경우 해당하는 사용자가 shell 실행시킬 때 실행된다.</p>
+<blockquote>
+<p>profile의 경우 대부분 환경 변수같은 것을 명시하고 bashrc의 경우 alias 같은 것을 명시한다..(?)</p>
+</blockquote>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/10/28/test/hello-world/">
+        Hello World
+      </a>
+    </h2>
+    
+    <time>
+      Oct 28, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/test/">test</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/09/23/test/hexo와-github-pages로-블로그-만들기/">
         hexo와 github pages로 블로그 만들기
       </a>
     </h2>
@@ -150,7 +342,7 @@
 		
     
     <div class='cats'>
-        <a href="/categories/etc/">etc</a>
+        <a href="/categories/test/">test</a>
     </div>
 
   </section>
@@ -234,7 +426,7 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/09/23/first-post/">
+      <a href="/2017/09/23/test/first-post/">
         first post
       </a>
     </h2>
@@ -243,43 +435,14 @@
       Sep 23, 2017
     </time>
 		
+    
+    <div class='cats'>
+        <a href="/categories/test/">test</a>
+    </div>
+
   </section>
   <section class="article typo">
 	  
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/09/23/hello-world/">
-        Hello World
-      </a>
-    </h2>
-    
-    <time>
-      Sep 23, 2017
-    </time>
-		
-  </section>
-  <section class="article typo">
-	  <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
 
     
     
@@ -333,9 +496,9 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/etc/"><div class='name'>etc</div><div class='badget'>1</div></a></li>
+        <li><a class="flat-box" href="/categories/linux/"><div class='name'>linux</div><div class='badget'>4</div></a></li>
     
-        <li><a class="flat-box" href="/categories/spring/"><div class='name'>spring</div><div class='badget'>0</div></a></li>
+        <li><a class="flat-box" href="/categories/test/"><div class='name'>test</div><div class='badget'>3</div></a></li>
     
     </ul>
     
