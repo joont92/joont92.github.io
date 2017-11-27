@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Archives: 2017/10 | joont blog</title>
+  <title>joont blog</title>
   <meta name="description" content="joont blog" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -15,7 +15,7 @@
   <meta name="description" content="joont blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="joont blog">
-<meta property="og:url" content="https://joont92.github.io/archives/2017/10/index.html">
+<meta property="og:url" content="https://joont92.github.io/page/2/index.html">
 <meta property="og:site_name" content="joont blog">
 <meta property="og:description" content="joont blog">
 <meta name="twitter:card" content="summary">
@@ -132,260 +132,8 @@
     <div class='container clearfix'>
       <div class='l_main'>
         
-	
-  <script>
-    window.subData= { title:'Year : 2017.10'}
-  </script>
-
 <section class="post-list">
 	
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/10/30/spring/IOC-컨테이너와-DI/">
-        IOC 컨테이너와 DI
-      </a>
-    </h2>
-    
-    <time>
-      Oct 30, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/spring/">spring</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h1 id="IOC-컨테이너와-DI"><a href="#IOC-컨테이너와-DI" class="headerlink" title="IOC 컨테이너와 DI"></a>IOC 컨테이너와 DI</h1><p>어플리케이션 컨텍스트 = IOC + DI + 여러 기능(for making enterprise application)<br>(어플리케이션 컨텍스트는 실제 ApplicationContext 인터페이스를 구현한 클래스를 말한다.<br>ApplicationContext는 BeanFactory를 구현한 인터페이스이다.)  </p>
-<p>이 어플리케이션 컨텍스트가 본격적인 IOC 컨테이너로 동작하려면 아래의 2가지가 필요하다.</p>
-<blockquote>
-<p>POJO, 설정 메타정보</p>
-</blockquote>
-<p>어플리케이션 컨텍스트 구현체, POJO, 설정 메타정보가 준비되었으면 이제 IOC 컨테이너로 등록하고 사용해야한다.<br>웹은 싱글 어플리케이션 처럼 main 메서드가 있는 것이 아니므로, 아래와 같은 방식을 통해 등록한다.  </p>
-<ol>
-<li>컨테이너가 기동될 떄 미리 어플리케이션 컨텍스트를 만든다.(web.xml의 listener, servlet등을 이용)</li>
-<li>서블릿에서 요청이 올때마다 어플리케이션 컨텍스트에서 필요한 빈을 가져와 정해진 메서드를 실행한다.</li>
-</ol>
-<p>그림으로 보면 아래와 같다.<br><img src="https://user-images.githubusercontent.com/18513953/31042860-4ff60afc-a5ec-11e7-94da-0ac123c02e43.png" alt="image"><br>메타정보에 관해서는 아래에서 설명할 것인데, 일단은 우리가 잘 알고 있는 <strong>***-context.xml</strong> 파일이라고 생각하시면 됩니다.<br>컨테이너가 기동될 때 POJO 클래스와 메타정보를 조합하여 각종 빈 들이 만들어지고, 그들을 관리하는 IOC 컨테이너가 생성되게 됩니다.(DispatcherServlet)<br>그리고 각 HTTP 요청에 지정된 서블릿의 메서드가 실행될 때, 필요한 빈을 어플리케이션 컨텍스트에서 가져온 뒤 해당 메서드를 실행합니다.  </p>
-<h2 id="컨테이너-계층구조"><a href="#컨테이너-계층구조" class="headerlink" title="컨테이너 계층구조"></a>컨테이너 계층구조</h2><p>스프링은 어플리케이션 컨텍스트를 계층구조로 가질 수 있다.</p>
-<p>빈 탐색 : 자식 -&gt; 부모<br>부모에서 자식을 찾을 수 없으며, 형제 컨텍스트의 빈도 검색 불가능.<br>자식과 부모에 중복된 이름의 빈이 있을 경우 자식의 빈을 사용(피해야 할 상황)  </p>
-<p>하나의 컨텍스트에 정의된 AOP의 경우 다른 컨텍스트의 빈에는 영향을 미치지 않음<br>상황에 따라 다른 설정을 사용해야 할 경우, 그런데 중요한 설정을 공유해야 할 경우 사용하면 효율적.<br>그러나 제대로 알지 못하고 사용하면(계층구조, 탐색순서) 예기치 못한 에러를 만날 수 있음</p>
-<h3 id="웹-어플리케이션-컨테이너-계층구조"><a href="#웹-어플리케이션-컨테이너-계층구조" class="headerlink" title="웹 어플리케이션 컨테이너 계층구조"></a>웹 어플리케이션 컨테이너 계층구조</h3><p>웹 어플리케이션 레벨에 등록하는 루트 컨테이너,<br>어플리케이션에 등록된 서블릿들이 각각 자신의 컨테이너를 가지는 구조가 대표적인 경우이다.<br>일반적으로 스프링을 사용하여 웹 개발을 할 경우 프론트 컨트롤러 패턴을 사용하므로 대부분 아래와 같다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">서블릿 어플리케이션 컨텍스트 -&gt; 루트 어플리케이션 컨텍스트</div></pre></td></tr></table></figure></p>
-<p>프론트 컨트롤러 패턴임에도 굳이 계층구조로 형성하는 이유는 아래와 같은 상황을 대비하기 위함이다 ㅎㅎ<br><img src="https://user-images.githubusercontent.com/18513953/31043947-8ff5225a-a600-11e7-83ae-a7ddda60d0fb.png" alt="image"><br>스프링의 유틸리티 메소드를 사용하면 간단하게 어플리케이션 컨텍스트를 얻어올 수 있다.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WebApplicationContextUtils.getWebApplicationContext(ServletContext)</div></pre></td></tr></table></figure></p>
-<p>ServletContext는 웹 어플리케이션마다 하나씩 만들어지는것이므로<br>HttpServletRequest나 HttpSession 오브젝트만 있으면 간단히 얻을 수 있다.</p>
-<h4 id="루트-어플리케이션-컨텍스트-등록"><a href="#루트-어플리케이션-컨텍스트-등록" class="headerlink" title="루트 어플리케이션 컨텍스트 등록"></a>루트 어플리케이션 컨텍스트 등록</h4><p>서블릿 컨텍스트의 생성/소멸을 알려주는 web.xml의 listener를 사용하여 등록한다.<br>스프링이 제공해주는 리스너로는 ServletContextListener를 구현한 ContextLoaderListener가 있다.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/spring/root-context.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<ul>
-<li><p>contextConfigLocation<br>설정파일의 위치를 바꿔줄 때 사용<br>리소스 로더 접두어, ant식 경로표기법 사용가능</p>
-</li>
-<li><p>contextClass<br>어플리케이션 컨텍스트 클래스를 바꿔줄떄 사능</p>
-</li>
-</ul>
-<p>지정해주지 않을 경우 default로 class는 XmlWebApplicationContext, xml 파일 위치는 /WEB-INF/applicationContext.xml 을 사용한다.</p>
-<h4 id="서블릿-어플리케이션-컨텍스트-등록"><a href="#서블릿-어플리케이션-컨텍스트-등록" class="headerlink" title="서블릿 어플리케이션 컨텍스트 등록"></a>서블릿 어플리케이션 컨텍스트 등록</h4><p>스프링 웹 기능을 지원하는 프론트 컨트롤러 서블릿인 DispatcherServlet은<br>초기화시에 자신만의 컨텍스트를 생성하고 초기화하고,<br>웹 어플리케이션 레벨에 등록된 어플리케이션 컨텍스트를 찾아서 자신의 부모 컨텍스트로 사용한다.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>appServlet<span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/spring/appServlet/servlet-context.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>이클립스에서 Sprig MVC 프로젝트를 만들었을 때 생성되는 기본 구조이다.<br>루트 어플리케이션 컨텍스트를 만들 때 처럼 설정파일의 위치나 클래스를 변경해 줄 수 있다.<br>(파라미터는 루트 어플리케이션 컨텍스트와 동일하고, init-param을 사용한다는 것만 다르다.)</p>
-<p>지정해주지 않을 경우 default로 class는 XmlWebApplicationContext, xml 파일 위치는 /WEB_INF/{서블릿 네임}-context.xml 을 사용한다.</p>
-<p>루트 어플리케이션 컨텍스트에 등록되는 빈 들은 각각 성격이 구분되므로 여러 설정파일로 나누고,<br>서블릿 어플리케이션 컨텍스트의 경우 성격이 비슷하므로 디폴트 설정파일 위치를 사용하는 것이 일반적이라고 한다(근데 위는 왜 저렇지..)</p>
-<h3 id="IoC-DI를-위한-빈-설정-메타정보-작성"><a href="#IoC-DI를-위한-빈-설정-메타정보-작성" class="headerlink" title="IoC/DI를 위한 빈 설정 메타정보 작성"></a>IoC/DI를 위한 빈 설정 메타정보 작성</h3><p>앞서 언급한 빈 설정 메타정보에 대해 알아보겠다.</p>
-<p>IoC 컨테이너는 설정 메타정보를 참고하여 POJO 오브젝트들을 빈으로 등록한다.</p>
-<p>설정 메타정보라고 하면 보통 우리에게 익숙한 *-context.xml 파일등이 떠오르게 되는데, 이는 사실 실제 설정 메타정보는 아니다.</p>
-<p>아래의 그림을 보면 쉽게 이해할 수 있다.</p>
-<p><img src="https://user-images.githubusercontent.com/18513953/31396515-8b47cc00-ae1e-11e7-85e4-3a756f5d71bf.png" alt="image"></p>
-<p>정확하게 말해 설정 메타정보란 <strong>BeanDefinition</strong>이라는 순수 오브젝트를 의미한다.</p>
-<p>우리가 작성하는 xml파일, 어노테이션 등은 모두 적절한 리더기에 의해 BeanDefinition 오브젝트로 변환되는 것이다!</p>
-<p>BeanDefinition에는 IoC 컨테이너가 빈을 만들 때 필요한 핵심정보가 담겨 있다.<br>그러나 필수항목 몇개를 제외하면 대부분 디폴트 값을 그대로 사용한다.</p>
-<p>빈 등록법</p>
-<ol>
-<li><p>\<bean\> 태그 : 가장 강력하면서도 심플한 방법</bean\></p>
-</li>
-<li><p>네임스페이스 &amp; 전용태그 : 1번의 문제점을 보완한 방식이다.<br>1번의 경우 모두 \<bean\> 태그로 통일하기 때문에 구분이 잘 안된다는 단점이 있다.<br>(스프링은 자신에게 필요한 설정정보에도 DI를 사용하기 때문에 이런 현상이 벌어지는 것이다.)<br>그래서 각각의 성격에 맞게 네임스페이스와 태그를 제공한다.<br>ex) \<aop:pointcut ..="" \=""><br>가독성, 필수 프로퍼티, 클래스 선택, 다중 클래스 등록 등 많은 이점이 있다.</aop:pointcut></bean\></p>
-</li>
-<li><p>빈 스캐닝<br>빈 스캐너를 이용하여 인자로 전달한 패키지 아래의 클래스들을 검사한다.<br>@Component나 @Component를 메타 어노테이션으로 가지는 애들을 빈으로 등록한다.<br>이런 형태의 어노테이션을 스프링에선 <strong>스테레오 타입</strong>이라고 부른다<br>스캐닝으로 등록되는 빈은 이름을 등록하지 않으면 default로 클래스명에서 앞글자만 소문자로 사용한다.<br>어노테이션 디폴트값을 이용해 빈 이름을 지정할 수 있다. ex) @Component(“test”)<br>xml 작성 방법보다 간편하게 빈을 등록할순 있으나, 등록된 빈 들을 한눈에 볼 수 없다는 단점이 있다.<br>또한 xml 처럼 상세 메타정보 항목을 지정할 수 없고(한계가 있음), 클래스당 1개의 빈만 등록할 수 있다.</p>
-</li>
-</ol>
-<p>빈 스캐닝이 편리하긴 하지만 각각의 상황에 따라 xml과 빈 스캐닝을 적절히 선택하는 것이 좋다(세밀한 관리가 필요할 경우 등)</p>
-<p>빈스캐너 등록법<br>xml : \<context:component-scan base-package="..." \=""><br>컨텍스트 : 어플리케이션 컨텍스트 등록 시 contextClass로 AnnotationConfigWebApplicationContext 사용</context:component-scan></p>
-<ul>
-<li>스테레오 타입 종류<br>@Repository : DAO, repository<br>@Service : service<br>@Controller : mvc controller<blockquote>
-<p>특정계층으로 분류하기 힘든 경우는 @Component를 사용하는 것이 바람직</p>
-</blockquote>
-</li>
-</ul>
-<blockquote>
-<p>빈 스캐닝 시 컨테이너 계층 구조에서 유의할 점이 있다.<br>부모 컨테이너와 자식 컨테이너의 빈 스캐닝 지점이 같은 곳을 바라보고 있을 경우 아래와 같은 문제점이 발생할 수 있다.<br><img src="https://user-images.githubusercontent.com/18513953/32144077-bc69b2d0-bcf6-11e7-9544-f6726765c034.png" alt="image"><br>탐색의 순서가 자식 -&gt; 부모의 순서이므로 위의 경우 AOP, TX가 적용된 UserService 빈을 사용하지 못하게 된다.</p>
-</blockquote>
-<h3 id="java-config"><a href="#java-config" class="headerlink" title="java config"></a>java config</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span> <span class="comment">// &lt;beans&gt;</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaConfig</span></span>&#123;</div><div class="line">    <span class="meta">@Bean</span> <span class="comment">// &lt;bean&gt;</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Hello <span class="title">hello</span><span class="params">()</span></span>&#123; <span class="comment">// method name == bean name</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Hello();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>등록 방법 : AnnotationConfigWebApplictionContext 생성자 파라미터로 패키지 대신 위의 클래스를 넣어주면 된다.</p>
-<p>@Configuration이 붙은 클래스도 빈으로 등록된다! (빈 이름 == 클래스명(첫글자 소문자))</p>
-<ul>
-<li><p>일반적인 자바 코드와 다른점(유의사항)<br>@Bean 아래 메서드에서 new로 인스턴스를 생성했지만 실제로 빈을 가져다 사용해보면 계속해서 같은 오브젝트가 리턴된다(직접 실행해도 마찬가지이다)</p>
-<blockquote>
-<p>@Configuration내에 @Bean만 해당함</p>
-</blockquote>
-</li>
-<li><p>자바 설정파일을 사용할 때의 장점  </p>
-<ol>
-<li>컴파일러나 IDE를 통한 검증이 가능하고, IDE의 기능을 최대한 이용할 수 있음.<br>XML은 텍스트이기 떄문에 한계가 있다.</li>
-<li>@Bean 자체가 자바 메서드이기 때문에 복잡한 빈 등록도 팩토리 빈 없이 쉽게 등록할 수 있다.</li>
-</ol>
-</li>
-<li><p>자주 사용하는 빈 등록 방법</p>
-</li>
-</ul>
-<ol>
-<li>XML 단독 사용<br> 생성되는 모든 빈을 XML에서 확인할 수 있는 장점이 있는 반면, 빈의 개수가 많아지면 XML 파일을 관리하기 번거로울 수 있다.<br> 설정을 분리하고 순수한 POJO 코드를 유지하고 싶을 떄 사용할 수 있다.<br> 커스텀 태그나 전용태그를 사용할 경우 장점이 부각된다.<br> 스프링이 제공하는 모든 빈 설정을 할 수 있는 유일한 방법이다.</li>
-<li>XML + 빈 스캐닝<br> 3계층 빈 클래스은 빈 스캔을 사용하고(복잡한 메타정보가 필요없으므로), 복잡한 설정 정보는 XML을 사용한다.  </li>
-<li>XML 없이 단독 스캐닝 사용<br> 자바 설정파일이 반드시 필요하다.<br> 루트/서블릿 어플리케이션 컨텍스트를 전부 AnnotationConfigWebApplicationContext로 변경하고, @Configuration 클래스 파일을 빈 설정 대상에 포함시킨다.<br> 스프링이 제공하는 전용 태그를 사용할 수 없다는 단점이 있다.</li>
-</ol>
-
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/10/29/jpa/3장-영속성관리/">
-        3장-영속성관리
-      </a>
-    </h2>
-    
-    <time>
-      Oct 29, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/jpa/">jpa</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>엔티티 매니저 : 엔티티를 저장하는 가상의 데이터베이스로 볼 수 있다.(엔티티 저장,수정,삭제 등)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 엔티티 매니저를 생성하기 위해선 공장이 필요하다.</div><div class="line">EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;영속성 유닛&quot;);</div><div class="line">// 엔티티 매니저 생성</div><div class="line">EntityManger em = emf.createEntityManger();</div></pre></td></tr></table></figure>
-<p>공장을 만드는 과정은 굉장히 비용이 많이들고, 공장에서 Entity Manager를 생성하는 과정은 비용이 거의 들지 않는다.<br>그러므로 EntityMangerFactory는 하나만 만들어서 어플리케이션 전체에서 공유해야 한다.</p>
-<blockquote>
-<p>엔티티 매니저 팩토리는 여러 스레드가 동시에 접근해도 안전하지만 엔티티 매니저는 그렇지 않다(동시성 문제). 절대 공유해선 안된다.<br><img src="https://user-images.githubusercontent.com/18513953/31942438-3a09b74e-b900-11e7-945d-28fac97bc197.png" alt="image"></p>
-</blockquote>
-<p>위는 JPA를 사용하는 일반적인 웹 어플리케이션의 모습이다.<br>대부분의 JPA 구현체는 EntityManagerFactory를 만들 때 커넥션 풀을 생성한다.<br>그리고 Entity Manager는 필요한 시점(대부분 트랜잭션을 시작할 때)까지 db 커넥션을 얻지 않는다.  </p>
-<h3 id="영속성-컨텍스트"><a href="#영속성-컨텍스트" class="headerlink" title="영속성 컨텍스트"></a>영속성 컨텍스트</h3><p>엔티티를 영구 저장하는 <strong>논리적인</strong> 환경을 말한다.</p>
-<p>엔티티 매니저를 생성하면 영속성 컨텍스트가 만들어지고, 엔티티 매니저를 통해 영속성 컨텍스트에 접근/관리 할 수 있다.</p>
-<h3 id="엔티티-생명주기"><a href="#엔티티-생명주기" class="headerlink" title="엔티티 생명주기"></a>엔티티 생명주기</h3><p>엔티티에는 4가지 상태가 존재한다.</p>
-<ol>
-<li><p>비영속<br>간단하게 엔티티 객체를 생성한 상태를 얘기한다.<br>영속성 컨텍스트나 데이터베이스와는 전혀 관련이 없는 상태이다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">User user = <span class="keyword">new</span> User();</div><div class="line"><span class="comment">// ...</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>영속<br>엔티티 매니저를 통해 엔티티를 영속성 컨텍스트에 저장한(엔티티가 영속성 컨텍스트에 의해 관리되는) 상태이다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 아래와 같은 상황들이 영속상태를 만든다</span></div><div class="line">em.persist(entity);</div><div class="line">em.find(entity_id);</div></pre></td></tr></table></figure>
-</li>
-<li><p>준영속<br>영속성 컨텍스트가 더이상 엔티티를 관리하지 않으면 준영속 상태가 된다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">em.detach(entity);</div><div class="line"></div><div class="line">em.clear();</div><div class="line">em.close();</div></pre></td></tr></table></figure>
-</li>
-<li><p>삭제<br>엔티티를 영속성 컨텍스트와 데이터베이스에서 삭제한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">em.remove(entity);</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="영속성-컨텍스트-특징"><a href="#영속성-컨텍스트-특징" class="headerlink" title="영속성 컨텍스트 특징"></a>영속성 컨텍스트 특징</h3><ul>
-<li>엔티티는 무조건 식별자 값이 있어야한다.</li>
-<li>영속성 컨텍스트 -&gt; 데이터베이스는 트랜잭션을 커밋하는 순간에 일어난다. 이를 flush라고 한다.</li>
-</ul>
-<ol>
-<li>엔티티 조회<br>영속성 컨텍스트는 내부 캐시를 가지고 있다. 영속 상태로 관리되는 엔티티는 전부 이 캐시에 저장된다.<br>캐시의 형태는 Id와 entity가 key/value로 저장된 map으로 보면 된다.<br>find 등을 통해 엔티티를 조회할 때 이 캐시를 먼저 조회하고, 없으면 데이터베이스에서 조회한다.<br>persist로 저장한 엔티티, find로 찾은 엔티티(데이터베이스에서 조회해온)가 1차 캐시 저장 대상이다.<br><img src="https://user-images.githubusercontent.com/18513953/32005391-274f5db8-b9df-11e7-8cf2-030f5c69461e.png" alt="image"><br>간단히 설명하면 위의 그림과 같다.</li>
-</ol>
-<h4 id="영속-엔티티의-동일-동등성"><a href="#영속-엔티티의-동일-동등성" class="headerlink" title="영속 엔티티의 동일/동등성"></a>영속 엔티티의 동일/동등성</h4><ul>
-<li>동일성 : 인스턴스가 같다. ==로 비교함  </li>
-<li>동등성 : 인스턴스가 가지고 있는 값이 같다. equlas로 비교함 </li>
-</ul>
-<p>1차 캐시에서 가져온 엔티티의 경우는 동일성이 성립하는 특징이 있다.<br>Map에서 인스턴스를 가져온 것이기 때문에 어찌보면 당연하다!!<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">User user1 = em.find(User.class, <span class="string">"uid1"</span>);</div><div class="line">User user2 = em.find(User.class, <span class="string">"uid1"</span>);</div><div class="line"></div><div class="line">Assert.assertTrue(user1==user2);</div></pre></td></tr></table></figure></p>
-<h3 id="엔티티-등록"><a href="#엔티티-등록" class="headerlink" title="엔티티 등록"></a>엔티티 등록</h3><p>아래는 엔티티 등록 예제이다<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">EntityManager em = emf.createEntityManager();</div><div class="line">EntityTransaction transaction = em.getTransaction();</div><div class="line"></div><div class="line">transaction.begin(); <span class="comment">// 트랜잭션 시작 필수</span></div><div class="line"></div><div class="line">Member member1 = ...;</div><div class="line">Member member2 = ...;</div><div class="line"></div><div class="line">em.persist(member1);</div><div class="line">em.persist(member2);</div><div class="line"><span class="comment">// insert를 db에 날리지 않음</span></div><div class="line"></div><div class="line">transaction.commit(); <span class="comment">// flush</span></div></pre></td></tr></table></figure></p>
-<p><img src="https://user-images.githubusercontent.com/18513953/32134414-f7cced6c-bc27-11e7-80a9-ddbabcc51c8f.png" alt="image"><br>위는 엔티티등록 과정을 간단히 그림으로 나타낸 것이다.<br>보다시피 persist 명령어를 수행했을 때, 아래의 행위를 한다.</p>
-<ol>
-<li>영속성 컨텍스트에 엔티티 저장</li>
-<li>수행될 SQL을 SQL 저장소에 저장  </li>
-<li>최종 커밋 시 영속성 컨텍스트를 플러시(db에 반영)한다.</li>
-</ol>
-
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/10/29/linux/사용자-그룹-관리/">
-        사용자/그룹 관리
-      </a>
-    </h2>
-    
-    <time>
-      Oct 29, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/linux/">linux</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>리눅스는 여러명의 사용자가 동시에 로그인하여 시스템을 사용할 수 있는 멀티유저 운영체제이다.<br>이러한 사용자들은 각각 계정을 가지고 시스템에 접근하게 된다.<br>그리고 이 사용자들을 묶어서 관리할 수 있는 그룹이라는 것이 있다.<br>모든 사용자는 하나의 그룹을 가진다.  </p>
-<h1 id="사용자-관리"><a href="#사용자-관리" class="headerlink" title="사용자 관리"></a>사용자 관리</h1><h4 id="etc-passwd-사용자-정보가-담긴-파일"><a href="#etc-passwd-사용자-정보가-담긴-파일" class="headerlink" title="/etc/passwd : 사용자 정보가 담긴 파일"></a>/etc/passwd : 사용자 정보가 담긴 파일</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root:x:0:0:root:/root:/bin/bash</div><div class="line"></div><div class="line"># 사용자명:패스워드:UID:GID:사용자정보:홈디렉토리:쉘</div></pre></td></tr></table></figure>
-<ol>
-<li>사용자명 : 로그인 시 사용하는 사용자명.<ul>
-<li>네이밍 규칙 : 영문자 대소문자, 숫자, “-“, “_”, “.” 사용 가능, 보통 1~32자 사용</li>
-</ul>
-</li>
-<li>패스워드 : /etc/shadow 파일에 암호화되어 저장되어 있다.</li>
-<li>UID : 사용자 고유 ID<ul>
-<li>일반 사용자는 1000~60000을 사용한다(/etc/login.defs에 명시)<br>root 는 0으로 예약되어 있다.</li>
-</ul>
-</li>
-<li>GID : 사용자가 속한 그룹 고유 ID</li>
-<li>사용자정보 : 사용자에 대한 간단한 정보를 기입할 수 있다.</li>
-<li>홈디렉토리 : 사용자 폴더. 로그인 시 최초 접속되는 폴더이기도 하다.</li>
-<li>쉘 : 사용자가 사용하는 쉘 환경</li>
-</ol>
-<h3 id="사용자-추가"><a href="#사용자-추가" class="headerlink" title="사용자 추가"></a>사용자 추가</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; useradd [options] 사용자명 </div><div class="line"></div><div class="line"># options</div><div class="line"># -c [텍스트] : 사용자정보</div><div class="line"># -m : 홈디렉토리 생성</div><div class="line"># -M : 홈디렉토리 생성 안함</div><div class="line"># -d [폴더] : 홈디렉토리 지정</div><div class="line"># -N : 사용자 개인 그룹 생성하지 않음. default : 생성</div><div class="line"># -u [UID] : UID 직접 지정</div><div class="line"># -g [GID] : GID 직접 지정</div><div class="line"># -s [Shell] : shell 지정</div><div class="line"></div><div class="line"># 이 외에도 많은 옵션이 존재한다. useradd --help 를 활용한다.</div></pre></td></tr></table></figure>
-<p>생성 시 사용하는 default 값을 확인하고 바꿀 수 있다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt; useradd -D</div><div class="line">GROUP=100</div><div class="line">HOME=/home</div><div class="line">INACTIVE=-1</div><div class="line">EXPIRE=</div><div class="line">SHELL=/bin/sh</div><div class="line">SKEL=/etc/skel</div><div class="line">CREATE_MAIL_SPOOL=no</div><div class="line"></div><div class="line">&gt; useradd -D -b /test</div><div class="line">&gt; useradd -D</div><div class="line">GROUP=100</div><div class="line">HOME=/test #변경됨</div><div class="line">INACTIVE=-1</div><div class="line">EXPIRE=</div><div class="line">SHELL=/bin/sh</div><div class="line">SKEL=/etc/skel</div><div class="line">CREATE_MAIL_SPOOL=no</div><div class="line"></div><div class="line"># 위에 대한 설정파일은 /etc/default/useradd 이다</div></pre></td></tr></table></figure></p>
-<p>사용자 추가 시 홈 디렉토리에 생성되는 파일<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; useradd user1 -m</div><div class="line">&gt; cd /home/user1</div><div class="line">&gt; ls -al</div><div class="line">합계 32</div><div class="line">drwxr-xr-x 2 user1 user1 4096 10월 29 16:23 .</div><div class="line">drwxr-xr-x 4 root  root  4096 10월 29 16:23 ..</div><div class="line">-rw-r--r-- 1 user1 user1  220  9월  1  2015 .bash_logout</div><div class="line">-rw-r--r-- 1 user1 user1 3771  9월  1  2015 .bashrc</div><div class="line">-rw-r--r-- 1 user1 user1  655  6월 25  2016 .profile</div><div class="line">-rw-r--r-- 1 user1 user1 8980  4월 20  2016 examples.desktop</div><div class="line"></div><div class="line"># /etc/skel에 있는 파일을 복사해 사용한다.</div></pre></td></tr></table></figure></p>
-<h3 id="사용자-수정"><a href="#사용자-수정" class="headerlink" title="사용자 수정"></a>사용자 수정</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; usermod [options] 사용자명 </div><div class="line"></div><div class="line"># options</div><div class="line"># -c [텍스트] : 사용자정보 수정</div><div class="line"># -d [폴더] : 홈디렉토리 변경</div><div class="line"># -u [UID] : UID 변경</div><div class="line"># -s [Shell] : shell 지정</div><div class="line"># -L : 계정 락킹</div><div class="line"># -U : 계정 언락킹</div><div class="line"></div><div class="line"># -g [group] : 사용자 기본 그룹 변경</div><div class="line">  &gt; usermod -g user2 user1</div><div class="line">  # user1의 기본 그룹을 user2로 변경</div><div class="line"></div><div class="line"># -G [groups] : 사용자 그룹 추가,변경(제거). 기본 그룹은 영향을 받지 않는다.</div><div class="line">  &gt; usermod -a -G group1,group2 user1 </div><div class="line">  # user1에 group1,group2를 추가. -a 옵션으로 기존 그룹 +group1, group2 된다.</div><div class="line">  &gt; usermod -G group1 user1</div><div class="line">  # 그룹을 제거하는 방법. user1의 기존 그룹을 날리고 group1만을 지정</div></pre></td></tr></table></figure>
-<p>패스워드 변경<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; passwd [options] 사용자명</div><div class="line"></div><div class="line"># options</div><div class="line"># -d : 패스워드 삭제</div><div class="line"># -e : 패스워드 강제 만료</div><div class="line"># -l, -u : 패스워드 락킹/언락킹. usermod에 있는 -L, -U 옵션을 쓰는것이 더 좋다고 한다..</div></pre></td></tr></table></figure></p>
-<h3 id="사용자-삭제"><a href="#사용자-삭제" class="headerlink" title="사용자 삭제"></a>사용자 삭제</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">userdel [options] 사용자명</div><div class="line"></div><div class="line"># options </div><div class="line"># -r : 사용자의 홈디렉토리, 메일박스, 임시디렉토리 까지 같이 삭제.</div><div class="line">       그룹은 기본적으로 속한 사용자가 없으면 자동 삭제된다</div></pre></td></tr></table></figure>
-<h1 id="그룹-관리"><a href="#그룹-관리" class="headerlink" title="그룹 관리"></a>그룹 관리</h1><h4 id="etc-group-그룹-정보가-담긴-파일"><a href="#etc-group-그룹-정보가-담긴-파일" class="headerlink" title="/etc/group : 그룹 정보가 담긴 파일"></a>/etc/group : 그룹 정보가 담긴 파일</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo:x:27:user1,user2</div><div class="line"></div><div class="line"># 그룹명:패스워드:GID:사용자리스트</div></pre></td></tr></table></figure>
-<ol>
-<li>그룹명 : 그룹의 이름이다</li>
-<li>패스워드 : 그룹 패스워드</li>
-<li>GID : 그룹 고유 ID</li>
-<li>사용자리스트 : 해당 그룹에 속한 사용자들의 리스트.<br> 생략되는 경우도 많기 때문에 비어있다고 그룹에 속한 사용자가 없다고 확신할 수 없다.</li>
-</ol>
-<h3 id="그룹-추가"><a href="#그룹-추가" class="headerlink" title="그룹 추가"></a>그룹 추가</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; groupadd [options] 그룹명</div><div class="line"></div><div class="line"># options</div><div class="line"># -g [GID] : GID 지정</div></pre></td></tr></table></figure>
-<h3 id="그룹-수정"><a href="#그룹-수정" class="headerlink" title="그룹 수정"></a>그룹 수정</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; groupmod [options] 그룹명</div><div class="line"></div><div class="line"># options</div><div class="line"># -n [이름] : 그룹명 변경</div></pre></td></tr></table></figure>
-<h3 id="그룹-삭제"><a href="#그룹-삭제" class="headerlink" title="그룹 삭제"></a>그룹 삭제</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; groupdel 그룹명</div></pre></td></tr></table></figure>
-
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
     <div class='post-wrapper'>
       <article class="post reveal">
   <section class="meta">
@@ -846,6 +594,16 @@
 </section>
 
 
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+  </nav>
+  
 
       </div>
       <aside class='l_side'>

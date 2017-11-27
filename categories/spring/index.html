@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Category: spring | joont blog</title>
+  <meta name="description" content="joont blog" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="shortcut icon" href="/">
+  <link rel="alternate" href="/atom.xml" title="joont blog">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="joont blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="joont blog">
+<meta property="og:url" content="https://joont92.github.io/categories/spring/index.html">
+<meta property="og:site_name" content="joont blog">
+<meta property="og:description" content="joont blog">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="joont blog">
+<meta name="twitter:description" content="joont blog">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+</head>
+
+<body>
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <script>setLoadingBarProgress(20)</script> 
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				joont blog
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-gallery' href='https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN'>
+								Gallery
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN" class="nav-gallery nav">
+				Gallery
+			</a>
+		
+			<a href="/about" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        
+  <script>
+    window.subData= { title:'Category : spring'}
+  </script>
+
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/10/30/spring/IOC-컨테이너와-DI/">
+        IOC 컨테이너와 DI
+      </a>
+    </h2>
+    
+    <time>
+      Oct 30, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/spring/">spring</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h1 id="IOC-컨테이너와-DI"><a href="#IOC-컨테이너와-DI" class="headerlink" title="IOC 컨테이너와 DI"></a>IOC 컨테이너와 DI</h1><p>어플리케이션 컨텍스트 = IOC + DI + 여러 기능(for making enterprise application)<br>(어플리케이션 컨텍스트는 실제 ApplicationContext 인터페이스를 구현한 클래스를 말한다.<br>ApplicationContext는 BeanFactory를 구현한 인터페이스이다.)  </p>
+<p>이 어플리케이션 컨텍스트가 본격적인 IOC 컨테이너로 동작하려면 아래의 2가지가 필요하다.</p>
+<blockquote>
+<p>POJO, 설정 메타정보</p>
+</blockquote>
+<p>어플리케이션 컨텍스트 구현체, POJO, 설정 메타정보가 준비되었으면 이제 IOC 컨테이너로 등록하고 사용해야한다.<br>웹은 싱글 어플리케이션 처럼 main 메서드가 있는 것이 아니므로, 아래와 같은 방식을 통해 등록한다.  </p>
+<ol>
+<li>컨테이너가 기동될 떄 미리 어플리케이션 컨텍스트를 만든다.(web.xml의 listener, servlet등을 이용)</li>
+<li>서블릿에서 요청이 올때마다 어플리케이션 컨텍스트에서 필요한 빈을 가져와 정해진 메서드를 실행한다.</li>
+</ol>
+<p>그림으로 보면 아래와 같다.<br><img src="https://user-images.githubusercontent.com/18513953/31042860-4ff60afc-a5ec-11e7-94da-0ac123c02e43.png" alt="image"><br>메타정보에 관해서는 아래에서 설명할 것인데, 일단은 우리가 잘 알고 있는 <strong>***-context.xml</strong> 파일이라고 생각하시면 됩니다.<br>컨테이너가 기동될 때 POJO 클래스와 메타정보를 조합하여 각종 빈 들이 만들어지고, 그들을 관리하는 IOC 컨테이너가 생성되게 됩니다.(DispatcherServlet)<br>그리고 각 HTTP 요청에 지정된 서블릿의 메서드가 실행될 때, 필요한 빈을 어플리케이션 컨텍스트에서 가져온 뒤 해당 메서드를 실행합니다.  </p>
+<h2 id="컨테이너-계층구조"><a href="#컨테이너-계층구조" class="headerlink" title="컨테이너 계층구조"></a>컨테이너 계층구조</h2><p>스프링은 어플리케이션 컨텍스트를 계층구조로 가질 수 있다.</p>
+<p>빈 탐색 : 자식 -&gt; 부모<br>부모에서 자식을 찾을 수 없으며, 형제 컨텍스트의 빈도 검색 불가능.<br>자식과 부모에 중복된 이름의 빈이 있을 경우 자식의 빈을 사용(피해야 할 상황)  </p>
+<p>하나의 컨텍스트에 정의된 AOP의 경우 다른 컨텍스트의 빈에는 영향을 미치지 않음<br>상황에 따라 다른 설정을 사용해야 할 경우, 그런데 중요한 설정을 공유해야 할 경우 사용하면 효율적.<br>그러나 제대로 알지 못하고 사용하면(계층구조, 탐색순서) 예기치 못한 에러를 만날 수 있음</p>
+<h3 id="웹-어플리케이션-컨테이너-계층구조"><a href="#웹-어플리케이션-컨테이너-계층구조" class="headerlink" title="웹 어플리케이션 컨테이너 계층구조"></a>웹 어플리케이션 컨테이너 계층구조</h3><p>웹 어플리케이션 레벨에 등록하는 루트 컨테이너,<br>어플리케이션에 등록된 서블릿들이 각각 자신의 컨테이너를 가지는 구조가 대표적인 경우이다.<br>일반적으로 스프링을 사용하여 웹 개발을 할 경우 프론트 컨트롤러 패턴을 사용하므로 대부분 아래와 같다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">서블릿 어플리케이션 컨텍스트 -&gt; 루트 어플리케이션 컨텍스트</div></pre></td></tr></table></figure></p>
+<p>프론트 컨트롤러 패턴임에도 굳이 계층구조로 형성하는 이유는 아래와 같은 상황을 대비하기 위함이다 ㅎㅎ<br><img src="https://user-images.githubusercontent.com/18513953/31043947-8ff5225a-a600-11e7-83ae-a7ddda60d0fb.png" alt="image"><br>스프링의 유틸리티 메소드를 사용하면 간단하게 어플리케이션 컨텍스트를 얻어올 수 있다.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WebApplicationContextUtils.getWebApplicationContext(ServletContext)</div></pre></td></tr></table></figure></p>
+<p>ServletContext는 웹 어플리케이션마다 하나씩 만들어지는것이므로<br>HttpServletRequest나 HttpSession 오브젝트만 있으면 간단히 얻을 수 있다.</p>
+<h4 id="루트-어플리케이션-컨텍스트-등록"><a href="#루트-어플리케이션-컨텍스트-등록" class="headerlink" title="루트 어플리케이션 컨텍스트 등록"></a>루트 어플리케이션 컨텍스트 등록</h4><p>서블릿 컨텍스트의 생성/소멸을 알려주는 web.xml의 listener를 사용하여 등록한다.<br>스프링이 제공해주는 리스너로는 ServletContextListener를 구현한 ContextLoaderListener가 있다.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">listener-class</span>&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/spring/root-context.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>contextConfigLocation<br>설정파일의 위치를 바꿔줄 때 사용<br>리소스 로더 접두어, ant식 경로표기법 사용가능</p>
+</li>
+<li><p>contextClass<br>어플리케이션 컨텍스트 클래스를 바꿔줄떄 사능</p>
+</li>
+</ul>
+<p>지정해주지 않을 경우 default로 class는 XmlWebApplicationContext, xml 파일 위치는 /WEB-INF/applicationContext.xml 을 사용한다.</p>
+<h4 id="서블릿-어플리케이션-컨텍스트-등록"><a href="#서블릿-어플리케이션-컨텍스트-등록" class="headerlink" title="서블릿 어플리케이션 컨텍스트 등록"></a>서블릿 어플리케이션 컨텍스트 등록</h4><p>스프링 웹 기능을 지원하는 프론트 컨트롤러 서블릿인 DispatcherServlet은<br>초기화시에 자신만의 컨텍스트를 생성하고 초기화하고,<br>웹 어플리케이션 레벨에 등록된 어플리케이션 컨텍스트를 찾아서 자신의 부모 컨텍스트로 사용한다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>appServlet<span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>/WEB-INF/spring/appServlet/servlet-context.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>이클립스에서 Sprig MVC 프로젝트를 만들었을 때 생성되는 기본 구조이다.<br>루트 어플리케이션 컨텍스트를 만들 때 처럼 설정파일의 위치나 클래스를 변경해 줄 수 있다.<br>(파라미터는 루트 어플리케이션 컨텍스트와 동일하고, init-param을 사용한다는 것만 다르다.)</p>
+<p>지정해주지 않을 경우 default로 class는 XmlWebApplicationContext, xml 파일 위치는 /WEB_INF/{서블릿 네임}-context.xml 을 사용한다.</p>
+<p>루트 어플리케이션 컨텍스트에 등록되는 빈 들은 각각 성격이 구분되므로 여러 설정파일로 나누고,<br>서블릿 어플리케이션 컨텍스트의 경우 성격이 비슷하므로 디폴트 설정파일 위치를 사용하는 것이 일반적이라고 한다(근데 위는 왜 저렇지..)</p>
+<h3 id="IoC-DI를-위한-빈-설정-메타정보-작성"><a href="#IoC-DI를-위한-빈-설정-메타정보-작성" class="headerlink" title="IoC/DI를 위한 빈 설정 메타정보 작성"></a>IoC/DI를 위한 빈 설정 메타정보 작성</h3><p>앞서 언급한 빈 설정 메타정보에 대해 알아보겠다.</p>
+<p>IoC 컨테이너는 설정 메타정보를 참고하여 POJO 오브젝트들을 빈으로 등록한다.</p>
+<p>설정 메타정보라고 하면 보통 우리에게 익숙한 *-context.xml 파일등이 떠오르게 되는데, 이는 사실 실제 설정 메타정보는 아니다.</p>
+<p>아래의 그림을 보면 쉽게 이해할 수 있다.</p>
+<p><img src="https://user-images.githubusercontent.com/18513953/31396515-8b47cc00-ae1e-11e7-85e4-3a756f5d71bf.png" alt="image"></p>
+<p>정확하게 말해 설정 메타정보란 <strong>BeanDefinition</strong>이라는 순수 오브젝트를 의미한다.</p>
+<p>우리가 작성하는 xml파일, 어노테이션 등은 모두 적절한 리더기에 의해 BeanDefinition 오브젝트로 변환되는 것이다!</p>
+<p>BeanDefinition에는 IoC 컨테이너가 빈을 만들 때 필요한 핵심정보가 담겨 있다.<br>그러나 필수항목 몇개를 제외하면 대부분 디폴트 값을 그대로 사용한다.</p>
+<p>빈 등록법</p>
+<ol>
+<li><p>\<bean\> 태그 : 가장 강력하면서도 심플한 방법</bean\></p>
+</li>
+<li><p>네임스페이스 &amp; 전용태그 : 1번의 문제점을 보완한 방식이다.<br>1번의 경우 모두 \<bean\> 태그로 통일하기 때문에 구분이 잘 안된다는 단점이 있다.<br>(스프링은 자신에게 필요한 설정정보에도 DI를 사용하기 때문에 이런 현상이 벌어지는 것이다.)<br>그래서 각각의 성격에 맞게 네임스페이스와 태그를 제공한다.<br>ex) \<aop:pointcut ..="" \=""><br>가독성, 필수 프로퍼티, 클래스 선택, 다중 클래스 등록 등 많은 이점이 있다.</aop:pointcut></bean\></p>
+</li>
+<li><p>빈 스캐닝<br>빈 스캐너를 이용하여 인자로 전달한 패키지 아래의 클래스들을 검사한다.<br>@Component나 @Component를 메타 어노테이션으로 가지는 애들을 빈으로 등록한다.<br>이런 형태의 어노테이션을 스프링에선 <strong>스테레오 타입</strong>이라고 부른다<br>스캐닝으로 등록되는 빈은 이름을 등록하지 않으면 default로 클래스명에서 앞글자만 소문자로 사용한다.<br>어노테이션 디폴트값을 이용해 빈 이름을 지정할 수 있다. ex) @Component(“test”)<br>xml 작성 방법보다 간편하게 빈을 등록할순 있으나, 등록된 빈 들을 한눈에 볼 수 없다는 단점이 있다.<br>또한 xml 처럼 상세 메타정보 항목을 지정할 수 없고(한계가 있음), 클래스당 1개의 빈만 등록할 수 있다.</p>
+</li>
+</ol>
+<p>빈 스캐닝이 편리하긴 하지만 각각의 상황에 따라 xml과 빈 스캐닝을 적절히 선택하는 것이 좋다(세밀한 관리가 필요할 경우 등)</p>
+<p>빈스캐너 등록법<br>xml : \<context:component-scan base-package="..." \=""><br>컨텍스트 : 어플리케이션 컨텍스트 등록 시 contextClass로 AnnotationConfigWebApplicationContext 사용</context:component-scan></p>
+<ul>
+<li>스테레오 타입 종류<br>@Repository : DAO, repository<br>@Service : service<br>@Controller : mvc controller<blockquote>
+<p>특정계층으로 분류하기 힘든 경우는 @Component를 사용하는 것이 바람직</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>빈 스캐닝 시 컨테이너 계층 구조에서 유의할 점이 있다.<br>부모 컨테이너와 자식 컨테이너의 빈 스캐닝 지점이 같은 곳을 바라보고 있을 경우 아래와 같은 문제점이 발생할 수 있다.<br><img src="https://user-images.githubusercontent.com/18513953/32144077-bc69b2d0-bcf6-11e7-9544-f6726765c034.png" alt="image"><br>탐색의 순서가 자식 -&gt; 부모의 순서이므로 위의 경우 AOP, TX가 적용된 UserService 빈을 사용하지 못하게 된다.</p>
+</blockquote>
+<h3 id="java-config"><a href="#java-config" class="headerlink" title="java config"></a>java config</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Configuration</span> <span class="comment">// &lt;beans&gt;</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JavaConfig</span></span>&#123;</div><div class="line">    <span class="meta">@Bean</span> <span class="comment">// &lt;bean&gt;</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Hello <span class="title">hello</span><span class="params">()</span></span>&#123; <span class="comment">// method name == bean name</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Hello();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>등록 방법 : AnnotationConfigWebApplictionContext 생성자 파라미터로 패키지 대신 위의 클래스를 넣어주면 된다.</p>
+<p>@Configuration이 붙은 클래스도 빈으로 등록된다! (빈 이름 == 클래스명(첫글자 소문자))</p>
+<ul>
+<li><p>일반적인 자바 코드와 다른점(유의사항)<br>@Bean 아래 메서드에서 new로 인스턴스를 생성했지만 실제로 빈을 가져다 사용해보면 계속해서 같은 오브젝트가 리턴된다(직접 실행해도 마찬가지이다)</p>
+<blockquote>
+<p>@Configuration내에 @Bean만 해당함</p>
+</blockquote>
+</li>
+<li><p>자바 설정파일을 사용할 때의 장점  </p>
+<ol>
+<li>컴파일러나 IDE를 통한 검증이 가능하고, IDE의 기능을 최대한 이용할 수 있음.<br>XML은 텍스트이기 떄문에 한계가 있다.</li>
+<li>@Bean 자체가 자바 메서드이기 때문에 복잡한 빈 등록도 팩토리 빈 없이 쉽게 등록할 수 있다.</li>
+</ol>
+</li>
+<li><p>자주 사용하는 빈 등록 방법</p>
+</li>
+</ul>
+<ol>
+<li>XML 단독 사용<br> 생성되는 모든 빈을 XML에서 확인할 수 있는 장점이 있는 반면, 빈의 개수가 많아지면 XML 파일을 관리하기 번거로울 수 있다.<br> 설정을 분리하고 순수한 POJO 코드를 유지하고 싶을 떄 사용할 수 있다.<br> 커스텀 태그나 전용태그를 사용할 경우 장점이 부각된다.<br> 스프링이 제공하는 모든 빈 설정을 할 수 있는 유일한 방법이다.</li>
+<li>XML + 빈 스캐닝<br> 3계층 빈 클래스은 빈 스캔을 사용하고(복잡한 메타정보가 필요없으므로), 복잡한 설정 정보는 XML을 사용한다.  </li>
+<li>XML 없이 단독 스캐닝 사용<br> 자바 설정파일이 반드시 필요하다.<br> 루트/서블릿 어플리케이션 컨텍스트를 전부 AnnotationConfigWebApplicationContext로 변경하고, @Configuration 클래스 파일을 빈 설정 대상에 포함시킨다.<br> 스프링이 제공하는 전용 태그를 사용할 수 없다는 단점이 있다.</li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/10/28/spring/스프링-웹-기술과-스프링-MVC/">
+        스프링 웹 기술과 스프링 MVC
+      </a>
+    </h2>
+    
+    <time>
+      Oct 28, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/spring/">spring</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="스프링의-웹-프레젠테이션-계층-기술"><a href="#스프링의-웹-프레젠테이션-계층-기술" class="headerlink" title="스프링의 웹 프레젠테이션 계층 기술"></a>스프링의 웹 프레젠테이션 계층 기술</h2><p>presentation layer =<br>스프링 웹 기술을 사용하는 프레젠테이션 계층 + 스프링 외의 웹 기술을 사용하는 프레젠테이션 계층</p>
+<p>컨텍스트<br>root contetxt : 웹 기술에서 독립적인 비즈니스 계층, 데이터 엑세스 계층<br>servlet application context : 스프링 웹 기술을 기반. 웹 관련 빈<br>> 통째로 다른 기술로 교체하기 용이하기 위해서</p>
+<p>스프링 서블릿은 mvc 아키텍쳐를 따르는 웹 프레임워크를 구축할 수 있는 유연한 기반을 제공<br>@MVC와 같이 스프링이 확장시켜 만든 프레임워크도 있다.</p>
+<blockquote>
+<p>JSP/Servelt에서 스프링 빈 사용하려면 WebApplicationContextUtils의 스태틱 메서드를 사용하면 된다.<br>JSP에서 사용할 수 있는 HttpServletRequest 타입의 오브젝트를 이용하여 ServletContext를 가져올 수 있다.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ApplicationContext context =</div><div class="line">WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());</div><div class="line">HelloBean helloBean = context.getBean(HelloBean.class);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>스프링 : 유연성, 확장성, 다양성에 무게를 둠<br>집착에 가까울 정도로 모든 기능을 확장 가능하도록 설계되어 있다.<br>스프링을 잘 사용하는 법은 스프링 프레임워크를 완성된 고정적인 프레임워크로 보지말고,<br>스프링이 가진 기존 기능을 확장해서 프로젝트에 맞는 프레임워크로 확장하는 것이다.</p>
+<h3 id="DispatcherServlet-MVC-architecture"><a href="#DispatcherServlet-MVC-architecture" class="headerlink" title="DispatcherServlet, MVC architecture"></a>DispatcherServlet, MVC architecture</h3><p>스프링 웹 기술은 MVC 아키텍쳐를 기반으로 하고있고, 핵심 기술은 DispatcherServlet이다.<br>M(Model) : 프레젠테이션 계층의 구성요소 정보를 담음<br>V(View) : 화면 출력 로직<br>C(Controller) : 제어 로직</p>
+<p>프론트 컨트롤러 패턴 :<br>중앙 집중형 컨트롤러(e.g. DispatcherServlet)을 계층의 젤 앞에 둬서 요청을 가장 먼저 받아 처리하게 만드는 패턴<br>선행작업, 뷰 선택, 예외처리 등을 행한다.</p>
+<p><img src="https://user-images.githubusercontent.com/18513953/30509764-e17c5fc6-9af2-11e7-99be-b7c65e956fb0.png" alt="DispatcherServlet Flow"></p>
+<h4 id="DispatcherServlet의-requset-gt-response과정"><a href="#DispatcherServlet의-requset-gt-response과정" class="headerlink" title="DispatcherServlet의 requset -&gt; response과정"></a>DispatcherServlet의 requset -&gt; response과정</h4><ol>
+<li>web.xml등에 따라 요청을 dispatcherServlet이 받고, 공통적으로 진행해야 하는 전처리 작업 등을 한다.<br>e.g 보안, 파라미터 조작, 디코딩 등</li>
+<li>url, parameter 정보 등을 사용하여 어떤 컨트롤러에게 작업을 위임할 지 결정(핸들러 매핑 전략)<br>개발자는 어떤 오브젝트가 처리할지를 매핑하는 전략을 만들어 DI가능하도록 제공해주기만 하면 된다.<br>이후 요청이 들어오면, DispatcherServlet은 컨트롤러를 선택하고, 해당 메서드를 실행하여 실제 작업을 처리한다.<br>여기서 중요한 것은 컨트롤러가 특정 인터페이스를 구현하는 식의 규약을 따르지 않았다는 것이다.<br>그러한데도 DispatcherServlet이 컨트롤러의 메서드를 호출할 수 있는 이유는 <strong>어댑터</strong> 라는 것을 이용하기 때문이다.</li>
+</ol>
+<blockquote>
+<p>DispatcherServlet -&gt; HandlerAdapter -&gt; Controller 의 형태이다.<br>DispatcherServlet은 모든 웹 요청정보가 담긴 HttpServletRequest 오브젝트를 전달해주고,<br>이를 어댑터가 컨트롤러 메서드가 받을 수 있도록 파라미터로 변환하여 전달한다. (HttpServletResponse도 전달해준다)</p>
+<ol>
+<li>컨트롤러는 사용자의 요청을 해석하여 로직을 수행한 뒤 결과에 따라 모델을 생성한다. 모델은 key, value로 이뤄진 쌍이라고 보면 된다.<br>이후 뷰를 선택한다. 뷰도 하나의 오브젝트이다. 컨트롤러가 직접 선택할 수도 있지만 보통은 논리적인 이름을 리턴해주고,<br>DispatcherServlet의 뷰 리졸버가 이를 이용해 뷰 오브젝트를 생성해준다.<br>이후 준비된 모델과 뷰를 DispatcherServlet에 돌려줌으로써 컨트롤러의 역할은 끝난다.<br>(ModelAndView, Model 등의 오브젝트를 사용하여 전달할 수 있다.)</li>
+<li>DispatcherServlet은 뷰 오브젝트에 모델을 전달하고, 결과물을 생성해달라고 요청한다.<br>(JstlView의 경우 컨트롤러가 리턴한 논리적 이름의 jsp 템플릿을 가져다가 HTML을 생성한다.)<br>HTML이 일반적이고, 엑셀, PDF등과 같이 파일 형태로 만드는 뷰도 있다.<br>모델이 같아도 어떤 뷰를 선택하느냐에 따라 결과가 달라질수 있다는 의미이다.<br>최종 결과는 HttpServletReponse에 담긴다.</li>
+<li>DispatcherServlet은 마지막으로 후처리기가 있는가 확인 후,<br>있으면 후처리를 진행한 뒤 최종 HttpServletResponse를 서블릿 컨테이너에 돌려준다.</li>
+<li>서블릿 컨테이너는 이를 HTTP 응답으로 만들어 클라이언트에 전송하고 작업이 종료된다.</li>
+</ol>
+</blockquote>
+<h3 id="DispatcherServlet의-확장-가능한-전략-using-DI"><a href="#DispatcherServlet의-확장-가능한-전략-using-DI" class="headerlink" title="DispatcherServlet의 확장 가능한 전략(using DI)"></a>DispatcherServlet의 확장 가능한 전략(using DI)</h3><ul>
+<li>HandlerMapping<br>URL과 요청정보를 기준으로 컨트롤러를 결정한다. HandlerMapping 인터페이스를 구현해서 만들 수 있다.</li>
+<li>HandlerAdapter<br>HandlerMapping으로 선택한 컨트롤러를 호출할 때 사용하는 어댑터다.<br>컨트롤러 호출 방법은 타입에 따라 다르기 때문에 컨트롤러를 결정했다고 해도 호출방법을 DispatcherServlet이 알 수가 없으므로, 어댑터가 필요하다.</li>
+<li>HandlerExceptionResolver<br>비즈니스로직이 아닌 초기 요청단계에서의 Exception은 프론트 컨트롤러인 DispatcherServlet에 의해 처리되어야 한다.<br>DispatcherServlet은 등록된 HandlerExceptionResolver중에 적합한 것을 찾아 예외처리를 위임한다.</li>
+<li>ViewResolver<br>컨트롤러가 리턴한 논리적 뷰 이름을 통해 뷰 오브젝트를 찾아주는 오브젝트다.<br>디폴트는 InternalResourceViewResolver이며, JSP같은 리소스를 사용할 수 있게 해주는 뷰 리졸버이다.</li>
+<li>LocaleResolver<br>지역정보를 결정해주는 전략. default인 AcceptHeaderLocaleResolve는 HTTP header정보를 보고 locale정보를 설정한다.<br>이 전략을 바꾸면 파라미터, 쿠키, xml등을 이용할 수도 있다.</li>
+<li>RequestToViewNameTranslator<br>컨트롤러에서 뷰 정보를 제공하지 않았을 경우 URL등을 이용해서 자동으로 뷰 이름을 생성해주는 전략</li>
+</ul>
+<blockquote>
+<p>DispatcherServlet은 스프링 컨테이너가 아닌 서블릿 컨텍스트가 관리하는 오브젝트이기<br>때문에 직접 DI가 불가능하다.</p>
+<p>DispatcherServlet은 각 전략의 default 설정을 DispatcherServlet.properties라는 파일로부터 가져와서 초기화하는데, </p>
+<p>이전에 개발자가 추가하거나 수정한 전략이 있나 찾아보고 있으면 대체, 없으면 default 전략을 사용한다.</p>
+</blockquote>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<div class='header'>joont</div>
+<div class='content'>
+<div class='desc'>Tempora mutantur, nos et mutamur in illis ...</div>
+</div>
+</section>
+
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://ccoooss.com">
+            <div class='name'>ClassicOldSong</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://frantic1048.logdown.com/">
+            <div class='name'>Frantic1048</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://hclmaster.github.io/">
+            <div class='name'>Hclmaster</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://whst.github.io/">
+            <div class='name'>WANG Hsü-Tung</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/db/"><div class='name'>db</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/etc/"><div class='name'>etc</div><div class='badget'>2</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/jpa/"><div class='name'>jpa</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/linux/"><div class='name'>linux</div><div class='badget'>6</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/spring/"><div class='name'>spring</div><div class='badget'>2</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+
+
+      </aside>
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/stkevintan" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="https://twitter.com/kevinsfork" class="social twitter"
+          target="_blank" rel="external">
+          <span class="icon icon-twitter"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  
+</footer>
+
+
+  <script>setLoadingBarProgress(80);</script>
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
