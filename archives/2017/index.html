@@ -144,6 +144,87 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2017/12/03/linux/bash-profile과-bashrc/">
+        bash_profile과 bashrc
+      </a>
+    </h2>
+    
+    <time>
+      Dec 3, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/linux/">linux</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>리눅스에서 alias를 수정하거나 PATH를 변경할 떄 접하게 되는 대표적인 4가지의 파일들..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/profile, /etc/bashrc, ~\.bash_profile, ~\.bash_rc</div></pre></td></tr></table></figure>
+<p>각각의 파일에 대해 간단하게 알아보겠다.</p>
+<p>일단 이에 대해 알기전에 <strong>Login Shell</strong>과 <strong>Non-Login Shell</strong>의 차이에 대해 알아야 한다.</p>
+<h5 id="Login-Shell"><a href="#Login-Shell" class="headerlink" title="Login Shell"></a>Login Shell</h5><p>Shell을 실행할 때 로그인이 필요한 경우를 말한다.<br>ssh로 접속하거나, su 명령어로 다른계정을 들어갈 때 등이 해당된다.</p>
+<blockquote>
+<p>\/etc\/profile, ~\/.bash_profile 파일이 이 Shell이 뜰 때 실행되는 파일이다.</p>
+</blockquote>
+<h5 id="Non-Login-Shell"><a href="#Non-Login-Shell" class="headerlink" title="Non-Login Shell"></a>Non-Login Shell</h5><p>Shell을 실행할 떄 로그인이 필요하지 않은 경우를 말한다.<br>즉 Shell이 실행되는 모든 상황을 의미하게 됩니다.<br>GUI에서 터미널을 띄울때나, bash 명령어로 다시 bash를 실행하는 경우 등이 해당된다.</p>
+<blockquote>
+<p>\/etc\/bashrc, ~\/.bashrc 파일이 이 Shell이 뜰 때 실행되는 파일이다.</p>
+</blockquote>
+<p>Login Shell은 Non-Login Shell을 포함한다.<br>Login Shell이 실행될 때 profile과 bashrc 파일이 모두 실행되게 되고,<br>Non-Login Shell이 실행될 때 bashrc 파일만 실행되게 된다.</p>
+<h3 id="profile"><a href="#profile" class="headerlink" title="profile"></a>profile</h3><p>\/etc\/profile 파일의 경우 전역적인 파일로 모든 사용자가 로그인 시 실행되며,<br>~\/.bash_profile 파일의 경우 지역적인 파일로 해당하는 사용자가 로그인 시만 실행된다.<br>또한 \/etc\/profile의 경우 어떠한 shell이든 상관없지만, ~\/.bash_profile의 경우 bash shell일 경우에만 해당된다.</p>
+<h3 id="bashrc"><a href="#bashrc" class="headerlink" title="bashrc"></a>bashrc</h3><p>profile과 달리 Login 과정이 없으므로 shell을 실행시키는 사용자로 구분한다.<br>\/etc\/bashrc의 경우 모든 사용자가 shell을 실행시킬 때 마다 실행되며,<br>~\/.bashrc의 경우 해당하는 사용자가 shell 실행시킬 때 실행된다.</p>
+<blockquote>
+<p>profile의 경우 대부분 환경 변수같은 것을 명시하고 bashrc의 경우 alias 같은 것을 명시한다..(?)</p>
+</blockquote>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/11/28/db/mysql-data-sample/">
+        mysql data sample
+      </a>
+    </h2>
+    
+    <time>
+      Nov 28, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/db/">db</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p><a href="https://github.com/datacharmer/test_db" target="_blank" rel="external">https://github.com/datacharmer/test_db</a>  </p>
+<p><code>mysql &lt; employees.sql</code><br>이거 외엔 딱히 할 필요 없어보이긴 함</p>
+<p><img src="https://user-images.githubusercontent.com/18513953/33320411-7fb7b6ce-d485-11e7-858b-420c8d45b795.png" alt="image"></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2017/11/27/db/실행계획/">
         실행계획
       </a>
@@ -181,86 +262,6 @@
 </li>
 </ul>
 <p>와 같이 입력하면 실행계획 표가 출력됨.<br>표의 로우는 사용하는 테이블의 개수만큼 출력됨(서브쿼리, 임시테이블 등 포함)<br>실행순서는 위에서 아래로<br>CRUD의 경우 실행계획 분석이 불가능하다. WHERE 절에 사용되는 부분만 따로 빼내서 실행계획을 분석하던지 해야 한다.</p>
-
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/11/27/db/mysql-data-sample/">
-        mysql data sample
-      </a>
-    </h2>
-    
-    <time>
-      Nov 27, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/db/">db</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p><a href="https://github.com/datacharmer/test_db" target="_blank" rel="external">https://github.com/datacharmer/test_db</a>  </p>
-<p><code>mysql &lt; employees.sql</code><br>이거 외엔 딱히 할 필요 없어보이긴 함</p>
-
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/11/27/linux/bash-profile과-bashrc/">
-        bash_profile과 bashrc
-      </a>
-    </h2>
-    
-    <time>
-      Nov 27, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/linux/">linux</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>리눅스에서 alias를 수정하거나 PATH를 변경할 떄 접하게 되는 대표적인 4가지의 파일들..</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/profile, /etc/bashrc, ~\.bash_profile, ~\.bash_rc</div></pre></td></tr></table></figure>
-<p>각각의 파일에 대해 간단하게 알아보겠다.</p>
-<p>일단 이에 대해 알기전에 <strong>Login Shell</strong>과 <strong>Non-Login Shell</strong>의 차이에 대해 알아야 한다.</p>
-<h5 id="Login-Shell"><a href="#Login-Shell" class="headerlink" title="Login Shell"></a>Login Shell</h5><p>Shell을 실행할 때 로그인이 필요한 경우를 말한다.<br>ssh로 접속하거나, su 명령어로 다른계정을 들어갈 때 등이 해당된다.</p>
-<blockquote>
-<p>\/etc\/profile, ~\/.bash_profile 파일이 이 Shell이 뜰 때 실행되는 파일이다.</p>
-</blockquote>
-<h5 id="Non-Login-Shell"><a href="#Non-Login-Shell" class="headerlink" title="Non-Login Shell"></a>Non-Login Shell</h5><p>Shell을 실행할 떄 로그인이 필요하지 않은 경우를 말한다.<br>즉 Shell이 실행되는 모든 상황을 의미하게 됩니다.<br>GUI에서 터미널을 띄울때나, bash 명령어로 다시 bash를 실행하는 경우 등이 해당된다.</p>
-<blockquote>
-<p>\/etc\/bashrc, ~\/.bashrc 파일이 이 Shell이 뜰 때 실행되는 파일이다.</p>
-</blockquote>
-<p>Login Shell은 Non-Login Shell을 포함합니다.<br>Login Shell이 실행될 때 profile과 bashrc 파일이 모두 실행되게 되고,<br>Non-Login Shell이 실행될 때 bashrc 파일만 실행되게 됩니다.</p>
-<h3 id="profile"><a href="#profile" class="headerlink" title="profile"></a>profile</h3><p>\/etc\/profile 파일의 경우 전역적인 파일로 모든 사용자가 로그인 시 실행되며,<br>~\/.bash_profile 파일의 경우 지역적인 파일로 해당하는 사용자가 로그인 시만 실행된다.<br>또한 \/etc\/profile의 경우 어떠한 shell이든 상관없지만, ~\/.bash_profile의 경우 bash shell일 경우에만 해당된다.</p>
-<h3 id="bashrc"><a href="#bashrc" class="headerlink" title="bashrc"></a>bashrc</h3><p>profile과 달리 Login 과정이 없으므로 shell을 실행시키는 사용자로 구분한다.<br>\/etc\/bashrc의 경우 모든 사용자가 shell을 실행시킬 때 마다 실행되며,<br>~\/.bashrc의 경우 해당하는 사용자가 shell 실행시킬 때 실행된다.</p>
-<blockquote>
-<p>profile의 경우 대부분 환경 변수같은 것을 명시하고 bashrc의 경우 alias 같은 것을 명시한다..(?)</p>
-</blockquote>
 
 
     
@@ -716,22 +717,6 @@
 <div class='header'>Links</div>
 <div class='content'>
     <ul class="entry">
-    
-        <li><a class="flat-box" target="_blank" href="https://ccoooss.com">
-            <div class='name'>ClassicOldSong</div>
-        </a></li>
-    
-        <li><a class="flat-box" target="_blank" href="https://frantic1048.logdown.com/">
-            <div class='name'>Frantic1048</div>
-        </a></li>
-    
-        <li><a class="flat-box" target="_blank" href="https://hclmaster.github.io/">
-            <div class='name'>Hclmaster</div>
-        </a></li>
-    
-        <li><a class="flat-box" target="_blank" href="https://whst.github.io/">
-            <div class='name'>WANG Hsü-Tung</div>
-        </a></li>
     
     </ul>
 </div>
