@@ -139,6 +139,145 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2017/12/12/db/실행계획/">
+        실행계획
+      </a>
+    </h2>
+    
+    <time>
+      Dec 12, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/db/">db</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <ul>
+<li>실행계획 절차  </li>
+</ul>
+<ol>
+<li>SQL 파서 모듈을 통해 작성된 SQL을 잘개 쪼갠다.(SQL 파스 트리 생성)</li>
+<li>생성된 SQL 파스트리를 통해 옵티마이저가 불필요한 연산 제거, 어떤 인덱스를 사용할지, 어떤 테이블을 선행할지 등을 결정한다.</li>
+<li>결정된 실행계획을 가지고 스토리지 엔진으로부터 데이터를 가져옴</li>
+</ol>
+<ul>
+<li><p>옵티마이저 종류<br>규칙기반(rule based optimizer), 비용기반(cost based optimizer)가 있다.<br>거의 대부분이 CBO를 사용한다.</p>
+</li>
+<li><p>통계 정보<br>CBO에서 가장 중요한 정보이다. 통계정보가 잘못되면 엉뚱한 방향으로 쿼리가 실행될 수 있다.<br>MySQL은 통계정보가 다양하지 않은 편. 전체 레코드의 대략적 건수, 인덱스 유니크 값 개수 정도가 전부이다.<br>ANALYZE 명령으로 통계정보를 갱신할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ANALYZE</span> <span class="keyword">TABLE</span> <span class="string">'테이블명'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>ANALYZE 명령 시,<br>MyISAM 테이블의 경우 쓰기는 불가능하고 읽기는 가능<br>InnoDB 테이블의 경우 쓰기와 읽기 둘 다 불가능</p>
+<ul>
+<li>실행계획 분석<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">EXPLAIN</span> [쿼리]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>와 같이 입력하면 실행계획 표가 출력됨.<br>표의 로우는 사용하는 테이블의 개수만큼 출력됨(서브쿼리, 임시테이블 등 포함)<br>실행순서는 위에서 아래로<br>CRUD의 경우 실행계획 분석이 불가능하다. WHERE 절에 사용되는 부분만 따로 빼내서 실행계획을 분석하던지 해야 한다.</p>
+<ol>
+<li><p>id 칼럼<br>단위 SELECT 쿼리별로 부여되는 식별자 값(조인의 경우 같은 ID가 부여된다)  </p>
+</li>
+<li><p>select_type 컬럼</p>
+</li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/12/english/스터디-1주차/">
+        스터디 1주차
+      </a>
+    </h2>
+    
+    <time>
+      Dec 12, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/english/">english</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h1 id="Keira-Knightly-on-her-name"><a href="#Keira-Knightly-on-her-name" class="headerlink" title="Keira Knightly on her name"></a>Keira Knightly on her name</h1><h3 id="본문"><a href="#본문" class="headerlink" title="본문"></a>본문</h3><blockquote>
+<p>Jimmy :<br>You have unusual name.<br>I knew you were coming, and I spelt it wrong, but I thought it was right.<br>I spelt “ie” insted of “ei”.<br>Is there proper way to spell it?  </p>
+<p>Keira :<br>Yeah.. that’s a… well… yes.<br>My mom spelt it wrong.  </p>
+<p>Jimmy :<br> I thoungt I was right.  </p>
+<p>Keira :<br>On my birth certificate.<br>I’m half named after a Russian ice skater that my dad fancied,<br>and half is Celtic name, because my mom is Scottish, so she wanted that.<br>Anyway, my mom went along to the place… where do you do the birth certificate?<br>I need to learn this as well.. don’t I?  </p>
+<p>Jimmy :<br>Oh yeah, they’ll do it at the hostpital. You don’t have to go anywhere.  </p>
+<p>Keira :<br>Anyway, she did the birth certificate, and showed it to my father,<br>and he was like,<br>“You’ve spelt her fucking name wrong!!”.<br>It’s not a surprise I’m dyslexic. Is it?<br>I had no change from the beginning…  </p>
+<p>Jimmy :<br>I guess you can’t really spell a name wrong, can you?<br>I mean, it’s whatever is it.</p>
+<p>Keria :<br>She did thought, she really did it.<br>It should be “ie”, but it isn’t.  </p>
+<p>Jimmy :<br>It’s not to late.</p>
+<p>Keria :<br>I should change it.</p>
+<p>Jimmy :<br>You should spell your son or daughter’s name wrong.</p>
+<p>Keria :<br>My kid’s name? OK, I’ll do that.</p>
+<p>Jimmy :<br>Yeah, do something that will haunt them for the rest of their life.</p>
+<p>Keria :<br>OK. exactly.</p>
+</blockquote>
+<h3 id="어휘"><a href="#어휘" class="headerlink" title="어휘"></a>어휘</h3><ol>
+<li>as well : 또한, 역시</li>
+<li>be like : ~라 말하다, 말하고 있다.</li>
+<li>birth certificate : 출생 신고서</li>
+<li>dyslexic : 독서 장애의, 난독증</li>
+<li>exactly : 맞아(바로 그거야)</li>
+<li>fancy : 끌리다, 반하다</li>
+<li>haunt : 괴롭히다</li>
+<li>name after : ~의 이름을 따서 명명하다</li>
+</ol>
+<h3 id="답답노트"><a href="#답답노트" class="headerlink" title="답답노트"></a>답답노트</h3><ol>
+<li>술이 너무 부족했다.<blockquote>
+<p>There was really not enough alcohol.</p>
+</blockquote>
+</li>
+<li>청소년 수련원<blockquote>
+<p>Youth traning center</p>
+</blockquote>
+</li>
+<li>총무팀<blockquote>
+<p>general affairs team</p>
+</blockquote>
+</li>
+<li>얼마 안걸렸어.<blockquote>
+<p>It didn’t take long.</p>
+</blockquote>
+</li>
+<li>무슨 자신감이니?<blockquote>
+<p>What confidence?</p>
+</blockquote>
+</li>
+<li>의미만 전달하면 된다.<blockquote>
+<p>I just have to convey meaning.</p>
+</blockquote>
+</li>
+</ol>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2017/12/03/linux/bash-profile과-bashrc/">
         bash_profile과 bashrc
       </a>
@@ -206,57 +345,6 @@
 	  <p><a href="https://github.com/datacharmer/test_db" target="_blank" rel="external">https://github.com/datacharmer/test_db</a>  </p>
 <p><code>mysql &lt; employees.sql</code><br>이거 외엔 딱히 할 필요 없어보이긴 함</p>
 <p><img src="https://user-images.githubusercontent.com/18513953/33320411-7fb7b6ce-d485-11e7-858b-420c8d45b795.png" alt="image"></p>
-
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/11/27/db/실행계획/">
-        실행계획
-      </a>
-    </h2>
-    
-    <time>
-      Nov 27, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/db/">db</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <ul>
-<li>실행계획 절차  </li>
-</ul>
-<ol>
-<li>SQL 파서 모듈을 통해 작성된 SQL을 잘개 쪼갠다.(SQL 파스 트리 생성)</li>
-<li>생성된 SQL 파스트리를 통해 옵티마이저가 불필요한 연산 제거, 어떤 인덱스를 사용할지, 어떤 테이블을 선행할지 등을 결정한다.</li>
-<li>결정된 실행계획을 가지고 스토리지 엔진으로부터 데이터를 가져옴</li>
-</ol>
-<ul>
-<li><p>옵티마이저 종류<br>규칙기반(rule based optimizer), 비용기반(cost based optimizer)가 있다.<br>거의 대부분이 CBO를 사용한다.</p>
-</li>
-<li><p>통계 정보<br>CBO에서 가장 중요한 정보이다. 통계정보가 잘못되면 엉뚱한 방향으로 쿼리가 실행될 수 있다.<br>MySQL은 통계정보가 다양하지 않은 편. 전체 레코드의 대략적 건수, 인덱스 유니크 값 개수 정도가 전부이다.<br>ANALYZE 명령으로 통계정보를 갱신할 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ANALYZE</span> <span class="keyword">TABLE</span> <span class="string">'테이블명'</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>ANALYZE 명령 시,<br>MyISAM 테이블의 경우 쓰기는 불가능하고 읽기는 가능<br>InnoDB 테이블의 경우 쓰기와 읽기 둘 다 불가능</p>
-<ul>
-<li>실행계획 분석<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">EXPLAIN</span> [쿼리]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>와 같이 입력하면 실행계획 표가 출력됨.<br>표의 로우는 사용하는 테이블의 개수만큼 출력됨(서브쿼리, 임시테이블 등 포함)<br>실행순서는 위에서 아래로<br>CRUD의 경우 실행계획 분석이 불가능하다. WHERE 절에 사용되는 부분만 따로 빼내서 실행계획을 분석하던지 해야 한다.</p>
 
 
     
@@ -619,69 +707,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/10/29/linux/사용자-그룹-관리/">
-        사용자/그룹 관리
-      </a>
-    </h2>
-    
-    <time>
-      Oct 29, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/linux/">linux</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>리눅스는 여러명의 사용자가 동시에 로그인하여 시스템을 사용할 수 있는 멀티유저 운영체제이다.<br>이러한 사용자들은 각각 계정을 가지고 시스템에 접근하게 된다.<br>그리고 이 사용자들을 묶어서 관리할 수 있는 그룹이라는 것이 있다.<br>모든 사용자는 하나의 그룹을 가진다.  </p>
-<h1 id="사용자-관리"><a href="#사용자-관리" class="headerlink" title="사용자 관리"></a>사용자 관리</h1><h4 id="etc-passwd-사용자-정보가-담긴-파일"><a href="#etc-passwd-사용자-정보가-담긴-파일" class="headerlink" title="/etc/passwd : 사용자 정보가 담긴 파일"></a>/etc/passwd : 사용자 정보가 담긴 파일</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root:x:0:0:root:/root:/bin/bash</div><div class="line"></div><div class="line"># 사용자명:패스워드:UID:GID:사용자정보:홈디렉토리:쉘</div></pre></td></tr></table></figure>
-<ol>
-<li>사용자명 : 로그인 시 사용하는 사용자명.<ul>
-<li>네이밍 규칙 : 영문자 대소문자, 숫자, “-“, “_”, “.” 사용 가능, 보통 1~32자 사용</li>
-</ul>
-</li>
-<li>패스워드 : /etc/shadow 파일에 암호화되어 저장되어 있다.</li>
-<li>UID : 사용자 고유 ID<ul>
-<li>일반 사용자는 1000~60000을 사용한다(/etc/login.defs에 명시)<br>root 는 0으로 예약되어 있다.</li>
-</ul>
-</li>
-<li>GID : 사용자가 속한 그룹 고유 ID</li>
-<li>사용자정보 : 사용자에 대한 간단한 정보를 기입할 수 있다.</li>
-<li>홈디렉토리 : 사용자 폴더. 로그인 시 최초 접속되는 폴더이기도 하다.</li>
-<li>쉘 : 사용자가 사용하는 쉘 환경</li>
-</ol>
-<h3 id="사용자-추가"><a href="#사용자-추가" class="headerlink" title="사용자 추가"></a>사용자 추가</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; useradd [options] 사용자명 </div><div class="line"></div><div class="line"># options</div><div class="line"># -c [텍스트] : 사용자정보</div><div class="line"># -m : 홈디렉토리 생성</div><div class="line"># -M : 홈디렉토리 생성 안함</div><div class="line"># -d [폴더] : 홈디렉토리 지정</div><div class="line"># -N : 사용자 개인 그룹 생성하지 않음. default : 생성</div><div class="line"># -u [UID] : UID 직접 지정</div><div class="line"># -g [GID] : GID 직접 지정</div><div class="line"># -s [Shell] : shell 지정</div><div class="line"></div><div class="line"># 이 외에도 많은 옵션이 존재한다. useradd --help 를 활용한다.</div></pre></td></tr></table></figure>
-<p>생성 시 사용하는 default 값을 확인하고 바꿀 수 있다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt; useradd -D</div><div class="line">GROUP=100</div><div class="line">HOME=/home</div><div class="line">INACTIVE=-1</div><div class="line">EXPIRE=</div><div class="line">SHELL=/bin/sh</div><div class="line">SKEL=/etc/skel</div><div class="line">CREATE_MAIL_SPOOL=no</div><div class="line"></div><div class="line">&gt; useradd -D -b /test</div><div class="line">&gt; useradd -D</div><div class="line">GROUP=100</div><div class="line">HOME=/test #변경됨</div><div class="line">INACTIVE=-1</div><div class="line">EXPIRE=</div><div class="line">SHELL=/bin/sh</div><div class="line">SKEL=/etc/skel</div><div class="line">CREATE_MAIL_SPOOL=no</div><div class="line"></div><div class="line"># 위에 대한 설정파일은 /etc/default/useradd 이다</div></pre></td></tr></table></figure></p>
-<p>사용자 추가 시 홈 디렉토리에 생성되는 파일<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; useradd user1 -m</div><div class="line">&gt; cd /home/user1</div><div class="line">&gt; ls -al</div><div class="line">합계 32</div><div class="line">drwxr-xr-x 2 user1 user1 4096 10월 29 16:23 .</div><div class="line">drwxr-xr-x 4 root  root  4096 10월 29 16:23 ..</div><div class="line">-rw-r--r-- 1 user1 user1  220  9월  1  2015 .bash_logout</div><div class="line">-rw-r--r-- 1 user1 user1 3771  9월  1  2015 .bashrc</div><div class="line">-rw-r--r-- 1 user1 user1  655  6월 25  2016 .profile</div><div class="line">-rw-r--r-- 1 user1 user1 8980  4월 20  2016 examples.desktop</div><div class="line"></div><div class="line"># /etc/skel에 있는 파일을 복사해 사용한다.</div></pre></td></tr></table></figure></p>
-<h3 id="사용자-수정"><a href="#사용자-수정" class="headerlink" title="사용자 수정"></a>사용자 수정</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; usermod [options] 사용자명 </div><div class="line"></div><div class="line"># options</div><div class="line"># -c [텍스트] : 사용자정보 수정</div><div class="line"># -d [폴더] : 홈디렉토리 변경</div><div class="line"># -u [UID] : UID 변경</div><div class="line"># -s [Shell] : shell 지정</div><div class="line"># -L : 계정 락킹</div><div class="line"># -U : 계정 언락킹</div><div class="line"></div><div class="line"># -g [group] : 사용자 기본 그룹 변경</div><div class="line">  &gt; usermod -g user2 user1</div><div class="line">  # user1의 기본 그룹을 user2로 변경</div><div class="line"></div><div class="line"># -G [groups] : 사용자 그룹 추가,변경(제거). 기본 그룹은 영향을 받지 않는다.</div><div class="line">  &gt; usermod -a -G group1,group2 user1 </div><div class="line">  # user1에 group1,group2를 추가. -a 옵션으로 기존 그룹 +group1, group2 된다.</div><div class="line">  &gt; usermod -G group1 user1</div><div class="line">  # 그룹을 제거하는 방법. user1의 기존 그룹을 날리고 group1만을 지정</div></pre></td></tr></table></figure>
-<p>패스워드 변경<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; passwd [options] 사용자명</div><div class="line"></div><div class="line"># options</div><div class="line"># -d : 패스워드 삭제</div><div class="line"># -e : 패스워드 강제 만료</div><div class="line"># -l, -u : 패스워드 락킹/언락킹. usermod에 있는 -L, -U 옵션을 쓰는것이 더 좋다고 한다..</div></pre></td></tr></table></figure></p>
-<h3 id="사용자-삭제"><a href="#사용자-삭제" class="headerlink" title="사용자 삭제"></a>사용자 삭제</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">userdel [options] 사용자명</div><div class="line"></div><div class="line"># options </div><div class="line"># -r : 사용자의 홈디렉토리, 메일박스, 임시디렉토리 까지 같이 삭제.</div><div class="line">       그룹은 기본적으로 속한 사용자가 없으면 자동 삭제된다</div></pre></td></tr></table></figure>
-<h1 id="그룹-관리"><a href="#그룹-관리" class="headerlink" title="그룹 관리"></a>그룹 관리</h1><h4 id="etc-group-그룹-정보가-담긴-파일"><a href="#etc-group-그룹-정보가-담긴-파일" class="headerlink" title="/etc/group : 그룹 정보가 담긴 파일"></a>/etc/group : 그룹 정보가 담긴 파일</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo:x:27:user1,user2</div><div class="line"></div><div class="line"># 그룹명:패스워드:GID:사용자리스트</div></pre></td></tr></table></figure>
-<ol>
-<li>그룹명 : 그룹의 이름이다</li>
-<li>패스워드 : 그룹 패스워드</li>
-<li>GID : 그룹 고유 ID</li>
-<li>사용자리스트 : 해당 그룹에 속한 사용자들의 리스트.<br> 생략되는 경우도 많기 때문에 비어있다고 그룹에 속한 사용자가 없다고 확신할 수 없다.</li>
-</ol>
-<h3 id="그룹-추가"><a href="#그룹-추가" class="headerlink" title="그룹 추가"></a>그룹 추가</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; groupadd [options] 그룹명</div><div class="line"></div><div class="line"># options</div><div class="line"># -g [GID] : GID 지정</div></pre></td></tr></table></figure>
-<h3 id="그룹-수정"><a href="#그룹-수정" class="headerlink" title="그룹 수정"></a>그룹 수정</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; groupmod [options] 그룹명</div><div class="line"></div><div class="line"># options</div><div class="line"># -n [이름] : 그룹명 변경</div></pre></td></tr></table></figure>
-<h3 id="그룹-삭제"><a href="#그룹-삭제" class="headerlink" title="그룹 삭제"></a>그룹 삭제</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; groupdel 그룹명</div></pre></td></tr></table></figure>
-
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -723,6 +748,8 @@
     <ul class="entry">
     
         <li><a class="flat-box" href="/categories/db/"><div class='name'>db</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/english/"><div class='name'>english</div><div class='badget'>1</div></a></li>
     
         <li><a class="flat-box" href="/categories/etc/"><div class='name'>etc</div><div class='badget'>2</div></a></li>
     

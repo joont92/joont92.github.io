@@ -3,6 +3,113 @@
   
     
     <entry>
+      <title><![CDATA[실행계획]]></title>
+      <url>/2017/12/12/db/%EC%8B%A4%ED%96%89%EA%B3%84%ED%9A%8D/</url>
+      <content type="html"><![CDATA[<ul>
+<li>실행계획 절차  </li>
+</ul>
+<ol>
+<li>SQL 파서 모듈을 통해 작성된 SQL을 잘개 쪼갠다.(SQL 파스 트리 생성)</li>
+<li>생성된 SQL 파스트리를 통해 옵티마이저가 불필요한 연산 제거, 어떤 인덱스를 사용할지, 어떤 테이블을 선행할지 등을 결정한다.</li>
+<li>결정된 실행계획을 가지고 스토리지 엔진으로부터 데이터를 가져옴</li>
+</ol>
+<ul>
+<li><p>옵티마이저 종류<br>규칙기반(rule based optimizer), 비용기반(cost based optimizer)가 있다.<br>거의 대부분이 CBO를 사용한다.</p>
+</li>
+<li><p>통계 정보<br>CBO에서 가장 중요한 정보이다. 통계정보가 잘못되면 엉뚱한 방향으로 쿼리가 실행될 수 있다.<br>MySQL은 통계정보가 다양하지 않은 편. 전체 레코드의 대략적 건수, 인덱스 유니크 값 개수 정도가 전부이다.<br>ANALYZE 명령으로 통계정보를 갱신할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ANALYZE</span> <span class="keyword">TABLE</span> <span class="string">'테이블명'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>ANALYZE 명령 시,<br>MyISAM 테이블의 경우 쓰기는 불가능하고 읽기는 가능<br>InnoDB 테이블의 경우 쓰기와 읽기 둘 다 불가능</p>
+<ul>
+<li>실행계획 분석<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">EXPLAIN</span> [쿼리]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>와 같이 입력하면 실행계획 표가 출력됨.<br>표의 로우는 사용하는 테이블의 개수만큼 출력됨(서브쿼리, 임시테이블 등 포함)<br>실행순서는 위에서 아래로<br>CRUD의 경우 실행계획 분석이 불가능하다. WHERE 절에 사용되는 부분만 따로 빼내서 실행계획을 분석하던지 해야 한다.</p>
+<ol>
+<li><p>id 칼럼<br>단위 SELECT 쿼리별로 부여되는 식별자 값(조인의 경우 같은 ID가 부여된다)  </p>
+</li>
+<li><p>select_type 컬럼</p>
+</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> db </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[스터디 1주차]]></title>
+      <url>/2017/12/12/english/%EC%8A%A4%ED%84%B0%EB%94%94-1%EC%A3%BC%EC%B0%A8/</url>
+      <content type="html"><![CDATA[<h1 id="Keira-Knightly-on-her-name"><a href="#Keira-Knightly-on-her-name" class="headerlink" title="Keira Knightly on her name"></a>Keira Knightly on her name</h1><h3 id="본문"><a href="#본문" class="headerlink" title="본문"></a>본문</h3><blockquote>
+<p>Jimmy :<br>You have unusual name.<br>I knew you were coming, and I spelt it wrong, but I thought it was right.<br>I spelt “ie” insted of “ei”.<br>Is there proper way to spell it?  </p>
+<p>Keira :<br>Yeah.. that’s a… well… yes.<br>My mom spelt it wrong.  </p>
+<p>Jimmy :<br> I thoungt I was right.  </p>
+<p>Keira :<br>On my birth certificate.<br>I’m half named after a Russian ice skater that my dad fancied,<br>and half is Celtic name, because my mom is Scottish, so she wanted that.<br>Anyway, my mom went along to the place… where do you do the birth certificate?<br>I need to learn this as well.. don’t I?  </p>
+<p>Jimmy :<br>Oh yeah, they’ll do it at the hostpital. You don’t have to go anywhere.  </p>
+<p>Keira :<br>Anyway, she did the birth certificate, and showed it to my father,<br>and he was like,<br>“You’ve spelt her fucking name wrong!!”.<br>It’s not a surprise I’m dyslexic. Is it?<br>I had no change from the beginning…  </p>
+<p>Jimmy :<br>I guess you can’t really spell a name wrong, can you?<br>I mean, it’s whatever is it.</p>
+<p>Keria :<br>She did thought, she really did it.<br>It should be “ie”, but it isn’t.  </p>
+<p>Jimmy :<br>It’s not to late.</p>
+<p>Keria :<br>I should change it.</p>
+<p>Jimmy :<br>You should spell your son or daughter’s name wrong.</p>
+<p>Keria :<br>My kid’s name? OK, I’ll do that.</p>
+<p>Jimmy :<br>Yeah, do something that will haunt them for the rest of their life.</p>
+<p>Keria :<br>OK. exactly.</p>
+</blockquote>
+<h3 id="어휘"><a href="#어휘" class="headerlink" title="어휘"></a>어휘</h3><ol>
+<li>as well : 또한, 역시</li>
+<li>be like : ~라 말하다, 말하고 있다.</li>
+<li>birth certificate : 출생 신고서</li>
+<li>dyslexic : 독서 장애의, 난독증</li>
+<li>exactly : 맞아(바로 그거야)</li>
+<li>fancy : 끌리다, 반하다</li>
+<li>haunt : 괴롭히다</li>
+<li>name after : ~의 이름을 따서 명명하다</li>
+</ol>
+<h3 id="답답노트"><a href="#답답노트" class="headerlink" title="답답노트"></a>답답노트</h3><ol>
+<li>술이 너무 부족했다.<blockquote>
+<p>There was really not enough alcohol.</p>
+</blockquote>
+</li>
+<li>청소년 수련원<blockquote>
+<p>Youth traning center</p>
+</blockquote>
+</li>
+<li>총무팀<blockquote>
+<p>general affairs team</p>
+</blockquote>
+</li>
+<li>얼마 안걸렸어.<blockquote>
+<p>It didn’t take long.</p>
+</blockquote>
+</li>
+<li>무슨 자신감이니?<blockquote>
+<p>What confidence?</p>
+</blockquote>
+</li>
+<li>의미만 전달하면 된다.<blockquote>
+<p>I just have to convey meaning.</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      
+        <categories>
+            
+            <category> english </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[bash_profile과 bashrc]]></title>
       <url>/2017/12/03/linux/bash-profile%EA%B3%BC-bashrc/</url>
       <content type="html"><![CDATA[<p>리눅스에서 alias를 수정하거나 PATH를 변경할 떄 접하게 되는 대표적인 4가지의 파일들..</p>
@@ -40,41 +147,6 @@
       <content type="html"><![CDATA[<p><a href="https://github.com/datacharmer/test_db" target="_blank" rel="external">https://github.com/datacharmer/test_db</a>  </p>
 <p><code>mysql &lt; employees.sql</code><br>이거 외엔 딱히 할 필요 없어보이긴 함</p>
 <p><img src="https://user-images.githubusercontent.com/18513953/33320411-7fb7b6ce-d485-11e7-858b-420c8d45b795.png" alt="image"></p>
-]]></content>
-      
-        <categories>
-            
-            <category> db </category>
-            
-        </categories>
-        
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[실행계획]]></title>
-      <url>/2017/11/27/db/%EC%8B%A4%ED%96%89%EA%B3%84%ED%9A%8D/</url>
-      <content type="html"><![CDATA[<ul>
-<li>실행계획 절차  </li>
-</ul>
-<ol>
-<li>SQL 파서 모듈을 통해 작성된 SQL을 잘개 쪼갠다.(SQL 파스 트리 생성)</li>
-<li>생성된 SQL 파스트리를 통해 옵티마이저가 불필요한 연산 제거, 어떤 인덱스를 사용할지, 어떤 테이블을 선행할지 등을 결정한다.</li>
-<li>결정된 실행계획을 가지고 스토리지 엔진으로부터 데이터를 가져옴</li>
-</ol>
-<ul>
-<li><p>옵티마이저 종류<br>규칙기반(rule based optimizer), 비용기반(cost based optimizer)가 있다.<br>거의 대부분이 CBO를 사용한다.</p>
-</li>
-<li><p>통계 정보<br>CBO에서 가장 중요한 정보이다. 통계정보가 잘못되면 엉뚱한 방향으로 쿼리가 실행될 수 있다.<br>MySQL은 통계정보가 다양하지 않은 편. 전체 레코드의 대략적 건수, 인덱스 유니크 값 개수 정도가 전부이다.<br>ANALYZE 명령으로 통계정보를 갱신할 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ANALYZE</span> <span class="keyword">TABLE</span> <span class="string">'테이블명'</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>ANALYZE 명령 시,<br>MyISAM 테이블의 경우 쓰기는 불가능하고 읽기는 가능<br>InnoDB 테이블의 경우 쓰기와 읽기 둘 다 불가능</p>
-<ul>
-<li>실행계획 분석<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">EXPLAIN</span> [쿼리]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>와 같이 입력하면 실행계획 표가 출력됨.<br>표의 로우는 사용하는 테이블의 개수만큼 출력됨(서브쿼리, 임시테이블 등 포함)<br>실행순서는 위에서 아래로<br>CRUD의 경우 실행계획 분석이 불가능하다. WHERE 절에 사용되는 부분만 따로 빼내서 실행계획을 분석하던지 해야 한다.</p>
 ]]></content>
       
         <categories>

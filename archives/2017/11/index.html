@@ -177,57 +177,6 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/11/27/db/실행계획/">
-        실행계획
-      </a>
-    </h2>
-    
-    <time>
-      Nov 27, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/db/">db</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <ul>
-<li>실행계획 절차  </li>
-</ul>
-<ol>
-<li>SQL 파서 모듈을 통해 작성된 SQL을 잘개 쪼갠다.(SQL 파스 트리 생성)</li>
-<li>생성된 SQL 파스트리를 통해 옵티마이저가 불필요한 연산 제거, 어떤 인덱스를 사용할지, 어떤 테이블을 선행할지 등을 결정한다.</li>
-<li>결정된 실행계획을 가지고 스토리지 엔진으로부터 데이터를 가져옴</li>
-</ol>
-<ul>
-<li><p>옵티마이저 종류<br>규칙기반(rule based optimizer), 비용기반(cost based optimizer)가 있다.<br>거의 대부분이 CBO를 사용한다.</p>
-</li>
-<li><p>통계 정보<br>CBO에서 가장 중요한 정보이다. 통계정보가 잘못되면 엉뚱한 방향으로 쿼리가 실행될 수 있다.<br>MySQL은 통계정보가 다양하지 않은 편. 전체 레코드의 대략적 건수, 인덱스 유니크 값 개수 정도가 전부이다.<br>ANALYZE 명령으로 통계정보를 갱신할 수 있다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">ANALYZE</span> <span class="keyword">TABLE</span> <span class="string">'테이블명'</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>ANALYZE 명령 시,<br>MyISAM 테이블의 경우 쓰기는 불가능하고 읽기는 가능<br>InnoDB 테이블의 경우 쓰기와 읽기 둘 다 불가능</p>
-<ul>
-<li>실행계획 분석<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">EXPLAIN</span> [쿼리]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>와 같이 입력하면 실행계획 표가 출력됨.<br>표의 로우는 사용하는 테이블의 개수만큼 출력됨(서브쿼리, 임시테이블 등 포함)<br>실행순서는 위에서 아래로<br>CRUD의 경우 실행계획 분석이 불가능하다. WHERE 절에 사용되는 부분만 따로 빼내서 실행계획을 분석하던지 해야 한다.</p>
-
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
       <a href="/2017/11/27/linux/apt-명렁어/">
         apt 명렁어
       </a>
@@ -423,6 +372,8 @@
     <ul class="entry">
     
         <li><a class="flat-box" href="/categories/db/"><div class='name'>db</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/english/"><div class='name'>english</div><div class='badget'>1</div></a></li>
     
         <li><a class="flat-box" href="/categories/etc/"><div class='name'>etc</div><div class='badget'>2</div></a></li>
     
