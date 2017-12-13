@@ -159,22 +159,13 @@
 
   </section>
   <section class="article typo">
-	  <ol>
-<li>시스템 설정</li>
-</ol>
-<ul>
-<li>SQL 모드<br>MySql 서버에는 sql_mode 라는 시스템 설정이 있다.<br>이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.<br>ANSI, STRICT_TRANS_TABLES, TRANDITIONAL, ONLY_FULL_GROUP_BY 등등..<br><code>my.cnf</code> 파일에 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sql_mode=STRICT_TRANS_TABLES,ANSI</div></pre></td></tr></table></figure>
-</li>
-</ul>
+	  <h3 id="시스템-설정"><a href="#시스템-설정" class="headerlink" title="시스템 설정"></a>시스템 설정</h3><h4 id="SQL-모드"><a href="#SQL-모드" class="headerlink" title="SQL 모드"></a>SQL 모드</h4><p>MySql 서버에는 sql_mode 라는 시스템 설정이 있다.<br>이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.<br>ANSI, STRICT_TRANS_TABLES, TRANDITIONAL, ONLY_FULL_GROUP_BY 등등..<br><code>my.cnf</code> 파일에<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sql_mode=STRICT_TRANS_TABLES,ANSI</div></pre></td></tr></table></figure></p>
 <p>의 형태로 작성해주면 된다. “,”로 구분하여 여러개 지정할 수 있다.  </p>
-<ul>
-<li><p>영문 대소문자<br>MySql은 설치된 운영체제에 따라 테이블의 대소문자를 구분한다.ex) 윈도우 : 구분X, 리눅스 : 구분O<br>DB나 테이블이 디스크의 디렉터리나 파일로 매핑되기 때문이다.<br>가능하면 대문자만 또는 소문자만으로 통일하는 것이 좋다.  </p>
-</li>
-<li><p>예약어<br>일반적으로 테이블이나 컬럼 생성 시 예약어를 이름으로 사용하면 에러가 발생한다.<br>그러나 역따옴표(`)나 쌍따옴표(\”)로 감싸면 이를 피할 수 있다.<br>예를 들면 테이블 생성 시 역따옴표(`)로 둘러싸면 에러를 발생시키지 않는다.<br>하지만 역따옴표로 둘러싸서 생성하는 것을 권장하지는 않는다.  </p>
-</li>
-</ul>
-<ol>
-<li><p>메뉴얼 읽는 법<br><img src="https://user-images.githubusercontent.com/18513953/33943893-c5f3443a-e05d-11e7-8ebd-fbff301bbf42.png" alt="image">   </p>
+<h4 id="영문-대소문자"><a href="#영문-대소문자" class="headerlink" title="영문 대소문자"></a>영문 대소문자</h4><p>MySql은 설치된 운영체제에 따라 테이블의 대소문자를 구분한다.ex) 윈도우 : 구분X, 리눅스 : 구분O<br>DB나 테이블이 디스크의 디렉터리나 파일로 매핑되기 때문이다.<br>가능하면 대문자만 또는 소문자만으로 통일하는 것이 좋다.  </p>
+<h4 id="예약어"><a href="#예약어" class="headerlink" title="예약어"></a>예약어</h4><p>일반적으로 테이블이나 컬럼 생성 시 예약어를 이름으로 사용하면 에러가 발생한다.<br>그러나 역따옴표(`)나 쌍따옴표(\”)로 감싸면 이를 피할 수 있다.<br>예를 들면 테이블 생성 시 역따옴표(`)로 둘러싸면 에러를 발생시키지 않는다.<br>하지만 역따옴표로 둘러싸서 생성하는 것을 권장하지는 않는다.  </p>
+<hr>
+<h3 id="메뉴얼-읽는-법"><a href="#메뉴얼-읽는-법" class="headerlink" title="메뉴얼 읽는 법"></a>메뉴얼 읽는 법</h3><p><img src="https://user-images.githubusercontent.com/18513953/33943893-c5f3443a-e05d-11e7-8ebd-fbff301bbf42.png" alt="image">   </p>
+<blockquote>
 <ul>
 <li>대문자는 키워드를 의미한다.  </li>
 <li>이텔릭체는 사용자가 작성하는 이름 또는 표현식을 의미한다.  </li>
@@ -183,24 +174,37 @@
 <li>중괄호({})는 괄호 내 선택사항 중 반드시 하나를 선택해야 함을 의미한다.</li>
 <li>…는 앞에 명시된 키워드나 표현이 반복될 수 있음을 의미한다.</li>
 </ul>
-</li>
-<li><p>MySQL 연산자, 내장함수  </p>
-</li>
-</ol>
-<ul>
-<li><p>리터럴<br>  <em>문자열</em> :<br>  항상 홑따옴표(\’)를 사용해서 표시한다.<br>  홑따옴표 자체를 사용하고 싶을 때는 홑따옴표를 두번 연속 입력하면 된다.<br>  쌍따옴표와 홑따옴표의 조합으로 위의 행위를 할 수 있지만 MySql만 지원되는 방식이다.</p>
-<p>  <em>숫자</em> :<br>  다른 시스템들과 동일하게 \’나 \”를 없이 숫자 값을 입력하면 된다.  </p>
+</blockquote>
+<hr>
+<h3 id="MySQL-연산자-내장함수"><a href="#MySQL-연산자-내장함수" class="headerlink" title="MySQL 연산자, 내장함수"></a>MySQL 연산자, 내장함수</h3><h4 id="리터럴"><a href="#리터럴" class="headerlink" title="리터럴"></a>리터럴</h4><h5 id="문자열"><a href="#문자열" class="headerlink" title="문자열 :"></a>문자열 :</h5><p>항상 홑따옴표(\’)를 사용해서 표시한다.<br>홑따옴표 자체를 사용하고 싶을 때는 홑따옴표를 두번 연속 입력하면 된다.<br>쌍따옴표와 홑따옴표의 조합으로 위의 행위를 할 수 있지만 MySql만 지원되는 방식이다.</p>
+<h5 id="숫자"><a href="#숫자" class="headerlink" title="숫자 :"></a>숫자 :</h5><p>다른 시스템들과 동일하게 \’나 \”를 없이 숫자 값을 입력하면 된다.  </p>
 <blockquote>
-<p><strong>※ 자동 형 변환</strong><br>  MySql에서는 문자와 숫자를 비교할 때 자동으로 숫자값으로 형 변환해준다. (숫자 &gt; 문자)  </p>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">    WHERE number_col = &apos;10001&apos;;</div><div class="line">    ```  </div><div class="line">와 같은 경우는 문제가 되지 않지만,</div></pre></td></tr></table></figure>
-</code></pre></blockquote>
-<pre><code>WHERE string_col = 10001;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">    의 경우에는 문제가 발생할 수 있다.  </div><div class="line">    위와 같은 경우 오른쪽 숫자가 우선순위가 더 높으므로  </div><div class="line">    왼쪽의 string_col이 숫자로 형 변환하는 상황이 발생하는데,  </div><div class="line">    이로 인해 string_col은 인덱스를 사용하지 못하고,  </div><div class="line">    만약 문자값이 포함된 데이터가 있다면 SQL 실행 오류로도 이어진다.</div><div class="line"></div><div class="line">    *날짜* :  </div><div class="line">    MySql에서 정해진 형태의 포멧으로 날짜를 입력하면(문자열로),  </div><div class="line">    MySQL에서 자동으로 DATE나 DATETIME으로 변환하여 준다.  </div><div class="line">    위의 숫자 리터럴과 동일하다. (날짜 &gt; 문자)</div><div class="line"></div><div class="line">    *불리언* : </div><div class="line">    BOOLEAN이란 타입이 있긴 하나 실상 TINYINT에 대한 동의어일 뿐이다.  </div><div class="line">    (테이블 컬럼 타입을 BOOLEAN으로 생성한 뒤 확인해보면 TINYINT 이다.)  </div><div class="line">    BOOLEAN의 TRUE는 1을 의미하고, FALSE는 0을 의미한다.  </div><div class="line">    0과 1만을 사용한다는 점을 주의해야 한다!!  </div><div class="line"></div><div class="line">- 연산자  </div><div class="line">    *동등 비교* : =, &lt;=&gt;  </div><div class="line">    기본적으로 NULL과의 연산은 결과값이 모두 NULL이다.  </div><div class="line">        ```SQL</div><div class="line">        SELECT NULL=1 FROM DUAL;</div><div class="line">        ```  </div><div class="line">    \&gt; NULL  </div><div class="line">    그래서 NULL의 경우 IS NULL등의 연산자로 비교해야 하는데, &lt;=&gt; 의 경우에는 NULL 또한 하나의 값으로 인식하여 계산한다.  </div><div class="line">        ```SQL</div><div class="line">        SELECT NULL&lt;=&gt;NULL FROM DUAL;</div><div class="line">        ```  </div><div class="line">    \&gt; 1</div><div class="line">    </div><div class="line">    *부정 비교* : &lt;&gt;, !=  </div><div class="line">    둘중 어느것을 사용하든 상관없지만 통일하는 것이 좋다.  </div><div class="line"></div><div class="line">    *NOT 연산자* :  </div><div class="line">    결과를 반대로 만든다. 부정의 결과를 정확히 예측할 수 없는 경우 사용하지 말자.  </div><div class="line">    ex) !&apos;test&apos;    </div><div class="line"></div><div class="line">    *AND, OR 연산자* :  </div><div class="line">    &amp;&amp;, ||로 대체할 수 있으나 혼란을 야기하니 사용하지 말자.  </div><div class="line"></div><div class="line">    *나누기, 나머지 연산자* : </div><div class="line">    ```SQL</div><div class="line">    SELECT 29/9 FROM DUAL;</div><div class="line">    -- 3.222.. // 몫 + 나머지</div><div class="line">    SELECT 29 DIV 9 FROM DUAL;</div><div class="line">    -- 3 // 몫</div><div class="line">    SELECT 29 MOD 9 FROM DUAL;</div><div class="line">    -- 2 // 나머지</div></pre></td></tr></table></figure>
-</code></pre><p>  <em>LIKE 연산자</em> :<br>  상수 문자열이 있는지 없는지 정도만을 판단한다.<br>  와일드 카드는 딱 2개만 사용가능하다.<br>  % : 0개 또는 1개 이상 일치<br>  _ : 정확히 1개 일치<br>  와일드카드 문자를 검색에 사용하고 싶을 경우 ESCAPE 구문을 사용한다.  </p>
-  <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="string">'a%'</span> <span class="keyword">LIKE</span> <span class="string">'a/%'</span> ESCAPE <span class="string">'/'</span> <span class="keyword">FROM</span> DUAL;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-
+<p><strong>※ 자동 형 변환</strong><br>MySql에서는 문자와 숫자를 비교할 때 자동으로 숫자값으로 형 변환해준다. (숫자 &gt; 문자)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WHERE number_col = &apos;10001&apos;;</div></pre></td></tr></table></figure></p>
+<p>와 같은 경우는 문제가 되지 않지만,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WHERE string_col = 10001;</div></pre></td></tr></table></figure></p>
+<p>의 경우에는 문제가 발생할 수 있다.<br>위와 같은 경우 오른쪽 숫자가 우선순위가 더 높으므로<br>왼쪽의 string_col이 숫자로 형 변환하는 상황이 발생하는데,<br>이로 인해 string_col은 인덱스를 사용하지 못하고,<br>만약 문자값이 포함된 데이터가 있다면 SQL 실행 오류로도 이어진다.</p>
+</blockquote>
+<h5 id="날짜"><a href="#날짜" class="headerlink" title="날짜 :"></a>날짜 :</h5><p>MySql에서 정해진 형태의 포멧으로 날짜를 입력하면(문자열로),<br>MySQL에서 자동으로 DATE나 DATETIME으로 변환하여 준다.<br>위의 숫자 리터럴과 동일하다. (날짜 &gt; 문자)</p>
+<h5 id="불리언"><a href="#불리언" class="headerlink" title="불리언 :"></a>불리언 :</h5><p>BOOLEAN이란 타입이 있긴 하나 실상 TINYINT에 대한 동의어일 뿐이다.<br>(테이블 컬럼 타입을 BOOLEAN으로 생성한 뒤 확인해보면 TINYINT 이다.)<br>BOOLEAN의 TRUE는 1을 의미하고, FALSE는 0을 의미한다.<br>0과 1만을 사용한다는 점을 주의해야 한다!!  </p>
+<h4 id="연산자"><a href="#연산자" class="headerlink" title="연산자"></a>연산자</h4><h5 id="동등-비교-lt-gt"><a href="#동등-비교-lt-gt" class="headerlink" title="동등 비교 : =, &lt;=&gt;"></a>동등 비교 : =, &lt;=&gt;</h5><p>기본적으로 NULL과의 연산은 결과값이 모두 NULL이다.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="literal">NULL</span>=<span class="number">1</span> <span class="keyword">FROM</span> DUAL;</div></pre></td></tr></table></figure></p>
+<p>> NULL  </p>
+<p>그래서 NULL의 경우 IS NULL등의 연산자로 비교해야 하는데, &lt;=&gt; 의 경우에는 NULL 또한 하나의 값으로 인식하여 계산한다.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="literal">NULL</span>&lt;=&gt;<span class="literal">NULL</span> <span class="keyword">FROM</span> DUAL;</div></pre></td></tr></table></figure></p>
+<p>> 1</p>
+<h5 id="부정-비교-lt-gt"><a href="#부정-비교-lt-gt" class="headerlink" title="부정 비교 : &lt;&gt;, !="></a>부정 비교 : &lt;&gt;, !=</h5><p>둘중 어느것을 사용하든 상관없지만 통일하는 것이 좋다.  </p>
+<h5 id="NOT-연산자"><a href="#NOT-연산자" class="headerlink" title="NOT 연산자 :"></a>NOT 연산자 :</h5><p>결과를 반대로 만든다. 부정의 결과를 정확히 예측할 수 없는 경우 사용하지 말자.<br>ex) !’test’    </p>
+<h5 id="AND-OR-연산자"><a href="#AND-OR-연산자" class="headerlink" title="AND, OR 연산자* :"></a>AND, OR 연산자* :</h5><p>&amp;&amp;, ||로 대체할 수 있으나 혼란을 야기하니 사용하지 말자.  </p>
+<h5 id="나누기-나머지-연산자"><a href="#나누기-나머지-연산자" class="headerlink" title="나누기, 나머지 연산자 :"></a>나누기, 나머지 연산자 :</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="number">29</span>/<span class="number">9</span> <span class="keyword">FROM</span> DUAL;</div><div class="line"><span class="comment">-- 3.222.. // 몫 + 나머지</span></div><div class="line"><span class="keyword">SELECT</span> <span class="number">29</span> <span class="keyword">DIV</span> <span class="number">9</span> <span class="keyword">FROM</span> DUAL;</div><div class="line"><span class="comment">-- 3 // 몫</span></div><div class="line"><span class="keyword">SELECT</span> <span class="number">29</span> <span class="keyword">MOD</span> <span class="number">9</span> <span class="keyword">FROM</span> DUAL;</div><div class="line"><span class="comment">-- 2 // 나머지</span></div></pre></td></tr></table></figure>
+<h5 id="LIKE-연산자"><a href="#LIKE-연산자" class="headerlink" title="LIKE 연산자 :"></a>LIKE 연산자 :</h5><p>상수 문자열이 있는지 없는지 정도만을 판단한다.<br>와일드 카드는 딱 2개만 사용가능하다.  </p>
+<blockquote>
+<p><strong>%</strong> : 0개 또는 1개 이상 일치<br><strong>_</strong> : 정확히 1개 일치</p>
+</blockquote>
+<p>와일드카드 문자가 검색어의 뒤쪽에 있다면 인덱스 레인지 스캔을 사용할 수 있다!<br>와일드카드가 앞쪽에 올 경우 인덱스 풀 스캔 또는 테이블 풀 스캔을 하게 된다.  </p>
+<p>와일드카드 문자를 검색에 사용하고 싶을 경우 ESCAPE 구문을 사용한다.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="string">'a%'</span> <span class="keyword">LIKE</span> <span class="string">'a/%'</span> ESCAPE <span class="string">'/'</span> <span class="keyword">FROM</span> DUAL;</div></pre></td></tr></table></figure></p>
+<h5 id="BETWEEN-연산자"><a href="#BETWEEN-연산자" class="headerlink" title="BETWEEN 연산자 :"></a>BETWEEN 연산자 :</h5><p>=&lt; 연산자와 =&gt; 연산자를 합친 기능을 수행한다.<br>BETWEEN을 위의 연산자로 풀어도 성능상 차이가 없으니 크게 고려하지 않아도 된다.  </p>
+<h5 id="IN-연산자"><a href="#IN-연산자" class="headerlink" title="IN 연산자 :"></a>IN 연산자 :</h5><p><strong>동등비교를 여러번</strong> 하는 연산자이다. 즉 일반적으로 빠르게 처리된다.<br>연산자의 입력이 상수가 아니라 서브쿼리일 경우 상당히 느려질 수 있으니 주의해야 한다.<br>NOT IN의 경우 부정형 비교여서 인덱스 풀 스캔을 사용한다.  </p>
+<blockquote>
+<p><strong>※ BETWEEN 연산자와 IN 연산자 차이점</strong><br>BETWEEN의 경우 범위만큼 인덱스를 다 읽어야 하는 반면,<br>IN의 경우 위에서 언급했듯이 동등 연산자를 여러번 수행하는 것과 같다.<br>실행계획을 비교해보면 인덱스를 타고 있지만 rows에서 차이가 나는것을 확인할 수 있다.  </p>
+</blockquote>
+<h4 id="내장함수"><a href="#내장함수" class="headerlink" title="내장함수"></a>내장함수</h4>
 
     
     
