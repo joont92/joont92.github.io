@@ -143,6 +143,129 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2017/12/13/etc/markdown/">
+        markdown
+      </a>
+    </h2>
+    
+    <time>
+      Dec 13, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/etc/">etc</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h3 id="문단-쓰기-줄바꿈"><a href="#문단-쓰기-줄바꿈" class="headerlink" title="문단 쓰기, 줄바꿈"></a>문단 쓰기, 줄바꿈</h3><p>기본적으로 마크다운은 엔터 한번은 그냥 무시하고 한 문단으로 간주합니다.<br>띄워쓰기를 표시하려면 2번의 엔터를 쳐야 합니다.<br>그러나 몇몇 마크다운 에디터에서는 ‘엔터 한번’ == ‘개행’을 지원하기도 합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">개행 테스트</div><div class="line">개행!</div><div class="line"></div><div class="line">진짜 개행</div></pre></td></tr></table></figure></p>
+<p>개행 테스트<br>개행!</p>
+<p>진짜 개행</p>
+<h3 id="html-직접-사용-가능"><a href="#html-직접-사용-가능" class="headerlink" title="html 직접 사용 가능"></a>html 직접 사용 가능</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;hr /&gt;</div><div class="line">&lt;span style=&quot;color:red&quot;&gt;**red**&lt;/span&gt;</div></pre></td></tr></table></figure>
+<p>> 출력</p>
+<p><hr><br><span style="color:red"><strong>red</strong></span></p>
+<h3 id="특수문자-자동-적용됨"><a href="#특수문자-자동-적용됨" class="headerlink" title="특수문자 자동 적용됨"></a>특수문자 자동 적용됨</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt; 태그를 사용하자</div><div class="line">&amp;lt;div&amp;gt; 태그를 사용하자</div></pre></td></tr></table></figure>
+<p>> 출력</p>
+<p><div> 태그를 사용하자<br>&lt;div&gt; 태그를 사용하자</div></p>
+<h3 id="제목-6개-크기-까지-지원한다"><a href="#제목-6개-크기-까지-지원한다" class="headerlink" title="제목. 6개 크기 까지 지원한다"></a>제목. 6개 크기 까지 지원한다</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># h1</div><div class="line">## h2</div><div class="line">### h3</div><div class="line">#### h4</div><div class="line">##### h5</div><div class="line">###### h6</div><div class="line">####### h7</div></pre></td></tr></table></figure>
+<h1 id="h1"><a href="#h1" class="headerlink" title="h1"></a>h1</h1><h2 id="h2"><a href="#h2" class="headerlink" title="h2"></a>h2</h2><h3 id="h3"><a href="#h3" class="headerlink" title="h3"></a>h3</h3><h4 id="h4"><a href="#h4" class="headerlink" title="h4"></a>h4</h4><h5 id="h5"><a href="#h5" class="headerlink" title="h5"></a>h5</h5><h6 id="h6"><a href="#h6" class="headerlink" title="h6"></a>h6</h6><p>####### h7</p>
+<h3 id="인용"><a href="#인용" class="headerlink" title="인용"></a>인용</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; 인용되는 글</div><div class="line">&gt; 길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게</div><div class="line">&gt;&gt; depth를 늘림</div><div class="line">&gt; 내부에서 **markdown** 사용 가능</div></pre></td></tr></table></figure>
+<p>> 출력</p>
+<blockquote>
+<p>인용되는 글<br>길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게</p>
+<blockquote>
+<p>depth를 늘림, 변경할때는 아래와 같이 빈줄 하나 넣어야 함.</p>
+</blockquote>
+<p>내부에서 <strong>markdown</strong> 사용 가능</p>
+</blockquote>
+<h3 id="리스트"><a href="#리스트" class="headerlink" title="리스트"></a>리스트</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">숫자의 경우 자동으로 넘버링 된다.</div><div class="line"></div><div class="line">처음쓰는 리스트의 숫자부터 카운트 된다.</div><div class="line"></div><div class="line">1. 숫자</div><div class="line">2. 숫자</div><div class="line">3. 숫자</div><div class="line"></div><div class="line">순서를 바꿔도 1,2,3 으로 출력된다</div><div class="line"></div><div class="line">1. 숫자</div><div class="line">4. 숫자</div><div class="line">7. 숫자</div><div class="line"></div><div class="line">일반 리스트는 *, +, - 중 아무거나 쓰면 된다.</div><div class="line"></div><div class="line">* 일반 리스트</div><div class="line">- 일반 리스트</div><div class="line">+ 일반 리스트</div><div class="line"></div><div class="line">리스트 안에 두 문단이상 사용할 경우, tab을 사용한다.</div><div class="line"></div><div class="line">계속해서 이어가려면 아래와 왼쪽 탭 정렬선을 맞춰줘야 한다.</div><div class="line"></div><div class="line">- 첫번째 리스트</div><div class="line"></div><div class="line">이어지는 문단1</div><div class="line"></div><div class="line">이어지는 문단2</div><div class="line"></div><div class="line">- 두번째 리스트</div></pre></td></tr></table></figure>
+<p>> 출력</p>
+<p>숫자의 경우 자동으로 넘버링 된다.</p>
+<p>처음쓰는 리스트의 숫자부터 카운트 된다.</p>
+<ol>
+<li>숫자</li>
+<li>숫자</li>
+<li>숫자</li>
+</ol>
+<p>순서를 바꿔도 1,2,3 으로 출력된다</p>
+<ol>
+<li>숫자</li>
+<li>숫자</li>
+<li>숫자</li>
+</ol>
+<p>일반 리스트는 *, +, - 중 아무거나 쓰면 된다.</p>
+<ul>
+<li>일반 리스트</li>
+</ul>
+<ul>
+<li>일반 리스트</li>
+</ul>
+<ul>
+<li>일반 리스트</li>
+</ul>
+<p>리스트 안에 두 문단이상 사용할 경우, tab을 사용한다.<br>계속해서 이어가려면 아래와 왼쪽 탭 정렬선을 맞춰줘야 한다.</p>
+<ul>
+<li>첫번째 리스트</li>
+</ul>
+<p>이어지는 문단1</p>
+<p>이어지는 문단2</p>
+<ul>
+<li>두번째 리스트</li>
+</ul>
+<h3 id="이스케이프-문자"><a href="#이스케이프-문자" class="headerlink" title="이스케이프 문자"></a>이스케이프 문자</h3><p>태그로 변형되는 문자를 그냥 사용하고 싶을 때가 있습니다.(&gt;, - 등)</p>
+<p>그냥 사용하면 md에서 해석해버리므로 앞에 \ 를 붙여줍니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\&gt; : 원래는 인용으로 표시됨</div><div class="line">1998\.서울올림픽 : 원래는 1.서울올림픽으로 표시됨(자동 넘버링)</div><div class="line">\- : 원래는 리스트로 표시됨</div></pre></td></tr></table></figure></p>
+<p>> : 원래는 인용으로 표시됨</p>
+<p>1998.서울올림픽 : 원래는 1.서울올림픽으로 표시됨</p>
+<p>- : 원래는 리스트로 표시됨</p>
+<h3 id="코드-블록"><a href="#코드-블록" class="headerlink" title="코드 블록"></a>코드 블록</h3><p>마크다운 내에서 코드를 표현 가능하다!<br>키보드 왼쪽 가장자리에 있는 ` 키를 사용하면 된다.<br>\<figure class="highlight plain"><figcaption><span>사용하는 언어를 넣어주면 해당 문법에 맞게 해석한다</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; \```javascript  </div><div class="line">&gt; var str = &apos;test str&apos;;  </div><div class="line">&gt; console.log(str);  </div><div class="line">&gt; \</div></pre></td></tr></table></figure></p>
+<p>> 출력</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'test str'</span>;</div><div class="line"><span class="built_in">console</span>.log(str);</div></pre></td></tr></table></figure>
+<h3 id="수평선"><a href="#수평선" class="headerlink" title="수평선"></a>수평선</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">편한대로 골라쓰면 된다.</div><div class="line"></div><div class="line">***</div><div class="line">* * *</div><div class="line">---</div><div class="line">- - -</div></pre></td></tr></table></figure>
+<p>> 출력</p>
+<p>편한대로 골라쓰면 된다.</p>
+<hr>
+<h2 id=""><a href="#" class="headerlink" title="  *"></a><em> </em> *</h2><hr>
+<h3 id="강조하기"><a href="#강조하기" class="headerlink" title="강조하기"></a>강조하기</h3><p>*나, _를 사용하여 표시한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*이탤릭*</div><div class="line">**볼드**</div></pre></td></tr></table></figure>
+<p>> 출력</p>
+<p><em>이탤릭</em></p>
+<p><strong>볼드</strong></p>
+<h3 id="취소선"><a href="#취소선" class="headerlink" title="취소선"></a>취소선</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~~취소~~</div></pre></td></tr></table></figure>
+<p>> 출력</p>
+<p><del>취소</del></p>
+<h3 id="링크-걸기"><a href="#링크-걸기" class="headerlink" title="링크 걸기"></a>링크 걸기</h3><p>링크 주소 자체에 링크를 거는 방법과, 문구를 사용하는 방법이 있다.<br>물론 상대경로도 가능하다!</p>
+<ol>
+<li>\<a href="http://주소\" target="_blank" rel="external">http://주소\</a></li>
+<li>[링크걸 문구](<a href="http://주소\" target="_blank" rel="external">http://주소\</a>)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;http://google.com&gt;</div><div class="line"></div><div class="line">[구글](http://google.com)</div><div class="line"></div><div class="line">상대경로 : [1번 포스트](/1)</div></pre></td></tr></table></figure>
+<p>> 출력</p>
+<p><a href="http://google.com" target="_blank" rel="external">http://google.com</a></p>
+<p><a href="http://google.com" target="_blank" rel="external">구글</a></p>
+<p>상대경로 : <a href="/1">1번 포스트</a></p>
+<h3 id="이미지-삽입"><a href="#이미지-삽입" class="headerlink" title="이미지 삽입"></a>이미지 삽입</h3><p>![사진이름](사진경로)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![테스트사진](http://leader.pubs.asha.org/data/Journals/ASHANL/934378/NIB1_web.png)</div></pre></td></tr></table></figure>
+<p>> 출력</p>
+<p><img src="http://leader.pubs.asha.org/data/Journals/ASHANL/934378/NIB1_web.png" alt="테스트사진"></p>
+<h3 id="테이블"><a href="#테이블" class="headerlink" title="테이블"></a>테이블</h3><p>| 와 - 로 구분하여 테이블을 그릴 수 있다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Field1 | Field2 | Field3</div><div class="line">-|-|-</div><div class="line">Data1 | Data2 | Data3</div><div class="line">Data4 | Data5 | Data6</div></pre></td></tr></table></figure></p>
+<p>> 출력<br>Field1 | Field2 | Field3<br>-|-|-<br>Data1 | Data2 | Data3<br>Data4 | Data5 | Data6</p>
+<p>헤드부분, 즉 html의 th부분은 꼭 있어야 한다! (상단 2줄)</p>
+<h3 id="emoji"><a href="#emoji" class="headerlink" title="emoji"></a>emoji</h3><p>github은 emoji를 지원한다.<br><a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank" rel="external">https://www.webpagefx.com/tools/emoji-cheat-sheet/</a></p>
+
+
+    
+    
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2017/10/29/etc/hexo와-github-pages로-블로그-만들기/">
         hexo와 github pages로 블로그 만들기
       </a>
@@ -233,130 +356,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/10/29/etc/markdown/">
-        markdown
-      </a>
-    </h2>
-    
-    <time>
-      Oct 29, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/etc/">etc</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h3 id="문단-쓰기-줄바꿈"><a href="#문단-쓰기-줄바꿈" class="headerlink" title="문단 쓰기, 줄바꿈"></a>문단 쓰기, 줄바꿈</h3><p>기본적으로 마크다운은 엔터 한번은 그냥 무시하고 한 문단으로 간주합니다.<br>띄워쓰기를 표시하려면 2번의 엔터를 쳐야 합니다.<br>그러나 몇몇 마크다운 에디터에서는 ‘엔터 한번’ == ‘개행’을 지원하기도 합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">개행 테스트</div><div class="line">개행!</div><div class="line"></div><div class="line">진짜 개행</div></pre></td></tr></table></figure></p>
-<p>개행 테스트<br>개행!</p>
-<p>진짜 개행</p>
-<h3 id="html-직접-사용-가능"><a href="#html-직접-사용-가능" class="headerlink" title="html 직접 사용 가능"></a>html 직접 사용 가능</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;hr /&gt;</div><div class="line">&lt;span style=&quot;color:red&quot;&gt;**red**&lt;/span&gt;</div></pre></td></tr></table></figure>
-<p>> 출력</p>
-<p><hr><br><span style="color:red"><strong>red</strong></span></p>
-<h3 id="특수문자-자동-적용됨"><a href="#특수문자-자동-적용됨" class="headerlink" title="특수문자 자동 적용됨"></a>특수문자 자동 적용됨</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt; 태그를 사용하자</div><div class="line">&amp;lt;div&amp;gt; 태그를 사용하자</div></pre></td></tr></table></figure>
-<p>> 출력</p>
-<p><div> 태그를 사용하자<br>&lt;div&gt; 태그를 사용하자</div></p>
-<h3 id="제목-6개-크기-까지-지원한다"><a href="#제목-6개-크기-까지-지원한다" class="headerlink" title="제목. 6개 크기 까지 지원한다"></a>제목. 6개 크기 까지 지원한다</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># h1</div><div class="line">## h2</div><div class="line">### h3</div><div class="line">#### h4</div><div class="line">##### h5</div><div class="line">###### h6</div><div class="line">####### h7</div></pre></td></tr></table></figure>
-<h1 id="h1"><a href="#h1" class="headerlink" title="h1"></a>h1</h1><h2 id="h2"><a href="#h2" class="headerlink" title="h2"></a>h2</h2><h3 id="h3"><a href="#h3" class="headerlink" title="h3"></a>h3</h3><h4 id="h4"><a href="#h4" class="headerlink" title="h4"></a>h4</h4><h5 id="h5"><a href="#h5" class="headerlink" title="h5"></a>h5</h5><h6 id="h6"><a href="#h6" class="headerlink" title="h6"></a>h6</h6><p>####### h7</p>
-<h3 id="인용"><a href="#인용" class="headerlink" title="인용"></a>인용</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; 인용되는 글</div><div class="line">&gt; 길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게</div><div class="line">&gt;&gt; depth를 늘림</div><div class="line">&gt; 내부에서 **markdown** 사용 가능</div></pre></td></tr></table></figure>
-<p>> 출력</p>
-<blockquote>
-<p>인용되는 글<br>길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게길게</p>
-<blockquote>
-<p>depth를 늘림, 변경할때는 아래와 같이 빈줄 하나 넣어야 함.</p>
-</blockquote>
-<p>내부에서 <strong>markdown</strong> 사용 가능</p>
-</blockquote>
-<h3 id="리스트"><a href="#리스트" class="headerlink" title="리스트"></a>리스트</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">숫자의 경우 자동으로 넘버링 된다.</div><div class="line"></div><div class="line">처음쓰는 리스트의 숫자부터 카운트 된다.</div><div class="line"></div><div class="line">1. 숫자</div><div class="line">2. 숫자</div><div class="line">3. 숫자</div><div class="line"></div><div class="line">순서를 바꿔도 1,2,3 으로 출력된다</div><div class="line"></div><div class="line">1. 숫자</div><div class="line">4. 숫자</div><div class="line">7. 숫자</div><div class="line"></div><div class="line">일반 리스트는 *, +, - 중 아무거나 쓰면 된다.</div><div class="line"></div><div class="line">* 일반 리스트</div><div class="line">- 일반 리스트</div><div class="line">+ 일반 리스트</div><div class="line"></div><div class="line">리스트 안에 두 문단이상 사용할 경우, tab을 사용한다.</div><div class="line"></div><div class="line">계속해서 이어가려면 아래와 왼쪽 탭 정렬선을 맞춰줘야 한다.</div><div class="line"></div><div class="line">- 첫번째 리스트</div><div class="line"></div><div class="line">이어지는 문단1</div><div class="line"></div><div class="line">이어지는 문단2</div><div class="line"></div><div class="line">- 두번째 리스트</div></pre></td></tr></table></figure>
-<p>> 출력</p>
-<p>숫자의 경우 자동으로 넘버링 된다.</p>
-<p>처음쓰는 리스트의 숫자부터 카운트 된다.</p>
-<ol>
-<li>숫자</li>
-<li>숫자</li>
-<li>숫자</li>
-</ol>
-<p>순서를 바꿔도 1,2,3 으로 출력된다</p>
-<ol>
-<li>숫자</li>
-<li>숫자</li>
-<li>숫자</li>
-</ol>
-<p>일반 리스트는 *, +, - 중 아무거나 쓰면 된다.</p>
-<ul>
-<li>일반 리스트</li>
-</ul>
-<ul>
-<li>일반 리스트</li>
-</ul>
-<ul>
-<li>일반 리스트</li>
-</ul>
-<p>리스트 안에 두 문단이상 사용할 경우, tab을 사용한다.<br>계속해서 이어가려면 아래와 왼쪽 탭 정렬선을 맞춰줘야 한다.</p>
-<ul>
-<li>첫번째 리스트</li>
-</ul>
-<p>이어지는 문단1</p>
-<p>이어지는 문단2</p>
-<ul>
-<li>두번째 리스트</li>
-</ul>
-<h3 id="이스케이프-문자"><a href="#이스케이프-문자" class="headerlink" title="이스케이프 문자"></a>이스케이프 문자</h3><p>태그로 변형되는 문자를 그냥 사용하고 싶을 때가 있습니다.(&gt;, - 등)</p>
-<p>그냥 사용하면 md에서 해석해버리므로 앞에 \ 를 붙여줍니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">\&gt; : 원래는 인용으로 표시됨</div><div class="line">1998\.서울올림픽 : 원래는 1.서울올림픽으로 표시됨(자동 넘버링)</div><div class="line">\- : 원래는 리스트로 표시됨</div></pre></td></tr></table></figure></p>
-<p>> : 원래는 인용으로 표시됨</p>
-<p>1998.서울올림픽 : 원래는 1.서울올림픽으로 표시됨</p>
-<p>- : 원래는 리스트로 표시됨</p>
-<h3 id="코드-블록"><a href="#코드-블록" class="headerlink" title="코드 블록"></a>코드 블록</h3><p>마크다운 내에서 코드를 표현 가능하다!<br>키보드 왼쪽 가장자리에 있는 ` 키를 사용하면 된다.<br>\<figure class="highlight plain"><figcaption><span>사용하는 언어를 넣어주면 해당 문법에 맞게 해석한다</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&gt; \```javascript  </div><div class="line">&gt; var str = &apos;test str&apos;;  </div><div class="line">&gt; console.log(str);  </div><div class="line">&gt; \</div></pre></td></tr></table></figure></p>
-<p>> 출력</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'test str'</span>;</div><div class="line"><span class="built_in">console</span>.log(str);</div></pre></td></tr></table></figure>
-<h3 id="수평선"><a href="#수평선" class="headerlink" title="수평선"></a>수평선</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">편한대로 골라쓰면 된다.</div><div class="line"></div><div class="line">***</div><div class="line">* * *</div><div class="line">---</div><div class="line">- - -</div></pre></td></tr></table></figure>
-<p>> 출력</p>
-<p>편한대로 골라쓰면 된다.</p>
-<hr>
-<h2 id=""><a href="#" class="headerlink" title="  *"></a><em> </em> *</h2><hr>
-<h3 id="강조하기"><a href="#강조하기" class="headerlink" title="강조하기"></a>강조하기</h3><p>*나, _를 사용하여 표시한다.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*이탤릭*</div><div class="line">**볼드**</div></pre></td></tr></table></figure>
-<p>> 출력</p>
-<p><em>이탤릭</em></p>
-<p><strong>볼드</strong></p>
-<h3 id="취소선"><a href="#취소선" class="headerlink" title="취소선"></a>취소선</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~~취소~~</div></pre></td></tr></table></figure>
-<p>> 출력</p>
-<p><del>취소</del></p>
-<h3 id="링크-걸기"><a href="#링크-걸기" class="headerlink" title="링크 걸기"></a>링크 걸기</h3><p>링크 주소 자체에 링크를 거는 방법과, 문구를 사용하는 방법이 있다.</p>
-<p>물론 상대경로도 가능하다!</p>
-<ol>
-<li>\<a href="http://주소\" target="_blank" rel="external">http://주소\</a></li>
-<li>[링크걸 문구](<a href="http://주소\" target="_blank" rel="external">http://주소\</a>)</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;http://google.com&gt;</div><div class="line"></div><div class="line">[구글](http://google.com)</div><div class="line"></div><div class="line">상대경로 : [1번 포스트](/1)</div></pre></td></tr></table></figure>
-<p>> 출력</p>
-<p><a href="http://google.com" target="_blank" rel="external">http://google.com</a></p>
-<p><a href="http://google.com" target="_blank" rel="external">구글</a></p>
-<p>상대경로 : <a href="/1">1번 포스트</a></p>
-<h3 id="이미지-삽입"><a href="#이미지-삽입" class="headerlink" title="이미지 삽입"></a>이미지 삽입</h3><p>![사진이름](사진경로)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">![테스트사진](http://leader.pubs.asha.org/data/Journals/ASHANL/934378/NIB1_web.png)</div></pre></td></tr></table></figure>
-<p>> 출력</p>
-<p><img src="http://leader.pubs.asha.org/data/Journals/ASHANL/934378/NIB1_web.png" alt="테스트사진"></p>
-<h3 id="테이블"><a href="#테이블" class="headerlink" title="테이블"></a>테이블</h3><p>| 와 - 로 구분하여 테이블을 그릴 수 있다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Field1 | Field2 | Field3</div><div class="line">-|-|-</div><div class="line">Data1 | Data2 | Data3</div><div class="line">Data4 | Data5 | Data6</div></pre></td></tr></table></figure></p>
-<p>> 출력<br>Field1 | Field2 | Field3<br>-|-|-<br>Data1 | Data2 | Data3<br>Data4 | Data5 | Data6</p>
-<p>헤드부분, 즉 html의 th부분은 꼭 있어야 한다! (상단 2줄)</p>
-<h3 id="emoji"><a href="#emoji" class="headerlink" title="emoji"></a>emoji</h3><p>github은 emoji를 지원한다.<br><a href="https://www.webpagefx.com/tools/emoji-cheat-sheet/" target="_blank" rel="external">https://www.webpagefx.com/tools/emoji-cheat-sheet/</a></p>
-
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -386,7 +385,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/db/"><div class='name'>db</div><div class='badget'>3</div></a></li>
+        <li><a class="flat-box" href="/categories/db/"><div class='name'>db</div><div class='badget'>4</div></a></li>
     
         <li><a class="flat-box" href="/categories/english/"><div class='name'>english</div><div class='badget'>1</div></a></li>
     

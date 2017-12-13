@@ -15,10 +15,10 @@
   <meta name="description" content="리눅스는 여러명의 사용자가 동시에 로그인하여 시스템을 사용할 수 있는 멀티유저 운영체제이다.이러한 사용자들은 각각 계정을 가지고 시스템에 접근하게 된다.그리고 이 사용자들을 묶어서 관리할 수 있는 그룹이라는 것이 있다.모든 사용자는 하나의 그룹을 가진다.   사용자 관리/etc/passwd : 사용자 정보가 담긴 파일123root:x:0:0:root:/ro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="사용자&#x2F;그룹 관리">
-<meta property="og:url" content="https://joont92.github.io/2017/10/29/linux/사용자-그룹-관리/index.html">
+<meta property="og:url" content="https://joont92.github.io/2017/12/12/linux/사용자-그룹-관리/index.html">
 <meta property="og:site_name" content="joont blog">
 <meta property="og:description" content="리눅스는 여러명의 사용자가 동시에 로그인하여 시스템을 사용할 수 있는 멀티유저 운영체제이다.이러한 사용자들은 각각 계정을 가지고 시스템에 접근하게 된다.그리고 이 사용자들을 묶어서 관리할 수 있는 그룹이라는 것이 있다.모든 사용자는 하나의 그룹을 가진다.   사용자 관리/etc/passwd : 사용자 정보가 담긴 파일123root:x:0:0:root:/ro">
-<meta property="og:updated_time" content="2017-10-29T09:23:55.909Z">
+<meta property="og:updated_time" content="2017-12-12T12:42:47.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="사용자&#x2F;그룹 관리">
 <meta name="twitter:description" content="리눅스는 여러명의 사용자가 동시에 로그인하여 시스템을 사용할 수 있는 멀티유저 운영체제이다.이러한 사용자들은 각각 계정을 가지고 시스템에 접근하게 된다.그리고 이 사용자들을 묶어서 관리할 수 있는 그룹이라는 것이 있다.모든 사용자는 하나의 그룹을 가진다.   사용자 관리/etc/passwd : 사용자 정보가 담긴 파일123root:x:0:0:root:/ro">
@@ -137,12 +137,12 @@
   itemscope itemprop="blogPost">
 	<section class='meta'>
 	<h2 class="title">
-  	<a href="/2017/10/29/linux/사용자-그룹-관리/">
+  	<a href="/2017/12/12/linux/사용자-그룹-관리/">
     	사용자/그룹 관리
     </a>
   </h2>
 	<time>
-	  Oct 29, 2017
+	  Dec 12, 2017
 	</time>
 	
     
@@ -176,7 +176,7 @@
 <h3 id="사용자-추가"><a href="#사용자-추가" class="headerlink" title="사용자 추가"></a>사용자 추가</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; useradd [options] 사용자명 </div><div class="line"></div><div class="line"># options</div><div class="line"># -c [텍스트] : 사용자정보</div><div class="line"># -m : 홈디렉토리 생성</div><div class="line"># -M : 홈디렉토리 생성 안함</div><div class="line"># -d [폴더] : 홈디렉토리 지정</div><div class="line"># -N : 사용자 개인 그룹 생성하지 않음. default : 생성</div><div class="line"># -u [UID] : UID 직접 지정</div><div class="line"># -g [GID] : GID 직접 지정</div><div class="line"># -s [Shell] : shell 지정</div><div class="line"></div><div class="line"># 이 외에도 많은 옵션이 존재한다. useradd --help 를 활용한다.</div></pre></td></tr></table></figure>
 <p>생성 시 사용하는 default 값을 확인하고 바꿀 수 있다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&gt; useradd -D</div><div class="line">GROUP=100</div><div class="line">HOME=/home</div><div class="line">INACTIVE=-1</div><div class="line">EXPIRE=</div><div class="line">SHELL=/bin/sh</div><div class="line">SKEL=/etc/skel</div><div class="line">CREATE_MAIL_SPOOL=no</div><div class="line"></div><div class="line">&gt; useradd -D -b /test</div><div class="line">&gt; useradd -D</div><div class="line">GROUP=100</div><div class="line">HOME=/test #변경됨</div><div class="line">INACTIVE=-1</div><div class="line">EXPIRE=</div><div class="line">SHELL=/bin/sh</div><div class="line">SKEL=/etc/skel</div><div class="line">CREATE_MAIL_SPOOL=no</div><div class="line"></div><div class="line"># 위에 대한 설정파일은 /etc/default/useradd 이다</div></pre></td></tr></table></figure></p>
 <p>사용자 추가 시 홈 디렉토리에 생성되는 파일<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; useradd user1 -m</div><div class="line">&gt; cd /home/user1</div><div class="line">&gt; ls -al</div><div class="line">합계 32</div><div class="line">drwxr-xr-x 2 user1 user1 4096 10월 29 16:23 .</div><div class="line">drwxr-xr-x 4 root  root  4096 10월 29 16:23 ..</div><div class="line">-rw-r--r-- 1 user1 user1  220  9월  1  2015 .bash_logout</div><div class="line">-rw-r--r-- 1 user1 user1 3771  9월  1  2015 .bashrc</div><div class="line">-rw-r--r-- 1 user1 user1  655  6월 25  2016 .profile</div><div class="line">-rw-r--r-- 1 user1 user1 8980  4월 20  2016 examples.desktop</div><div class="line"></div><div class="line"># /etc/skel에 있는 파일을 복사해 사용한다.</div></pre></td></tr></table></figure></p>
-<h3 id="사용자-수정"><a href="#사용자-수정" class="headerlink" title="사용자 수정"></a>사용자 수정</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; usermod [options] 사용자명 </div><div class="line"></div><div class="line"># options</div><div class="line"># -c [텍스트] : 사용자정보 수정</div><div class="line"># -d [폴더] : 홈디렉토리 변경</div><div class="line"># -u [UID] : UID 변경</div><div class="line"># -s [Shell] : shell 지정</div><div class="line"># -L : 계정 락킹</div><div class="line"># -U : 계정 언락킹</div><div class="line"></div><div class="line"># -g [group] : 사용자 기본 그룹 변경</div><div class="line">  &gt; usermod -g user2 user1</div><div class="line">  # user1의 기본 그룹을 user2로 변경</div><div class="line"></div><div class="line"># -G [groups] : 사용자 그룹 추가,변경(제거). 기본 그룹은 영향을 받지 않는다.</div><div class="line">  &gt; usermod -a -G group1,group2 user1 </div><div class="line">  # user1에 group1,group2를 추가. -a 옵션으로 기존 그룹 +group1, group2 된다.</div><div class="line">  &gt; usermod -G group1 user1</div><div class="line">  # 그룹을 제거하는 방법. user1의 기존 그룹을 날리고 group1만을 지정</div></pre></td></tr></table></figure>
+<h3 id="사용자-수정"><a href="#사용자-수정" class="headerlink" title="사용자 수정"></a>사용자 수정</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&gt; usermod [options] 사용자명 </div><div class="line"></div><div class="line"># options</div><div class="line"># -c [텍스트] : 사용자정보 수정</div><div class="line"># -d [폴더] : 홈디렉토리 변경</div><div class="line"># -u [UID] : UID 변경</div><div class="line"># -s [Shell] : shell 지정</div><div class="line"># -L : 계정 락킹</div><div class="line"># -U : 계정 언락킹</div><div class="line"></div><div class="line"># -g [group] : 사용자 기본 그룹 변경</div><div class="line">  &gt; usermod -g user2 user1</div><div class="line">  # user1의 기본 그룹을 user2로 변경</div><div class="line"></div><div class="line"># -G [groups] : 사용자 그룹 추가,변경(제거). 기본 그룹은 영향을 받지 않는다.</div><div class="line">  &gt; usermod -a -G group1,group2 user1 </div><div class="line">  # user1에 group1,group2를 추가. -a 옵션은 기존그룹에 추가할지 안할지 여부이다.</div><div class="line">  &gt; usermod -G group1 user1</div><div class="line">  # 그룹을 제거하는 방법. -a를 주지 않아 기존 그룹을 유지하지 않았다.</div></pre></td></tr></table></figure>
 <p>패스워드 변경<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; passwd [options] 사용자명</div><div class="line"></div><div class="line"># options</div><div class="line"># -d : 패스워드 삭제</div><div class="line"># -e : 패스워드 강제 만료</div><div class="line"># -l, -u : 패스워드 락킹/언락킹. usermod에 있는 -L, -U 옵션을 쓰는것이 더 좋다고 한다..</div></pre></td></tr></table></figure></p>
 <h3 id="사용자-삭제"><a href="#사용자-삭제" class="headerlink" title="사용자 삭제"></a>사용자 삭제</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">userdel [options] 사용자명</div><div class="line"></div><div class="line"># options </div><div class="line"># -r : 사용자의 홈디렉토리, 메일박스, 임시디렉토리 까지 같이 삭제.</div><div class="line">       그룹은 기본적으로 속한 사용자가 없으면 자동 삭제된다</div></pre></td></tr></table></figure>
 <h1 id="그룹-관리"><a href="#그룹-관리" class="headerlink" title="그룹 관리"></a>그룹 관리</h1><h4 id="etc-group-그룹-정보가-담긴-파일"><a href="#etc-group-그룹-정보가-담긴-파일" class="headerlink" title="/etc/group : 그룹 정보가 담긴 파일"></a>/etc/group : 그룹 정보가 담긴 파일</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo:x:27:user1,user2</div><div class="line"></div><div class="line"># 그룹명:패스워드:GID:사용자리스트</div></pre></td></tr></table></figure>
@@ -196,13 +196,13 @@
 	
 		<div class="art-item-footer">
 				
-					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/10/29/jpa/3장-영속성관리/" rel="prev"  title="3장-영속성관리">
-						3장-영속성관리 
+					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/12/12/linux/bash-profile과-bashrc/" rel="prev"  title="bash_profile과 bashrc">
+						bash_profile과 bashrc 
 					</a></span>
 				
 				
-					<span class="art-item-right">next：<a href="/2017/10/29/linux/관리자-권한-전환/" rel="next"  title="관리자 권한 전환">
-						관리자 권한 전환
+					<span class="art-item-right">next：<a href="/2017/12/12/db/실행계획/" rel="next"  title="실행계획">
+						실행계획
 					</a><i class="icon icon-chevron-thin-right"></i></span>
 				
 		</div>
@@ -243,7 +243,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/db/"><div class='name'>db</div><div class='badget'>3</div></a></li>
+        <li><a class="flat-box" href="/categories/db/"><div class='name'>db</div><div class='badget'>4</div></a></li>
     
         <li><a class="flat-box" href="/categories/english/"><div class='name'>english</div><div class='badget'>1</div></a></li>
     
