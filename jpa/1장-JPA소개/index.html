@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>1장 - jpa소개 | joont blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="※ ORM은 객체지향과 관계형 데이터베이스의 상위 단계이므로 학습곡선이 높다.SQL Mapper : Mybatis, JdbcTemplate..JPA : Hibernate, EclipseLink.. 기존 JDBC엔티티 &amp;lt;&amp;gt; SQL 매핑을 항상 해줘야함.엔티티는 SQL에 의존적임. 그러므로 엔티티를 신뢰할 수 없다.(항상 결국엔 SQL을 확인해야함)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1장 - JPA소개">
+<meta property="og:url" content="https://joont92.github.io/jpa/1장-JPA소개/index.html">
+<meta property="og:site_name" content="joont blog">
+<meta property="og:description" content="※ ORM은 객체지향과 관계형 데이터베이스의 상위 단계이므로 학습곡선이 높다.SQL Mapper : Mybatis, JdbcTemplate..JPA : Hibernate, EclipseLink.. 기존 JDBC엔티티 &amp;lt;&amp;gt; SQL 매핑을 항상 해줘야함.엔티티는 SQL에 의존적임. 그러므로 엔티티를 신뢰할 수 없다.(항상 결국엔 SQL을 확인해야함)">
+<meta property="og:updated_time" content="2017-10-28T13:54:16.361Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1장 - JPA소개">
+<meta name="twitter:description" content="※ ORM은 객체지향과 관계형 데이터베이스의 상위 단계이므로 학습곡선이 높다.SQL Mapper : Mybatis, JdbcTemplate..JPA : Hibernate, EclipseLink.. 기존 JDBC엔티티 &amp;lt;&amp;gt; SQL 매핑을 항상 해줘야함.엔티티는 SQL에 의존적임. 그러므로 엔티티를 신뢰할 수 없다.(항상 결국엔 SQL을 확인해야함)">
+  
+    <link rel="alternate" href="/atom.xml" title="joont blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0123456789ABCDEF",
+          enable_page_level_ads: true
+      });
+  </script>
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Kategorien"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="joont blog" rel="home"> joont blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">joont blog</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-jpa/1장-JPA소개" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      1장 - JPA소개
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/jpa/1장-JPA소개/" class="article-date">
+	  <time datetime="2017-10-28T13:54:16.361Z" itemprop="datePublished">October 28, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>※ ORM은 객체지향과 관계형 데이터베이스의 상위 단계이므로 학습곡선이 높다.<br>SQL Mapper : Mybatis, JdbcTemplate..<br>JPA : Hibernate, EclipseLink..</p>
+<p>기존 JDBC<br>엔티티 &lt;&gt; SQL 매핑을 항상 해줘야함.<br>엔티티는 SQL에 의존적임. 그러므로 엔티티를 신뢰할 수 없다.(항상 결국엔 SQL을 확인해야함)<br>엔티티는 SQL을 자바로 가져오기 위해 존재하는 도메인 객체 역할 정도밖에 안됨.</p>
+<p>그에 반해 JPA는 JPA가 사용하는 API에 엔티티를 넣어주면 자동으로 SQL 쿼리를 만들어 실행해주므로 엔티티를 신뢰할 수 있다.</p>
+<p>자바 객체와 RDB의 패러다임 불일치<br>1) 상속<br>abstract class Item{<br>    Long Id;<br>    String name;<br>    int price;<br>}<br>class Album Extends Item{<br>    String artist;<br>}<br>class Movie Extends Item{<br>    String director;<br>}<br>자바는 위와 같이 상속구조가 가능하나, RDB는 상속구조가 없다.<br>데이터 모델링의 DTYPE을 이용하면 상속 비슷하게 구현할 수 있긴하다.</p>
+<p>※ DTYPE<br>Table ITEM{<br>    ID(PK),<br>    NAME,<br>    PRICE..<br>    DTYPE<br>}<br>Table ALBUM{     // ITEM과 연결<br>    ID(PK, FK)    ,<br>    ARTIST<br>}</p>
+<p>모델링에서 위와 같이 DTYPE을 이용해 구성할 경우<br>자바에선 ITEM, ALBUM의 CRUD를 이중으로 수행하는 상황이 온다.(ITEM, ALBUM)<br>이것이 각자의 패러다임을 맞추기 위한 낭비이다.</p>
+<blockquote>
+<p>JPA는 ALBUM 객체만 전달하면 알아서 수행</p>
+</blockquote>
+<p>2) 연관관계<br>객체는 참조를 통해 객체끼리 연관관계를 가지고, 해당 참조에 접근해서 연관 객체를 조회한다.<br>테이블은 외래키를 사용하고, 조인을 이용해 연관 테이블을 조회한다.</p>
+<blockquote>
+<p>둘의 패러다임이 완전히 다르다.<br>   자바는 부모 객체를 통해 자식 객체를 조회 가능하지만 그 반대는 불가능하다. 그러나 테이블은 양쪽 조회가 가능하다.(JOIN)<br>   ★ 객체는 참조를 통해 연관관계를 가지지만, 테이블은 JOIN이라는 기능을 통한다.<br>   서로의 패러다임을 맞추기가 힘들다.<br>   JAVA의 패러다임에 맞추자니 개발자가 직접 변환해줘야 하기도 하고, 굉장히 복잡해진다.<br>   그렇다고  RDB의 패러다임에 맞추자니 객체지향의 특징을 잃어버린다.<br>JPA는 JAVA의 연관관계를 편하게 사용 가능하다. 참조를 통한 관계를 설정하고, ORM Framework에 전달만 해주면 된다.<br>     (JAVA의 패러다임에 맞춰 엔티티 설계하고, 복잡한 과정은 JPA가 대신해준다.)</p>
+</blockquote>
+<p>3) 객체 그래프 탐색<br>Member member = memberDao.find(mid);<br>member.getTeam();<br>member.getTeam().getName();<br>// 이와 같이 참조를 이용해서 파고드는 행위를 객체 탐색이라고 한다.</p>
+<p>근데 사실상 아래와 같은 코드들(JPA를 사용하지 않는)<br>member.getTeam();<br>member.getOrder().getDelivery();</p>
+<p>의 탐색 깊이는 결국 SQL문에 의존적이라는 것이다.<br>객체가 아무리 연관관계를 가진들 SQL에서 Order 테이블을 JOIN 하지 않았으면 2행은 Null Exception이 발생할 것 아닌가..</p>
+<p>그렇다고 조회마다 Member에 관련된 모든 객체를 조회해서 메모리에 올려두는것은 비효율적.<br>상황에 따라 조회하는 메서드를 만들어야 한다.</p>
+<blockquote>
+<p>JPA에서는 연관 객체를 사용하는 시점에 select 쿼리를 실행할 수 있다(Lazy Loading)<br>   게다가 JPA는 이를 투명하게(transparent) 처리하므로 DAO에 따로 코드가 있지 않고<br>   getOrder() 함수를 호출할 때 지연 로딩을 한다.<br>   이는 엔티티 설정에서 줄 수 있다. 지연로딩을 하지 않을 경우 애초에 Member 객체를 얻어올떄 연관객체를 조인하는 쿼리가 실행된다.</p>
+</blockquote>
+<p>4) 비교<br>Java에서는 비교가 동일성, 동등성으로 나뉘기 때문에 복잡해지는 부분이 많다.<br>class MemberDAO(){<br>    publid Member findOne(String id){<br>        // select * from member where id=? 실행</p>
+<pre><code>    Member memeber = new Member();
+    // resultset을 member에 담음
+    member.setXXX(rs.getString(XXX));
+    ...
+
+    return member;
+}
+</code></pre><p>}</p>
+<p>Member member1 = memberDao.findOne(“id1”);<br>Member member2 = memberDao.findOne(“id1”);</p>
+<p>member1 == member2 // false;</p>
+<blockquote>
+<p>동일성 비교에서 실패한다. new로 생성된 객체이기 때문이다.<br>   이처럼 db에서 같은 row를 조회했다 하더라도 위의 연산에서 true를 호출하게 하기가 어렵다.<br>   하지만 JPA는 위의 상황에서 동일성을 보장한다. (JPA의 조회 메서드를 사용)</p>
+</blockquote>
+<ul>
+<li>JPA란<br>위치<br>Application - JPA - JDBC - DB</li>
+</ul>
+<p>JPA는 ORM 기술의 표준이다. ORM은 Object Relation Mapping의 약자이다.<br>JPA란 자바 ORM 기술에 대한 API 표준명세. 쉽게 말해 인터페이스들을 모아놓은 것이다.<br>따라서 JPA를 사용하려면 JPA를 구현한 ORM 프레임워크를 선택해야한다. (여러가지가 있으며 하이버네이트가 가장 대중적)<br>성숙한 ORM 프레임워크의 경우 간단한 CRUD외에 다양한 패러다임 문제까지 해결해주므로 개발자가 객체지향 어플리케이션 개발에 집중할 수 있다.</p>
+<p>Why JPA?<br>1) 생산성 : ORM Framework에 엔티티만 전달하면 되므로, SQL을 개발자가 직접 작성하지 않아도 된다.<br>2) 유지보수 : 테이블의 명세가 변경되어도 변경할 사항이 많지 않다. 엔티티만 변경해주면 된다. (쿼리가 자동생성이므로)<br>            ex) 테이블에 컬럼이 추가되거나 삭제될 경우 JPA는 엔티티만 수정하면 되지만, mybatis의 경우 해당 엔티티를 사용하는 쿼리를 전부 수정해줘야 한다.<br>3) 패러다임 불일치 해결<br>4) JPA는 application과 jdbc사이에서 동작하기 때문에 시도할 수 있는 성능 최적화가 있다.<br>    위의 “4) 비교” 의 경우가 그렇다. 똑같은 row를 조회할 때 jdbc에 쿼리를 2번 보내지 않고, 기생성된 인스턴스를 사용한다.<br>5) 추상화 되어 있으므로 DB변경 또한 용이함. 벤더의 독립성</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/jpa/">jpa</a>
+
+      
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/etc/hexo와-github-pages로-블로그-만들기/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          hexo와 github pages로 블로그 만들기
+        
+      </div>
+    </a>
+  
+  
+    <a href="/jpa/2장-JPA-시작/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">2장 - JPA 시작</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav">None</ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 joont blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

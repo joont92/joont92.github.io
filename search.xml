@@ -3,8 +3,16 @@
   
     
     <entry>
+      <title><![CDATA[3장 스프링 웹 기술과 스프링 MVC]]></title>
+      <url>/3%EC%9E%A5-%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9B%B9-%EA%B8%B0%EC%88%A0%EA%B3%BC-%EC%8A%A4%ED%94%84%EB%A7%81-MVC/</url>
+      <content type="html"></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Chris Hemsworth loves internet Thor Puns(4주)]]></title>
-      <url>/2018/01/07/english/Chris-Hemsworth-loves-internet-Thor-Puns(4%EC%A3%BC)/</url>
+      <url>/english/Chris-Hemsworth-loves-internet-Thor-Puns(4%EC%A3%BC)/</url>
       <content type="html"><![CDATA[<h3 id="본문"><a href="#본문" class="headerlink" title="본문"></a>본문</h3><blockquote>
 <p><strong>Conan</strong> :<br>There must be people that come up to you with Thor jokes, all the times.<br>Just because you’re so, you’re Thor.  </p>
 <p><strong>Chris</strong> :<br>You get the same joke, pretty much.<br>In fact, the single same joke that I’ve had for three years now.<br>It is not very funny. But I can tell it to you if you want.  </p>
@@ -92,7 +100,7 @@
     
     <entry>
       <title><![CDATA[Amanda Seyfried was hot for NSYNC's JC(3주)]]></title>
-      <url>/2018/01/07/english/Amanda-Seyfried-was-hot-for-NSYNC-s-JC(3%EC%A3%BC)/</url>
+      <url>/english/Amanda-Seyfried-was-hot-for-NSYNC-s-JC(3%EC%A3%BC)/</url>
       <content type="html"><![CDATA[<h3 id="본문"><a href="#본문" class="headerlink" title="본문"></a>본문</h3><blockquote>
 <p><strong>Conan</strong> :<br>You have worked in two films, is that right, with Justin Timberlake?  </p>
 <p><strong>Amanda</strong> :<br>Oh, two films with Justin, Yeah.  </p>
@@ -145,7 +153,7 @@
     
     <entry>
       <title><![CDATA[DispatcherServlet 동작방식]]></title>
-      <url>/2018/01/07/DispatcherServlet-%EB%8F%99%EC%9E%91%EB%B0%A9%EC%8B%9D/</url>
+      <url>/DispatcherServlet-%EB%8F%99%EC%9E%91%EB%B0%A9%EC%8B%9D/</url>
       <content type="html"></content>
       
         
@@ -153,7 +161,7 @@
     
     <entry>
       <title><![CDATA[mysql data sample]]></title>
-      <url>/2017/12/20/db/mysql-data-sample/</url>
+      <url>/db/mysql-data-sample/</url>
       <content type="html"><![CDATA[<p><a href="https://github.com/datacharmer/test_db" target="_blank" rel="external">https://github.com/datacharmer/test_db</a>  </p>
 <p><code>mysql &lt; employees.sql</code><br>이거 외엔 딱히 할 필요 없어보이긴 함</p>
 <p><img src="https://user-images.githubusercontent.com/18513953/33320411-7fb7b6ce-d485-11e7-858b-420c8d45b795.png" alt="image"></p>
@@ -171,7 +179,7 @@
     
     <entry>
       <title><![CDATA[Psy&Snoop on working together(2주)]]></title>
-      <url>/2017/12/19/english/Psy-Snoop-on-working-together(2%EC%A3%BC)/</url>
+      <url>/english/Psy-Snoop-on-working-together(2%EC%A3%BC)/</url>
       <content type="html"><![CDATA[<h3 id="본문"><a href="#본문" class="headerlink" title="본문"></a>본문</h3><blockquote>
 <p><strong>Jimmy</strong> :<br>How did this unbelivable paring come to be?<br>How did you two get together?  </p>
 <p><strong>Psy</strong> :<br>I called him, and I said “Can you feature on my song?”<br>and he said “What is the title of the song?”<br>and I said “Hangover”<br>he said, “Oh, I’m doing it”  </p>
@@ -244,7 +252,7 @@
     
     <entry>
       <title><![CDATA[쿼리작성 및 최적화]]></title>
-      <url>/2017/12/13/db/%EC%BF%BC%EB%A6%AC%EC%9E%91%EC%84%B1-%EB%B0%8F-%EC%B5%9C%EC%A0%81%ED%99%94/</url>
+      <url>/db/%EC%BF%BC%EB%A6%AC%EC%9E%91%EC%84%B1-%EB%B0%8F-%EC%B5%9C%EC%A0%81%ED%99%94/</url>
       <content type="html"><![CDATA[<h3 id="시스템-설정"><a href="#시스템-설정" class="headerlink" title="시스템 설정"></a>시스템 설정</h3><h4 id="SQL-모드"><a href="#SQL-모드" class="headerlink" title="SQL 모드"></a>SQL 모드</h4><p>MySql 서버에는 sql_mode 라는 시스템 설정이 있다.<br>이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.<br>ANSI, STRICT_TRANS_TABLES, TRANDITIONAL, ONLY_FULL_GROUP_BY 등등..<br><code>my.cnf</code> 파일에<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sql_mode=STRICT_TRANS_TABLES,ANSI</div></pre></td></tr></table></figure></p>
 <p>의 형태로 작성해주면 된다. ,로 구분하여 여러개 지정할 수 있다.  </p>
 <h4 id="영문-대소문자"><a href="#영문-대소문자" class="headerlink" title="영문 대소문자"></a>영문 대소문자</h4><p>MySql은 설치된 운영체제에 따라 테이블의 대소문자를 구분한다.ex) 윈도우 : 구분X, 리눅스 : 구분O<br>DB나 테이블이 디스크의 디렉터리나 파일로 매핑되기 때문이다.<br>가능하면 대문자만 또는 소문자만으로 통일하는 것이 좋다.  </p>
@@ -379,7 +387,7 @@
     
     <entry>
       <title><![CDATA[markdown]]></title>
-      <url>/2017/12/13/etc/markdown/</url>
+      <url>/etc/markdown/</url>
       <content type="html"><![CDATA[<h3 id="문단-쓰기-줄바꿈"><a href="#문단-쓰기-줄바꿈" class="headerlink" title="문단 쓰기, 줄바꿈"></a>문단 쓰기, 줄바꿈</h3><p>기본적으로 마크다운은 엔터 한번은 그냥 무시하고 한 문단으로 간주합니다.<br>띄워쓰기를 표시하려면 2번의 엔터를 쳐야 합니다.<br>그러나 몇몇 마크다운 에디터에서는 ‘엔터 한번’ == ‘개행’을 지원하기도 합니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">개행 테스트</div><div class="line">개행!</div><div class="line"></div><div class="line">진짜 개행</div></pre></td></tr></table></figure></p>
 <p>개행 테스트<br>개행!</p>
 <p>진짜 개행</p>
@@ -486,7 +494,7 @@
     
     <entry>
       <title><![CDATA[bash_profile과 bashrc]]></title>
-      <url>/2017/12/12/linux/bash-profile%EA%B3%BC-bashrc/</url>
+      <url>/linux/bash-profile%EA%B3%BC-bashrc/</url>
       <content type="html"><![CDATA[<p>리눅스에서 alias를 수정하거나 PATH를 변경할 떄 접하게 되는 대표적인 4가지의 파일들..</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/profile, /etc/bashrc, ~\.bash_profile, ~\.bash_rc</div></pre></td></tr></table></figure>
 <p>각각의 파일에 대해 간단하게 알아보겠다.</p>
@@ -518,7 +526,7 @@
     
     <entry>
       <title><![CDATA[사용자/그룹 관리]]></title>
-      <url>/2017/12/12/linux/%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B7%B8%EB%A3%B9-%EA%B4%80%EB%A6%AC/</url>
+      <url>/linux/%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B7%B8%EB%A3%B9-%EA%B4%80%EB%A6%AC/</url>
       <content type="html"><![CDATA[<p>리눅스는 여러명의 사용자가 동시에 로그인하여 시스템을 사용할 수 있는 멀티유저 운영체제이다.<br>이러한 사용자들은 각각 계정을 가지고 시스템에 접근하게 된다.<br>그리고 이 사용자들을 묶어서 관리할 수 있는 그룹이라는 것이 있다.<br>모든 사용자는 하나의 그룹을 가진다.  </p>
 <h1 id="사용자-관리"><a href="#사용자-관리" class="headerlink" title="사용자 관리"></a>사용자 관리</h1><h4 id="etc-passwd-사용자-정보가-담긴-파일"><a href="#etc-passwd-사용자-정보가-담긴-파일" class="headerlink" title="/etc/passwd : 사용자 정보가 담긴 파일"></a>/etc/passwd : 사용자 정보가 담긴 파일</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">root:x:0:0:root:/root:/bin/bash</div><div class="line"></div><div class="line"># 사용자명:패스워드:UID:GID:사용자정보:홈디렉토리:쉘</div></pre></td></tr></table></figure>
 <ol>
@@ -565,7 +573,7 @@
     
     <entry>
       <title><![CDATA[실행계획]]></title>
-      <url>/2017/12/12/db/%EC%8B%A4%ED%96%89%EA%B3%84%ED%9A%8D/</url>
+      <url>/db/%EC%8B%A4%ED%96%89%EA%B3%84%ED%9A%8D/</url>
       <content type="html"><![CDATA[<ul>
 <li>실행계획 절차  </li>
 </ul>
@@ -606,7 +614,7 @@
     
     <entry>
       <title><![CDATA[Keira Knightly on her name(1주)]]></title>
-      <url>/2017/12/12/english/Keira-Knightly-on-her-name(1%EC%A3%BC)/</url>
+      <url>/english/Keira-Knightly-on-her-name(1%EC%A3%BC)/</url>
       <content type="html"><![CDATA[<h3 id="본문"><a href="#본문" class="headerlink" title="본문"></a>본문</h3><blockquote>
 <p><strong>Jimmy</strong> :<br>You have unusual name.<br>I knew you were coming, and I spelt it wrong, but I thought it was right.<br>I spelt “ie” insted of “ei”.<br>Is there proper way to spell it?  </p>
 <p><strong>Keira</strong> :<br>Yeah.. that’s a… well… yes.<br>My mom spelt it wrong.  </p>
@@ -672,7 +680,7 @@
     
     <entry>
       <title><![CDATA[apt 명렁어]]></title>
-      <url>/2017/11/27/linux/apt-%EB%AA%85%EB%A0%81%EC%96%B4/</url>
+      <url>/linux/apt-%EB%AA%85%EB%A0%81%EC%96%B4/</url>
       <content type="html"><![CDATA[<h1 id="패키지란"><a href="#패키지란" class="headerlink" title="패키지란"></a>패키지란</h1><p>커널 및 라이브러리 버전의 배포판 환경에 맞추어 빌드한 실행파일을 압축한 것.</p>
 <h1 id="apt란"><a href="#apt란" class="headerlink" title="apt란"></a>apt란</h1><p>우분투에서 쓰이는 데비안 계열의 패키지를 관리하는데 쓰이는 도구이다.</p>
 <p>저장소 리스트 : /etc/apt/sources.list</p>
@@ -699,7 +707,7 @@
     
     <entry>
       <title><![CDATA[프로세스]]></title>
-      <url>/2017/11/27/linux/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/</url>
+      <url>/linux/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4/</url>
       <content type="html"><![CDATA[<p>작업 : 작성한 프로그램 + 프로그램 실행에 필요한 데이터<br>작업이 커널에 등록되어 커널의 관리하에 있게 되면 이를 프로세스라고 부른다.<br>일반적으로 실행중인 프로그램을 말한다.</p>
 <p>종속된 자식 프로세스는 부모 프로세스의 환경을 물려받으나 역은 성립하지 않는다.</p>
 ]]></content>
@@ -715,7 +723,7 @@
     
     <entry>
       <title><![CDATA[파일/디렉토리 관리]]></title>
-      <url>/2017/11/27/linux/%ED%8C%8C%EC%9D%BC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EA%B4%80%EB%A6%AC/</url>
+      <url>/linux/%ED%8C%8C%EC%9D%BC-%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EA%B4%80%EB%A6%AC/</url>
       <content type="html"><![CDATA[<ol>
 <li>와일드 카드<br>? : 어떤 한 문자</li>
 </ol>
@@ -763,7 +771,7 @@
     
     <entry>
       <title><![CDATA[index]]></title>
-      <url>/2017/11/27/db/index/</url>
+      <url>/db/index/</url>
       <content type="html"></content>
       
         <categories>
@@ -777,7 +785,7 @@
     
     <entry>
       <title><![CDATA[IOC 컨테이너와 DI]]></title>
-      <url>/2017/10/30/spring/IOC-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EC%99%80-DI/</url>
+      <url>/spring/IOC-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EC%99%80-DI/</url>
       <content type="html"><![CDATA[<h1 id="IOC-컨테이너와-DI"><a href="#IOC-컨테이너와-DI" class="headerlink" title="IOC 컨테이너와 DI"></a>IOC 컨테이너와 DI</h1><p>어플리케이션 컨텍스트 = IOC + DI + 여러 기능(for making enterprise application)<br>(어플리케이션 컨텍스트는 실제 ApplicationContext 인터페이스를 구현한 클래스를 말한다.<br>ApplicationContext는 BeanFactory를 구현한 인터페이스이다.)  </p>
 <p>이 어플리케이션 컨텍스트가 본격적인 IOC 컨테이너로 동작하려면 아래의 2가지가 필요하다.</p>
 <blockquote>
@@ -872,7 +880,7 @@
     
     <entry>
       <title><![CDATA[3장-영속성관리]]></title>
-      <url>/2017/10/29/jpa/3%EC%9E%A5-%EC%98%81%EC%86%8D%EC%84%B1%EA%B4%80%EB%A6%AC/</url>
+      <url>/jpa/3%EC%9E%A5-%EC%98%81%EC%86%8D%EC%84%B1%EA%B4%80%EB%A6%AC/</url>
       <content type="html"><![CDATA[<p>엔티티 매니저 : 엔티티를 저장하는 가상의 데이터베이스로 볼 수 있다.(엔티티 저장,수정,삭제 등)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 엔티티 매니저를 생성하기 위해선 공장이 필요하다.</div><div class="line">EntityManagerFactory emf = Persistence.createEntityManagerFactory(&quot;영속성 유닛&quot;);</div><div class="line">// 엔티티 매니저 생성</div><div class="line">EntityManger em = emf.createEntityManger();</div></pre></td></tr></table></figure>
 <p>공장을 만드는 과정은 굉장히 비용이 많이들고, 공장에서 Entity Manager를 생성하는 과정은 비용이 거의 들지 않는다.<br>그러므로 EntityMangerFactory는 하나만 만들어서 어플리케이션 전체에서 공유해야 한다.</p>
@@ -929,7 +937,7 @@
     
     <entry>
       <title><![CDATA[관리자 권한 전환]]></title>
-      <url>/2017/10/29/linux/%EA%B4%80%EB%A6%AC%EC%9E%90-%EA%B6%8C%ED%95%9C-%EC%A0%84%ED%99%98/</url>
+      <url>/linux/%EA%B4%80%EB%A6%AC%EC%9E%90-%EA%B6%8C%ED%95%9C-%EC%A0%84%ED%99%98/</url>
       <content type="html"><![CDATA[<p>Windows에서 최고 관리자가 <strong>Administrator</strong>였다면, 리눅스에서는 <strong>root</strong>입니다.<br>보안상의 이유로 root로 직접 로그인하는 것은 권장되지 않고,<br>일반 사용자로 로그인 한 뒤, 필요시에 root 권한으로 작업하는 것을 권장합니다.  </p>
 <h3 id="sudo"><a href="#sudo" class="headerlink" title="sudo"></a>sudo</h3><p>일반 사용자가 root 권한으로 명령어를 실행하고자 할 떄 사용하는 명령어입니다.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cat /etc/shadow</div></pre></td></tr></table></figure></p>
 <p>당연히 누구나 사용할 순 없고, 허가된 사용자만이 사용 가능한 명령어입니다.<br>이를 확인하기 위해선 <strong>/etc/sudoers</strong> 파일을 확인해야 합니다.</p>
@@ -955,7 +963,7 @@
     
     <entry>
       <title><![CDATA[hexo와 github pages로 블로그 만들기]]></title>
-      <url>/2017/10/29/etc/hexo%EC%99%80-github-pages%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/</url>
+      <url>/etc/hexo%EC%99%80-github-pages%EB%A1%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/</url>
       <content type="html"><![CDATA[<p>이번엔 앞서 작성한 github-pages에 블로그 서비스를 하기 위해 </p>
 <p>정적 사이트 생성 도구인 hexo에 대해 알아보겠습니다.</p>
 <p><br></p>
@@ -1034,7 +1042,7 @@
     
     <entry>
       <title><![CDATA[1장 - JPA소개]]></title>
-      <url>/2017/10/28/jpa/1%EC%9E%A5-JPA%EC%86%8C%EA%B0%9C/</url>
+      <url>/jpa/1%EC%9E%A5-JPA%EC%86%8C%EA%B0%9C/</url>
       <content type="html"><![CDATA[<p>※ ORM은 객체지향과 관계형 데이터베이스의 상위 단계이므로 학습곡선이 높다.<br>SQL Mapper : Mybatis, JdbcTemplate..<br>JPA : Hibernate, EclipseLink..</p>
 <p>기존 JDBC<br>엔티티 &lt;&gt; SQL 매핑을 항상 해줘야함.<br>엔티티는 SQL에 의존적임. 그러므로 엔티티를 신뢰할 수 없다.(항상 결국엔 SQL을 확인해야함)<br>엔티티는 SQL을 자바로 가져오기 위해 존재하는 도메인 객체 역할 정도밖에 안됨.</p>
 <p>그에 반해 JPA는 JPA가 사용하는 API에 엔티티를 넣어주면 자동으로 SQL 쿼리를 만들어 실행해주므로 엔티티를 신뢰할 수 있다.</p>
@@ -1087,7 +1095,7 @@
     
     <entry>
       <title><![CDATA[2장 - JPA 시작]]></title>
-      <url>/2017/10/28/jpa/2%EC%9E%A5-JPA-%EC%8B%9C%EC%9E%91/</url>
+      <url>/jpa/2%EC%9E%A5-JPA-%EC%8B%9C%EC%9E%91/</url>
       <content type="html"><![CDATA[<ul>
 <li>H2 데이터베이스<br>따로 설치할 필요없이 자바만 설치되어 있으면 사용할 수 있는 경량(1.7M) 데이터베이스이다.<br>(h2database.com에서 다운로드 가능)<br>JVM 메모리 안에서 실행되는 임베디드 모드와 별도의 서버를 띄우는 서버모드가 있다.</li>
 </ul>
@@ -1132,7 +1140,7 @@
     
     <entry>
       <title><![CDATA[스프링 웹 기술과 스프링 MVC]]></title>
-      <url>/2017/10/28/spring/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9B%B9-%EA%B8%B0%EC%88%A0%EA%B3%BC-%EC%8A%A4%ED%94%84%EB%A7%81-MVC/</url>
+      <url>/spring/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9B%B9-%EA%B8%B0%EC%88%A0%EA%B3%BC-%EC%8A%A4%ED%94%84%EB%A7%81-MVC/</url>
       <content type="html"><![CDATA[<h2 id="스프링의-웹-프레젠테이션-계층-기술"><a href="#스프링의-웹-프레젠테이션-계층-기술" class="headerlink" title="스프링의 웹 프레젠테이션 계층 기술"></a>스프링의 웹 프레젠테이션 계층 기술</h2><p>presentation layer =<br>스프링 웹 기술을 사용하는 프레젠테이션 계층 + 스프링 외의 웹 기술을 사용하는 프레젠테이션 계층</p>
 <p>컨텍스트<br>root contetxt : 웹 기술에서 독립적인 비즈니스 계층, 데이터 엑세스 계층<br>servlet application context : 스프링 웹 기술을 기반. 웹 관련 빈<br>> 통째로 다른 기술로 교체하기 용이하기 위해서</p>
 <p>스프링 서블릿은 mvc 아키텍쳐를 따르는 웹 프레임워크를 구축할 수 있는 유연한 기반을 제공<br>@MVC와 같이 스프링이 확장시켜 만든 프레임워크도 있다.</p>

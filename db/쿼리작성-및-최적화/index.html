@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+  
+    <script src="/js/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>쿼리작성 및 최적화 | joont blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="시스템 설정SQL 모드MySql 서버에는 sql_mode 라는 시스템 설정이 있다.이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.ANSI, STRICT_TRANS_TABLES, TRANDITIONAL, ONLY_FULL_GROUP_BY 등등..my.cnf 파일에1sql_mode=STRICT_TRANS_TABLES,ANSI 의 형태로 작성해주면">
+<meta property="og:type" content="article">
+<meta property="og:title" content="쿼리작성 및 최적화">
+<meta property="og:url" content="https://joont92.github.io/db/쿼리작성-및-최적화/index.html">
+<meta property="og:site_name" content="joont blog">
+<meta property="og:description" content="시스템 설정SQL 모드MySql 서버에는 sql_mode 라는 시스템 설정이 있다.이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.ANSI, STRICT_TRANS_TABLES, TRANDITIONAL, ONLY_FULL_GROUP_BY 등등..my.cnf 파일에1sql_mode=STRICT_TRANS_TABLES,ANSI 의 형태로 작성해주면">
+<meta property="og:image" content="https://user-images.githubusercontent.com/18513953/33943893-c5f3443a-e05d-11e7-8ebd-fbff301bbf42.png">
+<meta property="og:updated_time" content="2017-12-20T14:29:22.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="쿼리작성 및 최적화">
+<meta name="twitter:description" content="시스템 설정SQL 모드MySql 서버에는 sql_mode 라는 시스템 설정이 있다.이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.ANSI, STRICT_TRANS_TABLES, TRANDITIONAL, ONLY_FULL_GROUP_BY 등등..my.cnf 파일에1sql_mode=STRICT_TRANS_TABLES,ANSI 의 형태로 작성해주면">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/18513953/33943893-c5f3443a-e05d-11e7-8ebd-fbff301bbf42.png">
+  
+    <link rel="alternate" href="/atom.xml" title="joont blog" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/hiero.css" >
+  <link rel="stylesheet" href="/css/glyphs.css" >
+  
+    <link rel="stylesheet" href="/css/vdonate.css" >
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-0123456789ABCDEF",
+          enable_page_level_ads: true
+      });
+  </script>
+</head>
+
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "Home"; 
+
+  themeMenus["/archives"] = "Archives"; 
+
+  themeMenus["/categories"] = "Kategorien"; 
+
+  themeMenus["/tags"] = "Tags"; 
+
+  themeMenus["/about"] = "About"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="joont blog" rel="home"> joont blog </a>
+            
+          </h1>
+
+          
+            <div class="site-description">joont blog</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Kategorien</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-db/쿼리작성-및-최적화" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      쿼리작성 및 최적화
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/db/쿼리작성-및-최적화/" class="article-date">
+	  <time datetime="2017-12-13T14:07:04.000Z" itemprop="datePublished">December 13, 2017</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="시스템-설정"><a href="#시스템-설정" class="headerlink" title="시스템 설정"></a>시스템 설정</h3><h4 id="SQL-모드"><a href="#SQL-모드" class="headerlink" title="SQL 모드"></a>SQL 모드</h4><p>MySql 서버에는 sql_mode 라는 시스템 설정이 있다.<br>이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.<br>ANSI, STRICT_TRANS_TABLES, TRANDITIONAL, ONLY_FULL_GROUP_BY 등등..<br><code>my.cnf</code> 파일에<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sql_mode=STRICT_TRANS_TABLES,ANSI</div></pre></td></tr></table></figure></p>
+<p>의 형태로 작성해주면 된다. ,로 구분하여 여러개 지정할 수 있다.  </p>
+<h4 id="영문-대소문자"><a href="#영문-대소문자" class="headerlink" title="영문 대소문자"></a>영문 대소문자</h4><p>MySql은 설치된 운영체제에 따라 테이블의 대소문자를 구분한다.ex) 윈도우 : 구분X, 리눅스 : 구분O<br>DB나 테이블이 디스크의 디렉터리나 파일로 매핑되기 때문이다.<br>가능하면 대문자만 또는 소문자만으로 통일하는 것이 좋다.  </p>
+<h4 id="예약어"><a href="#예약어" class="headerlink" title="예약어"></a>예약어</h4><p>일반적으로 테이블이나 컬럼 생성 시 예약어를 이름으로 사용하면 에러가 발생한다.<br>그러나 역따옴표(`)나 쌍따옴표(\”)로 감싸면 이를 피할 수 있다.<br>예를 들면 테이블 생성 시 역따옴표(`)로 둘러싸면 에러를 발생시키지 않는다.<br>하지만 역따옴표로 둘러싸서 생성하는 것을 권장하지는 않는다.  </p>
+<hr>
+<h3 id="메뉴얼-읽는-법"><a href="#메뉴얼-읽는-법" class="headerlink" title="메뉴얼 읽는 법"></a>메뉴얼 읽는 법</h3><p><img src="https://user-images.githubusercontent.com/18513953/33943893-c5f3443a-e05d-11e7-8ebd-fbff301bbf42.png" alt="image">   </p>
+<blockquote>
+<ul>
+<li>대문자는 키워드를 의미한다.  </li>
+<li>이텔릭체는 사용자가 작성하는 이름 또는 표현식을 의미한다.  </li>
+<li>대괄호([])는 선택사항임을 의미한다.  </li>
+<li>파이프(|)는 연결된 것 중 단 하나만 선택할 수 있음을 의미한다.</li>
+<li>중괄호({})는 괄호 내 선택사항 중 반드시 하나를 선택해야 함을 의미한다.</li>
+<li>…는 앞에 명시된 키워드나 표현이 반복될 수 있음을 의미한다.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="MySQL-연산자-내장함수"><a href="#MySQL-연산자-내장함수" class="headerlink" title="MySQL 연산자, 내장함수"></a>MySQL 연산자, 내장함수</h3><h4 id="리터럴"><a href="#리터럴" class="headerlink" title="리터럴"></a>리터럴</h4><h5 id="문자열"><a href="#문자열" class="headerlink" title="문자열"></a>문자열</h5><p>항상 홑따옴표(\’)를 사용해서 표시한다.<br>홑따옴표 자체를 사용하고 싶을 때는 홑따옴표를 두번 연속 입력하면 된다.<br>쌍따옴표와 홑따옴표의 조합으로 위의 행위를 할 수 있지만 MySql만 지원되는 방식이다.</p>
+<h5 id="숫자"><a href="#숫자" class="headerlink" title="숫자"></a>숫자</h5><p>다른 시스템들과 동일하게 \’나 \” 없이 숫자 값을 입력하면 된다.  </p>
+<blockquote>
+<p><strong>※ 자동 형 변환</strong><br>MySql에서는 문자와 숫자를 비교할 때 자동으로 숫자값으로 형 변환해준다. (숫자 &gt; 문자)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WHERE number_col = &apos;10001&apos;;</div></pre></td></tr></table></figure></p>
+<p>와 같은 경우는 문제가 되지 않지만,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">WHERE string_col = 10001;</div></pre></td></tr></table></figure></p>
+<p>의 경우에는 문제가 발생할 수 있다.<br>위와 같은 경우 오른쪽 숫자가 우선순위가 더 높으므로<br>왼쪽의 string_col이 숫자로 형 변환하는 상황이 발생하는데,<br>이로 인해 string_col은 인덱스를 사용하지 못하고,<br>만약 문자값이 포함된 데이터가 있다면 SQL 실행 오류로도 이어진다.</p>
+</blockquote>
+<h5 id="날짜"><a href="#날짜" class="headerlink" title="날짜"></a>날짜</h5><p>MySql에서 정해진 형태의 포멧으로 날짜를 입력하면(문자열로),<br>MySQL에서 자동으로 DATE나 DATETIME으로 변환하여 준다.<br>위의 숫자 리터럴과 동일하다. (날짜 &gt; 문자)</p>
+<h5 id="불리언"><a href="#불리언" class="headerlink" title="불리언"></a>불리언</h5><p>BOOLEAN이란 타입이 있긴 하나 실상 TINYINT에 대한 동의어일 뿐이다.<br>(테이블 컬럼 타입을 BOOLEAN으로 생성한 뒤 확인해보면 TINYINT 이다.)<br>BOOLEAN의 TRUE는 1을 의미하고, FALSE는 0을 의미한다.<br>0과 1만을 사용한다는 점을 주의해야 한다!!  </p>
+<h4 id="연산자"><a href="#연산자" class="headerlink" title="연산자"></a>연산자</h4><h5 id="동등-비교"><a href="#동등-비교" class="headerlink" title="동등 비교"></a>동등 비교</h5><p>=, &lt;=&gt;<br>기본적으로 NULL과의 연산은 결과값이 모두 NULL이다.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="literal">NULL</span>=<span class="number">1</span> <span class="keyword">FROM</span> DUAL;</div></pre></td></tr></table></figure></p>
+<p>> NULL  </p>
+<p>그래서 NULL의 경우 IS NULL등의 연산자로 비교해야 하는데, &lt;=&gt; 의 경우에는 NULL 또한 하나의 값으로 인식하여 계산한다.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="literal">NULL</span>&lt;=&gt;<span class="literal">NULL</span> <span class="keyword">FROM</span> DUAL;</div></pre></td></tr></table></figure></p>
+<p>> 1</p>
+<h5 id="부정-비교"><a href="#부정-비교" class="headerlink" title="부정 비교"></a>부정 비교</h5><p>&lt;&gt;, !=<br>둘중 어느것을 사용하든 상관없지만 통일하는 것이 좋다.  </p>
+<h5 id="NOT-연산자"><a href="#NOT-연산자" class="headerlink" title="NOT 연산자"></a>NOT 연산자</h5><p>결과를 반대로 만든다. 부정의 결과를 정확히 예측할 수 없는 경우 사용하지 말자.<br>ex) !’test’    </p>
+<h5 id="AND-OR-연산자"><a href="#AND-OR-연산자" class="headerlink" title="AND, OR 연산자"></a>AND, OR 연산자</h5><p>&amp;&amp;, ||로 대체할 수 있으나 혼란을 야기하니 사용하지 말자.  </p>
+<h5 id="나누기-나머지-연산자"><a href="#나누기-나머지-연산자" class="headerlink" title="나누기, 나머지 연산자"></a>나누기, 나머지 연산자</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="number">29</span>/<span class="number">9</span> <span class="keyword">FROM</span> DUAL;</div><div class="line"><span class="comment">-- 3.222.. // 몫 + 나머지</span></div><div class="line"><span class="keyword">SELECT</span> <span class="number">29</span> <span class="keyword">DIV</span> <span class="number">9</span> <span class="keyword">FROM</span> DUAL;</div><div class="line"><span class="comment">-- 3 // 몫</span></div><div class="line"><span class="keyword">SELECT</span> <span class="number">29</span> <span class="keyword">MOD</span> <span class="number">9</span> <span class="keyword">FROM</span> DUAL;</div><div class="line"><span class="comment">-- 2 // 나머지</span></div></pre></td></tr></table></figure>
+<h5 id="LIKE-연산자"><a href="#LIKE-연산자" class="headerlink" title="LIKE 연산자"></a>LIKE 연산자</h5><p>상수 문자열이 있는지 없는지 정도만을 판단한다.<br>와일드 카드는 딱 2개만 사용가능하다.  </p>
+<blockquote>
+<p><strong>%</strong> : 0개 또는 1개 이상 일치<br><strong>_</strong> : 정확히 1개 일치</p>
+</blockquote>
+<p>와일드카드 문자가 검색어의 뒤쪽에 있다면 인덱스 레인지 스캔을 사용할 수 있다!<br>와일드카드가 앞쪽에 올 경우 인덱스 풀 스캔 또는 테이블 풀 스캔을 하게 된다.  </p>
+<p>와일드카드 문자를 검색에 사용하고 싶을 경우 ESCAPE 구문을 사용한다.<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="string">'a%'</span> <span class="keyword">LIKE</span> <span class="string">'a/%'</span> ESCAPE <span class="string">'/'</span> <span class="keyword">FROM</span> DUAL;</div></pre></td></tr></table></figure></p>
+<h5 id="BETWEEN-연산자"><a href="#BETWEEN-연산자" class="headerlink" title="BETWEEN 연산자"></a>BETWEEN 연산자</h5><p>=&lt; 연산자와 =&gt; 연산자를 합친 기능을 수행한다.<br>BETWEEN을 위의 연산자로 풀어도 성능상 차이가 없으니 크게 고려하지 않아도 된다.  </p>
+<h5 id="IN-연산자"><a href="#IN-연산자" class="headerlink" title="IN 연산자"></a>IN 연산자</h5><p><strong>동등비교를 여러번</strong> 하는 연산자이다. 즉 일반적으로 빠르게 처리된다.<br>연산자의 입력이 상수가 아니라 서브쿼리일 경우 상당히 느려질 수 있으니 주의해야 한다.<br>NOT IN의 경우 부정형 비교여서 인덱스 풀 스캔을 사용한다.  </p>
+<blockquote>
+<p><strong>※ BETWEEN 연산자와 IN 연산자 차이점</strong><br>BETWEEN의 경우 범위만큼 인덱스를 다 읽어야 하는 반면,<br>IN의 경우 위에서 언급했듯이 동등 연산자를 여러번 수행하는 것과 같다.<br>실행계획을 비교해보면 인덱스를 타고 있지만 rows에서 차이가 나는것을 확인할 수 있다.  </p>
+</blockquote>
+<h4 id="내장함수"><a href="#내장함수" class="headerlink" title="내장함수"></a>내장함수</h4><h5 id="NULL-값-비교"><a href="#NULL-값-비교" class="headerlink" title="NULL 값 비교"></a>NULL 값 비교</h5><ul>
+<li><strong>IFNULL</strong> : 값이 NULL인지 비교하고 NULL이면 다른 값으로 대체한다.<br>첫번째 인자는 NULL인지 비교할 값, 두번째 인자는 NULL일시 대체값이다.<br>첫번째 인자가 NULL이 아닐경우 그대로 출력된다.  </li>
+<li><strong>ISNULL</strong> : 값이 NULL인지 아닌지 비교. NULL일 경우 TRUE(1), 아닐경우 FALSE(0)</li>
+</ul>
+<h5 id="현재-시각-조회"><a href="#현재-시각-조회" class="headerlink" title="현재 시각 조회"></a>현재 시각 조회</h5><ul>
+<li><strong>NOW</strong> : 시간 조회. 하나의 SQL내면 모두 같은 값을 가진다.</li>
+<li><strong>SYSDATE</strong> : 시간 조회. 하나의 SQL내에서도 호출 시점에 따라 결과값이 달라진다.<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">NOW</span>(), <span class="keyword">SLEEP</span>(<span class="number">1</span>), <span class="keyword">NOW</span>() <span class="keyword">FROM</span> DUAL;</div><div class="line"><span class="comment">-- '2017-12-19 22:39:52' | '0' | '2017-12-19 22:39:52'</span></div><div class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>(), <span class="keyword">SLEEP</span>(<span class="number">1</span>), <span class="keyword">SYSDATE</span>() <span class="keyword">FROM</span> DUAL;</div><div class="line"><span class="comment">-- '2017-12-19 22:40:27' | '0' | '2017-12-19 22:40:28'</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>보다시피 SYSDATE의 경우 SLEEP(1)로 인해 1초가 차이난다.<br>SYSDATE의 경우 호출때마다 다른 값을 반환하므로 상수가 아니다.<br>그래서 인덱스를 효율적으로 사용하지 못한다.<br>이러한 문제점이 있으니 SYSDATE는 가급적 사용하지 않는것이 좋다.<br>CURRENT_TIMESTAMP, CURRNET_DATE, CURRENT_TIME은 NOW와 동일한데다 출력을 다양하게 활용할 수 있으니 이것을 사용해도 좋을 것 같다.  </p>
+<h5 id="날짜-lt-gt-문자"><a href="#날짜-lt-gt-문자" class="headerlink" title="날짜 &lt;&gt; 문자"></a>날짜 &lt;&gt; 문자</h5><table>
+<thead>
+<tr>
+<th style="text-align:left">지정 문자</th>
+<th style="text-align:left">내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td style="text-align:left">4자리 연도</td>
+</tr>
+<tr>
+<td style="text-align:left">%y</td>
+<td style="text-align:left">2자리 연도</td>
+</tr>
+<tr>
+<td style="text-align:left">%m</td>
+<td style="text-align:left">월</td>
+</tr>
+<tr>
+<td style="text-align:left">%d</td>
+<td style="text-align:left">일자</td>
+</tr>
+<tr>
+<td style="text-align:left">%H</td>
+<td style="text-align:left">24h 시간(00 ~ 23)</td>
+</tr>
+<tr>
+<td style="text-align:left">%h</td>
+<td style="text-align:left">12h 시간(01 ~ 12)</td>
+</tr>
+<tr>
+<td style="text-align:left">%i</td>
+<td style="text-align:left">분</td>
+</tr>
+<tr>
+<td style="text-align:left">%s</td>
+<td style="text-align:left">초</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>DATE_FORMAT</strong> : 날짜를 문자열로 변환한다.<br>ex) DATE_FORMAT(NOW(), %Y-%m-%d)<br>> 2017-12-19</li>
+<li><strong>STR_TO_DATE</strong> : 문자를 날짜로 변환한다.<br>ex) STR_TO_DATE(‘1992^02^07^’,’%Y^%m^%d’)<br>> 1992-02-07<br>참고로 SQL 표준형태로 입력된 문자열은 STR_TO_DATE를 사용하지 않아도 자동으로 DATETIME으로 변환되어 처리된다.</li>
+</ul>
+<h5 id="날짜-연산"><a href="#날짜-연산" class="headerlink" title="날짜 연산"></a>날짜 연산</h5><ul>
+<li><strong>DATE_ADD</strong> : 첫번째 인자로 날짜, 두번째 인자로 더할 날짜를 주면 된다.<br>두번째 인자는 INTERVAL n {KEYWORD} 의 형태로 줘야 한다.<br>DATE_SUB 함수도 있으나 두번째 인자로 음수값을 줄 수 있기 때문에 DATE_ADD만으로도 충분하다.<br>ex) DATE_ADD(NOW(), INTERVAL 3 DAY)<br>※ KEYWORD : YEAR, MONTH, WEEK, DAY, HOUR …  </li>
+</ul>
+<h5 id="문자열-처리"><a href="#문자열-처리" class="headerlink" title="문자열 처리"></a>문자열 처리</h5><ul>
+<li><strong>LPAD, RPAD</strong> : 좌측 혹은 우측에 특정한 문자를 지정한 바이트 만큼 채우는 함수이다.<br>첫번째 인자로 대상 문자열, 두번째 인자로 채울 바이트(첫번째 문자 포함), 세번째 인자로 채울 문자를 넣는다.  </li>
+<li><strong>LTRIM, RTRIM, TRIM</strong> : 연속된 공백문자를 제거하는 함수이다.<br>LTRIM은 왼쪽, RTRIM은 오른쪽, TRIM은 양쪽의 공백을 제거한다.  </li>
+</ul>
+<h5 id="문자열-결합"><a href="#문자열-결합" class="headerlink" title="문자열 결합"></a>문자열 결합</h5><ul>
+<li><strong>CONCAT</strong> : 문자열을 결합해서 하나의 문자열로 합치는 함수로 인자 개수는 제한이 없다.<br>ex) CONCAT(‘My name is ‘, ‘JoonT. ‘, ‘Nice to ‘, ‘meet you.’);<br>> My name is JoonT. Nice to meet you.</li>
+</ul>
+<h5 id="타입-변환"><a href="#타입-변환" class="headerlink" title="타입 변환"></a>타입 변환</h5><ul>
+<li><strong>CAST</strong> : 명시적 형 변환을 하는 함수이다.변환할 값과 변환할 타입을 지정해주면 된다. 둘은 AS 로 연결한다.<br>ex) CASE(‘1234’, AS INTEGER)  </li>
+</ul>
+<h5 id="IP-주소-변환"><a href="#IP-주소-변환" class="headerlink" title="IP 주소 변환"></a>IP 주소 변환</h5><p>IP주소를 UNSIGNED INTEGER의 형태로 상호변환 가능하다.</p>
+<ul>
+<li><strong>INET_ATON</strong> : IP 주소 -&gt; UNSIGNED INTEGER</li>
+<li><strong>INET_NTOA</strong> : UNSIGNED INTEGER -&gt; IP 주소<br>ex) <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>, <span class="keyword">INET_NTOA</span>(ip_addr) </div><div class="line"><span class="keyword">FROM</span> <span class="keyword">TEST</span> </div><div class="line"><span class="keyword">WHERE</span> ip_addr <span class="keyword">BETWEEN</span> </div><div class="line"><span class="keyword">INET_ATON</span>(<span class="string">'192.168.0.1'</span>) <span class="keyword">AND</span> <span class="keyword">INET_ATON</span>(<span class="string">'192.168.0.100'</span>);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>훨씬 효과적으로 저장 및 조회가 가능하다.  </p>
+<h4 id="주석"><a href="#주석" class="headerlink" title="주석"></a>주석</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">--- 한줄 주석(SQL 표준)</span></div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">여러줄 주석(SQL 표준)</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">여러줄</span></div><div class="line"><span class="comment">여러줄</span></div><div class="line"><span class="comment">여러분</span></div><div class="line"><span class="comment">*/</span> </div><div class="line"></div><div class="line"># 한줄주석(비표준)</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/db/">db</a>
+
+      
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+            
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/english/Psy-Snoop-on-working-together(2주)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Psy&amp;Snoop on working together(2주)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/etc/markdown/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">markdown</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#시스템-설정"><span class="nav-number">1.</span> <span class="nav-text">시스템 설정</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL-모드"><span class="nav-number">1.1.</span> <span class="nav-text">SQL 모드</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#영문-대소문자"><span class="nav-number">1.2.</span> <span class="nav-text">영문 대소문자</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#예약어"><span class="nav-number">1.3.</span> <span class="nav-text">예약어</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#메뉴얼-읽는-법"><span class="nav-number">2.</span> <span class="nav-text">메뉴얼 읽는 법</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL-연산자-내장함수"><span class="nav-number">3.</span> <span class="nav-text">MySQL 연산자, 내장함수</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#리터럴"><span class="nav-number">3.1.</span> <span class="nav-text">리터럴</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#문자열"><span class="nav-number">3.1.1.</span> <span class="nav-text">문자열</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#숫자"><span class="nav-number">3.1.2.</span> <span class="nav-text">숫자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#날짜"><span class="nav-number">3.1.3.</span> <span class="nav-text">날짜</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#불리언"><span class="nav-number">3.1.4.</span> <span class="nav-text">불리언</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#연산자"><span class="nav-number">3.2.</span> <span class="nav-text">연산자</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#동등-비교"><span class="nav-number">3.2.1.</span> <span class="nav-text">동등 비교</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#부정-비교"><span class="nav-number">3.2.2.</span> <span class="nav-text">부정 비교</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#NOT-연산자"><span class="nav-number">3.2.3.</span> <span class="nav-text">NOT 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AND-OR-연산자"><span class="nav-number">3.2.4.</span> <span class="nav-text">AND, OR 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#나누기-나머지-연산자"><span class="nav-number">3.2.5.</span> <span class="nav-text">나누기, 나머지 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LIKE-연산자"><span class="nav-number">3.2.6.</span> <span class="nav-text">LIKE 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BETWEEN-연산자"><span class="nav-number">3.2.7.</span> <span class="nav-text">BETWEEN 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IN-연산자"><span class="nav-number">3.2.8.</span> <span class="nav-text">IN 연산자</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#내장함수"><span class="nav-number">3.3.</span> <span class="nav-text">내장함수</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#NULL-값-비교"><span class="nav-number">3.3.1.</span> <span class="nav-text">NULL 값 비교</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#현재-시각-조회"><span class="nav-number">3.3.2.</span> <span class="nav-text">현재 시각 조회</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#날짜-lt-gt-문자"><span class="nav-number">3.3.3.</span> <span class="nav-text">날짜 <> 문자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#날짜-연산"><span class="nav-number">3.3.4.</span> <span class="nav-text">날짜 연산</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#문자열-처리"><span class="nav-number">3.3.5.</span> <span class="nav-text">문자열 처리</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#문자열-결합"><span class="nav-number">3.3.6.</span> <span class="nav-text">문자열 결합</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#타입-변환"><span class="nav-number">3.3.7.</span> <span class="nav-text">타입 변환</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#IP-주소-변환"><span class="nav-number">3.3.8.</span> <span class="nav-text">IP 주소 변환</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#주석"><span class="nav-number">3.4.</span> <span class="nav-text">주석</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2018 joont blog All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>
