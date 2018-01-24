@@ -79,7 +79,7 @@ theme: hiero
 deploy:
   type: git
   repo: https://github.com/joont92/joont92.github.io.git
-  branch: gh-pages
+  branch: master
 
 auto_dir_categorize:
     enable: true  # options:true, false; default is true
