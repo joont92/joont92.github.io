@@ -35,7 +35,7 @@ MVC 아키텍처는 기본적으로 프론트 컨트롤러 패턴과 함께 사�
     <url-pattern>/*</url-pattern>
 </servlet-mapping>
 ```
-    요청을 받은 DispatcherServlet은 공통적으로 진행해야 할 전처리 작업이 있다면 이를 먼저 수행한다.  
+요청을 받은 DispatcherServlet은 공통적으로 진행해야 할 전처리 작업이 있다면 이를 먼저 수행한다.  
 
 #### 2) DispatcherServlet에서 컨트롤러로 HTTP 요청 위임
 DispatcherServlet은 들어온 http 요청 정보(URL, parameter, method 등)을 참고로 해서 어떤 컨트롤러에게 작업을 위임할 지 결정한다.  
