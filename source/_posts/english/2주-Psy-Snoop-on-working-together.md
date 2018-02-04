@@ -1,5 +1,5 @@
 ---
-title: Psy&Snoop on working together(2주)
+title: 2주-Psy&Snoop on working together
 date: 2017-12-19 21:45:32
 tags:
 ---
