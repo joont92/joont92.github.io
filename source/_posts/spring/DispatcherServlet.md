@@ -2,9 +2,9 @@
 title: DispatcherServlet
 date: 2018-01-21 23:17:45
 tags: 
+    - DispatcherServlet
     - MVC
     - Front Controller
-    - DispatcherServlet
     - DispatcherServlet flow
 ---
 
@@ -115,3 +115,6 @@ DispatcherServlet은 등록된 HandlerExceptionResolver중에서 발생한 예�
 컨트롤러에서 뷰 오브젝트나 이름을 제공하지 않았을 경우 URL 요청정보를 참고해서 자동으로 뷰 이름을 생성해주는 전략이다.  
 - default
     1. DefaultRequestToViewNameTraslator
+
+모든 디폴트 전략들은 다른 전략을 등록 시 모두 무시된다는 점에 주의하여야 한다.  
+또한 모든 디폴트 전략에 추가 옵션을 주고 싶으면 빈을 등록하면서 옵션을 줘야 한다.  
