@@ -7,7 +7,7 @@ title: joont blog
 subtitle:
 description: joont blog
 author: joont
-language:
+language: en
 timezone:
 
 # URL
@@ -80,7 +80,3 @@ deploy:
   type: git
   repo: https://github.com/joont92/joont92.github.io.git
   branch: master
-
-auto_dir_categorize:
-    enable: true  # options:true, false; default is true
-    force: false # options:true, false; default is false
