@@ -2,22 +2,32 @@
 title: Chris Hemsworth loves internet Thor Puns(4주)
 date: 2018-01-07 23:04:33
 tags:
+    - Conan O'brien
+    - Chris Hemsworth
 ---
 
+<iframe width="640" height="360" src="https://www.youtube.com/embed/-IYMYOZ7yKw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
 ### 본문
-> **Conan** :  
+**Conan** :  
 There must be people that come up to you with Thor jokes, all the times.  
 Just because you're so, you're Thor.  
+> 항상 당신한테 토르 관련된 농담을 하는 사람이 많을 수 밖에 없을텐데요.
+    왜냐하면 당신은, 당신은 그냥 토르니까요.
 
-> **Chris** :  
+**Chris** :  
 You get the same joke, pretty much.  
 In fact, the single same joke that I've had for three years now.  
 It is not very funny. But I can tell it to you if you want.  
+> 같은 농담을 꽤 많이 들었죠.
+    사실은, 같은 한 농담을 3년간 듣고 있어요.
+    이건 그렇게 웃기진 않아요. 근데 원한다면 말할순 있어요.
 
-> **Conan** :  
+**Conan** :  
 You're in the right show. trust me.  
+> 알맞은 쇼에 나와계세요. 저를 믿으세요.
 
-> **Chris** :  
+**Chris** :  
 So, basically Thor meets this young maiden.  
 And they sleep with one another, and have a wonderful night.  
 And the next morning Thor says,   
@@ -26,63 +36,100 @@ And she said,
 "You're Thor? I can hardly walk."  
 ...  
 Very generous audience.  
+> 그러니까, 기본적으로 토르가 어린 아가씨를 만나요.
+    그리고 그는 같이 자게 되었고, 아름다운 밤을 보냈죠.
+    그리고 다음날 아침 토르가 말하길,
+    "어여쁜 아가씨, 제가 누군지 고백해야겠어요. 전 토르에요."
+    그러자 그녀가 말하길,
+    "당신이 토르라고요? 전 걷기도 힘들어요."
+    ※ Thor와 sore(쓰라리다)의 유사한 발음을 이용한 농담
+    ...
+    굉장히 관대한 관객들이네요.
 
-> **Conan** :  
+**Conan** :  
 Nice! That timinig on that was perfect!  
+> 좋네요! 타이밍이 완벽했어요!
 
-> **Chris** :  
+**Chris** :  
 About 60 seconds off there.  
+> 60초 정도 공백이 있었네요.
 
-> **Conan** :  
+**Conan** :  
 I like long pause.  
 So, how many time have you heard that joke?  
 People have said that to you.  
+> 전 긴 텀(멈춤)이 좋아요.
+    그래서, 사람들이 당신에게 말했다던 그 농담을 몇번이나 들으셨어요?
 
-> **Chris** :  
+**Chris** :  
 I reckon about 300 times. I swear to God.  
+> 제 생각에 300번 정도에요. 신께 맹세해요.
 
-> **Conan** :  
+**Conan** :  
 I gotta use that one. That's good.  
 ...  
 You know, so much the fans,  
 I mean, the reaction of the people here when you came out,  
 and the fans are so devoted to you and to the films,  
-the fan arts, it's so incredible and very silly.  
+And the fan arts, it's so incredible and very silly.  
+> 다음에 써먹어야곘어요. 좋네요.
+    ...
+    있잖아요, 팬이 많으시잖아요.
+    제 말은, 당신이 여기 나왔을때 팬들의 반응은,
+    그리고 팬들은 당신과 당신의 영화에 헌신적이죠.
+    그리고 팬아트들은 정말 놀랍고 웃기던데요.
 
-> **Chris** :  
+**Chris** :  
 It is, yeah.  
+> 그건, 네.
 
-> **Conan** :  
+**Conan** :  
 I was looking it at online.  
+> 전 그걸 온라인에서 봤어요.
 
-> **Chris** :  
+**Chris** :  
 It's same thing.  
 There's been many crazy fan arts reproductions of certain things involved with the Thor...  
+> 그건 같은거에요.
+    토르와 관련된 수많은 미친 팬아트 복제본들이 있죠...
 
-> **Conan** :  
+**Conan** :  
 I think we have some. There's Thoreal.  
 That's a really good one.  
+> 제 생각에 우리가 몇개를 가지고 있는것 같아요. 이건 Thoreal(토르+로레알)이에요.
+    정말 좋은 것이죠.
 
-> **Chris** :  
+**Chris** :  
 That's my hair commercial.  
+> 저건 제 모발 광고에요.
 
-> **Conan** :  
+**Conan** :  
 You shoud try and get that ad. There's Thor De France.  
 Very nice.  
 And There's Pathor. Very nice.  
 ...  
 That's my favorite so far.  
+> 이 광고를 찍도록 해봐요. 이건 Thor De France(프랑스 사이클 대회 '투르 드 프랑스' 패러디)에요.
+    아주 죻죠.
+    그리고 이건 Pathor(pastor : 목사)에요. 아주 좋죠.
+    ...
+    이건 제가 가장 좋아하는 거에요.
 
-> **Chris** :  
+**Chris** :  
 That one was actually me. That was me.  
+> 저건 사실 저에요. 저건 저에요.
 
-> **Conan** :  
+**Conan** :  
 You will get hair ad.  
 I'm sure they are coming to you and asking.  
 Have you ever seen.. because Holloween, a couple days ago.  
 Have you ever run into an adult of kid dressed as Thor and had to deal with them?  
+> 모발 광고를 하실것 같아요.
+    저는 그들이 당신에게 와서 물어볼꺼라고 확신하는데요.
+    본적 있나요.. 왜냐하면 며칠전에 할로윈 이었잖아요.
+    어른이나 애가 토르 복장을 하고 있는걸 본적 있나요? 그리고 그들을 상대해야 했던 적은요?
 
-> **Chris** :  
+**Chris** :  
 Yeah, a lot of Comi Con conventions and things. you see it.  
 But I was at the airport, few weeks ago.  
 This little kids was runing aroung in the full Thor outfit.  
@@ -93,10 +140,21 @@ And she came up to me and grabs her son,
 And he looks up and he goes,  
 "No, it's not."  
 Take off the airport.  
-I thing with costume and hair..  
+I thought, without costume and hair..  
+> 네, 코믹콘 컨벤션 같은 곳에서 많이 볼수 있죠.
+    근데 제가 몇주전에 공항에 있었어요.
+    이 작은 꼬맹이는 토르 복장을 하고 뛰어다니고 있었어요.
+    그는 망치를 가지고 있었고, 휘두르고 있었죠.
+    그의 엄마도 거기 있었죠.
+    그리고 그녀가 저한테 다가와서 그녀의 아들을 잡고는 "봐, 봐, 여기 토르야. 토르." 라고 말헀죠.
+    그러자 그는 저를 올려다보더니, "아니, 아니야" 하곤 공항으로 가버렸죠.
+    제 생각에, 복장이랑 머리 없이는..
 
-> **Conan** :  
+**Conan** :  
 Yeah, and then he hit you in the knee, at least.  
+> 네, 그랬다면 그나 최소한 당신의 무릎은 쳤곘죠.
+
+---
 
 ### 어휘  
 1. take off : 이륙하다
@@ -121,18 +179,4 @@ Yeah, and then he hit you in the knee, at least.
 1. run into : 우연히 만나다
 1. silly : 어리석은, 우스꽝스러운
 
-### 답답노트
-- 외장하드
-    > external hard disk
-- 턱걸이
-    > chin-up
-- 이직하다
-    > change jobs
-- 꺾다(손가락, 발가락 등을)
-    > twist
-- 적금
-    > installment saving
-- 귀한
-    > precious (valuable은 값이 많이 나가서 소중할 때를 의미)
-- 기준점
-    > standard point
+<!-- more -->
