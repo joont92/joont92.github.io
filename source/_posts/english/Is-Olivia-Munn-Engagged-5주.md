@@ -77,7 +77,8 @@ And the next text after that was
 "But seriously, are you engagged? because I'm seeing it everywhere."
 No, we're not engagged.
 > 그걸 말한건 그냥 잡지였어요.
-    그리고 모두들 그 흐름을 따르기 시작했죠.
+    그리고 모두들 그 흐름을english8
+ 따르기 시작했죠.
     그건.. 약간 이상했어요.
     제 말은, 전 아무도 이걸 안 믿을거라 생각했거든요. 제 가족이 저한테 문자를 보내기 전까지는요.
     그리고 제 여동생이 말하길,

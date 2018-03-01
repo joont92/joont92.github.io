@@ -104,3 +104,5 @@ No big deal guys. Look, I'm just a human guy.
 1. suit up : 제복(유니폼)을 입다
 1. take a step back : 일보 물러서다
 1. ultimately : 궁극적으로
+
+<!-- more -->

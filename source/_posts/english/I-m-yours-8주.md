@@ -1,9 +1,11 @@
 ---
-title: I'm yours(8주)
+title: Jason Mraz - I'm yours(8주)
 date: 2018-02-03 14:15:04
 tags: 
     - Jason Mraz
     - I'm yours
+    - I'm yours 해석
+    - I'm yours 가사
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/EkHTsc9PU2A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -69,6 +71,7 @@ Scooch on over closer dear.
 
 And I'll nibble your ears.  
 귀를 야금야금 깨물어줄게  
+<br/>
 <br/>
 
 I've been spending way to long checking my tongue in the mirror.  
@@ -145,3 +148,5 @@ I'm yours.
 1. tongue : 혀, 말버릇, 말씨
 1. vanity : 자만심
 1. virtue : 선, 미덕
+
+<!-- more -->

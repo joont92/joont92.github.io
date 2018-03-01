@@ -1,9 +1,11 @@
 ---
-title: Thinking out loud(6주)
+title: Ed Sheeran - Thinking out loud(6주)
 date: 2018-01-27 22:43:43
 tags:
-    - Thiking out loud
     - Ed Sheeran
+    - Thiking out loud    
+    - Thiking out loud 해석
+    - Thiking out loud 가사
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/lp-EO5I60KA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -59,6 +61,7 @@ I'm thinking out loud.
 Maybe we found love right where we are.  
 아마 우린 우리가 있는 곳에서 사랑을 찾았을 거라고  
 <br/>
+<br/>
 
 When my hair's over gone and my memrory fades,  
 내 머리카락이 모두 빠지고 나의 기억이 희미해졌을떄,  
@@ -109,6 +112,7 @@ I'm thinking out loud.
 
 Maybe we found love right where we are.  
 아마도 우린 우리가 있는 곳에서 사랑을 찾았을 거라고  
+<br/>
 <br/>
 
 So baby now,  

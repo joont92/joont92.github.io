@@ -299,3 +299,5 @@ detextHandlersInAcestorContexts 옵션을 true로 주면서 이 방식을 바꿔
 인터셉터를 스프링 빈으로 등록할 수 있고 ModelAndView를 컨트롤 하는 등 더욱 정교한 컨트롤이 가능하다.  
 
 프로젝트의 상황에 따라 적절한 선택을 하는것이 좋다.  
+
+<!-- more -->

@@ -145,3 +145,5 @@ Oh wow, that's a tragedy. It really is.
 1. put back : 다시 제자리에 갖다 놓다
 1. softness : 부드러움
 1. tragedy : 비극
+
+<!-- more -->

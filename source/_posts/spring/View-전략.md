@@ -136,3 +136,5 @@ ResourceBundleViewResolver와 용도는 동일하고, views.properties 대신 /W
 
 #### BeanNameViewResolver
 뷰 이름과 동일한 빈 이름을 가진 빈을 찾아서 뷰로 이용하게 해준다.  
+
+<!-- more -->
