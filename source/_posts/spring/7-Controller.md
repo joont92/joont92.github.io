@@ -1,0 +1,179 @@
+---
+title: '@Controller'
+date: 2018-03-04 21:37:23
+tags:
+---
+
+여기서 말하는 @Controller란 빈 자동 스캔시 사용되는 스테레오 타입 애노테이션이 아니라,  
+애노테이션을 이용해 컨트롤러를 개발하는 방법을 말한다.  
+즉, AnnotationMethodHandlerAdapter가 실행하는 각 메서드들을 의미한다.  
+
+### 파라미터
+개발자가 명시한 애노테이션과 파라미터 타입 등에 따라 AnnotationMethodHandlerAdapter가 적절히 변환하여 제공해줌
+
+#### HttpServletRequest, HttpServletResponse, ServletRequest, ServletResponse
+대게는 좀 더 상세한 파라미터 타입을 사용하면 되지만,   
+원한다면 직접 HttpServletRequest, HttpServletResponse 타입을 받을 수 있다.  
+ServletRequest, ServletResponse 타입도 가능하다.  
+
+#### HttpSession
+HttpServletRequest에서 얻을 수 있는 HttpSession을 바로 받을 수 있다.  
+HttpSession은 멀티스레드 환경에서 안전성이 보장되지 않으므로  
+핸들러 어댑터의 synchronizeOnSession 프로퍼티를 true로 줘야한다.  
+
+#### Locale
+java.util.Locale 타입으로 DispatcherServlet의 Locale Resolver가 결정한 Locale 오브젝트를 받을 수 있다.  
+
+#### InputStream, Reader
+HttpServletRequest의 getInputStream()를 통해 받을 수 있는 InputStream과,  
+getReader()를 통해 받을 수 있는 Reader를 바로 받을 수 있다.  
+
+#### OutputStream, Writer
+HttpServletResponse의 getOutputStream()를 통해 받을 수 있는 OutputStream,  
+getWriter()를 통해 받을 수 있는 Writer를 바로 받을 수 있다.  
+
+#### @PathVariable
+@RequestMapping url에 {}로 들어가는 패스 변수를 받는다.  
+```java
+@RequestMapping(value="/post/{postNo}")
+public String detail(@PathVariable("postNo") Integer postNo){ 
+    // ...
+}
+```
+속성으로 받을 패스 변수의 이름을 지정할 수 있으며,  
+전달받은 패스 변수는 선언한 파라미터 타입으로 형변환 된다.  
+즉, /post/10 이라고 요청하게 되면 postNo 변수에 Integer 타입으로 형 변환되어 담기게 된다.  
+만약 /post/notNumber 과 같은 형태로 요청하여 형변환이 불가능 할 경우  
+400 Bad Request 에러가 발생한다.  
+
+#### @RequestParam
+HttpServletRequest의 getParameter()로 받을 수 있는 파라미터를 바로 받을 수 있다.  
+전달받은 파라미터는 선언한 파라미터 타입으로 자동 형 변환된다.  
+또한 필수여부, 디폴트 값 등을 설정할 수 있다.  
+```java
+// page라는 이름으로 전달된 파라미터를 받아 Integer 타입으로 변환한다
+public String list(@RequestParam("page") Integer page)
+
+// 필수 여부와 디폴트 값을 줄 수 있다. 필수 여부는 default가 true이다.  
+public String list(@RequestParam(value="page", required=false, defaultValue="1") Integer page)
+```
+
+파라미터 타입을 Map으로 선언하면 모든 파라미터를 맵으로 받을 수 있다.  
+```java
+public String list(@RequestParam Map<String, String> params)
+```
+
+#### @CookieValue
+쿠키값을 받아올 수 있다. 속성으로 쿠키의 이름을 지정해주면 된다.  
+```java
+// 쿠키 name이 auth인 것을 가져온다
+public String list(@CookieValue("auth") String auth)
+
+// @RequestParam과 마찬가지로 필수 여부와 디폴트 값을 줄 수 있다.
+// 필수 여부 default는 true이다.
+public String list(@CookieValue(value="auth", required=false, defaultValue="NONE") String auth)
+```
+
+#### @RequestHeader
+헤더값을 받아올 수 있다. 속성으로 헤더의 이름을 지정해주면 된다.  
+@RequestParam, @CookieValue와 마찬가지로 required, defaultValue를 설정해 줄 수 있다.  
+```java
+public String list(@RequestHeader("Host") String host)
+```
+
+#### Map, Model, ModelMap
+모델 정보를 담을 수 있는 Model과 ModelMap 객체를 파라미터 레벨에서 바로 받을 수 있다.  
+Map도 앞에 특별한 애노테이션이 없다면 모델 정보를 담는데 사용할 수 있다. 하지만 갠적으로 좀 헷갈린다.. 안써야지  
+```java
+public String list(ModelMap model){
+    model.addAttribute("key", "value");
+
+    // collection에 담긴 모든 오브젝트를 모델에 추가할 수 있다(자동 이름 생성 방식을 통해)
+    model.addAllAttribute(collection);
+}
+```
+
+#### @ModelAttribute
+이름에 Model이 들어가 있긴 하지만 우리가 일반적으로 사용하는 모델과는 조금 의미가 다르다.
+
+컨트롤러가 받는 요청정보 중에서, 하나 이상의 값을 가진 오브젝트 형태로 만들 수 있는 정보를 @ModelAttribute 모델이라고 부른다.  
+@ModelAttribute라고 별다를 건 없다. 
+기존과 똑같이 파라미터를 받는데,  
+그걸 메서드에서 1:1로 받으면 @RequestParam인거고  
+도메인 오브젝트나 DTO에 바인딩해서 받으면 @ModelAttribute 인 것이다.  
+
+사용자가 리스트에서 검색할 떄 사용하는 파라미터를 한번 생각해 보자.  
+기본적으로 전달될 파라미터는 검색 키워드겠고, 그 외에도 검색 타입, 페이지 번호 등이 전달 될 수 있다.  
+이를 기존의 @RequestParam으로 표현하면 아래와 같이 된다.  
+```java
+public String search(
+    @RequestParam("q") String q, 
+    @RequestParam("type") String type, 
+    @RequestParam(value="page", required=false, defaultValue="1") Integer page){
+    
+    service.search(q, type, page);
+}
+```
+
+일단 서비스 메서드 부터 문제가 있다.. 저런식으로 파라미터를 나열할 경우  
+변경에 매우 취약하게 되며, 같은 타입의 파라미터가 여러개면 실수할 가능성이 매우 높아진다.  
+이럴 경우에는 아래와 같이 오브젝트를 하나 만들어 전달하는 편이 낫다.  
+```java
+public class Search{
+    private String q;
+    private String type;
+    private Integer page;
+
+    // getter, setter
+}
+```
+
+서비스 메서드는 이 오브젝트를 사용하며 해결이 가능한데, 오브젝트를 매번 초기화 해줘야 한다는 귀찮음이 따른다.  
+이럴떄 사용할 수 있는것이 @ModelAttribute이다!  
+```java
+public String search(@ModelAttribute Search search, @ㄲㄷ볃ㄴㅅ){
+    
+    service.search(search);
+}
+```
+
+이제 요청 파라미터들은 자동으로 Search 오브젝트에 바인딩 되어 들어오게 된다(타입 변환도 자동으로 된다).  
+코드가 매우 깔끔해지고 위에서 언급한 문제점 또한 단번에 해결할 수 있다.  
+
+@ModelAttribute는 위와 같이 사용할 수도 있지만 보통은 폼의 데이터를 받을 때 훨씬 유용하게 사용할 수 있다.  
+게다가 @ModelAttribute의 기능중에 하나가 전달받음과 동시에 컨트롤러가 리턴하는 모델에 자동으로 추가해준다는 점이다.  
+이로인해 사용자가 입력을 잘못했을 경우에도 입력한 모델을 다시 출력해주며  
+잘못 입력한 정보에 대해 재입력을 요구하는 기능을 쉽게 구현할 수 있게 된다.  
+
+#### Errors, BindingResult
+@ModelAttribute와 같이 사용하는 파라미터 들이다.  
+기본적으로 @ModelAttribute는 파라미터를 처리할 떄 @RequestParam과는 달리 검증 작업이 추가적으로 진행된다.  
+검증작업이란 기본적으로 진행되는 타입 변환 외에도 필수 정보 입력 여부, 길이 제한, 값 허용 범위 등 다양한 기준이 적용될 수 있다.  
+
+BidingResult와 Errors는 이러한 검증작업의 결과가 담겨지는 곳이다.  
+컨트롤러에서는 이 두 오브젝트의 결과를 통해 사용자에게 적절한 조치를 취할 수 있게 되는 것이다(검증 에러가 난 부분에 대해 재입력 요구 등).  
+이러한 특성 때문에 @ModelAttribute는 바인딩에서 타입 변환이 실패하는 오류가 발생해도 400 에러를 발생시키지 않는다.  
+타입 변환 실패 또한 검증의 한 단계로 보고 BindingResult에 그에 해당하는 결과만을 담을 뿐이다.  
+BindingResult의 검증결과에서 오류가 없다고 나오면 그제서야 로직을 통과시키고, 오류가 있을 경우 사용자에게 계속 수정을 요구해야 한다.  
+```java
+public String add(@ModelAttribute User user, BindingResult result){
+    if(result.hasError()){
+        // 재입력 요구
+    } else{
+        userService.add(user);
+    }
+}
+```
+BindingResult는 반드시 @ModelAttribute 뒤에 나와야 한다.  
+현재 위의 메서드로는 기본적인 검증인 타입 변환 검증만을 수행하는 상태이다.  
+검증작업을 추가하는 것은 **여기**서 확인할 수 있다.  
+
+#### SessionStatus
+@SessionAttribute를 통해 저장된 현재 세션을 다룰 수 있는 오브젝트이다.  
+@SessionAttributed에 대해서는 **여기**서 확인할 수 있다.  
+
+
+
+### 리턴
+
+<!-- more -->
