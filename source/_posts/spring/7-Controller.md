@@ -8,6 +8,8 @@ tags:
 애노테이션을 이용해 컨트롤러를 개발하는 방법을 말한다.  
 즉, AnnotationMethodHandlerAdapter가 실행하는 각 메서드들을 의미한다.  
 
+---
+
 ### 파라미터
 개발자가 명시한 애노테이션과 파라미터 타입 등에 따라 AnnotationMethodHandlerAdapter가 적절히 변환하여 제공해줌
 
@@ -36,7 +38,7 @@ getWriter()를 통해 받을 수 있는 Writer를 바로 받을 수 있다.
 @RequestMapping url에 {}로 들어가는 패스 변수를 받는다.  
 ```java
 @RequestMapping(value="/post/{postNo}")
-public String detail(@PathVariable("postNo") Integer postNo){ 
+public String detail(@PathVariable("postNo") Integer postNo){
     // ...
 }
 ```
@@ -97,7 +99,7 @@ public String list(ModelMap model){
 이름에 Model이 들어가 있긴 하지만 우리가 일반적으로 사용하는 모델과는 조금 의미가 다르다.
 
 컨트롤러가 받는 요청정보 중에서, 하나 이상의 값을 가진 오브젝트 형태로 만들 수 있는 정보를 @ModelAttribute 모델이라고 부른다.  
-@ModelAttribute라고 별다를 건 없다. 
+@ModelAttribute라고 별다를 건 없다.
 기존과 똑같이 파라미터를 받는데,  
 그걸 메서드에서 1:1로 받으면 @RequestParam인거고  
 도메인 오브젝트나 DTO에 바인딩해서 받으면 @ModelAttribute 인 것이다.  
@@ -107,10 +109,10 @@ public String list(ModelMap model){
 이를 기존의 @RequestParam으로 표현하면 아래와 같이 된다.  
 ```java
 public String search(
-    @RequestParam("q") String q, 
-    @RequestParam("type") String type, 
+    @RequestParam("q") String q,
+    @RequestParam("type") String type,
     @RequestParam(value="page", required=false, defaultValue="1") Integer page){
-    
+
     service.search(q, type, page);
 }
 ```
@@ -131,8 +133,8 @@ public class Search{
 서비스 메서드는 이 오브젝트를 사용하며 해결이 가능한데, 오브젝트를 매번 초기화 해줘야 한다는 귀찮음이 따른다.  
 이럴떄 사용할 수 있는것이 @ModelAttribute이다!  
 ```java
-public String search(@ModelAttribute Search search, @ㄲㄷ볃ㄴㅅ){
-    
+public String search(@ModelAttribute Search search){
+
     service.search(search);
 }
 ```
@@ -166,14 +168,77 @@ public String add(@ModelAttribute User user, BindingResult result){
 ```
 BindingResult는 반드시 @ModelAttribute 뒤에 나와야 한다.  
 현재 위의 메서드로는 기본적인 검증인 타입 변환 검증만을 수행하는 상태이다.  
-검증작업을 추가하는 것은 **여기**서 확인할 수 있다.  
+검증작업을 추가하는 것은 **여기** 서 확인할 수 있다.  
 
 #### SessionStatus
 @SessionAttribute를 통해 저장된 현재 세션을 다룰 수 있는 오브젝트이다.  
-@SessionAttributed에 대해서는 **여기**서 확인할 수 있다.  
+@SessionAttributed에 대해서는 **여기** 서 확인할 수 있다.  
 
+#### @RequestBody
+이 애노테이션이 붙은 파라미터에는 HTTP 요청의 본문 부분이 그대로 전달된다.  
+XML이나 JSON 기반으로 요청하는 경우 매우 유용하게 사용된다.  
+AnnotationMethodHandlerAdapter에는 HttpMessageConverter타입의 메세지 변환기가 여러개 등록되어 있다.  져
+@RequestBody가 붙은 파라미터가 있으면 요청의 미디어 타입을 먼저 확인한 후,  
+메세지 변환기들 중에서 이를 처리할수 있는것이 있다면 HTTP 요청 본문 부분을 통째로 변환하여 파라미터로 전달해준다.  
+예를 들어 JSON 타입의 메세지가 들어오게 되면 MappingJacksonHttpMessageConverter가 사용되게 된다.  
 
+#### @Value
+시스템 프로퍼티나 다른 빈의 프로퍼티 값, SpEL등을 이용하는데 사용된다.  
+파라미터 변수 뿐 아니라 필드 변수에도 사용할 수 있다.  
+```java
+// 필드로 받기
+@Value("#{'systemProperties['os.name']'}") String osName;
+// 파라미터로 받기
+public String hello(@Value("#{systemProperties['os.name']}") String osName){
+  // ...
+}
+```
+상황에 따라 적절히 선택해서 사용하면 된다.  
+
+#### @Valid
+@ModelAttribute 검증에 사용되는 애노테이션이다.  
+이 또한 **여기** 서 확인할 수 있다.  
+
+---
 
 ### 리턴
+파라미터 뿐만 아니라 리턴 타입도 다양하게 사용할 수 있다.  
+각 리턴 타입에 대해 다양한 결과를 얻어낼 수 있다.
+참고로 어떤 방식으로 리턴하든 마지막에는 ModelAndView로 만들어져 DispatcherServlet에 전달된다.  
+
+#### 모델에 자동으로 추가되는 오브젝트
+리턴 타입을 알아보기 전에 굳이 명시하지 않아도 모델에 자동으로 추가되는 오브젝트들 부터 살펴보자.  
+
+##### @ModelAttribute 파라미터
+파리미터에서 @ModelAttribute로 받은 오브젝트는 자동으로 모델에 추가된다.  
+모델 오브젝트의 이름은 기본적으로 파라미터 타입 이름을 따른다.  
+이름을 직접 지정하고 싶으면 @ModelAttribute("모델이름") 의 형태로 지정해주면 된다.  
+
+##### Map, Model, ModelMap
+파라미터에 Map, Model, ModelMap 타입의 오브젝트를 사용하면 미리 생성된 모델 맵 오브젝트를 전달받을 수 있다.  
+이후 추가하고 싶은 모델 오브젝트가 있으면 여기에 추가하면 된다.  
+
+##### @ModelAttribute 메서드
+파라미터를 오브젝트로 받는 @ModelAttribute의 기능보단 공통적으로 사용되는 모델 오브젝트를 정의하기 위해 유용하게 사용되는 방식이다.  
+```java
+@ModelAttribute("countries")
+public List<Country> countries(){
+  return commonService.getCountries();
+}
+```
+이런식으로 클래스 내에 별도로 정의해놓으면 클래스 내의 다른 메서드들의 모델에 자동으로 추가된다.  
+같은 클래스 내의 메서드들의 모델에는 항상 "countries" 이름의 List<Country> 오브젝트가 추가되어있는 것이다.  
+`<select>` 태그를 써서 선택 가능한 목록을 보여주는 경우가 대표적이다.  
+
+##### BidingResult
+@ModelAttribute와 같이 사용하는 BindingResult도 모델에 자동으로 추가된다.  
+모델 맵에 추가될때의 키는 'org.springframework.validation.BindingResult.모델이름' 이다.  
+
+#### ModelAndView
+컨트롤러가 리턴해야 할 정보를 담고 있는 가장 대표적인 클래스이다.  
+하지만 이것보다 편한 방법이 훨씬 많으므로 자주 사용되진 않는다.  
+```java
+
+```
 
 <!-- more -->
