@@ -87,9 +87,19 @@ robotstxt:
   allow:
     - /
   disallow:
-  sitemap: /sitemap.xml
+  sitemap: https://joont92.github.io/sitemap.xml
 
 # sitemap
 sitemap:
   path: sitemap.xml
-  template:
+
+# rss feed
+feed:
+  type: atom
+  path: feed.xml
+  limit: 20
+
+# nofollow
+nofollow:
+  enable: true
+  exclude:

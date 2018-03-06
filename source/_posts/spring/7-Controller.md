@@ -177,10 +177,17 @@ BindingResult는 반드시 @ModelAttribute 뒤에 나와야 한다.
 #### @RequestBody
 이 애노테이션이 붙은 파라미터에는 HTTP 요청의 본문 부분이 그대로 전달된다.  
 XML이나 JSON 기반으로 요청하는 경우 매우 유용하게 사용된다.  
-AnnotationMethodHandlerAdapter에는 HttpMessageConverter타입의 메세지 변환기가 여러개 등록되어 있다.  져
+AnnotationMethodHandlerAdapter에는 HttpMessageConverter타입의 메세지 변환기가 여러개 등록되어 있다.  
 @RequestBody가 붙은 파라미터가 있으면 요청의 미디어 타입을 먼저 확인한 후,  
 메세지 변환기들 중에서 이를 처리할수 있는것이 있다면 HTTP 요청 본문 부분을 통째로 변환하여 파라미터로 전달해준다.  
-예를 들어 JSON 타입의 메세지가 들어오게 되면 MappingJacksonHttpMessageConverter가 사용되게 된다.  
+```java
+public String test(@RequestBody String body){		
+	System.out.println(body); // http body가 그대로 출력
+
+	return "test";
+}
+```
+StringHttpMessageConverter가 http body를 그대로 받고 있다.  
 
 #### @Value
 시스템 프로퍼티나 다른 빈의 프로퍼티 값, SpEL등을 이용하는데 사용된다.  
@@ -209,16 +216,16 @@ public String hello(@Value("#{systemProperties['os.name']}") String osName){
 #### 모델에 자동으로 추가되는 오브젝트
 리턴 타입을 알아보기 전에 굳이 명시하지 않아도 모델에 자동으로 추가되는 오브젝트들 부터 살펴보자.  
 
-##### @ModelAttribute 파라미터
+1. @ModelAttribute 파라미터
 파리미터에서 @ModelAttribute로 받은 오브젝트는 자동으로 모델에 추가된다.  
 모델 오브젝트의 이름은 기본적으로 파라미터 타입 이름을 따른다.  
 이름을 직접 지정하고 싶으면 @ModelAttribute("모델이름") 의 형태로 지정해주면 된다.  
 
-##### Map, Model, ModelMap
+2. Map, Model, ModelMap
 파라미터에 Map, Model, ModelMap 타입의 오브젝트를 사용하면 미리 생성된 모델 맵 오브젝트를 전달받을 수 있다.  
 이후 추가하고 싶은 모델 오브젝트가 있으면 여기에 추가하면 된다.  
 
-##### @ModelAttribute 메서드
+3. @ModelAttribute 메서드
 파라미터를 오브젝트로 받는 @ModelAttribute의 기능보단 공통적으로 사용되는 모델 오브젝트를 정의하기 위해 유용하게 사용되는 방식이다.  
 ```java
 @ModelAttribute("countries")
@@ -226,11 +233,11 @@ public List<Country> countries(){
   return commonService.getCountries();
 }
 ```
-이런식으로 클래스 내에 별도로 정의해놓으면 클래스 내의 다른 메서드들의 모델에 자동으로 추가된다.  
+  이런식으로 클래스 내에 별도로 정의해놓으면 클래스 내의 다른 메서드들의 모델에 자동으로 추가된다.  
 같은 클래스 내의 메서드들의 모델에는 항상 "countries" 이름의 List<Country> 오브젝트가 추가되어있는 것이다.  
 `<select>` 태그를 써서 선택 가능한 목록을 보여주는 경우가 대표적이다.  
 
-##### BidingResult
+4. BidingResult
 @ModelAttribute와 같이 사용하는 BindingResult도 모델에 자동으로 추가된다.  
 모델 맵에 추가될때의 키는 'org.springframework.validation.BindingResult.모델이름' 이다.  
 
@@ -238,7 +245,78 @@ public List<Country> countries(){
 컨트롤러가 리턴해야 할 정보를 담고 있는 가장 대표적인 클래스이다.  
 하지만 이것보다 편한 방법이 훨씬 많으므로 자주 사용되진 않는다.  
 ```java
+public ModelAndView test(){
+  ModelAndView mv = new ModelAndView();
+  mv.addObject("key", "value");
+  mv.setViewName("test");
 
+  return mv;
+}
 ```
+참고로 ModelAndView를 리턴하더라도 Map, Model, ModelMap 파라미터는 모델에 자동 추가된다.  
+
+#### String
+문자열을 리턴하면 이는 뷰 이름으로 사용된다.  
+모델은 Model, ModelMap 파라미터를 이용한다.  
+```java
+public String test(ModelMap modelMap){
+  modelMap.addAttribute("key", "value");
+
+  return "test";
+}
+```
+
+#### void
+아예 아무것도 리턴하지 않을경우 RequestToViewNameResolver에 의해 자동으로 뷰 이름이 생성된다.  
+뷰 이름을 일관되게 통일해야 하므로 규칙을 잘 정해야 한다.  
+
+#### 모델 오브젝트
+RequestToViewNameResolver를 사용해서 뷰 이름을 자동생성하고,  
+모델에 추가할 오브젝트가 하나뿐이라면 모델 오브젝트를 바로 반환해도 된다.  
+스프링은 리턴 타입이 단순 오브젝트이면 이를 모델 오브젝트로 인식해서 모델에 자동으로 추가해준다.  
+모델명은 모델 오브젝트의 타입 이름을 따른다.  
+```java
+public List<Post> getPostList(){
+
+  return postService.getPostList(); // return List<Post>
+}
+```
+
+#### Map/Model/ModelMap
+메서드에서 직접 Map/Model/ModelMap 오브젝트를 생성해서 리턴하면 모두 모델로 사용된다.  
+하지만 Model은 파라미터로 받을 수 있기 때문에 이 방식은 잘 사용되지 않는다.  
+
+여기서 한가지 주의해야 할 점이 있다. 바로 Map 오브젝트이다.  
+서비스 메서드에서 결과로 Map을 내려주는 경우가 있는데, 이를 모델 오브젝트라고 생각하고 바로 리턴했다가는 원치않은 결과를 얻게 된다.  
+Map은 모델 오브젝트가 아닌 모델 맵으로 인식되기 때문에, Map의 모든 속성이 모델에 추가되는 상황이 발생한다.  
+```java
+// 잘못된 코드!!
+public Map getUser(){
+  Map user = userService.getUser();
+
+  return user; // user의 모든 속성이 모델에 추가되어 리턴된다.
+}
+```
+
+#### View
+뷰 이름대신 직접 View 오브젝트를 넘겨도 된다.  
+```java
+public View getPostListByExcel(ModelMap modelMap){
+  // model add..
+
+  return excelView; // excel view
+}
+```
+
+#### @ResponseBody
+@ReuqestBody와 비슷하게 동작한다.  
+메서드 레벨에 이 애노테이션이 붙어있으면, 리턴하는 오브젝트가 뷰를 통해 결과를 만들어내는데 사용되지 않고 메세지 컨터버를 통해 바로 HTTP 응답으로 반환된다.  
+```java
+@ResponseBody
+public String test(){			
+	return "succeed"; // 문자열 그대로 반환
+}
+```
+@ResponseBody에 의해 succeed가 viewName으로 사용되지 않고 HTTP 응답으로 반환된다.  
 
 <!-- more -->
