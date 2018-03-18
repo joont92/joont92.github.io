@@ -1,7 +1,7 @@
 ---
 title: Jason Mraz - I'm yours(8주)
 date: 2018-02-03 14:15:04
-tags: 
+tags:
     - Jason Mraz
     - I'm yours
     - I'm yours 해석
@@ -10,7 +10,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/EkHTsc9PU2A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+### 가사
 Well, you done done me and you bet I'm felt it.  
 넌 정말 날 휘어잡았어, 넌 내가 그것(사랑)을 느낀다고 확신했지  
 
