@@ -9,15 +9,15 @@ tags:
 <iframe width="640" height="360" src="https://www.youtube.com/embed/9huSsQ1kD1g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 # 본문
-Conan :  
+**Conan** :  
 First of all, I was talking to Kevin Hart recently..   
 > 첫번째로, 전 최근에 Keven Hart와 얘기하고 있었어요..  
 
-Ice :  
+**Ice** :  
 For what?  
 > 뭐하러요?  
 
-Conan :  
+**Conan** :  
 To borrow some money.. haha  
 But Kevin Hart said, we were talking about you,  
 and he said he gets so frustrated.  
@@ -36,18 +36,18 @@ You don't break.
 스태프 전체가 웃고있는데, 당신은 그 얼굴로, 그냥 노려보고 있죠.  
 당신은 무너지지 않아요.  
 
-Ice :  
+**Ice** :  
 I don't break.  
 > 전 무너지지 않아요.  
 
-Conan :  
+**Conan** :  
 What is it about Kevin?  
 Are you doing it to be mean to Kevin,  
 or.. he just doesn't make you laugh?  
 > Kevin에게 어떤 편인가요?  
 그냥 Kevin에게 못되게 구는 건가요, 아님 그냥 안 웃긴가요?  
 
-Ice :  
+**Ice** :  
 Kevin annoyes me. You know what I mean?  
 He's not funny.  
 So all I got to do is think about how much he annoyes me.  
@@ -57,7 +57,7 @@ I don't break. I don't crack.
 그래서 제가 해야할 모든 것은 그가 저를 얼마나 짜증나게 했는지 생각하는 거에요.  
 전 무너지지 않아요. 빵터지지 않죠.  
 
-Ice :  
+**Ice** :  
 And you know, I've worked with a lot of different comedians, you know what I mean?  
 From Chris Tucker to Mike Epps to Tracy Morgan.  
 Tracy Morgan, get well, man.  
@@ -70,7 +70,7 @@ Trach Morgan, 쾌유를 빌어요.
 그리고 전 궁극적으로 조연이에요.  
 전 빵터지지 않죠, 왜냐하면 연기자가 그들의 일을 할 수 있도록 해야 한다고 생각하거든요.  
 
-Conan :  
+**Conan** :  
 Right.  
 During the course of this interview, I will get you, though.  
 You're going to completely lose it, giggle like a school girl.  
@@ -78,50 +78,50 @@ You're going to completely lose it, giggle like a school girl.
 하지만 이 인터뷰를 하는 동안에, 전 당신을 웃길거에요.  
 당신은 완벽하게 웃음을 참지 못할 것이고, 여학생처럼 낄낄거릴거에요.  
 
-Ice :  
+**Ice** :  
 Hmm..... I don't know about that.  
 > 음... 그건 잘 모르겠는데요.  
 
-Conan :  
+**Conan** :  
 It's going to sneak up on you. You'll see.  
 > 이건 살금살금 다가갈 거에요. 알 수 있을거에요.  
 
-Andy :  
+**Andy** :  
 I just worry that you're very depressed.  
 > 전 그냥 당신이 매우 우울할까봐 걱정되네요.  
 
-Conan :  
+**Conan** :  
 Yeah, Andy's worried you're depressed.  
 > 네, 앤디가 당신이 우울할까봐 걱정하네요.  
 
-Ice :  
+**Ice** :  
 Hahaha, he makes me laugh!  
 > ㅋㅋㅋㅋㅋ 그가 저를 웃겼네요!   
 
-Andy :  
+**Andy** :  
 Ah~~ see?  
 > 아 ㅋㅋㅋ 봤죠?  
 
-Conan :  
+**Conan** :  
 이상한짓 함 ㅋㅋㅋㅋㅋㅋㅋ  
 
-Ice :  
+**Ice** :  
 Annoying, annoying!  
 > 짜증나요, 짜증나요!  
 
-Conan :  
+**Conan** :  
 Really? I can't believe that didn't make you laugh.  
 > 진짜요? 이게 당신을 웃기지 못한다니 믿을 수 없네요.  
 
-Ice :  
+**Ice** :  
 Did you go to the Kevin Hart school of comedy?  
 > Kevin Hart 개그 학교라도 나오셨어요?  
 
-Andy :  
+**Andy** :  
 That always kills at kids' birthday party.  
 > 저건 애들 생일파티에서 끝내줘요.  
 
-Conan :  
+**Conan** :  
 I kill around two-years-olds.  
 I do great with two-years-olds.  
 I'm sad ~~  
@@ -129,11 +129,11 @@ I'm sad ~~
 전 두살짜리 애들과 굉장히 잘 지내요.  
 난 슬퍼~~  
 
-Ice :  
+**Ice** :  
 Leave those kids alone.  
 > 애들 혼자있게 놔두세요.  
 
-Conan :  
+**Conan** :  
 Alright. hahaha.  
 > 그럴게요 ㅋㅋㅋ
 
