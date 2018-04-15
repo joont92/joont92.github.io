@@ -1,5 +1,5 @@
 ---
-title: Is Olivia Munn Engagged?(5주)
+title: Is Olivia Munn Engagged? 본문/해석
 date: 2018-01-27 22:00:34
 tags:
     - Ellen DeGeneres
@@ -8,7 +8,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/6E0o0CFFy2Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+# 본문
 **Olivia** :
 I don't consider us best friend. We are best friend.
 The world doesn't know. because it's real friendship.
@@ -140,7 +140,7 @@ Yeah, he's a tiny little guy and with bursting with talent.
 
 ---
 
-### 어휘
+# 어휘
 1. barely : 간신히, 가까스로
 1. bursting : 아주 열성인
 1. constantly : 끊임없이, 거듭

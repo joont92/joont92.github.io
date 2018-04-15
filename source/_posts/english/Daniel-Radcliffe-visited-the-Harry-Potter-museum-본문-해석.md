@@ -8,7 +8,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/z28JfzqAE7w" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+# 본문
 **Conan** :  
 The Harry Potter museum opend up recently here on this lot.  
 And I'm told, you showed up here,  
@@ -98,7 +98,7 @@ Not a hologram.
 
 ---
 
-### 어휘
+# 어휘
 1. continuity : 지속성
 1. exhibit : 전시회
 1. immediately : 즉시, 즉각

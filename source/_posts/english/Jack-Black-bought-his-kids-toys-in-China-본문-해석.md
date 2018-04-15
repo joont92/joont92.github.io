@@ -1,5 +1,5 @@
 ---
-title: Jack Black bought his kids toys in China(7주)
+title: Jack Black bought his kids toys in China 본문/해석
 date: 2018-01-27 23:03:56
 tags:
     - Jimmy Kimmel
@@ -8,7 +8,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/vckEDtCbDxw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+# 본문
 **Po** :  
 Check it out! It's the legendary Battle Rickshaw Emperor Hawk.  
 > 이거 봐요! 이건 전설의 Battle Rickshaw Emperor Hawk네요.  
@@ -131,7 +131,7 @@ Oh wow, that's a tragedy. It really is.
 
 ---
 
-### 어휘
+# 어휘
 1. be supposed to do : ~하기도 되어 있다
 1. dumb : 바보같은
 1. for God's sake : 도대체

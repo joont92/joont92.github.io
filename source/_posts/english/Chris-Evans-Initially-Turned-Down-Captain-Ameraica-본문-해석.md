@@ -1,5 +1,5 @@
 ---
-title: Chris Evans Initially Turned Down 'Captain Ameraica'(9주)
+title: Chris Evans Initially Turned Down 'Captain Ameraica' 본문/해석
 date: 2018-02-11 00:52:51
 tags:
     - Jimmy Kimmel
@@ -8,8 +8,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/8XISNKa_q-g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
-
+# 본문
 **Jimmy** :  
 How many time have you played Captain America now? Is it five?  
 > 캡틴 아메리카를 몇번이나 하셨죠? 다섯번인가요?  
@@ -80,7 +79,7 @@ No big deal guys. Look, I'm just a human guy.
 
 ---
 
-### 어휘
+# 어휘
 1. afford : 여유가 되다
 1. all of a sudden : 갑자기
 1. anxiety : 불안, 걱정거리

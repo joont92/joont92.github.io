@@ -1,5 +1,5 @@
 ---
-title: Chris Hemsworth loves internet Thor Puns(4주)
+title: Chris Hemsworth loves internet Thor Puns 본문/해석
 date: 2018-01-07 23:04:33
 tags:
     - Conan O'brien
@@ -8,7 +8,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/-IYMYOZ7yKw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+# 본문
 **Conan** :  
 There must be people that come up to you with Thor jokes, all the times.  
 Just because you're so, you're Thor.  
@@ -156,7 +156,7 @@ Yeah, and then he hit you in the knee, at least.
 
 ---
 
-### 어휘  
+# 어휘  
 1. take off : 이륙하다
 1. fair : 어여쁜
 1. maiden : 처녀, 아가씨

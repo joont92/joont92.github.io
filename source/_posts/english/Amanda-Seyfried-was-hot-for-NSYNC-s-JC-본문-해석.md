@@ -1,5 +1,5 @@
 ---
-title: Amanda Seyfried was hot for NSYNC's JC(3주)
+title: Amanda Seyfried was hot for NSYNC's JC 본문/해석
 date: 2018-01-07 22:28:13
 tags:
     - Conan O'brien
@@ -8,7 +8,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/Ljb82lRH5oQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+# 본문
 **Conan** :  
 You have worked in two films, is that right, with Justin Timberlake?  
 > 당신은 Justin Timberlake랑 영화 2편을 찍었죠, 맞나요?
@@ -131,7 +131,7 @@ I wish that were my problem.
 
 ---
 
-### 어휘  
+# 어휘  
 1. attractive : 매력적인, 멋진  
 2. be obsessed with : ~에 사로잡혀 있는, 집착하는
 3. hang around : 어울리다, 서성거리다

@@ -1,5 +1,5 @@
 ---
-title: Emma Stone explained Twitter to Woody Allen(11주)
+title: Emma Stone explained Twitter to Woody Allen 본문/해석
 date: 2018-03-01 12:27:55
 tags:
     - Conan O'brien
@@ -8,7 +8,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/KZY0GLub5fc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+# 본문
 **Conan** :  
 You have a favorite Woody Allen Story.  
 > Woody Allen에 대해 매우 좋아하는 얘기가 있다면서요  
@@ -111,7 +111,7 @@ and he was like,
 
 ---
 
-### 어휘
+# 어휘
 1. Forescore : 80(fore = 4, score = 20)
 1. misdemeanour : 경범죄, 비행
 1. fool : (사람들을 웃기려고) 바보짓을 하다

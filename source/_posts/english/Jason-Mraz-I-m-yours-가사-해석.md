@@ -1,5 +1,5 @@
 ---
-title: Jason Mraz - I'm yours(8주)
+title: Jason Mraz - I'm yours 가사/해석
 date: 2018-02-03 14:15:04
 tags:
     - Jason Mraz
@@ -10,7 +10,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/EkHTsc9PU2A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 가사
+# 가사
 Well, you done done me and you bet I'm felt it.  
 넌 정말 날 휘어잡았어, 넌 내가 그것(사랑)을 느낀다고 확신했지  
 
@@ -125,7 +125,7 @@ I'm yours.
 
 ---
 
-### 어휘
+# 어휘
 1. God-forsaken : 신에게 버려진, 신도 건드릴수 없는?
 1. aim : 목표, 목표로 하다
 1. bend over backward : 비상한 노력을 하다

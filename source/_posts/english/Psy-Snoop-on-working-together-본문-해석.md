@@ -1,5 +1,5 @@
 ---
-title: Psy&Snoop on working together(2주)
+title: Psy&Snoop on working together 본문/해석
 date: 2017-12-19 21:45:32
 tags:
     - Jimmy Kimmel
@@ -9,7 +9,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/BhQxTr_ylBg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+# 본문
 **Jimmy** :  
 How did this unbelivable paring come to be?  
 How did you two get together?  
@@ -103,7 +103,7 @@ Yeah, right.
 
 ---
 
-### 어휘  
+# 어휘  
 - awesome : 굉장하다
 - be on the phone : 통화 중이다
 - careful consideration : 심사숙고

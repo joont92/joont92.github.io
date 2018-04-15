@@ -1,5 +1,5 @@
 ---
-title: Ed Sheeran - Thinking out loud(6주)
+title: Ed Sheeran - Thinking out loud 가사/해석
 date: 2018-01-27 22:43:43
 tags:
     - Ed Sheeran
@@ -10,7 +10,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/lp-EO5I60KA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+# 본문
 When your legs don't walk like they used before.  
 너의 다리가 예전처럼 걸을 수 없을 때(나이가 들어서)  
 
@@ -141,7 +141,7 @@ We found love right where we are.
 
 ---
 
-### 어휘
+# 어휘
 1. beat : (심장이) 고동치다
 1. crowd : 사람들, 군중
 1. evergreen : 상록수

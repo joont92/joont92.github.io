@@ -1,5 +1,5 @@
 ---
-title: Keira Knightly on her name(1주)
+title: Keira Knightly on her name 본문/해석
 date: 2017-12-12 00:17:36
 tags:
     - Jimmy Kimmel
@@ -8,7 +8,7 @@ tags:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/xj1eC_6xd6k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-### 본문
+# 본문
 **Jimmy** :  
 You have unusual name.  
 I knew you were coming, and I spelt it wrong, but I thought it was right.  
@@ -95,7 +95,7 @@ OK. exactly.
 
 ---
 
-### 어휘
+# 어휘
 1. as well : 또한, 역시
 2. be like : ~라 말하다, 말하고 있다.
 3. birth certificate : 출생 신고서

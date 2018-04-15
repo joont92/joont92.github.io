@@ -1,5 +1,5 @@
 ---
-title: Justin Bieber - Love Yourself(10주)
+title: Justin Bieber - Love Yourself 가사/해석
 date: 2018-03-01 11:31:50
 tags:
     - Justin Bieber
@@ -11,7 +11,7 @@ tags:
 <iframe width="640" height="360" src="https://www.youtube.com/embed/oyEuk8j8imI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
-### 본문
+# 본문
 For all the times that you rain on my parade.  
 넌 항상 내 하루를 망쳐놓지  
 
@@ -175,7 +175,7 @@ You should go and love yourself.
 
 ---
 
-### 어휘
+# 어휘
 1. admin : 인정하다
 1. catch up : 따라잡다
 1. fear : 무서워하다
