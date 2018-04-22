@@ -1,5 +1,6 @@
 ---
 title: hexo와 github pages로 블로그 만들기
+date: 2017-12-28 23:45:09
 tags:
 ---
 
@@ -177,3 +178,5 @@ npm install hexo-deloyer-git --save
 블로그에 markdown을 사용할 수 있고, git의 형상관리를 블로그에 사용할 수 있다니 매우 좋은것 같네요.
 
 들려주셔서 감사합니다~~
+
+<!-- more -->

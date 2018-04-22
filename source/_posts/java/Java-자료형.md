@@ -4,6 +4,8 @@ date: 2018-03-17 22:55:49
 tags:
   - Java 자료형
   - Java 형 변환
+photo : 
+  - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzI2MjcmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1OQ==
 ---
 
 # 기본형(Primitive Type)

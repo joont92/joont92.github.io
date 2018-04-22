@@ -4,6 +4,8 @@ date: 2018-04-08 18:20:39
 tags:
     - Jimmy Fallon
     - Tyler Oakely
+photo : 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NjExMjkmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1MQ==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/t-2DzOPQFwQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

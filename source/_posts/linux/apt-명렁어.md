@@ -1,5 +1,6 @@
 ---
 title: apt 명렁어
+date: 2017-12-25 18:07:27
 tags:
 ---
 
@@ -67,3 +68,5 @@ apt-cache show [패키지명]
 ```
 
 apt 명령어를 이용해 설치한 패키지는 \/var\/cache\/apt\/archives 에 설치된다.
+
+<!-- more -->

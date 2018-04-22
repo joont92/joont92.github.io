@@ -1,6 +1,7 @@
 ---
 title: markdown
 tags:
+date: 2017-12-28 23:45:09
 ---
 
 ### 문단 쓰기, 줄바꿈
@@ -274,3 +275,5 @@ Data4 | Data5 | Data6
 ### emoji
 github은 emoji를 지원한다.  
 <https://www.webpagefx.com/tools/emoji-cheat-sheet/>
+
+<!-- more -->

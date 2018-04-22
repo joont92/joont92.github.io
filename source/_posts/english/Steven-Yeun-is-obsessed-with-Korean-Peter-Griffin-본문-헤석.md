@@ -2,6 +2,10 @@
 title: Steven Yeun is obsessed with Korean Peter Griffin 본문/헤석
 date: 2018-04-14 14:11:04
 tags:
+    - Conan O'brien
+    - Steven Yeun
+photo : 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NTc4MzAmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo0OQ==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/Ej092tY36IY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

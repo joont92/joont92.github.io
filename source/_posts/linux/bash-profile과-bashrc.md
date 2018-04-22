@@ -1,5 +1,6 @@
 ---
 title: bash_profile과 bashrc
+date: 2017-12-26 18:07:27
 tags:
 ---
 
@@ -39,3 +40,5 @@ profile과 달리 Login 과정이 없으므로 shell을 실행시키는 사용�
 ~\/.bashrc의 경우 해당하는 사용자가 shell 실행시킬 때 실행된다.
 
 > profile의 경우 대부분 환경 변수같은 것을 명시하고 bashrc의 경우 alias 같은 것을 명시한다..(?)
+
+<!-- more -->
