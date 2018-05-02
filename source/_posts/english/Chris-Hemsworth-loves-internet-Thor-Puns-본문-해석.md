@@ -16,7 +16,7 @@ Just because you're so, you're Thor.
     왜냐하면 당신은, 당신은 그냥 토르니까요.
 
 **Chris** :  
-You get the same joke, pretty much.  
+You got the same joke, pretty much.  
 In fact, the single same joke that I've had for three years now.  
 It is not very funny. But I can tell it to you if you want.  
 > 같은 농담을 꽤 많이 들었죠.
@@ -34,17 +34,17 @@ And the next morning Thor says,
 "Fair maiden, I must confess and tell you who I am. I'm Thor."  
 And she said,  
 "You're Thor? I can hardly walk."  
-...  
-Very generous audience.  
 > 그러니까, 기본적으로 토르가 어린 아가씨를 만나요.
     그리고 그는 같이 자게 되었고, 아름다운 밤을 보냈죠.
     그리고 다음날 아침 토르가 말하길,
     "어여쁜 아가씨, 제가 누군지 고백해야겠어요. 전 토르에요."
     그러자 그녀가 말하길,
     "당신이 토르라고요? 전 걷기도 힘들어요."
-    ※ Thor와 sore(쓰라리다)의 유사한 발음을 이용한 농담
-    ...
-    굉장히 관대한 관객들이네요.
+    ※ Thor와 sore(쓰라리다)의 유사한 발음을 이용한 농담    
+
+**Chris** :  
+Very generous audience.  
+> 굉장히 관대한 관객들이네요.  
 
 **Conan** :  
 Nice! That timinig on that was perfect!  
@@ -67,14 +67,14 @@ I reckon about 300 times. I swear to God.
 
 **Conan** :  
 I gotta use that one. That's good.  
-...  
+> 다음에 써먹어야곘어요. 좋네요.  
+
+**Conan** :  
 You know, so much the fans,  
 I mean, the reaction of the people here when you came out,  
 and the fans are so devoted to you and to the films,  
 And the fan arts, it's so incredible and very silly.  
-> 다음에 써먹어야곘어요. 좋네요.
-    ...
-    있잖아요, 팬이 많으시잖아요.
+> 있잖아요, 팬이 많으시잖아요.
     제 말은, 당신이 여기 나왔을때 팬들의 반응은,
     그리고 팬들은 당신과 당신의 영화에 헌신적이죠.
     그리고 팬아트들은 정말 놀랍고 웃기던데요.
@@ -106,14 +106,15 @@ That's my hair commercial.
 **Conan** :  
 You shoud try and get that ad. There's Thor De France.  
 Very nice.  
+> 이 광고를 찍도록 해봐요. 이건 Thor De France(프랑스 사이클 대회 '투르 드 프랑스' 패러디)에요.  
+
+**Conan** :  
 And There's Pathor. Very nice.  
-...  
+> 그리고 이건 Pathor(pastor : 목사)에요. 아주 좋죠.  
+
+**Conan** :  
 That's my favorite so far.  
-> 이 광고를 찍도록 해봐요. 이건 Thor De France(프랑스 사이클 대회 '투르 드 프랑스' 패러디)에요.
-    아주 죻죠.
-    그리고 이건 Pathor(pastor : 목사)에요. 아주 좋죠.
-    ...
-    이건 제가 가장 좋아하는 거에요.
+> 이건 제가 가장 좋아하는 거에요.  
 
 **Chris** :  
 That one was actually me. That was me.  
@@ -123,16 +124,16 @@ That one was actually me. That was me.
 You will get hair ad.  
 I'm sure they are coming to you and asking.  
 Have you ever seen.. because Holloween, a couple days ago.  
-Have you ever run into an adult of kid dressed as Thor and had to deal with them?  
+Have you ever run into an adult or kid dressed as Thor and had to deal with them?  
 > 모발 광고를 하실것 같아요.
     저는 그들이 당신에게 와서 물어볼꺼라고 확신하는데요.
     본적 있나요.. 왜냐하면 며칠전에 할로윈 이었잖아요.
     어른이나 애가 토르 복장을 하고 있는걸 본적 있나요? 그리고 그들을 상대해야 했던 적은요?
 
 **Chris** :  
-Yeah, a lot of Comi Con conventions and things. you see it.  
+Yeah, a lot of Comic Con conventions and things. you see it.  
 But I was at the airport, few weeks ago.  
-This little kids was runing aroung in the full Thor outfit.  
+This little kids was runing around in the full Thor outfit.  
 He has the hammer, and he's smashing things.  
 His mother was there.  
 And she came up to me and grabs her son,  
