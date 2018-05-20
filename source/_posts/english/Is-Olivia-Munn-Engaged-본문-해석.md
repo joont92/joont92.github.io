@@ -1,9 +1,12 @@
 ---
-title: Is Olivia Munn Engagged? 본문/해석
+title: Is Olivia Munn Engaged? 본문/해석
 date: 2018-01-27 22:00:34
 tags:
     - Ellen DeGeneres
     - Olivia Munn
+    - 미티영
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5NTAxOTYmdHlwZT1sJno9MjAxOC8wNS8yMCAxMjo1Mg==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/6E0o0CFFy2Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -23,7 +26,7 @@ We actually hang out, we text.
 
 **Ellen** :
 Yeah, we do hang out and text.
-But I heard the rumor that you and Aaron got engagged, and then I thought,
+But I heard the rumor that you and Aaron got engaged, and then I thought,
 Well, Surely that's not true. because you wolud tell your best friend.
 > 네, 우린 같이 놀고 문자도 하죠.
     근데 전 루머를 하나 들었는데요, 당신과 아론이 약혼했다는 것이었죠.
@@ -38,7 +41,7 @@ Aaron Rodgers. The wonderful quarterback for the Greenbay Packers Everybody.
 > Greenbay Packers의 멋진 쿼터백 Aaron Rodgers입니다. 여러분.
 
 **Olivia** :
-We're not engagged.
+We're not engaged.
 > 우린 약혼하지 않았어요.
 
 **Ellen** :
@@ -46,7 +49,7 @@ Okay.
 > 알겠어요.
 
 **Olivia** :
-Not engagged.
+Not engaged.
 ...
 That's him proposing right there.
 > 약혼 안했어요.
@@ -72,10 +75,10 @@ It's kind of strange.
 I mean, I didn't think anybody believe this, until, like my family started texting me.
 And my sister said,
 "It's so stupid. Why would anybody think this?
-I mean, you are not engagged. It's so stupid."
+I mean, you are not engaged. It's so stupid."
 And the next text after that was
-"But seriously, are you engagged? because I'm seeing it everywhere."
-No, we're not engagged.
+"But seriously, are you engaged? because I'm seeing it everywhere."
+No, we're not engaged.
 > 그걸 말한건 그냥 잡지였어요.
     그리고 모두들 그 흐름을english8
  따르기 시작했죠.
@@ -146,7 +149,7 @@ Yeah, he's a tiny little guy and with bursting with talent.
 1. constantly : 끊임없이, 거듭
 1. correct : 맞는, 바로잡다
 1. for sure : 확실히, 틀림없이
-1. get engagged : 약혼하다
+1. get engaged : 약혼하다
 1. hillarious : 아주 주스운
 1. knock down : 때려눕히다
 1. laughter : 웃음

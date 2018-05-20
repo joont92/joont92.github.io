@@ -1,9 +1,12 @@
 ---
-title: Keira Knightly on her name 본문/해석
+title: Keira Knightley on her name 본문/해석
 date: 2017-12-12 00:17:36
 tags:
     - Jimmy Kimmel
-    - Keira Knightly
+    - Keira Knightley
+    - 미티영
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5NjA3MjUmdHlwZT1sJno9MjAxOC8wNS8yMCAxMjo1OQ==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/xj1eC_6xd6k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

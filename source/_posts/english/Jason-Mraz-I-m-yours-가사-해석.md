@@ -1,11 +1,14 @@
 ---
-title: Jason Mraz - I'm yours 가사/해석
+title: Jason Mraz - I'm Yours 가사/해석
 date: 2018-02-03 14:15:04
 tags:
     - Jason Mraz
-    - I'm yours
-    - I'm yours 해석
-    - I'm yours 가사
+    - I'm Yours
+    - I'm Yours 해석
+    - I'm Yours 가사
+    - 미티영
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5NTg3NTcmdHlwZT1sJno9MjAxOC8wNS8yMCAxMjo1OA==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/EkHTsc9PU2A" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

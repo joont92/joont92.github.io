@@ -4,7 +4,8 @@ date: 2018-04-08 18:20:39
 tags:
     - Jimmy Fallon
     - Tyler Oakely
-photo : 
+    - 미티영
+photo: 
     - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NjExMjkmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1MQ==
 ---
 

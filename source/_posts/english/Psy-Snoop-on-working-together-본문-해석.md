@@ -5,6 +5,9 @@ tags:
     - Jimmy Kimmel
     - Psy
     - Snoop
+    - 미티영
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5NjM0OTMmdHlwZT1sJno9MjAxOC8wNS8yMCAxMzowMQ==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/BhQxTr_ylBg" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

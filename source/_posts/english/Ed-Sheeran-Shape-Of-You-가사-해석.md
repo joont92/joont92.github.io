@@ -2,6 +2,13 @@
 title: Ed Sheeran-Shape Of You 가사/해석
 date: 2018-03-18 10:25:08
 tags:
+    - Ed Sheeran
+    - Shape Of You
+    - Shape Of You 해석
+    - Shape Of You 가사
+    - 미티영
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5NDQ4MDQmdHlwZT1sJno9MjAxOC8wNS8yMCAxMjo0OQ==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/JGwWNGJdvx8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

@@ -4,6 +4,9 @@ date: 2018-01-07 23:04:33
 tags:
     - Conan O'brien
     - Chris Hemsworth
+    - 미티영
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5NDA3OTImdHlwZT1sJno9MjAxOC8wNS8yMCAxMjo0Nw==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/-IYMYOZ7yKw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

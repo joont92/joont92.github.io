@@ -4,6 +4,7 @@ date: 2018-04-01 09:57:01
 tags:
   - Conan O'brien
   - Ice Cube
+  - 미티영
 photo : 
   - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NjIzODImdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1Mg==
 ---

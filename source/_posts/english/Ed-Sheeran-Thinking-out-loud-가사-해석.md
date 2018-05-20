@@ -1,11 +1,14 @@
 ---
-title: Ed Sheeran - Thinking out loud 가사/해석
+title: Ed Sheeran - Thinking Out Loud 가사/해석
 date: 2018-01-27 22:43:43
 tags:
     - Ed Sheeran
-    - Thiking out loud    
-    - Thiking out loud 해석
-    - Thiking out loud 가사
+    - Thinking Out Loud    
+    - Thinking Out Loud 해석
+    - Thinking Out Loud 가사
+    - 미티영
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5NDY3MTgmdHlwZT1sJno9MjAxOC8wNS8yMCAxMjo1MA==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/lp-EO5I60KA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

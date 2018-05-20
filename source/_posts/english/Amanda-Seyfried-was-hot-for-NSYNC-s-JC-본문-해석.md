@@ -4,6 +4,9 @@ date: 2018-01-07 22:28:13
 tags:
     - Conan O'brien
     - Amanda Seyfried
+    - 미티영
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5Mzc2ODYmdHlwZT1sJno9MjAxOC8wNS8yMCAxMjo0NQ==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/Ljb82lRH5oQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
