@@ -6,11 +6,14 @@ tags:
 	- HandlerAdapter
 	- HandlerMapping
 	- HandlerInterceptor
+	- 토비의 스프링
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 컨트롤러는 MVC의 세가지 컴포넌트 중 가장 많은 책임을 지고있다.  
 사용자 요청 파악, 요청 검증, 비즈니스 로직 수행, 뷰 선택, 뷰에 출력할 모델 생성, 세션 관리...  
-기본적인 부분만 나열해도 이렇게 역할이 많다.  
+기본적인 것만 나열해도 이렇게 역할이 많다.  
 
 애플리케이션 성격상 컨트롤러의 역할이 크다면 책임의 성격, 특징, 변경 사유 등을 기준으로 세분화 해 줄 필요가 있다.  
 스프링은 이를 각각의 전략으로 세분화하였고, 확장 또한 쉽게 가능한 형태로 제공하고 있다.  
@@ -19,7 +22,7 @@ tags:
 
 # 핸들러 매핑
 HTTP 요청정보를 이용해서 컨트롤러를 찾아주는 기능을 수행한다.  
-스프링이 제공하는 핸들러 매핑은 총 5가지이다.  
+스프링이 제공하는 핸들러 매핑 전략은 총 5가지이다.  
 핸들러 매핑은 `HandlerMapping` 인터페이스를 구현해서 생성한다.  
 ```java
 public interface HandlerMapping{
@@ -41,7 +44,7 @@ HTTP 요청 URL과 빈의 이름을 비교하여 일치하는 빈을 찾아준�
 
 ## ControllerBeanNameHandlerMapping
 `BeanNameUrlHandlerMapping`과 유사하지만 위처럼 빈 이름을 URL 형태로 짓지 않아도 된다는 것이 차이점이다.  
-빈 이름 앞에 자동으로 \/를 붙여져 URL에 매핑된다.  
+빈 이름 앞에 자동으로 `/`이 붙여져 URL에 매핑된다.  
 ```xml
 <bean name="hello" class="HelloController" /> <!-- /hello에 매핑 -->
 ```
@@ -91,6 +94,7 @@ URL과 컨트롤러 매핑정보를 한곳에 모아놓을 수 있는 전략이�
 `@RequestMapping`은 클래스는 물론 메서드 단위로도 URL을 매핑할 수 있다.  
 또한 URL외에도 method, parameter, header 등의 정보도 애노테이션을 이용해 매핑에 활용할 수 있다.  
 굉장히 강력하고 편리한 방법이지만 매핑 애노테이션의 사용 정책, 작성 기준을 잘 마련해놓지 않으면 매핑정보가 금방 지저분해지므로 주의해야 한다.  
+[@RequestMapping 바로가기](/spring/@RequestMapping/)
 
 ## HandlerMapping 공통 설정정보
 아래는 핸들러 매핑에서 공통적으로 사용되는 주요 프로퍼티이다.  
@@ -123,7 +127,7 @@ URL 매핑은 기본적으로 애플리케이션 컨텍스트 패스, 서블릿 
 그런데 핸들러 매핑의 경우 이와 좀 다르다.  
 핸들러 매핑 클래스는 매핑할 클래스를 현재 컨텍스트, 즉 서블릿 컨텍스트 내에서만 찾는다.  
 컨트롤러는 서블릿 컨텍스트에만 두는 것이 바람직하기 때문이다.  
-`detextHandlersInAcestorContexts` 옵션을 `true`로 주면서 이 방식을 바꿔줄 수 있긴한데,  
+`detectHandlersInAcestorContexts` 옵션을 `true`로 주면서 이 방식을 바꿔줄 수 있긴한데,  
 이 옵션은 절 대 사용하지 말자. 그냥 스프링의 극단적인 유연성을 보여주기 위한 옵션일 뿐이다.  
 
 ---
@@ -235,7 +239,7 @@ public class TestController extends SimpleController{
 이 `AnnotationMethodHandlerAdapter`는 다른 핸들러 어댑터와는 다르게 `DefaultAnnotationHandlerMapping` 핸들러 매핑과 같이 사용해야 한다.  
 두 가지 모두 동일한 애노테이션을 사용하기 때문이다.  
 이 방식은 매우 강력하고 작성이 간결한 대신 꽤나 많은 규칙이 존재하고, 이를 잘 숙지하고 사용해야 한다.  
-[DispatcherServlet의-Controller-전략](/spring/DispatcherServlet의-Controller-전략/)
+[@RequestMapping 바로가기](/spring/@RequestMapping/)
 
 ---
 
@@ -299,5 +303,9 @@ public interface HandlerInterceptor {
 인터셉터를 스프링 빈으로 등록할 수 있고 `ModelAndView`를 컨트롤 하는 등 더욱 정교한 컨트롤이 가능하다.  
 
 프로젝트의 상황에 따라 적절한 선택을 하는것이 좋다.  
+
+<div style="text-align: right">
+From <img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30" style="display:inline-block;"/>
+</div>
 
 <!-- more -->

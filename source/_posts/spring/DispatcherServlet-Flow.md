@@ -6,6 +6,9 @@ tags:
     - MVC
     - Front Controller
     - DispatcherServlet flow
+    - 토비의 스프링
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 스프링 웹 기술은 `MVC 아키텍쳐`를 근간으로 한다.  
@@ -21,7 +24,7 @@ MVC 아키텍처는 기본적으로 **프론트 컨트롤러 패턴**과 함께 
 ---
 
 # DispatcherServlet flow
-![image](https://user-images.githubusercontent.com/18513953/35338358-0ad30350-0161-11e8-9c76-61a1136e8fc0.png)  
+![DispatcherServlet Flow](https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwMzQzNTEmdHlwZT1sJno9MDYvMDgvMjAxOCAxMDowNg==#width80)  
 ## 1) DispatcherServlet의 HTTP 요청 접수
 들어오는 http 요청이 `DispatcherServlet`에 할당된 것이라면 이를 받는다.  
 대체로 아래와 같이 `web.xml`에 정의되어 있다.  
@@ -39,10 +42,10 @@ MVC 아키텍처는 기본적으로 **프론트 컨트롤러 패턴**과 함께 
 
 ## 2) DispatcherServlet에서 컨트롤러로 HTTP 요청 위임
 `DispatcherServlet`은 들어온 http 요청 정보(URL, parameter, method 등)을 참고로 해서 어떤 컨트롤러에게 작업을 위임할 지 결정한다.  
-스프링에서 사용되는 컨트롤러는 어떠한 형태라도 사용될 수 있다.(특정 인터페이스 구현 등의 제약도 없다)  
-이러한 점 때문에 `DispatcherServlet`에서 컨트롤러를 직접 호출하는것은 사실상 불가능하다.  
-그래서 `DispatcherServlet`은 `어댑터` 라는 것을 중간에 껴서 컨트롤러를 호출하는 방식을 해결책으로 사용한다.  
-어댑터에 모든 웹 요청 정보가 담긴 `HttpServletRequest`, `HttpServletResponse`를 그대로 전달해주고, 이를 핸들러 어댑터가 적절히 변환해서 컨트롤러가 받을 수 있는 형태로 전달해주는 것이다.  
+그리고 해당 컨트롤러를 호출하게 되는데, `DispatcherServlet`이 직접 호출하는 것이 아니라 `어댑터`라는 것을 중간에 껴서 호출한다.  
+이는 `DispatcherServlet`이 스프링에서 사용되는 컨트롤러를 직접 호출하는 것이 사실상 불가능하기 때문이다.  
+(스프링에서 사용되는 컨트롤러는 특정 인터페이스 구현등의 제약이 없으므로)  
+`DispatcherServlet`은 이 어댑터에 모든 웹 요청 정보가 담긴 `HttpServletRequest`, `HttpServletResponse`를 그대로 전달해주고, 어댑터는 적절히 변환해서 컨트롤러가 받을 수 있는 형태로 전달해주게 된다.  
 
 ## 3) 컨트롤러의 모델 생성과 정보 등록
 컨트롤러는 사용자 요청을 해석하여 비즈니스 로직에 작업을 위임하고 결과를 받아온 뒤, 모델에 넣는다.  
@@ -56,19 +59,19 @@ MVC 아키텍처는 기본적으로 **프론트 컨트롤러 패턴**과 함께 
 컨트롤러가 최종적으로 리턴해주는 정보는 모델과 뷰, 2가지이다.  
 이를 리턴해주고 컨트롤러의 역할은 끝이난다.
 
-## 5) DispatcherServlet의 뷰 호출과 모델 참조
+## 5-6) DispatcherServlet의 뷰 호출과 모델 참조
 다시 `DispatcherServlet으로` 넘어왔다.  
 뷰 오브젝트에 모델을 넘겨주며 최종 결과물을 생성해달라고 요청한다.  
 최종 결과물은 `HttpServletResponse` 오브젝트에 담긴다.  
 
-## 6) HTTP 응답 돌려주기
+## 7) HTTP 응답 돌려주기
 `DispatcherServlet은` 공통적으로 진행해야 할 후처리 작업이 있는지 확인하고 이를 수행한다.  
 이후 `HttpServletResponse`에 담긴 최종 결과를 서블릿 컨테이너에게 돌려준다.  
 컨테이너는 이 정보를 HTTP 응답으로 만들어 사용자의 브라우저나 클라이언트에 전송하고 작업을 종료한다.  
 
 ---
 
-# DispatcherServlet의 DI 가능한 전략
+# DispatcherServlet의 변경 가능한 전략
 `DispatcherServlet가` 수행하는 작업들(어댑터 선택, 뷰 선택 등)은 모두 `전략`이라고 불리며,
 기본적으로 자주 사용되는 것들은 default 전략으로 등록되어 있다.  
 이러한 default 전략들은 DI를 통해 확장할 수 있게 되어있다.  
@@ -120,5 +123,9 @@ URL과 요청 정보를 기준으로 어떤 컨트롤러를 사용할지 결정�
 
 모든 디폴트 전략들은 확장 전략 등록 시 무시된다는 점에 주의하여야 한다.  
 또한 디폴트 전략에 추가 옵션을 주고 싶으면 빈을 등록하면서 옵션을 줘야 한다.  
+
+<div style="text-align: right">
+From <img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30" style="display:inline-block;"/>
+</div>
 
 <!-- more -->

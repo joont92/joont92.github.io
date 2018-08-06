@@ -2,21 +2,26 @@
 title: WebApplicationInitializer
 date: 2018-02-06 00:05:50
 tags:
+    - web.xml 없애기
+    - WebApplicationInitializer
+    - 토비의 스프링
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 서블릿은 3.0 이후부터 web.xml 없이도 서블릿 컨텍스트 초기화 작업이 가능해졌다.  
-프레임워크 레벨에서 직접 초기화할 수 있게 도와주는 ServletContainerInitializer API를 제공하기 때문이다.  
+프레임워크 레벨에서 직접 초기화할 수 있게 도와주는 `ServletContainerInitializer API`를 제공하기 때문이다.  
 > **서블릿 컨텍스트 초기화**  
 web.xml에서 했던 서블릿 등록/매핑, 리스너 등록, 필터 등록 같은 작업들을 말한다.  
 
-스프링은 웹 모듈내에 이미 ServletContainerInitializer를 구현한 클래스가 포함되어 있고,  
-이는 WebApplicationInitializer 인터페이스를 구현한 클래스를 찾아 초기화 작업을 위임하는 역할을 수행한다.  
+스프링은 웹 모듈내에 이미 `ServletContainerInitializer`를 구현한 클래스가 포함되어 있고,  
+이는 `WebApplicationInitializer` 인터페이스를 구현한 클래스를 찾아 초기화 작업을 위임하는 역할을 수행한다.  
 ```java
 public interface WebApplicationInitializer{
     void onStartup(ServletContext servletContext) throws ServletException;
 }
 ```
-이 인터페이스를 구현한 클래스를 만들어두면 웹 어플리케이션이 시작할 때 자동으로 onStartup() 메서드가 실행된다.  
+이 인터페이스를 구현한 클래스를 만들어두면 웹 어플리케이션이 시작할 때 자동으로 `onStartup()` 메서드가 실행된다.  
 여기서 초기화 작업을 수행하면 된다.  
 
 ### 루트 웹 애플리케이션 컨텍스트 등록(root-context.xml)
@@ -40,11 +45,11 @@ public interface WebApplicationInitializer{
 ServletContextListener listener = new ContextLoaderListener();
 servletContext.addListener(listener);
 ```
-> WebApplicationInitializer의 onStartup은 서블릿 컨텍스트 초기화 시점에 실행된다고 했으니 리스너를 등록하지 않아도 된다고 생각할 수 있으나,  
-초기화 시점만 잡을 수 있지 종료 시점을 잡을수 없으므로 위와 같이 Listener는 등록해줘야 한다.  
+> `WebApplicationInitializer`의 `onStartup()`은 서블릿 컨텍스트 초기화 시점에 실행된다고 했으니 리스너를 등록하지 않아도 된다고 생각할 수 있으나,  
+초기화 시점만 잡을 수 있지 종료 시점을 잡을수 없으므로 위와 같이 리스너는 등록해줘야 한다.  
 종료 시점을 잡아주지 않으면 애플리케이션이 종료되어도 리소스가 반환되지 못하므로 메모리 누수가 일어날 수 있다.  
 
-디폴트 루트 웹 애플리케이션 컨텍스트 클래스(XmlWebApplicationContext)와 디폴트 XML 설정파일(/WEB-INF/applicationContext.xml)을 바꾸고 싶을때 web.xml에선 아래와 같이 했었다.  
+디폴트 루트 웹 애플리케이션 컨텍스트 클래스(`XmlWebApplicationContext`)나 디폴트 XML 설정파일 위치(`/WEB-INF/applicationContext.xml`)를 바꾸고 싶을때 `web.xml`에선 아래와 같이 했었다.  
 ```xml
 <!-- 애플리케이션 컨텍스트 클래스 변경 -->
 <context-param>
@@ -75,7 +80,7 @@ rootContext.register(RootConfig.class); // RootConfig == root-context java confi
 
 servletContext.addListener(new ContextLoaderListener(rootContext));
 ```
-register() 대신 scan() 메서드를 사용하여 패키지를 통째로 스캔할수도 있다.  
+`register()` 대신 `scan()` 메서드를 사용하여 패키지를 통째로 스캔할수도 있다.  
 
 ---
 
@@ -116,10 +121,10 @@ dispatcher.addMapping("/");
 ```
 
 여기까지가 루트 컨텍스트와 서블릿 컨텍스트를 자바 코드로 분리한 과정이다.  
-필터나 리스너들도 이런식으로 모두 등록할 수 있고, 그 이후엔 web.xml을 아예 제거할 수도 있다.  
+필터나 리스너들도 이런식으로 모두 등록할 수 있고, 그 이후엔 `web.xml`을 아예 제거할 수도 있다.  
 
-그 전까진 WebApplicationInitializer와 web.xml을 같이 사용할 수 있다.  
-대신 아래와 같이 web.xml에 version을 명시해줘야 한다.  
+그 전까진 `WebApplicationInitializer`와 `web.xml`을 같이 사용할 수 있다.  
+대신 아래와 같이 `web.xml`에 `version`을 명시해줘야 한다.  
 ```xml
 <web-app version="3.0">
     <!-- 
@@ -127,5 +132,9 @@ dispatcher.addMapping("/");
     -->
 </web-app>
 ```
+
+<div style="text-align: right">
+From <img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30" style="display:inline-block;"/>
+</div>
 
 <!-- more -->

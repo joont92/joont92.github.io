@@ -4,6 +4,9 @@ date: 2018-02-04 18:03:37
 tags:
     - View
     - ViewResolver
+    - 토비의 스프링
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 뷰는 모델이 가진 정보를 어떻게 표현해야 하는지에 대한 로직을 갖고 있는 컴포넌트이다.  
@@ -11,13 +14,13 @@ tags:
 이 외에도 엑셀, PDF, RSS 등 다양한 결과를 생성할 수 있는 뷰 오브젝트들이 있다.  
 
 # 뷰
-스프링에서 제공하는 뷰 목록은 아래와 같다.  
 뷰는 `View` 인터페이스를 구현해서 생성한다.  
 ```java
 public interface View{
     void render(Map<String, ?> model, HttpServletRequest request, HttpServletResponse resposne) throws Exception;
 }
 ```
+스프링에서 제공하는 뷰 목록은 아래와 같다.  
 
 ## InternalResourceView
 `RequestDispatcher`의 `forward()`, `include()`를 이용하는 뷰다.  
@@ -98,7 +101,7 @@ public interface ViewResolver{
 </bean>
 ```
 컨트롤러에서는 hello 만을 리턴해주면 된다. 이는 나중에 변경에도 용이하다.  
-> `InternalResourceView`는 JSTL 라이브러리가 클래스패스에 존재할 경우 `JstlView`를 사용하고, 존재하지 않으면 자기자신을 그대로 사용한다.  
+> JSTL 라이브러리가 클래스패스에 존재할 경우 `JstlView`를 사용하고, 존재하지 않으면 `InternalResourceView`를 사용한다.  
 
 ## VelocityViewResolver, FreeMarkerViewResolver
 `Velocity`와 `FreeMarker`를 사용하게 해주는 뷰 리졸버이다.  
@@ -134,6 +137,10 @@ bye.url=bye.vm
 추가로 이 파일은 서블릿 컨텍스트를 부모로 가지므로 DI가 가능하다는 장점이 있다.
 
 ## BeanNameViewResolver
-뷰 이름과 동일한 빈 이름을 가진 빈을 찾아서 뷰로 이용하게 해준다.  
+뷰 이름과 동일한 이름을 가진 빈을 찾아서 뷰로 이용하게 해준다.  
+
+<div style="text-align: right">
+From <img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30" style="display:inline-block;"/>
+</div>
 
 <!-- more -->

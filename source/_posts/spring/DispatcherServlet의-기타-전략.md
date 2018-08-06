@@ -5,6 +5,9 @@ tags:
     - HandlerExceptionResolver
     - LocaleResolver
     - MultipartResolver
+    - 토비의 스프링
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 `HandlerMapping`, `HandlerAdapter`, `ViewResolver` 등 외에도 `DispatcherServlet`에는 다양한 확장 가능한 전략들이 존재한다.  
@@ -13,7 +16,7 @@ tags:
 # 핸들러 예외 리졸버
 `HandlerExceptionResolver`는 컨트롤러 작업 중 발생한 예외를 어떻게 처리할 지 결정하는 전략이다.  
 기본적으로 컨트롤러나 그 뒷 계층에서 발생한 예외는 일단 `DispatcherServlet`이 전달받은 다음 다시 서블릿으로 던져서 서블릿 컨테이너가 처리하게 된다.  
-별다른 처리를 하지 않았다면 '500 Internal Server Error' 같은 메시지가 출력될 것이다.  
+별다른 처리를 하지 않았다면 **500 Internal Server Error** 같은 메시지가 출력될 것이다.  
 그런데 핸들러 예외 리졸버가 등록되어있다면 `DispatcherServlet`은 먼저 이 리졸버가 해당 예외를 처리할 수 있는지 확인한다.  
 만약 해당 예외를 처리할 수 있으면 예외는 `DispatcherServlet` 밖으로 던져지지 않고 해당 핸들러 예외 리졸버가 처리한다.  
 
@@ -82,6 +85,7 @@ public ModelAndView dataAccessExceptionHandler(DataAccessException ex){
 
 ## SimpleMappingExceptionResolver
 `web.xml`의 `<error-page>`와 비슷하게 예외를 처리할 뷰를 지정할 수 있게 해준다.  
+(뷰를 찾을때는 뷰리졸버가 사용된다.)  
 ```xml
 <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
     <property name="mappedHandlers">
@@ -136,5 +140,9 @@ public ModelAndView handleRequest(HttpServletRequest request, HttpServletRespons
 컨트롤러에서 뷰 이름이나 뷰 오브젝트를 돌려주지 않을 경우 요청 URL 정보를 기준으로 해서 뷰 이름을 생성해준다.  
 디폴트로 DefaultRequestViewNameTranslator가 등록되어 있다.  
 잘 활용하면 매번 뷰 이름을 지정하는 수고를 덜어줄 수 있다.
+
+<div style="text-align: right">
+From <img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30" style="display:inline-block;"/>
+</div>
 
 <!-- more -->
