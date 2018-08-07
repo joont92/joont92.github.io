@@ -10,7 +10,8 @@ photo:
     - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
-앞서 우리가 HTTP 요청을 모델에 바인딩하고 클라이언트에 보낼 HTTP 응답을 만들기 위해 뷰를 사용했던 방식과는 달리 HTTP 요청 본문과 HTTP 응답 본문을 통째로 메세지로 다루는 방식이다.  
+앞서 우리가 HTTP 요청을 모델에 바인딩하고 클라이언트에 보낼 HTTP 응답을 만들기 위해 뷰를 사용했던 방식과는 달리,  
+HTTP 요청 본문과 HTTP 응답 본문을 통째로 메세지로 다루는 방식이다.  
 주로 `XML`이나 `JSON`을 이용한 AJAX 기능이나 웹 서비스를 개발할 때 사용된다.  
 
 아래와 같이 스프링의 `@RequestBody`와 `@ResponseBody`를 통해 구현할 수 있다.
@@ -53,8 +54,23 @@ public String hello(@RequestBody String param){ // 요청
 XML 문서를 Source 타입의 오브젝트로 변환하고 싶을 떄 사용할 수 있다.  
 하지만 요즘은 OXM 기술이 많이 발달되었으므로 이 또한 잘 쓰이지 않는다.  
 
+<br/><br/>
+
 이제 아래는 디폴트가 아닌 메세지 컨버터들이다. 실제로 이 컨버터들이 더 유용하다.  
 여기서 필요한게 있다면 직접 `AnnotationMethodHanlderAdapter`의 `messageConverters`에 등록하고 사용해야 한다.  
+
+```xml
+<bean class="org.springframework...AnnotationMethodHandlerAdapter">
+    <property name="messageConverters">
+        <list>
+            <bean class="org.springframework.http.converter.json.MappintJacksonHttpMessageConverter" />
+            <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
+        </list>
+    </property>
+</bean>
+```  
+
+다른 전략과 마찬가지로 위와 같이 등록 시 디폴트 전략이 모두 무시된다는 점에 주의해야 한다.  
 
 ## Jaxb2RootElementHttpMessageConverter
 JAXB의 `@XmlRootElement`와 `@XmlType`이 붙은 클래스를 이용해 XML과 오브젝트 사이의 메세지 변환을 지원한다.  
@@ -68,8 +84,10 @@ JAXB의 `@XmlRootElement`와 `@XmlType`이 붙은 클래스를 이용해 XML과 
 ## MappingJacksonHttpMessageConverter
 `Jackson`의 `ObjectMapper`를 이용해서 JSON과 오브젝트 사이의 변환을 지원한다.  
 지원하는 미디어 타입은 `application/json`이다.  
-변환하는 오브젝트 타입의 제한은 없지만 프로퍼티를 가진 자바빈 스타일이거나 HashMap을 이용해야 정확한 변환 결과를 얻을 수 있다.  
+변환하는 오브젝트 타입의 제한은 없지만 프로퍼티를 가진 자바빈 스타일이나 HashMap을 이용해야 정확한 변환 결과를 얻을 수 있다.  
 
-
+<div style="text-align: right">
+From <img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30" style="display:inline-block;"/>
+</div>
 
 <!-- more -->

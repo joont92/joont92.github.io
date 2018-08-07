@@ -134,7 +134,7 @@ bye.url=bye.vm
 
 ## XmlViewResolver
 `ResourceBundleViewResolver`와 용도는 동일하고, `views.properties` 대신 `/WEB-INF/views.xml`을 사용한다.  
-추가로 이 파일은 서블릿 컨텍스트를 부모로 가지므로 DI가 가능하다는 장점이 있다.
+추가로 이 파일은 서블릿 컨텍스트를 부모로 가지므로 `DI`가 가능하다는 장점이 있다.
 
 ## BeanNameViewResolver
 뷰 이름과 동일한 이름을 가진 빈을 찾아서 뷰로 이용하게 해준다.  
