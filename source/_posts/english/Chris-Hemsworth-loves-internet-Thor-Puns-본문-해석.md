@@ -58,7 +58,7 @@ About 60 seconds off there.
 > 60초 정도 공백이 있었네요.
 
 **Conan** :  
-I like long pause.  
+I like the long pause.  
 So, how many time have you heard that joke?  
 People have said that to you.  
 > 전 긴 텀(멈춤)이 좋아요.
@@ -125,8 +125,8 @@ That one was actually me. That was me.
 
 **Conan** :  
 You will get hair ad.  
-I'm sure they are coming to you and asking.  
-Have you ever seen.. because Holloween, a couple days ago.  
+I'm sure they're coming to you and they're asking.  
+Have you ever seen.. because Holloween, couple days ago.  
 Have you ever run into an adult or kid dressed as Thor and had to deal with them?  
 > 모발 광고를 하실것 같아요.
     저는 그들이 당신에게 와서 물어볼꺼라고 확신하는데요.
@@ -161,26 +161,48 @@ Yeah, and then he hit you in the knee, at least.
 ---
 
 # 어휘  
-1. take off : 이륙하다
-1. fair : 어여쁜
-1. maiden : 처녀, 아가씨
 1. basically : 근본적으로, 기본적으로
 1. certain : 확실한
-1. come out : 나오다
-1. commercial : 광고
+1. come out : 나오다  
+    > 음악이나 영화가 나왔을 때 release 대신 사용하기도 함  
+    `His single album has been released`  
+    `His single album has came out` 
+1. come up (to somebody) : (말을 하기 위해 누구에게) 다가가다  
+1. commercial : 광고  
 1. confess : 고백하다(죄,잘못,수치스러운것,당황스러운것을)
 1. deal with : ~를 다루다, ~를 대하다
 1. devoted : 헌신적인
 1. dress as : ~의 복장을 하다
+1. fair : 어여쁜
 1. generous : 관대한
 1. hardly : 거의 ~할 수가 없다
 1. involved with : ~와 연관된
 1. look up : 올려다보다
+1. maiden : 처녀, 아가씨
 1. one another : 서로
 1. outfit : 옷(복장), 장비
 1. reckon : ~이라고 생각하다
 1. reproduction : 복제
 1. run into : 우연히 만나다
 1. silly : 어리석은, 우스꽝스러운
+1. There must be ~ : ~가 있을것이다(틀림없이)  
+1. take off : 이륙하다  
+
+# 발음
+Thor :  
+> th 발음 주의  
+
+pause :  
+> au 처럼 모음이 2개 이상 붙을 경우 조금 길게 발음해줘야 함  
+
+swear to God :   
+> to가 연음 처리. 스웨루갓  
+
+devoted :  
+> 디보이리드 아님. `드보릿`.  
+
+certain :   
+> tn 발음 주의. `설!은`  
+
 
 <!-- more -->

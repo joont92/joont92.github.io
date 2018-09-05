@@ -27,7 +27,7 @@ We actually hang out, we text.
 **Ellen** :
 Yeah, we do hang out and text.
 But I heard the rumor that you and Aaron got engaged, and then I thought,
-Well, Surely that's not true. because you wolud tell your best friend.
+Well, surely that's not true. because you wolud tell your best friend.
 > 네, 우린 같이 놀고 문자도 하죠.
     근데 전 루머를 하나 들었는데요, 당신과 아론이 약혼했다는 것이었죠.
     그리고 전 이게 사실이 아닐거라고 생각했죠. 왜냐하면 당신은 당신의 베프에게 말했을 것이니까요. 
@@ -52,9 +52,9 @@ Okay.
 Not engaged.
 ...
 That's him proposing right there.
-> 약혼 안했어요.
-    ...
-    저건 그가 프로포즈 하는 장면이네요.
+> 약혼 안했어요.  
+...
+저건 그가 프로포즈 하는 장면이네요.
 
 **Ellen** :
 That's him proposing?
@@ -79,16 +79,15 @@ I mean, you are not engaged. It's so stupid."
 And the next text after that was
 "But seriously, are you engaged? because I'm seeing it everywhere."
 No, we're not engaged.
-> 그걸 말한건 그냥 잡지였어요.
-    그리고 모두들 그 흐름을english8
- 따르기 시작했죠.
-    그건.. 약간 이상했어요.
-    제 말은, 전 아무도 이걸 안 믿을거라 생각했거든요. 제 가족이 저한테 문자를 보내기 전까지는요.
-    그리고 제 여동생이 말하길,
-    "이건 너무 어리석어. 왜 사람들이 이렇게 생각하는거지?"
-    그리고 다음 문자는,
-    "근데 진짜, 언니 약혼했어? 왜냐하면 모든곳에서 그렇게 보고 있으니까."
-    아니에요, 우린 약혼하지 않았어요.
+> 그걸 말한건 그냥 잡지였어요.  
+그리고 모두들 그 흐름을 따르기 시작했죠.  
+그건.. 약간 이상했어요.  
+제 말은, 전 아무도 이걸 안 믿을거라 생각했거든요. 제 가족이 저한테 문자를 보내기 전까지는요.  
+그리고 제 여동생이 말하길,  
+"이건 너무 어리석어. 사람들이 도대체 왜 이렇게 생각하는거지?"  
+그리고 다음 문자는,  
+"근데 진짜, 언니 약혼했어? 왜냐하면 모든곳에서 그렇게 보고 있으니까."  
+아니에요, 우린 약혼하지 않았어요.  
 
 **Ellen** :
 So your mother, your mother obviously didn't believe it.
@@ -97,19 +96,19 @@ So your mother, your mother obviously didn't believe it.
 **Olivia** :
 My mother did believe this, but now I was able to correct it and she knows for sure that it's not.
 As soon as I said "That's not true", she believe it.
-> 저희 어머니는 이걸 믿었었어요, 하지만 지금은 제가 어머니의 생각을 바로잡을 수 있었어요.
-    그리고 이제 그녀는 그게 사실이 아니란걸 알죠.
-    제가 "그건 사실이 아니야" 라고 말하자마자, 그녀는 믿었어요.
+> 저희 어머니는 이걸 믿었었어요, 하지만 지금은 제가 어머니의 생각을 바로잡을 수 있었어요.  
+그리고 이제 그녀는 그게 사실이 아니란걸 알죠.  
+제가 "그건 사실이 아니야" 라고 말하자마자, 그녀는 믿었어요.  
 
 **Ellen** :
 Let's talk about Ride Along2.
 You're so funny in it, and that movie was really great. The first one was great.
 And it knocked Star Wars down from the number one spot last week.
 So congratulation on that.
-> 이제 "Ride Along2"에 대해 이야기 해봅시다.
-    당신은 거기서 정말 웃기고, 그 영화는 정말 대단합니다. 1편도 대단했죠.
-    그리고 이건 지난주 "스타워즈"를 1위의 자리에서 밀어냈어요.
-    축하합니다.
+> 이제 "Ride Along2"에 대해 이야기 해봅시다.  
+당신은 거기서 정말 웃기고, 그 영화는 정말 대단합니다. 1편도 대단했죠.  
+그리고 이건 지난주 "스타워즈"를 1위의 자리에서 밀어냈어요.  
+축하합니다.
 
 **Olivia** :
 Yeah, thank you, thank you.
@@ -148,10 +147,10 @@ Yeah, he's a tiny little guy and with bursting with talent.
 1. bursting : 아주 열성인
 1. constantly : 끊임없이, 거듭
 1. correct : 맞는, 바로잡다
-1. for sure : 확실히, 틀림없이
-1. get engaged : 약혼하다
+1. for sure : (의심할 여지없이)확실히, 틀림없이
+1. be(get) engaged : 약혼하다
 1. hillarious : 아주 주스운
-1. knock down : 때려눕히다
+1. knock something down : ~를 때려눕히다
 1. laughter : 웃음
 1. literally : 문자 그대로, 그야말로
 1. number one spot : 1위 자리
@@ -161,5 +160,25 @@ Yeah, he's a tiny little guy and with bursting with talent.
 1. take : 씬, 테이크(영화에서 카메라를 중단시키지 않고 한 번에 찍는 장면이나 부분)
 1. tiny : 아주 작은
 1. uncontrollable : 통제할 수 없는  
+1. put something out : (눈에 띌수있는 곳에) 내놓다.  
+    > 트위터나 인스타그램 업로드도 이런 표현을 쓰나보다..  
+1. why would ~~, why do ~~ : 왜 도대체 ~~ ?(이해할 수 없는 상황일 때)  
+    > `why do ~~` 하면 `왜 ~~ 하니?` 정도가 되지만,  
+    `why would ~~` 하면 `왜 도대체 ~~ 하니?` 정도로 뉘양스가 바뀐다.  
+1. be able to correct : 바로 잡을 수 있다  
+1. as soon as ~~(do something) : ~~ 하자마자
+
+
+put something out
+
+# 발음
+world : 월l드  
+quarterback : 쿠어러백  
+magazine : 매개즈인(z 발음 주의)  
+believe : 블리브(슈와현상)  
+hillarious : 헐레리오(우)스  
+literally : 리러뤌리(r 발음 주의)
+how do you not laugh at him constantly? : 하우 두 유 낫 레!프 엣힘   컨!스턴틀리
+
 
 <!-- more -->

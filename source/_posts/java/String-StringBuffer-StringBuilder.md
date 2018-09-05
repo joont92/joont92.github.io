@@ -1,10 +1,12 @@
 ---
 title: 'String, StringBuffer, StringBuilder'
-date: 2018-08-14 21:02:47
+date: 2018-03-11 21:02:47
 tags:
     - String
     - StringBuffer
     - StringBuilder
+photo : 
+  - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzI2MjcmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1OQ==
 ---
 
 셋 다 문자열 처리를 위한 클래스이나, 그 처리 방법에서 차이를 보인다.  
@@ -57,3 +59,5 @@ JDK 5.0 부터 나왔다.
 문자열 연산이 잦지 않은 경우는 `String`을 사용하는 것이 좋고,  
 연산이 잦을 경우에는 `thread-safe` 여부를 따져서 `StringBuffer`나 `StringBuilder`를 사용하면 된다.  
 어쩌피 JDK 5.0 이후로 연산 시 `String`이 `StringBuilder`로 변환된다지만, 문자열을 더할 떄 까지 객체를 계속 추가해야 한다는 사실은 변함이 없으므로, 연산이 많으면 `StringBuilder`나 `StringBuffer`를 사용하는 것이 좋다.  
+
+<!-- more -->

@@ -37,7 +37,7 @@ I don't even call him anything. because that's how close we are.
 > 저는 심지어 그를 아무렇게도 부르지 않아요. 왜냐하면 우린 그만큼 가깝거든요.
 
 **Conan** :  
-You don't say anything. But he know you're talking about him.  
+You don't say anything. But he knows that you're talking about him.  
 > 당신이 아무말을 하지 않아도 그는 당신이 그에 대해 얘기하는지 아는군요.
 
 **Amanda** :  
@@ -68,9 +68,9 @@ I didn't even find him attractive, in fact.
 
 **Conan** :  
 Who was your favorite of those guys?  
-Let's see.. There's a Chic, there's a Ned...  
+Let's see.. There's a Ned, there's a Chip...  
 > 그들 중 가장 좋아하는 사람은 누구였나요?
-    한번 봅시다.. Chic도 있고, Ned도 있고...
+    한번 봅시다.. Ned도 있고, Chip도 있고...
 
 **Amanda** :  
 You must be talking about some other boy bands.  
@@ -145,5 +145,27 @@ I wish that were my problem.
 8. obviously : 분명하게, 명백하게
 9. pretend : ~인 척하다
 10. threatening : 협박
+1. you are in that age range : 딱 그 나이대네요  
+1. big fan : 열혈 팬  
+1. I don't find somebody attractive : 그는 매력이 없다. 그에게서 매력을 못느낀다.  
+1. you'd better believe : 확실해. 정말이다. 틀림없다.  
+> 근데 여기서는 어떻게 쓰였는지 모르겠다.. 코난이 왜 협박같다고 했을까  
+
+# 발음
+film :  
+> 필름 아님. `필(앞니 뒤 l발음)음`  
+
+attractive :  
+> 어트렉티브 아님. `어츄렉티브`  
+
+those :  
+> 도스 아님. 빠르게 `도우스`  
+
+hollywood :  
+> w 발음 주의. `하울리우드`  
+
+threatening :  
+> tn 발음은 혀를 윗니 뒤쪽에 갖다대고 코로만 소리를 냄. `은` 이라고 하면 된다.  
+`쓰(th)레!은닝`  
 
 <!-- more -->

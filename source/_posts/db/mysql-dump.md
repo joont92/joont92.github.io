@@ -1,6 +1,6 @@
 ---
 title: mysql dump
-date: 2018-08-10 13:02:20
+date: 2018-04-10 13:02:20
 tags:
     - mysql dump
     - mysql 덤프

@@ -154,6 +154,8 @@ We found love right where we are.
 1. strings : 현악기
 1. sweep somebody off of somebody's feet : somebody가 홀딱 반하다
 1. used to : ~하곤 했다
+    > I used to : 그랬었죠  
+    I used to be a house wife for fourty years. : 나는 40년 동안 주부였다.  
 1. it's all part of a plan : 그건 모두 계획의 일부이다
 1. keep on : 계속 하다
 

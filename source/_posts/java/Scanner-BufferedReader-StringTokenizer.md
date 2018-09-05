@@ -1,7 +1,13 @@
 ---
 title: 'Scanner, BufferedReader, StringTokenizer'
-date: 2018-08-09 16:11:47
+date: 2018-03-10 16:11:47
 tags:
+    - 자바 입력
+    - Scanner
+    - BufferedReader
+    - StringTokenizer
+photo : 
+  - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzI2MjcmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1OQ==
 ---
 
 # Scanner VS BufferedReader
