@@ -142,8 +142,8 @@ entity에 Address entity가 있고, 내부에 ZipCode가 있는경우
 
 - Spring-Data 벌크성 수정 쿼리
 @Modifying
-@Query("update Product p set p.price = p.price * 1.1 where p.stockAmun < :stockAmount)
-int bulkPriceUp(@Param("stockAmount") Stiing stockAmount);
+@Query("update Product p set p.price = p.price * 1.1 where p.stockAmount < :stockAmount)
+int bulkPriceUp(@Param("stockAmount") String stockAmount);
 > @Query의 파라미터와 매핑. 순서로도 지정 가능. :stockAmount 대신 ?0
 
 

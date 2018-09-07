@@ -21,7 +21,7 @@ hibernate로 시작되는건 hibernate만 사용 가능
 2) persistence.xml
 JPA 설정정보이다. META-INF 안에 있으면 자동으로 인식한다
 \<persistence\> 태그로 시작. namespace와 version 지정
-\<persistence-unit name="~~"\> 이라는 영속성 유닛 지정. 일반적으로 DB하나당 하나의 영속성 유닛을 등록한다.
+\<persistence-unit name="~~"\> 이라는 영속성 유닛 지정. 일반적으로 DB하나당 하나의 영속성 유닛을 등록한다. 그냥 고유한 값이라 생각하면 됨
 
 필수 속성
 1) JPA 표준 속성
