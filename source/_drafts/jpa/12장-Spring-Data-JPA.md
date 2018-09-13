@@ -126,7 +126,7 @@ Containing: select ... like %:username%
 >List<User> findByUsernameContaining(String username);
 
 3) 접근방법 예시2
-like : findByValContains(String str)
+like : findByValContaining(String str)
 in : findByValIn(Collection col)
 entity에 Address entity가 있고, 내부에 ZipCode가 있는경우
 > findByAddress_ZipCode(String zipCode)
