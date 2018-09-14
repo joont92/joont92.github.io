@@ -19,5 +19,11 @@ tags:
 1. grossness : 역겨움  
 1. mouthwatering : 군침도는  
 1. masterpiece : 걸작
+1. slime : 미끄러운것
+1. I don't like how S + V : ~하는 것이 싫다  
+> that이 와야되는데 how가 왔다.  
+여기선 '방법'을 얘기하는게 아니라 싫다는걸 강조하기 위해 사용된다!  
+1. from the outside : 밖에서 보면  
+
 
 <!-- more -->

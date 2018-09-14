@@ -17,11 +17,11 @@ tags:
 - ensure : 보장하다
 - comprehend : 이해하다  
     > understand : 지적 이해뿐 아니라 감정적, 경험적 이해를 모두 포함. 지식, 이해, 감정등에 대한 전체적인 결론  
-    comprehend : 지적 이해에 한정. 현상 또는 사실의 이해  
+    comprehend : 지적 이해에 한정. 현상 또는 사실의 이해, 보통 부정의 평서문에 쓰임  
 - creation : 창조, 생성(e.g. 객체 생성)
 - declaration : 선언
 - in general : 보통, 대개
-- A over B : B 보다 A
+- prefer A over B : B 보다 A가 더 좋다  
     > Prefer the object spread operator over Object.assign to shallow-copy objects  
     얕은 카피를 하기위해 Object.assign 보다 오브젝트 스프레드 연산자를 선호합니다.  
 - consist of something : ~로 구성되다
@@ -35,6 +35,7 @@ tags:
 - harm : 해친다
 - readability : 가독성
 - maintainability : 유지보수성
+- interfere : 간섭하다  
 - interfering : 간섭하는
 - perhaps : 아마, 어쩌면
 - regardless of : ~에 상관없이

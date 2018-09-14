@@ -24,7 +24,7 @@ MVC 아키텍처는 기본적으로 **프론트 컨트롤러 패턴**과 함께 
 ---
 
 # DispatcherServlet flow
-![DispatcherServlet Flow](https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwMzQzNTEmdHlwZT1sJno9MDYvMDgvMjAxOCAxMDowNg==#width80)  
+![DispatcherServlet Flow](https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwMzQzNTEmdHlwZT1sJno9MjAxOC8wOS8xMyAyMjoxMQ==#width80)  
 ## 1) DispatcherServlet의 HTTP 요청 접수
 들어오는 http 요청이 `DispatcherServlet`에 할당된 것이라면 이를 받는다.  
 대체로 아래와 같이 `web.xml`에 정의되어 있다.  
@@ -42,14 +42,12 @@ MVC 아키텍처는 기본적으로 **프론트 컨트롤러 패턴**과 함께 
 
 ## 2) DispatcherServlet에서 컨트롤러로 HTTP 요청 위임
 `DispatcherServlet`은 들어온 http 요청 정보(URL, parameter, method 등)을 참고로 해서 어떤 컨트롤러에게 작업을 위임할 지 결정한다.  
-그리고 해당 컨트롤러를 호출하게 되는데, `DispatcherServlet`이 직접 호출하는 것이 아니라 `어댑터`라는 것을 중간에 껴서 호출한다.  
-이는 `DispatcherServlet`이 스프링에서 사용되는 컨트롤러를 직접 호출하는 것이 사실상 불가능하기 때문이다.  
-(스프링에서 사용되는 컨트롤러는 특정 인터페이스 구현등의 제약이 없으므로)  
-`DispatcherServlet`은 이 어댑터에 모든 웹 요청 정보가 담긴 `HttpServletRequest`, `HttpServletResponse`를 그대로 전달해주고, 어댑터는 적절히 변환해서 컨트롤러가 받을 수 있는 형태로 전달해주게 된다.  
+`DispatcherServlet`은 프론트 컨트롤러이므로 세부 컨트롤러를 직접 찾지않고 [HandlerMapping, HandlerAdapter](/spring/HandlerMapping-HandlerAdapter-HandlerInterceptor)라는 전략에 해당 행위를 위임한다.(자세한 내용은 위 링크에서 확인)  
+지금은 그냥 전달받은 `HttpServletRequest`, `HttpServletResponse`를 넘겨주면 세부 컨트롤러를 찾아준다 정도만 기억해도 된다.  
 
 ## 3) 컨트롤러의 모델 생성과 정보 등록
-컨트롤러는 사용자 요청을 해석하여 비즈니스 로직에 작업을 위임하고 결과를 받아온 뒤, 모델에 넣는다.  
-모델은 뷰에 뿌려줄 정보를 담은 key, value 형태의 맵이다.
+컨트롤러는 사용자 요청을 해석하여 비즈니스 로직을 수행하고 결과를 받아온 뒤, 모델에 넣는다.  
+(모델은 뷰에 뿌려줄 정보를 담은 key, value 형태의 맵이다.)  
 > MVC 패턴의 장점은 모델과 뷰가 분리되었다는 것이다. 같은 모델이라도 뷰만 바꿔주면 전혀 다른 방식으로 모델의 정보를 출력시킬 수 있다.  
 예를 들어 jsp뷰를 선택하면 html, 엑셀뷰를 선택하면 엑셀, pdf뷰를 선택하면 pdf로 모델정보를 출력할 수 있다.  
 
@@ -62,24 +60,25 @@ MVC 아키텍처는 기본적으로 **프론트 컨트롤러 패턴**과 함께 
 ## 5-6) DispatcherServlet의 뷰 호출과 모델 참조
 다시 `DispatcherServlet으로` 넘어왔다.  
 뷰 오브젝트에 모델을 넘겨주며 최종 결과물을 생성해달라고 요청한다.  
-최종 결과물은 `HttpServletResponse` 오브젝트에 담긴다.  
+생성된 최종 결과물은 `HttpServletResponse` 오브젝트에 담긴다.  
 
 ## 7) HTTP 응답 돌려주기
 `DispatcherServlet은` 공통적으로 진행해야 할 후처리 작업이 있는지 확인하고 이를 수행한다.  
-이후 `HttpServletResponse`에 담긴 최종 결과를 서블릿 컨테이너에게 돌려준다.  
+수행이 끝나면 `HttpServletResponse`에 담긴 최종 결과를 서블릿 컨테이너에게 돌려준다.  
 컨테이너는 이 정보를 HTTP 응답으로 만들어 사용자의 브라우저나 클라이언트에 전송하고 작업을 종료한다.  
 
 ---
 
 # DispatcherServlet의 변경 가능한 전략
-`DispatcherServlet가` 수행하는 작업들(어댑터 선택, 뷰 선택 등)은 모두 `전략`이라고 불리며,
-기본적으로 자주 사용되는 것들은 default 전략으로 등록되어 있다.  
-이러한 default 전략들은 `DI`를 통해 확장할 수 있게 되어있다.  
-> 사실상 `DispatcherServlet`은 스프링이 관리하는 오브젝트가 아니므로 직접 `DI` 하는 방식으로 전략이 확장되는 것은 아니다.  
+아까 위에서도 봤듯이, DispatcherServlet은 자신이 작업을 직접 처리하지 않고, 다른 클래스들에게 행위를 위임하여 값을 받아오는 식으로 처리한다.  
+여기서 사용되는 클래스들을 `전략`이라고 부르고, 기본적으로 자주 사용되는 것들은 default로 등록되어있다.  
+`DispatcherServlet`은 전략패턴이 잘 적용되어 있으므로, 이러한 전략들을 아주 간단하게 변경 가능하다.(!!!)  
+간단하게 확장하고 싶은 전략들을 빈으로 등록만 해두면 된다.  
+> `DispatcherServlet`은 스프링이 관리하는 오브젝트가 아니므로 직접 `DI` 하는 방식으로 전략이 확장되는 것은 아니다.  
 `DispatcherServlet`은 기본적으로 **DispatcherServlet.properties** 파일을 통해 설정을 초기화하고,
 내부적으로 가지고 있는 어플리케이션 컨텍스트를 통해 확장 가능한 전략이 있나 찾은 뒤, 이를 가져와 디폴트 전략을 대신해서 사용하는 방식이다.  
 
-아래는 확장 가능한 전략들이다.
+아래는 확장 가능한 전략들과, default로 등록된 전략들이다.  
 
 ## HandlerMapping
 URL과 요청 정보를 기준으로 어떤 컨트롤러를 사용할지 결정한다.  
@@ -88,7 +87,7 @@ URL과 요청 정보를 기준으로 어떤 컨트롤러를 사용할지 결정�
     2. DefaultAnnotaionHandlerMapping
 
 ## HandlerAdapter
-핸들러 매핑으로 선택된 컨트롤러를 `DispatcherServlet`이 호출할 때 사용하는 어댑터이다.  
+핸들러 매핑으로 선택된 컨트롤러를 직접 호출한다.  
 - default
     1. HttpReqeustHandlerAdapter
     2. SimpleControllerHandlerAdapter
@@ -121,8 +120,8 @@ URL과 요청 정보를 기준으로 어떤 컨트롤러를 사용할지 결정�
 - default
     1. DefaultRequestToViewNameTraslator
 
-모든 디폴트 전략들은 확장 전략 등록 시 무시된다는 점에 주의하여야 한다.  
-또한 디폴트 전략에 추가 옵션을 주고 싶으면 빈을 등록하면서 옵션을 줘야 한다.  
+전략의 변경을 위해 빈을 직접 등록하게 되면 해당 전략의 default 전략들이 모두 무시되므로, 유의해야 한다.  
+또한 디폴트 전략에 추가 옵션을 주고 싶으면 해당 빈을 등록하면서 옵션을 줘야 한다.  
 
 <div style="text-align: right">
 From <img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30" style="display:inline-block;"/>

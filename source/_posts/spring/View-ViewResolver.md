@@ -1,5 +1,5 @@
 ---
-title: DispatcherServlet의 View 전략
+title: View, ViewResolver
 date: 2018-02-04 18:03:37
 tags:
     - View
@@ -82,7 +82,7 @@ redirect 경로는 절대경로(컨텍스트 패스, 서블릿 패스 포함)이
 하지만 위처럼 컨트롤러에서 매번 뷰를 생성하는 것은 비효율적이므로, 스프링에서는 이 작업을 적절히 분리하였다.  
 컨트롤러는 뷰의 논리적인 이름만을 리턴한 뒤 역할을 종료하고, 이를 `DispatcherServlet`의 `뷰 리졸버`가 받아 사용할 뷰 오브젝트를 찾고 생성하는 작업을 진행해준다.  
 게다가 뷰 리졸버는 보통 뷰 오브젝트를 캐싱하므로 같은 URL의 뷰가 반복적으로 만들어지지 않는 장점도 있다.  
-뷰 리졸버도 하나 이상을 등록해서 사용할 수 있는데, 이때는 핸들러 매핑처럼 `order` 프로퍼티를 이용해 적용 순서를 적용해주는 것이 좋다.  
+뷰 리졸버도 하나 이상 등록해서 사용할 수 있는데, 이때는 핸들러 매핑처럼 `order` 프로퍼티를 이용해 적용 순서를 적용해주는 것이 좋다.  
 뷰 리졸버는 `ViewResolver` 인터페이스를 구현해서 생성한다.  
 ```java
 public interface ViewResolver{
@@ -119,7 +119,6 @@ bye.(class)=org.springframework.web.servlet.view.velocity.VelocityView
 bye.url=bye.vm
 ```
 독립된 파일을 통해 뷰를 자유롭게 매핑할 수 있지만, 모든 뷰를 일일히 매핑해줘야 하는 불편도 뒤따른다.  
-
 그래서 단독으로 사용하는 것은 추천되지 않고, 다른 뷰 리졸버와 함께하면 유용하게 사용될 수 있다.  
 ```xml
 <bean class="org.springframework.web.servlet.view.ResourceBundleViewResolver">

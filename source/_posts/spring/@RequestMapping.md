@@ -18,8 +18,7 @@ url 뿐 아니라 파라미터, 헤더 등 더욱 넓은 범위를 적용할 수
 
 # 속성
 `DefaultAnnotationHandlerMapping`은 클래스와 메서드에 붙은 `@RequestMapping` 애노테이션 정보를 결합해 최종 매핑정보를 생성한다.  
-기본적인 결합 방법은 클래스 레벨의 `@RequestMapping`을 기준으로 삼고,  
-메서드 레벨의 `@RequestMapping`으로 세분화하는 방식으로 사용된다.  
+기본적인 결합 방법은 클래스 레벨의 `@RequestMapping`을 기준으로 삼고, 메서드 레벨의 `@RequestMapping`으로 세분화하는 방식으로 사용된다.  
 `@RequestMapping`에 사용할 수 있는 속성들은 아래와 같다.  
 
 ## String[] value

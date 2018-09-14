@@ -1,5 +1,5 @@
 ---
-title: DispatcherServlet의 기타 전략
+title: HandlerExceptionResolver, LocaleResolve, MulitpartResolver
 date: 2018-02-04 23:22:22
 tags:
     - HandlerExceptionResolver
@@ -114,6 +114,7 @@ public ModelAndView dataAccessExceptionHandler(DataAccessException ex){
 브라우저 설정을 따르지 않고 사용자가 직접 변경하게 하려면 `SessionLocaleResolver`나 `CookieLocaleResolver`를 사용하는 것이 편리하다.  
 해당 리졸버를 사용하면 사용자가 국가 선택 시 쿠키나 세션의 `locale` 값을 변경하여 해당 지역의 리소스 파일이 사용되게 할 수 있다.  
 다국어 서비스에 유용하게 활용할 수 있다.  
+[LocaleResolver 사용 예(http://yookeun.github.io/java/2015/08/12/spring-i18n/)](http://yookeun.github.io/java/2015/08/12/spring-i18n/)  
 
 ---
 
