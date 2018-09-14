@@ -59,6 +59,7 @@ tags:
 - whether : ~인지 아닌지
 - I'm (brand) new to this : 이번것이 처음이다
 - infer : 추론하다
+- experimental : 실험적인
 
 # 답답노트
 - 술이 너무 부족했다.
