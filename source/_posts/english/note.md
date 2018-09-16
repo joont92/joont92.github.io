@@ -60,6 +60,12 @@ tags:
 - I'm (brand) new to this : 이번것이 처음이다
 - infer : 추론하다
 - experimental : 실험적인
+- effectively : 효과적으로, 실질적으로
+- nested : 중첩된
+- i.e. : 즉(라틴어 id est)  
+- instantiated : 인스턴스화 된
+- authentication : 인증
+- authorization : 인가
 
 # 답답노트
 - 술이 너무 부족했다.

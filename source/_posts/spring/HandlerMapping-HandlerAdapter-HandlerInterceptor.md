@@ -260,7 +260,7 @@ public interface HandlerInterceptor {
 ```
 
 1. preHandle  
-컨트롤러가 호출되기 전에 실행된다. `handler` 파라미터는 컨트롤러 빈 오브젝트이다.  
+컨트롤러가 호출되기 전에 실행된다. 파라미터 `handler`는 컨트롤러 오브젝트이다.  
 리턴값이 `true`이면 다음 인터셉터로 진행되고, `false`일 경우 다음 인터셉터들을 실행되지 못한다.    
 
 2. postHandle
