@@ -20,6 +20,7 @@ one, am 이 wanna로 들림
 
 And board.. something which i .. put  
 > And boredom is something of up with which I will not put!  
+> And boredom is something which I will not put up with!  
 문법적으로 무슨말인지 모르겠음  
 
 the first ask me get back the school wanna be do over summer 
