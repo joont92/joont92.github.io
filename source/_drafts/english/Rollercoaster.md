@@ -107,6 +107,8 @@ Mom just went to the store.
 go나 get이나 비슷하게 들림  
 mall right이 연음. mall도 발음이 명확하게 안들림    
 
+// 지금 쇼핑몰 못가, 방금 엄마가 마트 갔어  
+
 She lets me in charge. Well, you know, conditionally.  
 > lefts me in charge  
 left가 lets 처럼..  
@@ -122,6 +124,7 @@ Yeah he told his last time..
 
 I just about died! told you I can.  
 > No, I told you I can't  
+// 거의 죽을뻔 했어!  
 
 I'm watching my brother and step-brother.  
 
@@ -132,6 +135,7 @@ They, into가 잘 안들림..
 wanna be him stays so, I'm gonna see him to catches his handes  
 > one of these days though,   
 I'm gonna see the two as she catched them red-handed.  
+// 하지만 요즘에 나는 현장에서 걸린 둘을 볼 것이다  
 
 Will you hold it down, I'm trying to use the phone  
 
@@ -255,6 +259,8 @@ when I came home, there's st~~ monkeys
 and when I came home, there was stunning lack of moneys  
 recall 주의  
 
+// 니가 내한테 말했던게 기억나는거 같다
+
 I still that..  
 > I still don't know how they cleand that up so fast  
 
@@ -279,6 +285,8 @@ fair : 축제 마당, 풍물 장터(들판이나 공원에서 사람들이 대�
 
 lame : 변변찮은, 시시한  
 
+stay out of trouble : 말썽 일으키지 마라  
+
 charge : 책임, 담당  
 > I'm in charge : 내가 담당이다, 내가 두목이다  
 
@@ -291,6 +299,8 @@ satellite : (인공)위성
 orbit : 궤도  
 
 totally : 완전히  
+
+get into trouble : 곤경에 빠지다  
 
 I got caught red-handed :  
 현장에서 걸렸다(손이 빨개진 상태로 잡혔다)  
@@ -318,3 +328,5 @@ count on : ~를 믿다
 juggle : 저글링하다  
 
 stunning : 굉장히 아름다운, 깜짝 놀랄,  
+
+seem to : ~한 것 같다
