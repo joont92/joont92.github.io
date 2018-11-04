@@ -1,9 +1,11 @@
 ---
-title: Rollercoaster
-date: 2018-10-08 14:41:28
+title: Rollercoaster 본문/해석
+date: 2018-10-10 14:41:28
 tags: 
     - Phineas and Ferb
     - Rollercoaster
+photo: 
+    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI3NzQ0NjE2MTcmdHlwZT1sJno9MjAxOC8xMC8yOCAxNzoyMA==
 ---
 
 <iframe frameborder="0" width="640" height="360" src="https://www.dailymotion.com/embed/video/x4hpop4" allowfullscreen allow="autoplay"></iframe>
@@ -197,7 +199,7 @@ In you <u>backyard</u>?
 > 너희집 <u>뒷마당</u>에?  
 
 Some of it.  
-> 일부만.  
+> 뭐 그런거  
 >> 맞나?..  
 
 Wow.  
@@ -269,7 +271,7 @@ Did the satellite crashes into the house?
 No no no, you gotta see what Phineas and Ferb are doing.  
 > 아뇨 아뇨 아뇨, Phineas랑 Ferb가 뭘 하고 있는지 보셔야 돼요.  
 
-<u>Seems like<u> we've had this conversation before?  
+<u>Seems like</u> we've had this conversation before?  
 > 전에도 이 얘기를 했던거 <u>같은데<u>?  
 
 What do you mean?  
