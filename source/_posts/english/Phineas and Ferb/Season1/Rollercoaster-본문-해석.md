@@ -244,10 +244,11 @@ Hey, Where's Pairy?
 > 이봐, Pairy 어딨어?  
 
 Good Morning, Agent P.  
-...  
+(생략)  
 Now, get out there.  
 We're all <u>counting on</u> you.  
 > 좋은 아침이네 agent P.  
+> (생략)  
 > 이제 밖으로 나가게.  
 > 우리 모두 당신을 <u>믿고 있네</u>.  
 
@@ -293,5 +294,147 @@ They are building a roller coaster.
 
 Candace, seriously, isn't Phineas little young to be an roller coaster engineer?  
 > Candace, 진지하게, Phineas가 롤러코스터 엔지니어가 되기엔 좀 어리지않니?  
+
+Aren't you a little young to be a roller coaster engineer?  
+> 롤러코스터 엔지니어가 되기엔 좀 어리지 않나요?  
+
+Yes, yes I am.  
+> 네, 그렇죠.  
+
+Well, I must say I'm very impressed.  
+> 음, (꼭 말해야겠네요) 정말 감동받았어요.  
+
+The forms all seems to be <u>in order</u>,  
+although I'd never seen them <u>filled out in</u> crayon before.  
+> 크레용으로 <u>작성된</u> 것을 본적은 없지만, 이 양식은 전부 <u>정돈되어</u> 있는 것 같네요.  
+
+So, if there's anything I can get you, anything at all, just let me know.  
+> 그러니 제가 줄 수 있는게 있다면, 뭐든지 알려주세요.  
+
+Do you think we could burrow one of those <u>gadgets</u>?  
+> 저 <u>장치들</u> 중 하나를 빌릴 수 있을까요?  
+>> Do you think ~~ 가 좀 정중하게 표현할 때 쓰이는 것 같다.  
+
+Now, this is the life.  
+> 이게 인생이지.  
+
+Ah, Perry the platypus. What an <u>unexpected</u> <u>surprise</u>.  
+And by unexpected.. I mean, completely expected!!  
+> 아, 오리너구리 Perry, <u>뜻밖의</u> <u>기습</u>이네.  
+> 뜻밖이니까... 내 말은, 완전히 기대했다는거야!!  
+
+I doctor Heinz have covered the entire eastern seaboard in tin foil.  
+> 나 닥터 Heinz는 동쪽 해안지방 전체를 은박지(?)로 덮었다.  
+
+And when I put my giant magnet next to my genius, <u>magnetism</u> <u>magnifire</u>.  
+> 그리고 내가 내 거대한 자석을 내 천재(?) 옆에 놓았을 때, 자력 확대 렌즈(?)지.  
+
+I will pull the EAST westerly in direction.  
+> 난 동쪽을 서쪽 방향으로 당길거야.  
+
+Thereby reversing the rotation of the earth.  
+> 그렇게 함으로써 지구의 자전이 반대로 되겠지.  
+
+You may well, ask yourself.  
+Why would he do this?  
+What could he possibly have to gain?  
+> 넌 아마도, 스스로 물어보겠지.  
+> 그게 왜 이런걸 할까?  
+> 그가 얻을 수 있는건 뭘까?  
+
+Well, let me answer that question.  
+I haven't really worked on all the bugs yet.  
+> 글쎼, 내가 그 질문에 답변해볼께.  
+> 아직 모든 버그를 연구하지는 않았어.(뭐라는겨;)  
+
+I mean, tin foil <u>alone costs a lot</u>.  
+> 내 말은, 은박지 <u>하나만해도 돈이 많이 든다</u>.  
+
+But mom, I'm telling you. They are building it, and it's huge!  
+> 엄마, 제가 말하잖아요. 걔들이 그걸 만들고 있고 엄청 거대해요!  
+
+Phineas and Ferb present the coolest roller coaster ever now open?!  
+Mom, mom~~~.  
+> Phineas랑 Ferb가 지금 가장 멋진 롤러코스터를 선물한다고?!  
+엄마, 엄마~~.  
+
+Phineas and Ferb got a roller coaster?  
+You'd think we can get a discount if we bring this <u>filer</u>?  
+Maybe we better take it.  
+> Phineas랑 Ferb가 롤러코스터를 가졌다고?  
+> 이 <u>전단지</u>를 가져가면 할인받을 수 있을까?  
+> 아마 들고가는게 좋을것 같아.  
+
+Look, look, look, see.  
+I told you I'm not crazy.  
+I told you!  
+> 봐요, 봐요, 봐요.  
+> 내가 안 미쳤다고 말했잖아요.  
+> 보세요, 내가 말한 그대로죠!  
+
+And you're not crazy because..  
+> 니가 미치지 않았는데 왜냐하면..  
+
+(Scream)  
+
+I see your point, Candace.  
+No crazy person would scream at a post like that.  
+> 뭘 말하는지 알겠다, Candace.  
+> 어떤 미친 사람도 포스트에 그렇게 소리지르진 않을꺼야.  
+
+I'll be at the <u>dairy</u> section.  
+If you wanna come <u>yell</u> at some cheese or anything.  
+> <u>유제품</u> 코너에 있을게.  
+> 니가 치즈나 뭐 그런것에 <u>소리지르고</u> 싶을 수도 있으니까.  
+
+Ladies and gentlemen,  
+Boys and girls,  
+Children of all ages.  
+> 신사 숙녀 여러분, 소년 소녀들, 모든 연령대의 아이들.  
+
+May I present a <u>spectacle</u> <u>most of the morning</u> <u>in the making</u>!  
+> <u>오전 내내(아침 내내)</u> <u>만들어지고 있는</u> <u>굉장한 구경거리</u>를 보여줘도 될까요!  
+
+The coolest coaster ever!!!!  
+> 지금까지의 가장 멋진 롤러 코스터!!  
+
+To fasten, insert the tab into the metal buckle.  
+To release, just pull back on the.. oops..  
+> 고정하려면, 탭을 금속 버클에 삽입해.  
+> 풀려면, 그냥 뒤로.. 이런..  
+
+Well, you <u>get the picture</u>.  
+Well, that's about it.  
+Enjoy the ride.  
+> 뭐, <u>이해했지</u>?  
+> 음, 이게 다야.  
+> 재밌게 타렴.  
+
+You guys all signed waivers, right?  
+> 너네들 전부 포기각서에 싸인했지?  
+
+Relax, they're just rubber.  
+> 진정해, 이거 그냥 고무야.  
+
+Hey, look. There's come the A-A-A-A.  
+> 저기봐. 아-아-아-아 (구간)이야.  
+
+(생략)
+Ha! you're missed.  
+> (생략)  
+> 하! 놓쳤구만.  
+
+Now, you're too late!!!  
+> 이제, 너는 너무 늦었어!!  
+
+(생략)  
+
+Well, that didn't work.  
+> 어, 효과가 없네.  
+
+And now we have two ton ball of tin foil traveling two hundred miles directly at us!!
+Quckly! we must seperate magnet from the magnfire <u>before it's too late</u>!!!  
+> 지금 2톤의 은박지 공이 200마일로 우리한테 날아오고 있네!!  
+빨리! <u>너무 늦기전에</u> 자석을 확대렌즈에서 분리해야해!!!  
 
 <!-- more -->
