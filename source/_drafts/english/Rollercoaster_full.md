@@ -129,17 +129,23 @@ I-I-I could by a bunch of east-facing real estate, and sell it again with an uns
 I just Ha! You missed! Aaahh! Ow, ow, ow, owwwww! Owww! Now, you are too late! Quake in your boots and watch helplessly, as the unimaginable electromagnetic forces, pull the eastern seaboard, thereby reversing the rotation of the-- Well, that didn't work.
 And now, we have a two ton ball of tin foil traveling 200 miles an hour directly at us! Quickly, we must separate the magnet from the Magnifier before it's too late!
 
+
 Now I know I have that club card in here somewhere.
 I always have it with me, but my purse is a disaster area, you know how it is.
 Oh, oh, oh, oh, oh! Mom! Mom! It's no use! It's no use, we are doomed! 
-You did it! You saved us, Perry the Platypus Curse you, Perry the Platypus! Look, look, look, see? Okay, I give up.
-What am I supposed to be looking at? No! It's not possible! I'm gonna go get the cart.
+You did it! You saved us, Perry the Platypus  
+Curse you, Perry the Platypus!   
+
+Look, look, look, see? Okay, I give up.
+What am I supposed to be looking at? No! It's not possible! 
+I'm gonna go get the cart.
 It was right here, and it was huge! Mom! Time to go.
 I've got frozens.
 Okay, so you think that Phineas and Ferb are still under that stupid tree in the backyard, right? Well, yes.
 That would be my guess.
 Fine.
-Then lets go home, now! Oh, there you are, Perry.
+Then lets go home, now! 
+Oh, there you are, Perry.
 Nice hat, Isabella.
 Funny, I don't remember this in the blueprints.
 And I'm sure this is new.
@@ -147,7 +153,8 @@ Ee-eee-ee, ha-hah-ha.
 I worry about you sometimes, Candace.
 \R Welcome to Mr.
 Slushy Burger.
-May I take your order? Anyone want fries? Croissant? Anyone want a croissant?\R You know, if that thing crashes into earth, Candace is in charge.
+May I take your order? Anyone want fries? Croissant? Anyone want a croissant?\R 
+You know, if that thing crashes into earth, Candace is in charge.
 We should have charged more.
 Okay, we're here.
 Are you happy now, Candace? Yes! See, Mom? I told you they weren't there! Oh, hi, boys.
