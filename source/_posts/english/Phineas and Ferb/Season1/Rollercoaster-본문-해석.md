@@ -273,7 +273,7 @@ No no no, you gotta see what Phineas and Ferb are doing.
 > 아뇨 아뇨 아뇨, Phineas랑 Ferb가 뭘 하고 있는지 보셔야 돼요.  
 
 <u>Seems like</u> we've had this conversation before?  
-> 전에도 이 얘기를 했던거 <u>같은데<u>?  
+> 전에도 이 얘기를 했던거 <u>같은데</u>?  
 
 What do you mean?  
 > 무슨 말이에요?  
@@ -436,5 +436,146 @@ And now we have two ton ball of tin foil traveling two hundred miles directly at
 Quckly! we must seperate magnet from the magnfire <u>before it's too late</u>!!!  
 > 지금 2톤의 은박지 공이 200마일로 우리한테 날아오고 있네!!  
 빨리! <u>너무 늦기전에</u> 자석을 확대렌즈에서 분리해야해!!!  
+
+I know I have that club card `in here somewhere`  
+> `여기 어딘가에` 클럽카드가 `있는거` 아는데..  
+
+```
+Maybe it's in here somewhere..  
+> 아마 여기 어딘가에 있을거야  
+
+There's a cell phone in here somewhere
+> 폰이 여기 어딘가에 있다  
+>> Phone is in here somewhere 보단 there's phone을 쓰는게 더 자연스러운 듯 하다  
+```
+
+yon know how it is?  
+> 뭔지 아시죠?  
+
+We're doomed!!  
+> 우린 망했어!!  
+
+Curse you!  
+> 뒤져라!!  
+
+What am I `supposed to be looking at`?  
+> `뭘 보라는거야`?  
+>> <http://prologue.blog.naver.com/PostView.nhn?blogId=bluewater_33&logNo=140120886910&parentCategoryNo=122&categoryNo=&viewDate=&isShowPopularPosts=false&from=postView>
+>> 여기선 아래쪽에 있는 `어쩌라는 거야..`의 어감이 쓰인 듯 하다  
+
+```
+What are we supposed to do?  
+> 우리 어떻게 해야 하지?  
+```
+
+I'm gonna `go get` the cart.  
+> 카트 `가지러 가야겠다`  
+>> `gonna go 동사` 형태를 꽤나 많이 쓰는 듯.  
+>> get, pick 같은 동사뒤에 자주 사용되며, `~가지러 가야겠다` 정도로 쓰이는 것 같다.  
+
+```
+I'm gonna go get the book.  
+> 책 가지러 가야곘다  
+```
+
+So you think that Phineas and Ferb are still under that stupid tree in the backyard, right?  
+> 그러니까 Phinese랑 Ferb가 뒷마당에 있는 멍청한 나무아래 아직 있다고 생각하는거죠? 맞죠?  
+
+That would be my guess.  
+> 내 추측엔 그래  
+>> <https://ilikeen.tistory.com/724>  
+>> 좀 더 약한 추측  
+
+```
+It would be here.  
+> 아마 거기 있을거야  
+```
+
+I `worry about` you sometimes, Candace.  
+> 난 가끔 니가 `걱정돼`, Candace.  
+
+Anyone want fires?  
+> 감자튀김 먹을 사람?  
+
+```
+Anyone want chickens?  
+> 치킨 먹을 사람?  
+
+Anyone go PC cafe?  
+> PC방 갈사람? 
+```
+
+Candace is in charge.  
+> Candace 책임이야.  
+>> 앞뒤 문맥에 따라 이해하면 된다    
+
+`Way too` cool!  
+> `너무` 멋졌어!  
+
+```
+You're way too late. sorry.  
+> 너무 늦었어요. 죄송해요.  
+
+This jacket is way too big for me.  
+> 이 자켓은 내한테 너무 크다.  
+```
+
+Sorry, only one `ride per customer`.  
+> 미안, `손님당` 한번이야.  
+
+```
+Only one change per purchaser.  
+> 기회는 구매자당 한번입니다.  
+```
+
+What are you gonna do tomorrow?  
+> 내일 뭐할꺼야?  
+>> will 보다 gonna를 훨씬 많이 쓰는 듯 하다  
+
+Don't know yet.  
+> 아직 몰라.  
+
+```
+Don't do yet.  
+> 아직 안했어  
+
+Don't study yet.  
+> 아직 공부 안했어  
+```
+
+You could teach Petty some tricks.  
+> Perry한테 trick들을 가르쳐야지  
+>> teach A B : A에게 B를 가르치다(간단한 거지만 익숙해지기 위해)  
+
+It really was `the cooleat coaster ever`.  
+> `지금까지 탄 것 중 최고의 롤러코스터`였어.  
+> the 최상급 + ever : 지금까지의 가장 ~ 한  
+
+```
+It's the best company ever.  
+> 지금까지 중 최고의 회사야  
+
+It's the slowest runner ever.  
+> 지금까지 중 가장 느린 러너야.  
+```
+
+You know what I mean?  
+> 뭔 말인지 알제?  
+>> <https://www.youtube.com/watch?v=EhA2cKj2oZc>  
+
+So, what should we do tomorrow?  
+> 그래서, 내일 뭐 하는게 좋을까?  
+
+There's `a world of` possibilities.  
+> `무수한` 가능성이 있다.  
+>> 근데 실제로 이렇게 잘 안쓰이는 듯 하다. `~~한 세상이다` 로 거의 쓰이는 듯.  
+
+Give it a rest, Candace!  
+> 그만좀해라, Candace!  
+
+```
+Give it a rest!!!  
+> 적당히 좀 해라!!  
+```
 
 <!-- more -->

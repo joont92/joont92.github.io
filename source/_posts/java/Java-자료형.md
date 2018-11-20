@@ -6,6 +6,7 @@ tags:
   - Java 형 변환
 photo : 
   - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzI2MjcmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1OQ==
+type: "categories"
 ---
 
 # 기본형(Primitive Type)

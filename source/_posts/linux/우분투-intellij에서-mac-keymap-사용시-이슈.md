@@ -1,6 +1,8 @@
 ---
 title: 우분투 intellij에서 mac keymap 사용시 이슈
+date: 2018-03-22 18:07:27
 tags:
+    - ubuntu intellij
 ---
 
 윈도우 키(대시)
@@ -9,10 +11,10 @@ https://reachlabkr.wordpress.com/2014/12/06/ubuntu-%EC%97%90%EC%84%9C-supercomma
 compiz 설치후에
 ubuntu unity plugin
 launcher에 젤 상단 dash 부분 사용하지 않음으로 변경
-super space로 바꾸니까 맥 된거 같네 ㅋㅋㅋㅋ
+난 super space로 바꿨는데, mac spotlight 느낌이 난다  
 
 윈도우 w키(창 닫기)
-창 관리 - 스케일에 가면 있음. super + tab 으로 바꾼건 윈도우 같다고 함 ㅋㅋ
+창 관리 - 스케일에 가면 있음. super + tab 으로 바꾼건 윈도우 같다고 함
 
 파라미터 보기
 https://askubuntu.com/questions/68463/how-to-disable-global-super-p-shortcut
