@@ -6,7 +6,7 @@ tags:
     - java ee
 ---
 
-토론글
+### 토론글
 <https://okky.kr/article/278014>
 
 java SE, EE는 스펙이다(패키지는 SE는 java.xxxx, EE는 javax.XXXX 이다.)

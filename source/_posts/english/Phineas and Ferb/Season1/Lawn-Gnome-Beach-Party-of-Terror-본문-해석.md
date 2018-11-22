@@ -45,10 +45,10 @@ By mom~~!! Yes!
 > 잘가요 엄마~~! 아싸!  
 
 You heard her.  
-We can't bug dad, which makes me in charge.  
+We can't `bug` dad, which makes me in charge.  
 By default.  
 > 들었지?  
-> 우린 아빠를 괴롭힐 수 없고, 그건 내가 책임자란 뜻이야.  
+> 우린 아빠를 `괴롭힐` 수 없고, 그건 내가 책임자란 뜻이야.  
 > 기본적으로.  
 
 Carry on.  
@@ -88,7 +88,7 @@ Building a beach. `Check it out`.
 > 바닷가 만들어. `이거 봐봐`.  
 
 Can me and the other Fireside Girls be lifeguards?  
-> ???  
+> 나랑 Fireside Girls들이 라이프가드가 되어도 되니?  
 
 We need to earn our `aquatic` `safety` `badge`s.  
 > 우린 우리의 `수중` `안전` `배지`를 얻을 필요가 있어.  
@@ -96,10 +96,10 @@ We need to earn our `aquatic` `safety` `badge`s.
 I mean, I've been a friend of Susie's longer than Katie.  
 So I `should've been` invited that party first.  
 > 내 말은, 난 Katie 보다 더 오래 Susie의 친구였단거야.  
-> 그러니까 내가 그 파티어 첫번째로 초대`됐어야 했어`.  
+> 그러니까 내가 그 파티에 첫번째로 초대`됐어야 했어`.  
 
 `who cares` if they're `lab` partners?  
-> `실험` 파트너라면 누가 신경쓰겠어(상관이나 한데)?  
+> `실험` 파트너를 누가 신경쓰겠어(상관이나 한데)?  
 
 We're locker neighbors, and locker neighbors trump lab partners any day.  
 > locker neighbor가 뭐지..  
@@ -114,7 +114,7 @@ Ha! You call that a beach?
 This is `way` `below` your `usual` `standard`.  
 > 이건 니 `평소` `기준`보다 `훨씬` `낮다`.  
 
-This `isn't even a worth` a call to mom.  
+This `isn't even worth` a call to mom.  
 > 엄마한테 전화할 `가치도 없네`.  
 
 You know, if you guys ever wanna be popular, you're gonna have to stop playing in the sandboxes.  
