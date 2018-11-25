@@ -1,4 +1,4 @@
-ㅜㅁㄴㅍㄷaaccaa---
+---
 title: Rollercoaster 본문/해석
 date: 2018-10-10 14:41:28
 tags: 
@@ -8,8 +8,13 @@ photo:
     - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI3NzQ0NjE2MTcmdHlwZT1sJno9MjAxOC8xMC8yOCAxNzoyMA==
 ---
 
+# 영상
 <iframe frameborder="0" width="640" height="360" src="https://www.dailymotion.com/embed/video/x4hpop4" allowfullscreen allow="autoplay"></iframe>
 
+# 자막
+<https://www.springfieldspringfield.co.uk/view_episode_scripts.php?tv-show=phineas-and-ferb&episode=s01e01>  
+
+# 본문
 So, Ferb, what do you wanna do today?  
 > 그래서 Ferb, 오늘 뭐하고 싶어?  
 
@@ -18,41 +23,41 @@ What does he wanna do?
 > Perry는?  
 > 걔는 뭐하고 싶다는데?  
 
-Well, he is a <u>platypus</u>, they don't do much.  
-> 그래, 걔는 <u>오리너구리</u>지, 그들은 뭘 많이 안해.  
+Well, he is a `platypus`, they don't do much.  
+> 그래, 걔는 `오리너구리`지, 그들은 뭘 많이 안해.  
 
-<u>I for one</u>, am starting to get board.  
-And <u>boredem</u> is something of up with which I will not put.  
-> <u>개인적으로</u> 지루해지기 시작했어.  
-> 그리고 <u>지루함은</u> 내가 참지 못할거야.  
+`I for one`, am starting to get board.  
+And `boredem` is something of up with which I will not put.  
+> `개인적으로` 지루해지기 시작했어.  
+> 그리고 `지루함은` 내가 참지 못할거야.  
 >> 1. for one : 내 경우에는, 개인적으로  
 >> 2. 도치법을 사용..?  
 
-The first thing they're gonna ask us when we <u>get back</u> to the school is  
+The first thing they're gonna ask us when we `get back` to the school is  
 "What did we do over the summer?"  
-> 우리가 학교에 <u>돌아갔을</u> 때 걔들이 젤 먼저 물어보는건 "여름에 뭐했어?" 야.  
+> 우리가 학교에 `돌아갔을` 때 걔들이 젤 먼저 물어보는건 "여름에 뭐했어?" 야.  
 
 I mean, no school for three months.  
 Our life should be a roller coaster!  
 > 내 말은, 3개월간 학교를 안 가니까, 우리의 삶은 롤러코스터 같아야 해!  
 
 And I mean, good roller coaster.  
-Not like that one we rode at the state <u>fair</u>.  
+Not like that one we rode at the state `fair`.  
 > 그니까 내 말은, 좋은 롤러코스터를 말하는거야.  
-> 우리가 주 <u>축제</u>에서 탔던거 같은거 말고.  
+> 우리가 주 `축제`에서 탔던거 같은거 말고.  
 
 Please exit to the left.  
 > 왼쪽으로 내려주세요~  
 
-Man, that was <u>lame</u>. Why, if I built a roller coaster I would..  
+Man, that was `lame`. Why, if I built a roller coaster I would..  
 That's it! I know what we're gonna do today!  
-> 이봐, 그건 <u>시시했어</u>. 내가 롤러코스터를 만들었다면..  
+> 이봐, 그건 `시시했어`. 내가 롤러코스터를 만들었다면..  
 > 그거야! 우리가 오늘 뭐 해야할지 알겠어!  
 
 Phineas, Ferb. I'm gonna go pick up a few things.  
-You boys <u>stays out of trouble</u>. OK?  
+You boys `stays out of trouble`. OK?  
 > Phineas, Ferb. 나 몇가지 좀 사러갔다 올게.  
-> <u>말썽 피우지 마렴</u>. 알겠지?  
+> `말썽 피우지 마렴`. 알겠지?  
 >> 1. go 동사 형태를 꽤나 자주 사용하는 듯  
 >> 2. out of 가 연음으로 매우 빠르게 발음됨  
 
@@ -62,8 +67,8 @@ Okay, mom.
 We are gonna build a roller coaster!  
 > 우린 롤러코스터를 만들거야!  
 
-I'm <u>in charge</u>, right? You did tell them I'm in charge.  
-> 제가 <u>대장[책임자, 담당]</u>이죠? 걔들한테 제가 대장이라고 말했죠.  
+I'm `in charge`, right? You did tell them I'm in charge.  
+> 제가 `대장[책임자, 담당]`이죠? 걔들한테 제가 대장이라고 말했죠.  
 >> 1. in charge of : ~의 담당이다  
 
 Relax, Candace.  
@@ -78,8 +83,8 @@ But what if there's an emergency?
 Like what?  
 > 뭐 어떤거?  
 
-What if a <u>satellite</u> falls <u>out of</u> <u>orbit</u> and crushes into the house!  
-> 만약 <u>인공위성</u>이 <u>궤도</u> <u>로 부터</u> 떨어져서 집에 충돌하면 어떻게해요!  
+What if a `satellite` falls `out of` `orbit` and crushes into the house!  
+> 만약 `인공위성`이 `궤도` `로 부터` 떨어져서 집에 충돌하면 어떻게해요!  
 
 If that happens, you're in charge.  
 > 만약 그런 일이 있다면, 니가 대장해.  
@@ -87,8 +92,8 @@ If that happens, you're in charge.
 Yes!  
 > 아싸!  
 
-Mom says I'm in charge, <u>conditionally</u>~  
-> 엄마가 내가 대장이라고 했어, <u>조건부로</u>~  
+Mom says I'm in charge, `conditionally`~  
+> 엄마가 내가 대장이라고 했어, `조건부로`~  
 
 Whatever.  
 > 그러든지.  
@@ -117,12 +122,12 @@ And I'm in charge, conditionally!
 
 Hello, Oh hi, Stacy!  
 No, I can't go to the mall right now.  
-Mom <u>just</u> went to the store.  
+Mom `just` went to the store.  
 She left me in charge.  
 Well, you know, conditionally.  
 > 여보세요, 오 안녕, 스테이시!  
 > 아니 나 지금 쇼핑몰 못가.  
-> 엄마가 <u>방금</u> 마트에 갔어.  
+> 엄마가 `방금` 마트에 갔어.  
 > 나한테 책임을 맡기고.. 뭐, 조건부로. ㅎㅎ  
 
 Oh, if you go, can you see Jeremy is there?  
@@ -131,28 +136,28 @@ Oh, if you go, can you see Jeremy is there?
 No, no, he is the cute one that works at Mr.Slushy Burger.  
 > 아니아니 Mr.Slushy Burger에서 일하는 귀여운 애 있잖아.  
 
-Yeah, he <u>totally</u> smiled at me last time I was there.  
-<u>I just about died!</u>  
-> 응, 내가 지난번에 거기 갔을 때 그는 <u>완전히</u> 웃어줬었어.  
-> <u>거의 죽을뻔 했어!</u>  
+Yeah, he `totally` smiled at me last time I was there.  
+`I just about died!`  
+> 응, 내가 지난번에 거기 갔을 때 그는 `완전히` 웃어줬었어.  
+> `거의 죽을뻔 했어!`  
 
 No, I told you I can't.  
-I'm watching my brother and <u>step-brother</u>.  
+I'm watching my brother and `step-brother`.  
 > 아니, 말했듯이 난 못가.  
-> 난 내 오빠랑 <u>의붓오빠</u>를 보고있어.  
+> 난 내 오빠랑 `의붓오빠`를 보고있어.  
 
-They never <u>get into trouble</u>, `cause mom never catches them.  
+They never `get into trouble`, `cause mom never catches them.  
 One of these days though,  
-I'm gonna see the two as she catches them <u>red-handed</u>.  
-> 그들은 절대 <u>곤경에 빠지지</u> 않아, 왜냐면 엄마가 절대 못잡거든.  
-<u>하지만 언젠가는</u>, 난 엄마에게 <u>현장에서 잡힌</u> 그 둘을 보게 될거야.  
+I'm gonna see the two as she catches them `red-handed`.  
+> 그들은 절대 `곤경에 빠지지` 않아, 왜냐면 엄마가 절대 못잡거든.  
+`하지만 언젠가는`, 난 엄마에게 `현장에서 잡힌` 그 둘을 보게 될거야.  
 
-Will you <u>hold it down</u>? I'm trying to use the phone!  
-> <u>조용히 해줄</u>래? 지금 전화 쓰는 중이거든!  
+Will you `hold it down`? I'm trying to use the phone!  
+> `조용히 해줄`래? 지금 전화 쓰는 중이거든!  
 
 Mom left me in charge  
-so there will be no <u>shenanigans</u> today.  
-> 엄마가 나한테 책임을 맡겼으니까 오늘은 아무 <u>속임수[장난]</u>도 없을거야.  
+so there will be no `shenanigans` today.  
+> 엄마가 나한테 책임을 맡겼으니까 오늘은 아무 `속임수[장난]`도 없을거야.  
 
 What are you doing right now?  
 What do you ask?  
@@ -188,15 +193,15 @@ Hey, Phineas.
 Hey, Isabella.  
 > 안녕 Isabella.  
 
-<u>Whatcha doin'?</u>  
-> <u>뭐 해?</u>  
+`Whatcha doin'?`  
+> `뭐 해?`  
 >> 1. Whatcha == What are you 의 줄임말(신조어)  
 
 Build a roller coaster.  
 > 롤러코스터 만들어.  
 
-In you <u>backyard</u>?  
-> 너희집 <u>뒷마당</u>에?  
+In you `backyard`?  
+> 너희집 `뒷마당`에?  
 
 Some of it.  
 > 뭐 그런거  
@@ -212,14 +217,14 @@ Some might say.
 >> 개떼구를...  
 
 Hey, Ferb.  
-Does your step-brother <u>ever</u> talk?  
+Does your step-brother `ever` talk?  
 > 안녕, Ferb.  
-> 니 의붓형은 얘기<u>해본적</u>이 있어?  
+> 니 의붓형은 얘기`해본적`이 있어?  
 
 Ferb?  
 He is more of man of action.  
 > Ferb?  
-> 그는 <u>행동가</u>에 <u>가깝지</u>  
+> 그는 `행동가`에 `가깝지`  
 
 I was gonna go to the pool, you wanna go swimming?  
 > 난 수영장에 갈려고 했어, 너 수영하고 싶어?  
@@ -236,9 +241,9 @@ Okay.
 > 그래.  
 
 Hey, Ferb.  
-You got enough <u>rivets</u> up there?  
+You got enough `rivets` up there?  
 > 이봐, Ferb.  
-> 위에 <u>대갈못</u> 충분해?  
+> 위에 `대갈못` 충분해?  
 
 Hey, Where's Pairy?  
 > 이봐, Pairy 어딨어?  
@@ -246,18 +251,18 @@ Hey, Where's Pairy?
 Good Morning, Agent P.  
 (생략)  
 Now, get out there.  
-We're all <u>counting on</u> you.  
+We're all `counting on` you.  
 > 좋은 아침이네 agent P.  
 > (생략)  
 > 이제 밖으로 나가게.  
-> 우리 모두 당신을 <u>믿고 있네</u>.  
+> 우리 모두 당신을 `믿고 있네`.  
 
-So, the way I see, the <u>soil</u> <u>fuel</u> rockets <u>kick in</u> at the mall's <u>parking lot</u>.  
-> 내가 본 바로는, <u>흙</u> <u>연로</u> 로켓이 쇼핑몰 <u>주차장</u>에서 <u>등장해</u>.  
+So, the way I see, the `soil` `fuel` rockets `kick in` at the mall's `parking lot`.  
+> 내가 본 바로는, `흙` `연로` 로켓이 쇼핑몰 `주차장`에서 `등장해`.  
 >> 뭔 소리...  
 
-Then we <u>release</u> the snakes during the corkscrew at the interstate.  
-> 우리는 <u>주와 주 사이</u>에서 <u>빙글빙글 돌</u> 때 뱀을 <u>풀거야</u>.  
+Then we `release` the snakes during the corkscrew at the interstate.  
+> 우리는 `주와 주 사이`에서 `빙글빙글 돌` 때 뱀을 `풀거야`.  
 >> 뭐라노 진짜  
 
 I'm gonna go get the snakes.  
@@ -272,19 +277,19 @@ Did the satellite crashes into the house?
 No no no, you gotta see what Phineas and Ferb are doing.  
 > 아뇨 아뇨 아뇨, Phineas랑 Ferb가 뭘 하고 있는지 보셔야 돼요.  
 
-<u>Seems like</u> we've had this conversation before?  
-> 전에도 이 얘기를 했던거 <u>같은데</u>?  
+`Seems like` we've had this conversation before?  
+> 전에도 이 얘기를 했던거 `같은데`?  
 
 What do you mean?  
 > 무슨 말이에요?  
 
 I seem to recall you telling me that the boys were training monkeys to juggle bicycle.  
-And when I came home, there was a <u>stunning</u> <u>lack of monkeys</u>.  
+And when I came home, there was a `stunning` `lack of monkeys`.  
 > 애들이 저글링을 하기 위해 원숭이를 훈련시키고 있었다는 말을 한게 기억이 나네.  
-근데 내가 집에 갔을떄, <u>놀랍게도</u> <u>원숭이가 부족했지</u>.  
+근데 내가 집에 갔을떄, `놀랍게도` `원숭이가 부족했지`.  
 
-I still don't know how they <u>cleand</u> that <u>up</u> so fast..  
-> 난 아직도 어떻게 그들이 그걸 그렇게 빨리 <u>치웠는지</u> 모르겠어요..  
+I still don't know how they `cleand` that `up` so fast..  
+> 난 아직도 어떻게 그들이 그걸 그렇게 빨리 `치웠는지` 모르겠어요..  
 
 So, what's emergency in this time?  
 > 그래서, 이번에는 무슨 응급상황이니?  
@@ -304,29 +309,29 @@ Yes, yes I am.
 Well, I must say I'm very impressed.  
 > 음, (꼭 말해야겠네요) 정말 감동받았어요.  
 
-The forms all seems to be <u>in order</u>,  
-although I'd never seen them <u>filled out in</u> crayon before.  
-> 크레용으로 <u>작성된</u> 것을 본적은 없지만, 이 양식은 전부 <u>정돈되어</u> 있는 것 같네요.  
+The forms all seems to be `in order`,  
+although I'd never seen them `filled out in` crayon before.  
+> 크레용으로 `작성된` 것을 본적은 없지만, 이 양식은 전부 `정돈되어` 있는 것 같네요.  
 
 So, if there's anything I can get you, anything at all, just let me know.  
 > 그러니 제가 줄 수 있는게 있다면, 뭐든지 알려주세요.  
 
-Do you think we could burrow one of those <u>gadgets</u>?  
-> 저 <u>장치들</u> 중 하나를 빌릴 수 있을까요?  
+Do you think we could burrow one of those `gadgets`?  
+> 저 `장치들` 중 하나를 빌릴 수 있을까요?  
 >> Do you think ~~ 가 좀 정중하게 표현할 때 쓰이는 것 같다.  
 
 Now, this is the life.  
 > 이게 인생이지.  
 
-Ah, Perry the platypus. What an <u>unexpected</u> <u>surprise</u>.  
+Ah, Perry the platypus. What an `unexpected` `surprise`.  
 And by unexpected.. I mean, completely expected!!  
-> 아, 오리너구리 Perry, <u>뜻밖의</u> <u>기습</u>이네.  
+> 아, 오리너구리 Perry, `뜻밖의` `기습`이네.  
 > 뜻밖이니까... 내 말은, 완전히 기대했다는거야!!  
 
 I doctor Heinz have covered the entire eastern seaboard in tin foil.  
 > 나 닥터 Heinz는 동쪽 해안지방 전체를 은박지(?)로 덮었다.  
 
-And when I put my giant magnet next to my genius, <u>magnetism</u> <u>magnifire</u>.  
+And when I put my giant magnet next to my genius, `magnetism` `magnifire`.  
 > 그리고 내가 내 거대한 자석을 내 천재(?) 옆에 놓았을 때, 자력 확대 렌즈(?)지.  
 
 I will pull the EAST westerly in direction.  
@@ -347,8 +352,8 @@ I haven't really worked on all the bugs yet.
 > 글쎼, 내가 그 질문에 답변해볼께.  
 > 아직 모든 버그를 연구하지는 않았어.(뭐라는겨;)  
 
-I mean, tin foil <u>alone costs a lot</u>.  
-> 내 말은, 은박지 <u>하나만해도 돈이 많이 든다</u>.  
+I mean, tin foil `alone costs a lot`.  
+> 내 말은, 은박지 `하나만해도 돈이 많이 든다`.  
 
 But mom, I'm telling you. They are building it, and it's huge!  
 > 엄마, 제가 말하잖아요. 걔들이 그걸 만들고 있고 엄청 거대해요!  
@@ -359,10 +364,10 @@ Mom, mom~~~.
 엄마, 엄마~~.  
 
 Phineas and Ferb got a roller coaster?  
-You'd think we can get a discount if we bring this <u>filer</u>?  
+You'd think we can get a discount if we bring this `filer`?  
 Maybe we better take it.  
 > Phineas랑 Ferb가 롤러코스터를 가졌다고?  
-> 이 <u>전단지</u>를 가져가면 할인받을 수 있을까?  
+> 이 `전단지`를 가져가면 할인받을 수 있을까?  
 > 아마 들고가는게 좋을것 같아.  
 
 Look, look, look, see.  
@@ -382,18 +387,18 @@ No crazy person would scream at a post like that.
 > 뭘 말하는지 알겠다, Candace.  
 > 어떤 미친 사람도 포스트에 그렇게 소리지르진 않을꺼야.  
 
-I'll be at the <u>dairy</u> section.  
-If you wanna come <u>yell</u> at some cheese or anything.  
-> <u>유제품</u> 코너에 있을게.  
-> 니가 치즈나 뭐 그런것에 <u>소리지르고</u> 싶을 수도 있으니까.  
+I'll be at the `dairy` section.  
+If you wanna come `yell` at some cheese or anything.  
+> `유제품` 코너에 있을게.  
+> 니가 치즈나 뭐 그런것에 `소리지르고` 싶을 수도 있으니까.  
 
 Ladies and gentlemen,  
 Boys and girls,  
 Children of all ages.  
 > 신사 숙녀 여러분, 소년 소녀들, 모든 연령대의 아이들.  
 
-May I present a <u>spectacle</u> <u>most of the morning</u> <u>in the making</u>!  
-> <u>오전 내내(아침 내내)</u> <u>만들어지고 있는</u> <u>굉장한 구경거리</u>를 보여줘도 될까요!  
+May I present a `spectacle` `most of the morning` `in the making`!  
+> `오전 내내(아침 내내)` `만들어지고 있는` `굉장한 구경거리`를 보여줘도 될까요!  
 
 The coolest coaster ever!!!!  
 > 지금까지의 가장 멋진 롤러 코스터!!  
@@ -403,10 +408,10 @@ To release, just pull back on the.. oops..
 > 고정하려면, 탭을 금속 버클에 삽입해.  
 > 풀려면, 그냥 뒤로.. 이런..  
 
-Well, you <u>get the picture</u>.  
+Well, you `get the picture`.  
 Well, that's about it.  
 Enjoy the ride.  
-> 뭐, <u>이해했지</u>?  
+> 뭐, `이해했지`?  
 > 음, 이게 다야.  
 > 재밌게 타렴.  
 
@@ -433,9 +438,9 @@ Well, that didn't work.
 > 어, 효과가 없네.  
 
 And now we have two ton ball of tin foil traveling two hundred miles directly at us!!
-Quckly! we must seperate magnet from the magnfire <u>before it's too late</u>!!!  
+Quckly! we must seperate magnet from the magnfire `before it's too late`!!!  
 > 지금 2톤의 은박지 공이 200마일로 우리한테 날아오고 있네!!  
-빨리! <u>너무 늦기전에</u> 자석을 확대렌즈에서 분리해야해!!!  
+빨리! `너무 늦기전에` 자석을 확대렌즈에서 분리해야해!!!  
 
 I know I have that club card `in here somewhere`  
 > `여기 어딘가에` 클럽카드가 `있는거` 아는데..  
@@ -569,6 +574,7 @@ So, what should we do tomorrow?
 There's `a world of` possibilities.  
 > `무수한` 가능성이 있다.  
 >> 근데 실제로 이렇게 잘 안쓰이는 듯 하다. `~~한 세상이다` 로 거의 쓰이는 듯.  
+>> 같은 뜻 아닐까? 무수한 가능성이 있다 == 가능성의 세상이다.  
 
 Give it a rest, Candace!  
 > 그만좀해라, Candace!  

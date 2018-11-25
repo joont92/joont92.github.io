@@ -14,6 +14,10 @@ cmd + 좌우 동작안하고 fn 키로만 됨
 
 설정에서 hex code 입력으로 바꿔주면 됨
 
+# 일반 키보드 사용 시 command, option 위치 바꾸기
+환경설정 - 키보드 - 보조키
+에서 option, command 키 바꿀 수 있음
+
 Home/end
 Intellij 에서는 home, end가 윈도우처럼 작동함
 iterm에서는 fn 키로 home, end 해줘야함(home, end가 정상작동 하므로 신경쓰지 않아도됨)
@@ -26,7 +30,7 @@ iterm에서는 fn 키로 home, end 해줘야함(home, end가 정상작동 하므
 
 한영 전환시 오른쪽 command 키를 사용하는데 여기서 잘못누르면 command 키 동작이 발생하므로 약간 주의해야함
 
-https://bimmermac.com/6426#comment-862
+<https://bimmermac.com/6426#comment-862>
 home/end 딜레마가 해결 가능하긴 한데, karabiner로 갈아타야 하는..
 
 인텔리j move caret to bottom =  command + end / command + 화살표아래
@@ -45,5 +49,9 @@ right command key에서 command 기능 없애야함
 Button 3, button4 더블클릭 이벤트에 스와이프 걸기
 오른쪽 더블클릭 이벤트에 닫기 버튼
 클릭 + 스크롤로 확대, 축소
+
+- 듀얼 모니터
+MonitorControl application 으로 밝기, 소리 조절 가능
+<https://github.com/the0neyouseek/MonitorControl>  
 
 <!-- more -->
