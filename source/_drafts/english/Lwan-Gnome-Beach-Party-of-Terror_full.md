@@ -64,7 +64,10 @@ Listen up people and I'll teach ya Bout Phineas and Ferb and the backyard beach,
 Now you see we're having fun Playing under the sun, And get in line, get in line Cause the wet ski's running 
 A backyard beach, a backyard beach Nothing's outta reach, we got the backyard beach 
 You can change in the broken hut, Drink out of a coconut, Three games for a token, but the rest is free 
-You got skiing, parasailing, Surfing and a-flailing, Your contacts need saline, or else you can't see Got the backyard beach, a backyard beach Nothing's out of reach, we got the backyard beach Got the backyard beach, a backyard beach, 
+You got skiing, parasailing, Surfing and a-flailing, Your contacts need saline, or else you can't see 
+Got the backyard beach, a backyard beach 
+Nothing's out of reach, we got the backyard beach 
+Got the backyard beach, a backyard beach, 
 Don't fall into the breach, got the backyard beach! 
 I've never been happier in my entire life.
 
