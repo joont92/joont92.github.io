@@ -32,6 +32,9 @@ a
 
 문자열 String은 기본적으로 char 배열로 저장된다.  
 
+http://pickykang.tistory.com/13
+https://okky.kr/article/527371
+
 
 표쥰 입출력
 특정 프로그램에서 입/출력 대상을 지정하지 않았을 때 디폴트로 사용되는 곳?

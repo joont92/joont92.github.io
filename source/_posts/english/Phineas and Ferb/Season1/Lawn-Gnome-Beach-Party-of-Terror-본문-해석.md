@@ -247,6 +247,10 @@ Perry the platypus?
 **You are mine, now!!**  
 > 넌 이제 내거다!!  
 >> 잡았다? 내 손안에 있다?  
+>> [You're mine 의미](https://ell.stackexchange.com/questions/187212/meaning-of-youre-mine-in-this-situation/187219#187219)  
+>> 그것을 붙잡거나 소유했고, 내가 마음대로 컨트롤 할 수 있을 경우에 사용.  
+>> I have you와 동의어임.  
+>> 반면에 소유했지만 마음대로 컨트롤 할 수 없을 경우, `I own you`를 쓴다고..  
 
 Oh, no, wait, wait, wait.  
 That was the garage door opener.  
@@ -274,6 +278,7 @@ Finally, I will `rid myself of you`.
 But first, **`turn your attention` to the giant screen!!**  
 > 마지막엔, 너를 `제거 할 것이다`.  
 > 그러나 먼저, 너의 `주의를` 대형 스크린으로 `돌릴 것이다`!!  
+>> [이어동사](http://blog.naver.com/PostView.nhn?blogId=et0876&logNo=221147581832)  
 ```
 When you turn his attention to your side, I'm gonna enter quickly.  
 > 그 사람 주의를 니쪽으로 돌리면, 내가 빠르게 들어갈게  
