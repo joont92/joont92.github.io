@@ -58,6 +58,11 @@ They've been asking that question for generations.
 What? What's everybody looking at? For winning the limbo contest you're now officially crowned Queen Wahini of the beach.
 All hail Queen Wahini! I can't believe it.
 Listen up people and I'll teach ya Bout Phineas and Ferb and the backyard beach, yah Every morning, Phineas, he gonna say (Say!) "Brother, whatcha gonna do today?" Now you see we're having fun Playing under the sun, And get in line, get in line Cause the wet ski's running A backyard beach, a backyard beach Nothing's outta reach, we got the backyard beach You can change in the broken hut, Drink out of a coconut, Three games for a token, but the rest is free You got skiing, parasailing, Surfing and a-flailing, Your contacts need saline, or else you can't see Got the backyard beach, a backyard beach Nothing's out of reach, we got the backyard beach Got the backyard beach, a backyard beach, Don't fall into the breach, got the backyard beach! I've never been happier in my entire life.
+
+
+
+
+
 Something is very wrong.
 Not a single call from Candace not even a text message.
 Oga, hose me down.
@@ -70,25 +75,36 @@ Who would protect our ancient garden from witches, spells, and wood trolls? From
 While the other children played kick the schumptel and ate doonkelberries, I would stand for hours.
 All through the cold night, as the spitzenhounds howled My only companion was the moon.
 And my neighbor Kenny.
-So, since my lawn gnome was taken away from me, I will destroy every lawn gnome in the entire Tri-State Area! Behold! The Destructinator! And now, Perry the platypus to activate my creation No! Surf contest! Out of my way, jennabelle.
+So, since my lawn gnome was taken away from me, I will destroy every lawn gnome in the entire Tri-State Area! Behold! The Destructinator! 
+And now, Perry the platypus to activate my creation 
+No! 
+Surf contest! Out of my way, jennabelle.
 Hello, Buford! Perhaps you missed the sign.
-"No bullying.
-No yodelling"? I don't like this any more than you do.
+"No bullying.No yodelling"? 
+I don't like this any more than you do.
 First up in the surf contest is Bobby Nelson.
-Oh! And Nelson eats it on a 5-footer! And there's Django Brown shooting a curl.
+Oh! And Nelson eats it on a 5-footer! 
+And there's Django Brown shooting a curl.
 And here comes Buford Von Stomp.
 Oh! He pummels Brown with a philadelphia traffic stop.
 And now he's got him in a half Nelson.
-No, it's whole Nelson! Oh! And now he's actually beating him with Bobby Nelson! Here's the scores from our judges, and Buford doesn't like it one bit.
+No, it's whole Nelson! 
+Oh! And now he's actually beating him with Bobby Nelson! 
+Here's the scores from our judges, and Buford doesn't like it one bit.
 Next up is Phineas Flynn, and it's great to see a young surfer shows such confidence.
 Uh-oh! What's this? Oh, those kids today and their holographic projections.
 He's in the pipeline.
 Now he's hanging 10.
 He's hanging 20! He's hanging 32! Now he's just hanging! The crowd loves it.
 I don't think there's a name for that.
-The crowd is doing the wave and Phineas is surfing it! Let's go to the judges.
+The crowd is doing the wave and Phineas is surfing it! 
+Let's go to the judges.
 Ten to the fifth power, infinity, and oh! It seems Phineas Flynn's radical surfing has made judge No 3 rethinks Einstein's theory of Relativity.
-Cowabunga! Laws of nature! So, are you having fun? Girl The moment has arrived.
+Cowabunga! Laws of nature! 
+
+
+
+So, are you having fun? Girl The moment has arrived.
 .
 Just one second.
 Hello? Um, Candace? Is everything okay? Oh, everything is just wonderful.
@@ -98,7 +114,7 @@ I'm coming home.
 Wait, what? I'm right around the corner.
 I'll be there in 2 minutes.
 Oh, wait! No mum! You can't! Oh, wait wait! Stay right there.
-Got to stop her! Oh.
+Got to stop her! Oh.So
 No, no, no,no, no! Mum! Mum! Please, Mum! Go away! Don't come in! Is that volcano? Gnomes! Uhn! Run for your life! It's gnome-ageddon! Who's protecting our gardens? Candace, tell me the truth.
 What is going on here? Phineas and Ferb built a beach in the backyard, just like they said they were going to.
 But instead of just a cute little beach in their sandbox, it turned out to be this absolutely huge beach, with a coastline, and palm trees and a pier, and hula dancers, waterskiers, and tiki huts and dolphins and dancing and surfing, and everybody from the neighborhood showed up Oh! and then I was just about to share a smoothie with Jeremy when a coconut dropped on my head and that and just for a moment, it seemed the wily Buford would steal away the coveted surfing trophy from under the noses of our heroes but I can only continue my benign reign and spread love, happiness and ultimate popularity throughout my kingdom! If you would just let me have my moment.

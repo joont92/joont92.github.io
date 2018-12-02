@@ -4,8 +4,6 @@ date: 2018-10-10 14:41:28
 tags: 
     - Phineas and Ferb
     - Rollercoaster
-photo: 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI3NzQ0NjE2MTcmdHlwZT1sJno9MjAxOC8xMC8yOCAxNzoyMA==
 ---
 
 # 영상

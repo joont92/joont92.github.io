@@ -4,15 +4,20 @@ date: 2018-11-18 22:29:12
 tags:
 ---
 
+# 영상
+<iframe frameborder="0" width="640" height="360" src="https://www.dailymotion.com/embed/video/x4i3vlp" allowfullscreen="" allow="autoplay"></iframe>
+
+# 자막
 <https://www.springfieldspringfield.co.uk/view_episode_scripts.php?tv-show=phineas-and-ferb&episode=s01e02>
 
+# 본문
 This is `stinky` dog comming to you on the hottest day of the summer.  
 > 가장 더운 여름날에 너에게 오는 `악취나는` 개다  
 >> 한 여름날에 악취나는 개가 오고 있네요?  
 
 So, unless you live at the beach, I say `take it easy` and do nothing today.  
 > 그러니까, 만약 니가 바닷가에 살지 않는다면, 오늘은 `좀 쉬고` 아무것도 하지 마세요.  
->> <https://m.blog.naver.com/PostView.nhn?blogId=angelpyj2&logNo=220474259926&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F>  
+>> [take it easy 의미 정리](https://m.blog.naver.com/PostView.nhn?blogId=angelpyj2&logNo=220474259926&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F)  
 >> 좀 쉬라는 뉘양스로 사용됨  
 
 Yup, just find yourself a shady tree and maybe an aquatic mammal at some sort and blow the whole day off.  
@@ -30,12 +35,12 @@ So, `what are you up to`?
 > `뭐하니`?  
 >> what are you up to == what are you doing  
 
-We're making our own beach right here in the backyard.  
+**We're making our own beach right here in the backyard.**  
 > 여기 뒷마당에 우리의 바닷가를 만들고 있어요  
-
+>> ~~ right here : `여기`를 강조하는 느낌  
 ```
-I have to study right here in this roon until 7:PM.  
-> 이 벙에서 7시까지 공부해야해.  
+I have to study until 7:PM right here in this room   
+> 이 방!에서 7시까지 공부해야해.  
 
 We can only be right here.  
 > 우린 오직 여기에만 있을 수 있어.  
@@ -47,9 +52,8 @@ Well, I`'m off for` my spa day.
 > 음, 난 오늘 스파 데이가 `있어`.  
 >> 잘 안 쓰이는 듯 하다.  
 
-You boys `behave yourselves` and don't `bother` your father.  
+**You boys `behave yourselves` and don't `bother` your father.**  
 > 너희들 `얌전히 굴고`, 아빠 `귀찮게` 하지마.  
-
 ```
 You'd better to behave yourself at the meeting.  
 > 그 모임에선 얌전히 구는게 좋을거야.  
@@ -58,9 +62,8 @@ Here is sooo dangerous as you see, please behave yourself.
 > 여긴 보다시피 매우 위험하니, 행동을 조심해주세요.  
 ```
 
-He's finally `cleaning out` the `basement`.  
+**He's finally `cleaning out` the `basement`.**  
 > 그는 마침내 `지하실`을 `청소하고` 있거든.  
-
 ```
 I have to clean out my room.  
 > 난 내방을 청소해야 한다.  
@@ -73,14 +76,13 @@ By mom~~!! Yes!
 > 잘가요 엄마~~! 아싸!  
 
 You heard her.  
-We can't `bug` dad, which makes me in charge.  
+**We can't `bug` dad, which makes me in charge.**  
 By default.  
 > 들었지?  
 > 우린 아빠를 `괴롭힐` 수 없고, 그건 내가 책임자란 뜻이야.  
 > 기본적으로.  
-
 ```  
-I don't have idea for this technology, which make me study.  
+I don't have idea for this technology, which makes me study.  
 > 나는 이 기술에 대한 지식이 없고, 그게 나를 공부하게 만든다.  
 
 There was only you in this room, which makes me suspect you.  
@@ -103,8 +105,9 @@ Hey, where's Perry?
 We suspect Doofenshmirtz.  
 > 우리는 Doofenshmirtz를 의심한다.  
 
-Get right on it!  
-> 지금 당장 가봐!  
+**Get right on it!**  
+> 어서 가봐!  
+>> 가보라는 의미보단 당장 해보라는 의미로 사용되는 듯    
 
 Aren't you a little young to be an `landscape contractor`?  
 > `조경업자`가 되기엔 좀 어리지 않나요?  
@@ -121,9 +124,8 @@ Oh. Hey Isabella.
 Whatcha' doin?  
 > 모행?(ㅋ)  
 
-Building a beach. `Check it out`.  
+Building a beach. **`Check it out`**.  
 > 바닷가 만들어. `이거 봐봐`.  
-
 ```
 I found new motels. Check it out.  
 > 새로운 모텔들을 찾았어. 봐봐.  
@@ -136,14 +138,13 @@ We need to earn our `aquatic` `safety` `badge`s.
 > 우린 우리의 `수중` `안전` `배지`를 얻을 필요가 있어.  
 
 I mean, I've been a friend of Susie's longer than Katie.  
-So I `should've been` invited that party first.  
+So **I `should've been` invited that party first**.  
 > 내 말은, 난 Katie 보다 더 오래 Susie의 친구였어.  
 > 그러니까 내가 그 파티에 첫번째로 초대`됐어야지`.  
->> <https://www.youtube.com/watch?v=Q2ejqYel_Pw>  
+>> [would've, could've, sould've 의미](https://www.youtube.com/watch?v=Q2ejqYel_Pw)  
 >> would've : ~ 했을텐데(좀 더 알아봐야함)  
 >> could've : ~ 할수있었는데(실제로 그렇지 않았지만, 그럴수 있었던거)  
 >> should've : ~ 했어야지, ~했었어야지  
-
 ```
 You should've said this!  
 > 이걸 말했어야지!  
@@ -154,9 +155,11 @@ I should've chosen another one.
 
 `who cares` if they're `lab` partners?  
 > `실험` 파트너를 누가 신경쓰겠어(상관이나 한데)?  
+>> lab partner가 어떤 의미로 사용된건지?  
 
 We're locker neighbors, and locker neighbors `trump` lab partners any day.  
-> 우린 locker neighbor들이고, locker neighbor들은 언제나 lab partner들을 `이겨`.
+> 우린 locker neighbor들이고, locker neighbor들은 언제나 lab partner들을 `이겨`.  
+>> locker neighbor가 뭔지?  
 
 Sorry, Stacy. Gotta go!  
 > 미안 Stacy. 가봐야해!  
@@ -165,16 +168,16 @@ Welcome to our beach.
 > 저희 해변가에 오신것을 환경합니다.  
 
 Ha! You call that a beach?  
-This is `way` `below` your `usual` `standard`.  
+**This is `way` `below` your `usual` `standard`.**  
 > 이건 니 `평소` `기준`보다 `훨씬` `낮다`.  
-
 ```
 The price is way above our thought.
 > 가격이 우리 생각보다 훨씬 높다  
 ```
 
-This `isn't even worth` a call to mom.  
+**This `isn't even worth`** a call to mom.  
 > 엄마한테 전화할 `가치도 없네`.  
+>> worth를 잘쓰면 좋을듯  
 
 You know, if you guys ever wanna be popular, you're gonna have to stop playing in the sandboxes.  
 > 있잖아, 너네들  인기있고 싶다면, 샌드박스 안에서 노는걸 멈춰야해.  
@@ -187,11 +190,10 @@ What do you think?
 > 그래, Candace.  
 > 어떻게 생각해?  
 
-That's it!! I'm calling mom.  
+That's it!! **I'm calling mom.**  
 > 그쯤해!! 엄마한테 전화할꺼야.  
->> <https://ilikeen.tistory.com/1731>  
+>> [be + ing의 미래표현](https://ilikeen.tistory.com/1731)  
 >> 미래긴 한데 좀 더 계획적인? be going to 와 차이가 거의 없다.  
-
 ```
 I'm going museum this weekend. 
 > 주말에 박물관에 갈거야(계획이야)  
@@ -206,10 +208,10 @@ Jenny? Stacy?
 You never told us you had a beach in your backyard?  
 > 뒷마당에 해변가가 있다고 얘기한적 없었잖아.  
 
-You `gotta be` a most popular girl in the neighborhood.  
+**You `gotta be` a most popular girl in the neighborhood.**  
 > 넌 우리 이웃 중 가장 유명한 애가 `될거야`.  
->> gotta be : 틀림없이 ~ 될거야. must be 와 동일하다고 보면 될 듯(사용하는 관점에서도)  
-
+>> gotta be : 틀림없이 ~ 될거야.  
+>> must be는 ~가 있을거야, gotta be는 ~가 될거야. 로 사용되는듯?  
 ```
 First of all, you gotta be a good person if you want to be leader.
 > 우선 니가 지도자가 되고 싶다면 좋은 사람이 되어야 해.
@@ -218,9 +220,8 @@ First of all, you gotta be a good person if you want to be leader.
 I will?  
 > 내가?  
 
-I just saw Jeremy and his buddies with their surfboards.  
+**I just saw Jeremy and his buddies with their surfboards.**  
 > 난 방금 서핑보드 들고있는 Jeremy랑 걔 친구들을 봤어.  
-
 ```
 I saw him with computer.  
 > 컴퓨터 들고 있는 그를 봤어.  
@@ -236,6 +237,7 @@ Oh, this is a strange one.
 > 오, 이건 좀 이상한데.  
 
 Wait! Who are you?  
+> 잠깐! 너 누구야?  
 
 A platypus?  
 Perry the platypus?  
@@ -244,7 +246,7 @@ Perry the platypus?
 
 **You are mine, now!!**  
 > 넌 이제 내거다!!  
->> 내거다..?    
+>> 잡았다? 내 손안에 있다?  
 
 Oh, no, wait, wait, wait.  
 That was the garage door opener.  
@@ -252,45 +254,92 @@ That was the garage door opener.
 > 이건 창고 문 오프너네..  
  
 You are mine, now!!  
+> 넌 이제 내거다!!  
 
 And That's a TV remote.  
 **I've got to start labeling these things.**  
 > 이건 티비 리모콘이네..  
 > 이것들에 라벨링을 해야겠네..  
+>> [got to, have to 차이](https://english.stackexchange.com/questions/247117/what-is-difference-between-got-to-and-have-to?newreg=b209179380394f9bb68c235b04b181bc)  
+>> have to의 일반적인 변형이 got to라고 말하고 있음. 현자같은 사람만이 그것을 교정할테니 오해받을 일 없을거라고 함 ㅋㅋ  
+```
+I've got to study whole sunday. :sad:
+> 일요일 내내 공부해야해 ㅠ
+```
 
 You are mine, now!!  
+> 넌 이제 내거다!!  
 
-**Finally, I will `rid myself of you`.**  
+Finally, I will `rid myself of you`.  
 But first, **`turn your attention` to the giant screen!!**  
 > 마지막엔, 너를 `제거 할 것이다`.  
 > 그러나 먼저, 너의 `주의를` 대형 스크린으로 `돌릴 것이다`!!  
+```
+When you turn his attention to your side, I'm gonna enter quickly.  
+> 그 사람 주의를 니쪽으로 돌리면, 내가 빠르게 들어갈게  
+```
 
 Hmm, maybe **I need to turn the cable on first?**  
 > 음, 케이블을 먼저 켜야하나?  
->> turn somthing on 구조가 좋은 듯 하다  
+>> turn somthing on 구조가 좋은 듯 하다  %
 >> (평소라면 turn on somethng 을 사용하곘지)  
+```
+Please turn boiler on when you arrive.  
+> 도착하면 보일러를 켜주세요  
+
+For cleaning your house up, open windows first.  
+> 집 청소할땐 창문을 먼저 열어  
+```
 
 **Let's `get` this beach party `started`!**  
 > 이 해변 파티를 `시작하자`!  
->> 여기도 get something started 구조가 좋은 듯 하다  
+>> 시작하다 : get started  
+>> [let's start, let's get started 차이](https://ell.stackexchange.com/questions/24802/lets-get-started-vs-lets-start)  
+>> 거의 대부분의 상황에서 같은 의미로 사용할 수 있다고 말하고 있음  
+>> 그리고 아래의 형태로 사용하라고 말하고 있음  
+>> - let's start + 단어(O)
+>> - let's get 단어 started
+>> - leg's get started 전치사 단어
+```
+I think it's all gathered, I'll get started.  
+> 다 모인것 같으니까, 시작할게요.  
 
-`Well`, we wake up early and `wax` our surfbaards down~~  
+After he comes, 
+```
+
+`Well`, we wake up early and `wax` our surfboards down~~  
 > 자, 일찍 일어나서 우리 서핑보드들을 `왁스로 광내자`~~  
 >> down 은 왜 들어간걸까  
+```
+Well, let's get started!  
+> 자, 시작합니다!
+```
 
 (**We'll hit the beach**, yeah, we'll hit the beach)  
 > 우리는 해변에 갈 거야, 그래, 우리는 해변에 갈 거야  
 >> hit이 간다 라는 의미로 쓰인 듯 하다  
 
-`Throw` our board shorts `on` and `head for` surfin' town~~  
+`Throw` our board shorts `on` and **`head for` surfin' town**~~  
 > 보드 반바지를 `걸치고` 서핑 타운으로 `향하자`~~  
 >> throw something on : (~를 급히) 걸치다  
 
 Hey look! **I can see our house `from up here`.**  
 > 야 봐봐! `여기 위에서` 우리 집이 보여.  
+```
+I can see all of Sanfrancisco from up here.  
+> 여기 위에서 샌프란시스코 전체를 볼 수 있어.  
+```
 
 **How low can you go?** How low can you go?  
 > 얼마나 낮게 갈수있니? 얼마나 낮게 갈수있니?  
+>> `How XXX can you XXX` 의 구조가 좋은 듯 하다  
+```
+How high can you jump?  
+> 얼마나 높이 점프할 수 있니?  
+
+How fast can you run?  
+> 얼마나 빨리 달릴 수 있니?  
+```
 
 **So that's how low you can go.**  
 > 그 정도까지 낮게 갈 수 있구나.  
@@ -298,25 +347,39 @@ Hey look! **I can see our house `from up here`.**
 They've been asking that question `for generations`.  
 > 그들은 `여러 세대에 걸쳐` 그 질문에 대답해왔다.  
 
-What? **What's everbody looking at?**  
+What? **What's everybody looking at?**  
 > 뭐? 다들 뭐 보는거야?  
+>> look at과 watch는 뜻이 비슷한데, watch는 뭔가를 오래볼 때 주로 사용함(영화같은)  
+```
+What are you looking at?
+> 뭐 보니?  
+```
 
 For winning the limbo contest.  
-**You're now a `offically` crowned Queen Wahni of the beach!**  
+**You're now a `officially` crowned Queen Wahni of the beach!**  
 > 림보 대회에서 우승했습니다.  
 > 당신은 이제 `공식적으로` 해변의 와히니 여왕이 되었습니다!  
+```
+You're now officially our team member.  
+> 당신은 이제 공식적으로 우리 팀원이 되었습니다.
+```
 
 All hali Queen Wahini!!  
+> 믿을수가 없어!  
 
 I can't believe it!!  
 > 믿을 수가 없어!!  
+>> [believe 발음](https://www.youtube.com/watch?v=nWuTwLXUuzU)  
 
 Listen up people and I'll teach ya  
 `(A)Bout` Phineas and Ferb and the backyard beach.  
 > 모두들 내가 Phineas와 Ferb와 뒷마당 해변에 관해 가르쳐줄 테니 잘 들어봐  
 
-Every morning, Phineas, he gonna say,  
-"Brother, what's you going to do today"  
+Every morning, Phineas, he gonna say(Say!)  
+"Brother, what's you going to do today?"  
+> 매일 아침 Phineas는 말하지  
+> "형제, 오늘 뭐할까?"  
+>> 영어권엔 위아래 개념이 거의 없으므로 그냥 brother로만 쓴다. 한국어로 해석하니 좀 어색..  
 
 Now you see we're having fun Playing under the sun,  
 and get it line, get in line cause the wet ski's running.  
@@ -324,6 +387,7 @@ and get it line, get in line cause the wet ski's running.
 줄서고, 줄설거야 왜냐면 wet ski가 하는 중이거든  
 
 A backyard beach! A backyard beach!  
+> 뒷마당 해변! 뒷마당 해변!  
 
 **Nothing's `outta reach`**, we got the backyard beach.  
 > 아무의 `손도 닫지 않는` 뒷마당에 해변이 있다  
@@ -338,7 +402,7 @@ but the rest is free
 > 토큰 하나로 3 게임을 할 수 있어  
 > 그리고 나머지는 전부 공짜야  
 
-You got skiing, parasailing, Surfing and a-flailing, Your contacts need saline, or else you can't see 
+// ...
 
 (Got the backyard beach, a backyard beach)   
 > 뒷마당 해변이 있어! 뒷마당 해변.  
@@ -355,5 +419,131 @@ Don't fall into the breach, got the backyard beach!
 **I've never been happier in my entire life!!**  
 > 내 전체 인생에서 이것보다 행복해본적은 없어!!  
 >> 현재 완료 경험의 좋은 예시. 근데 happy가 아니고 happier?  
+>> I've never been happier (than now) in my entire life!  
+
+Something is very wrong.  
+
+Not a single call from Candace.  
+Not even a text message.  
+> Not이 잘 안들림 
+
+Oga, hose me down.  
+I'm going home.  
+> Oga, 날 씻어내려  
+
+Okay. I think I finally got the right one.  
+> 좋아. 결국 맞는걸 찾은것 같군.  
+>> [I think, I don't think 사용법](https://ilikeen.tistory.com/2036)  
+>> not을 앞으로 빼서 부정형으로 만든다는게 중요  
+
+Now, Perry the platypus.  
+You'll finally understand my pain..  
+
+Back in demostraigh in the days of my use.  
+The doofershiment were proud faimily.  
+
+But **those were `lean times` for my father**,
+and our beloved lawn gnome was `repossessed`.  
+> 하지만 그떄는 나의 아버지에게는 `힘든 시간`이었고,  
+> 그래서 우리의 총애받은 lawn gnome은 `압류당했지`.  
+
+Who would protect our `ancient` garden from witches, `spell`s, and wood trolls?  
+> 누가 마녀, `마법`, 나무 트롤로부터 우리 `고대의` 정원을 지켜주지?  
+
+From a `tender age`, my father deiced that it will be me.  
+> `어릴 때` 부터, 내 아버지는 그게 나라고 결정하셨다.  
+
+While the other children played kick the schumptel and ate doonkelberries,  
+**I would stand `for hours.`**  
+> 애들이 schumptel를 차고 doonkelberry들을 먹는동안, 난 `몇시간이고 계속해서` 서있어야 했다.  
+
+All through the cold night, as the spitzenhounds howled  
+My only companion was the moon.
+And my neighbor Kenny.  
+
+So, since my lawn gnome was taken away from me,  
+I will destroy every lawn gnome in the entire   
+Tri-State Area! Behold! The Destructinator!   
+> 어린 시절 나쁜 기억을 떠오르게 하는 난쟁이 석상  
+
+
+And now, Perry the platypus to `activate` my `creation`.  
+> 활성화시키다 창작물
+
+No!!!  
+
+Surf~~~~ Contest~~~!!  
+
+**`Out of my way`**, jennabelle.  
+> `비켜`, jennabelle(꼬맹이?).  
+
+Hell, Buford. **`Perhaps` you missed the sign.**  
+> 안녕, Buford. `아마도` 너 표지판을 놓친거 같애.  
+
+No `bullying`, no yodelling.  
+> `괴롭히지` 없음, 요들송 부르기 없음.  
+
+I don't like this anymore than you do.  
+> 
+
+`First up` in the surf contest is Boby Nelson.  
+Oh! And nelson eats it on a 5-footer.  
+> `첫번쨰`
+
+And there's Django Brown shooting a curl.  
+And here comes Buford Von Stomp.  
+
+Oh! He `pummels` Brown with a philadelphia traffic stop.  
+> 그는 필라델피아 교통 정체와 함께 브라운을 `계속 치고있다`   
+
+Now he's got him in a half Nelson.  
+No, it's whole Nelson.  
+Oh, and now he is actually beating him with Bobby Nelson.  
+
+Here's scroes from our `judge`s,  
+and **Boford doesn't like it `one bit`.**  
+> 여기 `심사위원`들의 점수고요,  
+> Buford는 그걸 `조금도` 좋아하지 않아요.  
+
+`Next up` is Phineas Flynn.  
+And it's great to see a young surfer shows such confidence.  
+> 다음 순서는 Phinease Flynn 입니다.  
+> 어린 서퍼가 저런 자신감을 보여주는것은 보기 좋습니다.  
+>> `up` 이 `순서` 같은 뜻으로 쓰이는듯?  
+
+Oh, what's this?  
+Oh, those kids today and their holographic projections.  
+
+He's in the pipeline. 
+Now he's hanging ten.  
+He's hanging twenty, 
+he's hanging thirty two!  
+Now, he just hanging!!  
+> 그는 파이프라인 안에 있습니다.  
+> 그는 보드 끝에 모든 발가락을 걸쳤어요.  
+> ...?  
+> 그는 지금 그냥 매달려있습니다!!  
+>> hang ten : 파도타기 널의 가장 가장자리에 양쪽 발가락을 모두 구부려 걸치다  
+  
+The crowd loves it.  
+I don't think there's a name for that.  
+> 관중들이 환호합니다.  
+> 저게 이름이 있진 않은거 같아요  
+
+**The crowds is `doing the wave`**, and Phineas is surfing it!  
+> 관중들은 `파도타고 있고`, Phineas는 거기를 서핑합니다!!  
+
+Let's go to the judges.  
+> 심사위원들에게 가봅시다.  
+
+`Ten to the fifth power`, 
+`infinity`,  
+// ....
+> `10의 5승`,  
+> `무한대`,  
+
+**`Cowabunga`**! `Laws of nature`!  
+> `죽인다(개쩐다?)`! `자연의 법칙`이네요!  
+>> [코와붕가 뜻](https://namu.wiki/w/코https://namu.wiki/w/%EC%BD%94%EC%99%80%EB%B6%95%EA%B0%80)
 
 <!-- more -->
