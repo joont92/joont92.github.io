@@ -2,6 +2,9 @@
 title: Lawn Gnome Beach Party of Terror 본문/해석
 date: 2018-11-18 22:29:12
 tags:
+    - Phineas and Ferb
+    - 영어 회화
+    - 쉐도잉
 ---
 
 # 영상
@@ -15,7 +18,7 @@ This is `stinky` dog comming to you on the hottest day of the summer.
 > 가장 더운 여름날에 너에게 오는 `악취나는` 개다  
 >> 한 여름날에 악취나는 개가 오고 있네요?  
 
-So, unless you live at the beach, I say `take it easy` and do nothing today.  
+So, unless you live at the beach, **I say `take it easy` and do nothing today**.  
 > 그러니까, 만약 니가 바닷가에 살지 않는다면, 오늘은 `좀 쉬고` 아무것도 하지 마세요.  
 >> [take it easy 의미 정리](https://m.blog.naver.com/PostView.nhn?blogId=angelpyj2&logNo=220474259926&proxyReferer=https%3A%2F%2Fwww.google.co.kr%2F)  
 >> 좀 쉬라는 뉘양스로 사용됨  
@@ -64,6 +67,15 @@ Here is sooo dangerous as you see, please behave yourself.
 
 **He's finally `cleaning out` the `basement`.**  
 > 그는 마침내 `지하실`을 `청소하고` 있거든.  
+>> [clean, clean up, clean out](https://ell.stackexchange.com/questions/81356/the-difference-between-clean-up-clean-out-and-clean)  
+>> clean up은 일반적인 청소를 말함. `This bedroom must be cleaned up!`  
+>> clean out은 일반적인 청소 정도가 아님. 완벽하게 정리정돈 하고 안쓰는것도 다 버리고 하는 수준의 청소를 말함.  
+>> clean은 현재형 표현에 그냥 사용하거나(`I clean my room everyday`), 형용사로 주로 사용함(`clean desk`)  
+>>
+>> [tidy, clean 차이](https://ell.stackexchange.com/questions/182230/difference-between-cleaning-a-room-and-tidying-a-room)  
+>> 문맥에 따라 달렸다고 표현하고 있음.  
+>> 내 생각엔.. `clean`은 뭔가 위생적으로 바꾼다는 느낌이고(닦고, 걸레질하고 등등)  
+>> `tidy`는 정리정돈 한다는 느낌인 듯.  
 ```
 I have to clean out my room.  
 > 난 내방을 청소해야 한다.  
@@ -418,8 +430,8 @@ Nothing's out of reach, we got the backyard beach
 (Got the backyard beach, a backyard beach)  
 > 뒷마당 해변이 있어! 뒷마당 해변.  
 
-Don't fall into the breach, got the backyard beach!  
-> 위반에 빠지지 마, 뒷마당 해변이 있어!  
+Don't fall into the `breach`, got the backyard beach!  
+> `위반`에 빠지지 마, 뒷마당 해변이 있어!  
 
 **I've never been happier in my entire life!!**  
 > 내 전체 인생에서 이것보다 행복해본적은 없어!!  
@@ -428,8 +440,8 @@ Don't fall into the breach, got the backyard beach!
 
 Something is very wrong.  
 
-Not a single call from Candace.  
-Not even a text message.  
+**Not a single call from Candace.**  
+**Not even a text message.**  
 > Not이 잘 안들림 
 
 Oga, hose me down.  
