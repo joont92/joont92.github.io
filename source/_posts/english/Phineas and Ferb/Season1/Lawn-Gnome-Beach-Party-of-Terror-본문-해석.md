@@ -442,11 +442,16 @@ Something is very wrong.
 
 **Not a single call from Candace.**  
 **Not even a text message.**  
-> Not이 잘 안들림 
+> Not이 잘 안들림  
+```
+Not a single text message from her..  
+> 그녀한테서 문자하나도 오지 않았어..  
+```
 
-Oga, hose me down.  
+Oga, `hose me down`.  
 I'm going home.  
-> Oga, 날 씻어내려  
+> Oga, `날 씻어내려`  
+> 집에 갈거야  
 
 Okay. I think I finally got the right one.  
 > 좋아. 결국 맞는걸 찾은것 같군.  
@@ -455,14 +460,25 @@ Okay. I think I finally got the right one.
 
 Now, Perry the platypus.  
 You'll finally understand my pain..  
+> 오리너구리 페리.  
+> 넌 이제 내 고통을 이해하게 될거야..  
 
 Back in demostraigh in the days of my use.  
-The doofershiment were proud faimily.  
+The doofershiment were proud family.  
+> // 해석이 어려움  
+> doofershiment는 자랑스러운 가족이었다.  
 
-But **those were `lean times` for my father**,
+But **those were `lean times` for my father**,  
 and our beloved lawn gnome was `repossessed`.  
 > 하지만 그떄는 나의 아버지에게는 `힘든 시간`이었고,  
 > 그래서 우리의 총애받은 lawn gnome은 `압류당했지`.  
+```
+Yeah, there were lean times for me.  
+> 그래, 그떄는 힘들 시간이었지.  
+
+You would have lean times unless you study more.  
+> 공부를 더 하지 않는다면 힘든 시간을 보내게 될거야
+```
 
 Who would protect our `ancient` garden from witches, `spell`s, and wood trolls?  
 > 누가 마녀, `마법`, 나무 트롤로부터 우리 `고대의` 정원을 지켜주지?  
@@ -473,63 +489,114 @@ From a `tender age`, my father deiced that it will be me.
 While the other children played kick the schumptel and ate doonkelberries,  
 **I would stand `for hours.`**  
 > 애들이 schumptel를 차고 doonkelberry들을 먹는동안, 난 `몇시간이고 계속해서` 서있어야 했다.  
+```
+I had to wait for hours.  
+> 난 몇시간이고 계속 기다려야 했다  
 
-All through the cold night, as the spitzenhounds howled  
-My only companion was the moon.
+If you are gonna go Apple Store in Sinsa, you gotta stand for hours.  
+> 만약 니가 신사에 있는 애플 스토어에 간다면, 몇시간이고 계속 서있어야 할거야.  
+```
+
+**`All through` the cold night**, as the spitzenhounds `howl`ed  
+**My only `companion` was the moon.**  
 And my neighbor Kenny.  
+> spitzenhounds가 `울부짖는` 추운 밤 `내내`  
+> 나의 유일한 `동반자`는 달 뿐이었어.  
+> 그리고 내 이웃, Kenny랑.  
+```
+I couldn't concentrate anymore all through the working.
+> 나는 일하는 내내 더이상 집중할 수 없었다.  
+
+I almost vomitted all throgh watching the movie  
+> 나는 그 영화보는 내내 거의 토할 뻔 헀어  
+```
+>> (~헐 뻔 하다)[http://k.languagetown.com/kjiddetial.html?QNo=4913]  
 
 So, since my lawn gnome was taken away from me,  
-I will destroy every lawn gnome in the entire   
+I will destroy every lawn gnome in the entire!   
 Tri-State Area! Behold! The Destructinator!   
 > 어린 시절 나쁜 기억을 떠오르게 하는 난쟁이 석상  
 
-
 And now, Perry the platypus to `activate` my `creation`.  
-> 활성화시키다 창작물
+> // 해석이 어려움  
 
 No!!!  
+> 안돼!!  
 
-Surf~~~~ Contest~~~!!  
+Surf~~~~ `Contest`~~~!!  
+> 서핑~~ `대회`~~~!!
 
 **`Out of my way`**, jennabelle.  
 > `비켜`, jennabelle(꼬맹이?).  
 
 Hell, Buford. **`Perhaps` you missed the sign.**  
 > 안녕, Buford. `아마도` 너 표지판을 놓친거 같애.  
+```
+Perhaps we can do it again.  
+> 다음에 또 할수 있을 거에요  
+
+Perhaps this would happen again.  
+> 아마도 이 일은 다시 일어날 거에요
+```
 
 No `bullying`, no yodelling.  
 > `괴롭히지` 없음, 요들송 부르기 없음.  
 
-I don't like this anymore than you do.  
-> 
+**I don't like this `any more than` you do.**  
+> 나도 너`처럼` 이게 싫어  
+>> [any more than 뜻](https://kin.naver.com/qna/detail.nhn?d1id=11&dirId=110803&docId=56544609&qb=SSBkb24ndCBsaWtlIHRoaXMgYW55IG1vcmUgdGhhbiB5b3UgZG8=&enc=utf8&section=kin.qna&rank=1&search_sort=0&spq=1)  
+>> 긍정문에는 안 쓰일 것 같다.  
+```
+I don't ride this any more than you do.  
+> 나도 너 처럼 이거 타기 싫어  
+```
 
 `First up` in the surf contest is Boby Nelson.  
 Oh! And nelson eats it on a 5-footer.  
-> `첫번쨰`
+> 서핑 대회의 `첫번쨰` 선수는 Boby Nelson 입니다.  
+> // 해석이 어려움  
 
 And there's Django Brown shooting a curl.  
-And here comes Buford Von Stomp.  
+**And `here comes` Buford Von Stomp.**  
+> // 해석이 어려움  
+> 그리고 Buford Von Stomp가 `오는군요`!  
+```
+Here comes the bus!  
+> 버스가 오네요!  
+
+Hey! Here comes the teacher.  
+> 야! 선생님 오신다.  
+```
 
 Oh! He `pummels` Brown with a philadelphia traffic stop.  
-> 그는 필라델피아 교통 정체와 함께 브라운을 `계속 치고있다`   
+> 그는 필라델피아 교통 정체와 함께 브라운을 `계속 치고있다`(// 해석이 어려움)   
 
 Now he's got him in a half Nelson.  
 No, it's whole Nelson.  
 Oh, and now he is actually beating him with Bobby Nelson.  
+> // 해석이 어려움  
+> // 해석이 어려움  
+> 오, 이제 그는 실제로 Boby Nelson으로 그를 때리고 있네요.  
 
 Here's scroes from our `judge`s,  
 and **Boford doesn't like it `one bit`.**  
 > 여기 `심사위원`들의 점수고요,  
 > Buford는 그걸 `조금도` 좋아하지 않아요.  
+```
+I gave her flower, she doesn't like it one bit though.  
+> 그녀한테 꽃을 줬는데, 조금도 좋아하지 않더라고.  
+```
 
 `Next up` is Phineas Flynn.  
-And it's great to see a young surfer shows such confidence.  
+And it's great to see a young surfer shows such `confidence`.  
 > 다음 순서는 Phinease Flynn 입니다.  
-> 어린 서퍼가 저런 자신감을 보여주는것은 보기 좋습니다.  
+> 어린 서퍼가 저런 `자신감`을 보여주는것은 보기 좋습니다.  
 >> `up` 이 `순서` 같은 뜻으로 쓰이는듯?  
 
 Oh, what's this?  
 Oh, those kids today and their holographic projections.  
+> 오 이게 뭐죠?  
+> // 해석이 어려움  
 
 He's in the pipeline. 
 Now he's hanging ten.  
@@ -538,17 +605,30 @@ he's hanging thirty two!
 Now, he just hanging!!  
 > 그는 파이프라인 안에 있습니다.  
 > 그는 보드 끝에 모든 발가락을 걸쳤어요.  
-> ...?  
+> .// 해석이 어려움  
+> // 해석이 어려움  
 > 그는 지금 그냥 매달려있습니다!!  
 >> hang ten : 파도타기 널의 가장 가장자리에 양쪽 발가락을 모두 구부려 걸치다  
+>> hang twenty, thirty two는 그냥 오버하는 것 같다..  
   
 The crowd loves it.  
-I don't think there's a name for that.  
+**I don't think there's a name for that.**  
 > 관중들이 환호합니다.  
 > 저게 이름이 있진 않은거 같아요  
+```
+I don't think she will come.  
+> 걔 안올거 같은데.  
+
+I don't think it works.  
+> 안 될 것 같은데  
+```
 
 **The crowds is `doing the wave`**, and Phineas is surfing it!  
 > 관중들은 `파도타고 있고`, Phineas는 거기를 서핑합니다!!  
+```
+At 2002, every Korean people was doing the wave.  
+> 2002년에, 모든 한국 사람들은 파도를 타고 있었다.  
+```
 
 Let's go to the judges.  
 > 심사위원들에게 가봅시다.  
