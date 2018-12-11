@@ -153,9 +153,10 @@ I mean, I've been a friend of Susie's longer than Katie.
 So **I `should've been` invited that party first**.  
 > 내 말은, 난 Katie 보다 더 오래 Susie의 친구였어.  
 > 그러니까 내가 그 파티에 첫번째로 초대`됐어야지`.  
->> [would've, could've, sould've 의미](https://www.youtube.com/watch?v=Q2ejqYel_Pw)  
->> would've : ~ 했을텐데(좀 더 알아봐야함)  
->> could've : ~ 할수있었는데(실제로 그렇지 않았지만, 그럴수 있었던거)  
+>> [would've, could've, sould've 의미](https://www.youtube.com/watch?v=yqdEXGhjR44)  
+>> would've : ~ 했을텐데  
+>> [가정법](http://hakmalyoung.tistory.com/239)  
+>> could've : ~ 할수있었는데  
 >> should've : ~ 했어야지, ~했었어야지  
 ```
 You should've said this!  
@@ -438,6 +439,8 @@ Don't fall into the `breach`, got the backyard beach!
 >> 현재 완료 경험의 좋은 예시. 근데 happy가 아니고 happier?  
 >> I've never been happier (than now) in my entire life!  
 
+# 3회차
+
 Something is very wrong.  
 
 **Not a single call from Candace.**  
@@ -476,8 +479,8 @@ and our beloved lawn gnome was `repossessed`.
 Yeah, there were lean times for me.  
 > 그래, 그떄는 힘들 시간이었지.  
 
-You would have lean times unless you study more.  
-> 공부를 더 하지 않는다면 힘든 시간을 보내게 될거야
+You will have lean times ahead unless you study more.  
+> 공부를 더 하지 않는다면 앞으로 힘든 시간을 보내게 될거야  
 ```
 
 Who would protect our `ancient` garden from witches, `spell`s, and wood trolls?  
@@ -540,7 +543,7 @@ Perhaps this would happen again.
 ```
 
 No `bullying`, no yodelling.  
-> `괴롭히지` 없음, 요들송 부르기 없음.  
+> `괴롭히기` 없음, 요들송 부르기 없음.  
 
 **I don't like this `any more than` you do.**  
 > 나도 너`처럼` 이게 싫어  
@@ -605,7 +608,7 @@ he's hanging thirty two!
 Now, he just hanging!!  
 > 그는 파이프라인 안에 있습니다.  
 > 그는 보드 끝에 모든 발가락을 걸쳤어요.  
-> .// 해석이 어려움  
+> // 해석이 어려움  
 > // 해석이 어려움  
 > 그는 지금 그냥 매달려있습니다!!  
 >> hang ten : 파도타기 널의 가장 가장자리에 양쪽 발가락을 모두 구부려 걸치다  
@@ -641,6 +644,157 @@ Let's go to the judges.
 
 **`Cowabunga`**! `Laws of nature`!  
 > `죽인다(개쩐다?)`! `자연의 법칙`이네요!  
->> [코와붕가 뜻](https://namu.wiki/w/코https://namu.wiki/w/%EC%BD%94%EC%99%80%EB%B6%95%EA%B0%80)
+>> [코와붕가 뜻](https://namu.wiki/w/코https://namu.wiki/w/%EC%BD%94%EC%99%80%EB%B6%95%EA%B0%80)  
+
+## 4회차
+So, **are you having fun?**  
+> 재밌는 시간 보내고 있니?  
+
+(Girl, **The moment has arrived**)  
+> 소녀, 그 순간이 다가왔다  
+
+Haa.. just one second.  
+> 잠시만.  
+
+Hello~  
+> 여보세요~  
+
+Um.. Candace?  
+**Is everything okay?**  
+> 어.. Candace?  
+> 다 괜찮은거니?(별일없니?)  
+
+Oh.. Everything is `just` wonderful..  
+> 오.. 모든것이 `정말` 훌륭해요..  
+>> [just 뜻(9번)](https://endic.naver.com/enkrEntry.nhn?sLn=kr&entryId=dea8dd917385462291f6ecc2fc53c8c2&query=just)  
+>> 비격식으로 정말, 완전히 로 사용됨  
+
+And.. Phineas and Ferb?  
+What are they doing?  
+> 그럼.. Phineas랑 Ferb는?  
+> 걔네들은 뭐하는데?  
+
+Oh.. such a wonderful thing.  
+> 오... 정말 훌륭해요..  
+>> such가 왜 사용된걸까?  
+
+Candace, honey.  
+I'm coming home.  
+> Candace, 얘야.  
+> 나 지금 집에 가고있어.  
+
+Wait, what?  
+> 잠시만, 뭐라고요?  
+
+I'm right around the corner, I'll be there in 2 minutes.  
+> 나 지금 여기 코너 주위고, 2분안에 도착해.  
+
+No, wait!  
+No mom! **You can't!**  
+> 아니, 잠시만요!  
+> 안돼요 엄마! 안돼요!  
+>> `can`이 `허가`의 의미로 사용됨  
+
+Oh, wait, wait!  
+**Stay right there!**  
+> 오, 잠시만, 잠시만!  
+> 거기 꼼짝 말고 있어!  
+
+**Got to stop her!**  
+> 그녀를 멈춰야해!  
+
+Oh, no, no, no, no.  
+Mom! Mom! Please mom, go away!  
+Don't come in!  
+> 오, 안돼요x4.  
+> 엄마! 엄마! 엄마 제발 가세요!  
+> 들어오지 마세요!  
+
+Is that volcano?  
+> 저거 화산이야?  
+
+Gnomes!!!!!!!!  
+> Gnome들이다!!!!!  
+
+**Run for your life!!**  
+// ...
+> 살고싶으면 뛰어!!  
+
+Who's protecting our garden!!  
+> 누가 우리 정원을 보호하지?  
+
+Candace, tell me the truth.  
+**What is going on here?**  
+> Candace, 사실을 말해.  
+> 무슨 일이 벌어지고 있는거야?  
+
+Phineas and Ferb build a beach in the backyard  
+**just like they said they were going to.**  
+> Phinse랑 Ferb는 그들이 말한대로 뒷마당에 해변을 지었어요.  
+
+But instead of just a cute little beach in their sandbox,  
+**it `turned out to be` absolutely huge beach.**  
+> 하지만 샌드박스안에 있는 귀엽고 작은 해변 대신에,  
+> 그건 완전히 거대한 해변이었어요.  
+>> `~인 것으로 밝혀졌다`보단 그냥 `~이었다` 라고 하는게 좀 더 자연스러움.  
+>> 해석은 위처럼 하지만 무언가 밝혀진? 사실에 대해서 저 표현을 쓰면 좋을 듯 하다.  
+
+// ...  
+
+Everybody from neighborhood `showed up`!!  
+> 이웃의 모든 사람들이 `나타났어요`!  
+
+// ...  
+
+If you would just let me have my moment.  
+> 나한테 시간을 좀 줬으면 좋겠어요.  
+>> `If you would`가 무슨 용도로 사용된걸까..  
+
+Oh, there you are, Perry.  
+> 오, 거기있었구나 Perry.  
+
+Well, everybody.  
+**Looks like that's all for today.**  
+> 자, 모두들.  
+> 오늘은 여기까지인 것 같아.  
+
+Phineas! And Ferb!  
+> Phineas! Ferb!  
+
+If you don't believe me, go `see for yourself`.  
+> 못 믿으시겠다면, 가서 `직접 보세요`.  
+
+That was great.  
+> 훌륭했어.  
+
+Hey, boys.  
+> 얘들아.  
+
+Hey, mom.  
+> 엄마.  
+
+**And `how was your day` at the beach?**  
+> 해변에서 `오늘 어땠니`?  
+
+Wait, wait!  
+My kingdom! My Jeremy! It was all so beautiful.  
+**`What have you done` to my paradise?**  
+> 잠시, 잠시만!  
+> 나의 왕국! 나의 Jeremy! 모든것이 너무 아름다웠어.  
+> 내 파라다이스에 `무슨 짓을 한거야`?  
+>> [Have you done 패턴](http://ellead.tistory.com/1004)  
+
+Candace, honey.  
+I think it's time to `get you out of` the sun `for a little while`.  
+> Candace, 얘야.  
+> 햇볕에서 `잠시동안` `벗어나야` 할 것 같은데.  
+
+I think she had fun.  
+> 걔는 재밌었던거 같애.  
+ 
+// ...
+
+With a `slight` chance of `scattered` lawn gnoms.  
+> lawn gnomes들이 `흩어져 있을` 가능성이 `약간` 있다.  
 
 <!-- more -->

@@ -111,24 +111,42 @@ Hello? Um, Candace? Is everything okay? Oh, everything is just wonderful.
 And Phineas and Ferb? What are they doing? Such a wonderful thing.
 Candace, honey.
 I'm coming home.
-Wait, what? I'm right around the corner.
+Wait, what? 
+I'm right around the corner.
 I'll be there in 2 minutes.
 Oh, wait! No mum! You can't! Oh, wait wait! Stay right there.
 Got to stop her! Oh.So
-No, no, no,no, no! Mum! Mum! Please, Mum! Go away! Don't come in! Is that volcano? Gnomes! Uhn! Run for your life! It's gnome-ageddon! Who's protecting our gardens? Candace, tell me the truth.
-What is going on here? Phineas and Ferb built a beach in the backyard, just like they said they were going to.
-But instead of just a cute little beach in their sandbox, it turned out to be this absolutely huge beach, with a coastline, and palm trees and a pier, and hula dancers, waterskiers, and tiki huts and dolphins and dancing and surfing, and everybody from the neighborhood showed up Oh! and then I was just about to share a smoothie with Jeremy when a coconut dropped on my head and that and just for a moment, it seemed the wily Buford would steal away the coveted surfing trophy from under the noses of our heroes but I can only continue my benign reign and spread love, happiness and ultimate popularity throughout my kingdom! If you would just let me have my moment.
+No, no, no,no, no! Mum! Mum! Please, Mum! Go away! Don't come in! 
+Is that volcano? 
+Gnomes! 
+Uhn! Run for your life! It's gnome-ageddon! 
+Who's protecting our gardens? 
+Candace, tell me the truth.
+What is going on here? 
+Phineas and Ferb built a beach in the backyard, just like they said they were going to.
+But instead of just a cute little beach in their sandbox, it turned out to be this absolutely huge beach, 
+with a coastline, and palm trees and a pier, and hula dancers, waterskiers, and tiki huts and dolphins and dancing and surfing, and everybody from the neighborhood showed up Oh! 
+and then I was just about to share a smoothie with Jeremy when a coconut dropped on my head and that and just for a moment, it seemed the wily Buford would steal away the coveted surfing trophy from under the noses of our heroes 
+but I can only continue my benign reign and spread love, happiness and ultimate popularity throughout my kingdom! If you would just let me have my moment.
 Oh, there you are Perry.
 (Perry chatters) Well, everybody! Looks like that's all for today.
-Phineas and Ferb! Phineas and Ferb! Phineas and Ferb! If you don't believe me, go see for yourself.
+Phineas and Ferb! Phineas and Ferb! Phineas and Ferb! 
+If you don't believe me, go see for yourself.
 That was great.
 Hey boys.
 Hey mom.
-So, how was your day at the beach? Wait! Wait! My kingdom! My Jeremy! It was all so beautiful! What have you done to my paradise? Candace, honey.
+So, how was your day at the beach? 
+Wait! Wait! My kingdom! My Jeremy! It was all so beautiful! What have you done to my paradise? 
+Candace, honey.
 I think it's time to get you out of the sun for a little while.
 I think she had fun.
-If summer only lasted one day (If summer only lasted a day) Stinky dog here with a special shout-out to my two new pals Phineas and Ferb for hosting a beach party that was hot hot hot! And speaking of hot, slather on the sunscreen, listeners, 'cause tomorrow's weather calls for another scorcher! With a slight chance of scattered lawn gnomes.
-Ha ha ha ha! He's a semi-aquatic, egg-laying mammal of action! He's a furry little flatfoot, who'll never flinch from a fray-ee-ay-ee-ay! He's got more than just mad skill He's got a beaver's tail and a bill And the women swoon whenever they hear him say (Perry chatters) He's Perry, Perry the Platypus! 
+If summer only lasted one day (If summer only lasted a day) 
+Stinky dog here with a special shout-out to my two new pals Phineas and Ferb for hosting a beach party that was hot hot hot! And speaking of hot, slather on the sunscreen, listeners, 'cause tomorrow's weather calls for another scorcher! With a slight chance of scattered lawn gnomes.
+Ha ha ha ha!  
+
+
+
+He's a semi-aquatic, egg-laying mammal of action! He's a furry little flatfoot, who'll never flinch from a fray-ee-ay-ee-ay! He's got more than just mad skill He's got a beaver's tail and a bill And the women swoon whenever they hear him say (Perry chatters) He's Perry, Perry the Platypus! 
 
 Read more: https://www.springfieldspringfield.co.uk/view_episode_scripts.php?tv-show=phineas-and-ferb&episode=s01e02
 
