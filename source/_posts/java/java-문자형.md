@@ -32,6 +32,10 @@ a
 http://pickykang.tistory.com/13
 https://okky.kr/article/527371
 
-
+mysql에서 utf8, utf16으로 테스트 해봤으나
+varchar(100)은 100byte가 아니고 100 character를 의미하므로  
+100글자 까지 저장하는 것은 어느 character든 문제없음  
+하지만 내부적으로는 훨씬 많은 디스크를 사용하고 있을 것이다  
+그러면 UTF16으로 하는게 낫지 않나....  
 
 <!-- more -->
