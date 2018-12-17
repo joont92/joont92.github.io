@@ -105,7 +105,7 @@ There was only you in this room, which makes me suspect you.
 > `계속해`.  
 >> Keep going 과 같은 말임. keep going은 미국식 표현에 가깝고, carry on은 영국식 표현에 가깝다.  
 
-We're gonna need more sand.  
+**We're gonna need more sand.**  
 Hey, where's Perry?  
 > 우린 모래가 더 필요할거야.  
 > Perry는 어딨어?  
@@ -114,8 +114,8 @@ Hey, where's Perry?
 ...
 **/
 
-We suspect Doofenshmirtz.  
-> 우리는 Doofenshmirtz를 의심한다.  
+We `suspect` Doofenshmirtz.  
+> 우리는 Doofenshmirtz를 `의심한다`.  
 
 **Get right on it!**  
 > 어서 가봐!  
@@ -149,7 +149,7 @@ Can me and the other Fireside Girls be lifeguards?
 We need to earn our `aquatic` `safety` `badge`s.  
 > 우린 우리의 `수중` `안전` `배지`를 얻을 필요가 있어.  
 
-I mean, I've been a friend of Susie's longer than Katie.  
+I mean, **I've been a friend of Susie's longer than Katie.**  
 So **I `should've been` invited that party first**.  
 > 내 말은, 난 Katie 보다 더 오래 Susie의 친구였어.  
 > 그러니까 내가 그 파티에 첫번째로 초대`됐어야지`.  
@@ -174,13 +174,13 @@ We're locker neighbors, and locker neighbors `trump` lab partners any day.
 > 우린 locker neighbor들이고, locker neighbor들은 언제나 lab partner들을 `이겨`.  
 >> locker neighbor가 뭔지?  
 
-Sorry, Stacy. Gotta go!  
+Sorry, Stacy. **Gotta go!**  
 > 미안 Stacy. 가봐야해!  
 
 Welcome to our beach.  
 > 저희 해변가에 오신것을 환경합니다.  
 
-Ha! You call that a beach?  
+Ha! **You call that a beach?**  
 **This is `way` `below` your `usual` `standard`.**  
 > 이건 니 `평소` `기준`보다 `훨씬` `낮다`.  
 ```
@@ -193,7 +193,7 @@ The price is way above our thought.
 >> worth를 잘쓰면 좋을듯  
 
 You know, if you guys ever wanna be popular, you're gonna have to stop playing in the sandboxes.  
-> 있잖아, 너네들  인기있고 싶다면, 샌드박스 안에서 노는걸 멈춰야해.  
+> 있잖아, 너네들 인기있고 싶다면, 샌드박스 안에서 노는걸 멈춰야해.  
 
 Hey!  
 > 이봐!  
@@ -218,7 +218,7 @@ Hey, Candace.
 Jenny? Stacy?  
 > Jenny? Stacy?  
 
-You never told us you had a beach in your backyard?  
+**You never told us you had a beach in your backyard?**  
 > 뒷마당에 해변가가 있다고 얘기한적 없었잖아.  
 
 **You `gotta be` a most popular girl in the neighborhood.**  
