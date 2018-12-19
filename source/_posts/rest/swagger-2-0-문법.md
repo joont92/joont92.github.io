@@ -25,7 +25,7 @@ array는 항상 items 옵션을 가진다.
 <https://swagger.io/docs/specification/2-0/describing-parameters/>  
 
 path, query, formData type들을 받을 수 있으며  
-required, default, minumum 등 여러가지 옵션을 줄 수 있다.  
+required, default, minimum 등 여러가지 옵션을 줄 수 있다.  
 
 <https://swagger.io/docs/specification/2-0/describing-request-body/>  
 
@@ -44,5 +44,24 @@ response data로 definitions에 정의한(definitions는 그냥 이름을 뿐임
 기본적으로 enum은 string array 형태로 작성한다.  
 그리고 definitions 처럼 따로 선언해서 재사용하게 할 수 있다.  
 parameters에서는 `&ENUM`을 사용하지만 object 내에서는 `#/definitions/ENUM`형태로 선언해야 한다.  
+
+```yaml
+CategoryType:
+    type: string
+    enum: &CATEGORYTYPE
+        - MAIN
+        - SUB
+
+CategoryDTO:
+    title: CategoryDTO
+    type: object
+    properties:
+        externalId:
+            type: string
+        type:
+            enum: *CATEGORYTYPE
+```
+
+이런식으로 선언할 경우 code-gen에서 이상한 TypeEnum 형태의 inner enum을 generate 한다.  
 
 <!-- more -->

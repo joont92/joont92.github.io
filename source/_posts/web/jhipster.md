@@ -47,5 +47,28 @@ cd jhipster-registry
 ```
 
 ### kafka 설정(선택했을 경우)
+jhipster init 할때 kafka를 설정했을 경우, docker로 kafka를 실행한다
+
+```sh
+cd {jhipster_project_home}
+docker-compose -f src/main/docker/kafka.yml up -d
+```
+
+# jdl
+jhipster에서 도메인을 나타낼 떄 사용하는 language이다.  
+<https://www.jhipster.tech/jdl/>  
+
+작성한 도메인의 관계도는 아래의  
+<https://start.jhipster.tech/jdl-studio/>  
+에서 가시적으로 확인해볼 수 있고,  
+`.jdl` 확장자로 따로 저장도 가능하다.  
+
+.jdl 파일을 jhipster generate 할 때 지정하면 해당 파일의 도메인을 기준으로 entity, repository, service를 만들어준다.  
+
+초반 generate 시에 해당 파일을 지정하지 못했다면  
+`jhipster jdl-import <jdl file path>` 같은 옵션을 사용하여 jdl 파일로 code 생성 가능하다.  
+
+하지만 생성된 entity, service, repository를 그대로 사용할수는 없으니(당연하다)  
+초반 와꾸잡는데만 사용하고, 그 시점이후로는 jdl 파일을 건드리진 않는다.  
 
 <!-- more -->

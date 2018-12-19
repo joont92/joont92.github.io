@@ -38,6 +38,6 @@ response
 > 일반적으로 DTO를 쓸 예정이나 혹시나 response가 필요할 때 사용한다.  
 > 기존 목록에 추가적인 정보가 필요할 때 사용할 수 있다(e.g. page meta data)  
 >
-> getItemsResponse
+> GetItemsResponse
 
 <!-- more -->
