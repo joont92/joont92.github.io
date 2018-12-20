@@ -157,7 +157,7 @@ So **I `should've been` invited that party first**.
 >> would've : ~ 했을텐데  
 >> [가정법](http://hakmalyoung.tistory.com/239)  
 >> could've : ~ 할수있었는데  
->> should've : ~ 했어야지, ~했었어야지  
+>> should've : ~ 했어야지, ~했었어야지, ~할걸(자기자신이 주어일때?)  
 ```
 You should've said this!  
 > 이걸 말했어야지!  
@@ -335,7 +335,8 @@ Well, let's get started!
 
 (**We'll hit the beach**, yeah, we'll hit the beach)  
 > 우리는 해변에 갈 거야, 그래, 우리는 해변에 갈 거야  
->> hit이 간다 라는 의미로 쓰인 듯 하다  
+>> [hit의 용도](https://ell.stackexchange.com/questions/187224/meaning-of-hit-somewhere)  
+>> reach와 동일한 뜻으로 사용된다  
 
 `Throw` our board shorts `on` and **`head for` surfin' town**~~  
 > 보드 반바지를 `걸치고` 서핑 타운으로 `향하자`~~  
@@ -514,6 +515,8 @@ I almost vomitted all throgh watching the movie
 > 나는 그 영화보는 내내 거의 토할 뻔 헀어  
 ```
 >> (~헐 뻔 하다)[http://k.languagetown.com/kjiddetial.html?QNo=4913]  
+>> almost + 과거 : ~ 할 뻔헀다  
+>> almost + 과거분사 : 거의 다 ~ 헀다  
 
 So, since my lawn gnome was taken away from me,  
 I will destroy every lawn gnome in the entire!   
@@ -532,8 +535,9 @@ Surf~~~~ `Contest`~~~!!
 **`Out of my way`**, jennabelle.  
 > `비켜`, jennabelle(꼬맹이?).  
 
-Hell, Buford. **`Perhaps` you missed the sign.**  
+Hello, Buford. **`Perhaps` you missed the sign.**  
 > 안녕, Buford. `아마도` 너 표지판을 놓친거 같애.  
+>> [perhaps, maybe](https://confusingtimes.tistory.com/1036)  
 ```
 Perhaps we can do it again.  
 > 다음에 또 할수 있을 거에요  
@@ -653,7 +657,7 @@ So, **are you having fun?**
 (Girl, **The moment has arrived**)  
 > 소녀, 그 순간이 다가왔다  
 
-Haa.. just one second.  
+Haa.. **just one second**.  
 > 잠시만.  
 
 Hello~  
@@ -763,6 +767,8 @@ Phineas! And Ferb!
 
 If you don't believe me, go `see for yourself`.  
 > 못 믿으시겠다면, 가서 `직접 보세요`.  
+>> for ~self : 직접 ~  
+>> by ~self : 혼자 ~  
 
 That was great.  
 > 훌륭했어.  
