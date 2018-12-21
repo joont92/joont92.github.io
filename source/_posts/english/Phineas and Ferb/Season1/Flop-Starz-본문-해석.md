@@ -74,7 +74,7 @@ Nice that?
 Yeah, you should try that on first.  
 
 Let's go!  
-
+와
 Chicka, Chicak, Chew.  
 
 What ming that choose done?
