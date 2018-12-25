@@ -4,19 +4,53 @@ date: 2018-12-19 22:51:27
 tags:
 ---
 
-I met my love in a- OW! Oh, boy! Did that kid stink or what? But maybe you've got what it takes to be The Next Super American Pop Teen Idol Star! Auditions open today at the Googolplex Mall in beautiful downtown Danville.
-Auditions! Today?! Yes, today! At two o'clock sharp.
-I gotta tell Stacy! That pop star stuff might be fun at first, but then you'd be stuck with a dead end job.
-Too bad you can't just do it once and move on.
-Well, what you're talking about is a one-hit wonder.
-A one-hit wonder? What's that? Well, a musical act goes to the top of the charts with a catchy tune and meaningless lyrics.
-(Song: I'm Lindana and I Wanna Have Fun!) I'm Lindana and I wanna have fun! ( She's Lindana! ) ( She wants to have fun ) I'm Lindana and I wanna have fun! Then they throw a big diva tantrum, lose their label, then fade to obscurity.
+# 1회차
+I met my love in a- OW!  
+> 
+
+Oh, boy! Did that kid `stink` or what?  
+But maybe you've got what it takes to be.  
+> 와, 방금 그 애 냄새나거나 그러지 않았어?  
+> 하지만 당신들은 이게 뭘 의미하는지 알았을겁니다  
+
+The Next Super American Pop Teen Idol Star!  
+> 차세대 미국 십대 아이돌 스타!  
+
+Auditions open today at the Googolplex Mall in beautiful downtown Danville.  
+> 오디션은 오늘 Danville 시내에 있는 구글플렉스 몰에서 열립니다!  
+
+Auditions! Today?! Yes, today! At two o'clock `sharp`.  
+> 오디션! 오늘?!  
+> 네 오늘요! 2시 `정각`에요.  
+
+I gotta tell Stacy!  
+> Stacy한테 말해야겠어!  
+
+That pop star `stuff` might be fun at first, but then you'd be `stuck with` a `dead end job`.  
+> 팝스타들의 `일`은 처음엔 재밌을지 모르지만, 나중엔 `장래성 없는 일`을 `떠맡을 수`도 있어.  
+
+Too bad you can't just do it once and `move on`.  
+> 한번하고 `넘어갈 수` 없다는게 너무 안좋아.  
+>> 얘네들은 대체 you를 어떻게 쓰는걸까  
+
+Well, what you're talking about is a one-hit wonder.  
+> 히트곡이 하나뿐인 가수  
+
+A one-hit wonder? What's that?   
+
+Well, a musical act goes to the top of the charts with a catchy tune and meaningless lyrics.
+속
+(Song: I'm Lindana and I Wanna Have Fun!) I'm Lindana and I wanna have fun! ( She's Lindana! ) ( She wants to have fun ) I'm Lindana and I wanna have fun! 
+Then they throw a big diva tantrum, lose their label, then fade to obscurity.
 Before they know it, their song ends up as elevator music.
-I wanna, wanna, wanna have fun fun fun Years later, they have a reunion concert, and after that, they never sing again, and no one remembers them.
+
+I wanna, wanna, wanna have fun fun fun 
+Years later, they have a reunion concert, and after that, they never sing again, and no one remembers them.
 Not that I would know anything about that.
 A one-hit wonder.
 Ferb, I know what we're gonna do today.
-But Stacy, what am I going to sing? Hello, what are you gonna wear? Hmmm.
+But Stacy, what am I going to sing? Hello, what are you gonna wear? 
+Hmmm.
 What do you think? Too much.
 Too little.
 Ugh, too clean.
@@ -34,7 +68,7 @@ Doofenshmirtz has been buying up construction toys at an alarming rate.
 We need you to find out what he's up to and put a stop to it.
 Perry! We'll meet back in the entrance in an hour.
 
-
+# 2회차
 Come on, Stacy! We gotta hurry so we could get a spot in li-- yayaya.
 I've never sang in front of so many people! Uh, Candace?   
 I can't do this.

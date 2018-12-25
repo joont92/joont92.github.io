@@ -4,7 +4,7 @@ date: 2018-12-19 22:59:12
 tags:
 ---
 
-I met my lominic..  
+I met my love in a..  
 
 Oh, put like git that stanger they lot  
 
