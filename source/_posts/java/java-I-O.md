@@ -1,6 +1,6 @@
 ---
 title: java I/O
-date: 2018-11-27 00:25:52
+date: 2017-11-27 00:25:52
 tags:
     - java 입출력
     - InputSream
@@ -74,7 +74,7 @@ public void fileCopy(){
         byte[] temp = new byte[8192];
 
         long start = System.currentTimeMillis();
-        while(fileInputStream.read(temp) != -1){
+        while(fileInputStream.read(temp) > 0){
             fileOutputStream.write(temp);
         }
         long end = System.currentTimeMillis();
@@ -103,7 +103,7 @@ public void readFromByte() {
     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
     try{
-        while(byteArrayInputStream.read(temp) != -1){
+        while(byteArrayInputStream.read(temp) > 0){
             byteArrayOutputStream.write(temp);
         }
     } catch (IOException e){
@@ -158,10 +158,9 @@ DataInputStream dis = new DataInputStream(new BufferedInputStream(System.in));
 
 한 바이트씩 입출력 하는 것 보다는 버퍼를 이용해 한번에 여러 바이트를 입출력하는 것이 빠르므로 자주 사용된다.  
 `read(byte[] b)`는 모아뒀다가 한번에 전송하는것이고, 이건 들고올 때 부터 지정한 크기만큼 들고온다. 둘은 다르다.(조금 더 알아봐야함. 이중 버퍼 같은건가?)  
-그러므로 보통 입력소스로부터 한번에 가져올 수 있는 데이터의 크기로 지정한다.  
-
 <https://stackoverflow.com/questions/53735627/difference-between-fileinputstream-with-buffer-and-bufferedinputstream>
 (답글이 달릴까?)  
+그러므로 보통 입력소스로부터 한번에 가져올 수 있는 데이터의 크기로 지정한다.  
 
 `BufferedOutputStream`은 버퍼의 내용이 가득차면 출력소스로 출력한다.  
 버퍼가 가득 차지 못해서 출력되지 못할 수도 있으니 항상 마지막에 `flush()`나 `close()`를 호출해서 버퍼를 비우도록 해야한다.  
