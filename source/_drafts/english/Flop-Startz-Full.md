@@ -62,7 +62,9 @@ You like it? Nah, too retro.
 Perfect! Nice, huh? Yeah, you should've tried that on first.
 Let's go! Chika, chika, choowah.
 Meaningless lyrics done.
-How's the catchy tune coming along? Excellent! We'll be done by lunch! Hey, where'd Perry go? Hello? Hello-oo? Anybody there? Oh, good morning Agent P.
+How's the catchy tune coming along? Excellent! We'll be done by lunch! 
+Hey, where'd Perry go? 
+Hello? Hello-oo? Anybody there? Oh, good morning Agent P.
 We just received word that Dr.
 Doofenshmirtz has been buying up construction toys at an alarming rate.
 We need you to find out what he's up to and put a stop to it.
