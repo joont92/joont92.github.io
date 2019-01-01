@@ -5,8 +5,6 @@ tags:
     - String
     - StringBuffer
     - StringBuilder
-photo : 
-  - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzI2MjcmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1OQ==
 ---
 
 셋 다 문자열 처리를 위한 클래스이나, 그 처리 방법에서 차이를 보인다.  

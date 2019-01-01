@@ -6,8 +6,6 @@ tags:
   - '@SessionAttributes'
   - SessionStatus
   - 토비의 스프링
-photo: 
-  - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 # 문제상황

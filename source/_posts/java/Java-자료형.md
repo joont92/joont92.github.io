@@ -1,12 +1,9 @@
 ---
-title: 자료형, 형변환
+title: java 자료형
 date: 2017-12-12 22:55:49
 tags:
-  - Java 자료형
-  - Java 형 변환
-photo : 
-  - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzI2MjcmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1OQ==
-type: "categories"
+  - java 형 변환
+  - primitive type
 ---
 
 # 기본형(Primitive Type)

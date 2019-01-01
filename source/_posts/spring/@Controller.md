@@ -6,8 +6,6 @@ tags:
     - '@RequestMapping return'
     - '@ModelAttribute'
     - 토비의 스프링
-photo: 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 여기서 말하는 `@Controller`란 빈 자동 스캔시 사용되는 스테레오 타입 애노테이션이 아니라,  

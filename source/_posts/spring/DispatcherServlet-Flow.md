@@ -7,8 +7,6 @@ tags:
     - Front Controller
     - DispatcherServlet flow
     - 토비의 스프링
-photo: 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 스프링 웹 기술은 `MVC 아키텍쳐`를 근간으로 한다.  

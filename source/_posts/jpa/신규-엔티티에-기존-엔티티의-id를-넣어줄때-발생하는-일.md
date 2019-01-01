@@ -4,6 +4,7 @@ date: 2018-12-27 16:22:47
 tags:
     - orphanRemoval
     - entity child diff
+    - merge
 ---
 
 JPA를 개발하다 보면, 아래와 같은 행위를 할떄가 가끔씩 있다.  

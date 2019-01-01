@@ -6,8 +6,6 @@ tags:
     - DefaultAnnotationHandlerMapping
     - AnnotationHandlerAdapter
     - 토비의 스프링
-photo: 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 `@RequestMapping`은 `DefaultAnnotationHandlerMapping`에서 컨트롤러를 선택할 때 대표적으로 사용하는 애노테이션이다.  

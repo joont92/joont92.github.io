@@ -7,8 +7,6 @@ tags:
     - OutputStream
     - Reader
     - Writer
-photo : 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzI2MjcmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1OQ==
 ---
 
 # 입/출력

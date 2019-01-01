@@ -5,8 +5,6 @@ tags:
     - Conan O'brien
     - Conor McGregor
     - 미티영
-photo : 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU1MzIwMjMmdHlwZT1sJno9MjIvMDQvMjAxOCAxMTo0Mw==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/O6hAm0LC7dA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

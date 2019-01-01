@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 기록하자
-subtitle: 잘살고싶다
-description: 사람은 모든것을 까먹는다
-author: Jun Young Park
+title: 개인저장소
+subtitle: 
+description: 
+author: JunYoung Park
 language: en
 timezone:
 
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: clean-blog
+theme: tranquilpeak
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

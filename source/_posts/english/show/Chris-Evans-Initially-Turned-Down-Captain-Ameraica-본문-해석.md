@@ -5,8 +5,6 @@ tags:
     - Jimmy Kimmel
     - Chris Evans
     - 미티영
-photo: 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5MzkyNDYmdHlwZT1sJno9MjAxOC8wNS8yMCAxMjo0Ng==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/8XISNKa_q-g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

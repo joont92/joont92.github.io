@@ -7,8 +7,6 @@ tags:
     - Will Smith
     - Catherine Zeta-Jones
     - Toby Jones
-photo :  
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIyNzMyNDc0MDEmdHlwZT1sJno9MTAvMDYvMjAxOCAxNzoyNA==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/iRngp25a8wM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>  

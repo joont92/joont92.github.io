@@ -5,8 +5,6 @@ tags:
     - Java EOF
     - Scanner EOF
     - BufferedReader EOF
-photo : 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzI2MjcmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1OQ==
 ---
 
 `EOF`란 `End Of File`의 약자로 데이터 소스로부터 더 이상 읽을 데이터가 없음을 나타낸다.  

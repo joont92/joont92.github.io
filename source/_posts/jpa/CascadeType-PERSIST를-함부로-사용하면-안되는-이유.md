@@ -29,6 +29,7 @@ em.persist(child2);
 > The semantics of the flush operation, applied to an entity X are as follows:
 > • If X is a managed entity, it is synchronized to the database.
 > • For all entities Y referenced by a relationship from X, if the relationship to Y has been annotated with the cascade element value cascade=PERSIST or cascade=ALL, the persist operation is applied to Y.  
+
 flush가 발생할 때 `CascadeType.PERSIST`나 `CascadeType.ALL`이 있을 경우 자식에 연쇄적으로 `persist operation`이 발생한다는 의미이다.  
 
 이 특징을 기반으로 아래의 행위들을 설명할 수 있다.  

@@ -5,8 +5,6 @@ tags:
     - Ellen DeGeneres
     - Olivia Munn
     - 미티영
-photo: 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIxOTA5NTAxOTYmdHlwZT1sJno9MjAxOC8wNS8yMCAxMjo1Mg==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/6E0o0CFFy2Q" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

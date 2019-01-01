@@ -5,8 +5,6 @@ tags:
   - Conan O'brien
   - Ice Cube
   - 미티영
-photo : 
-  - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NjIzODImdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1Mg==
 ---
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/9huSsQ1kD1g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

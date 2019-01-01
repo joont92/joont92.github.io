@@ -5,8 +5,6 @@ tags:
     - web.xml 없애기
     - WebApplicationInitializer
     - 토비의 스프링
-photo: 
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODYmdHlwZT1sJno9MjAxOC8wNC8yMiAxMjo1Nw==
 ---
 
 서블릿은 3.0 이후부터 web.xml 없이도 서블릿 컨텍스트 초기화 작업이 가능해졌다.  

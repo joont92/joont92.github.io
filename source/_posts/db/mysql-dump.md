@@ -4,8 +4,6 @@ date: 2018-04-10 13:02:20
 tags:
     - mysql dump
     - mysql 덤프
-photo :     
-    - https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTU2NzA4ODQmdHlwZT1sJno9MjIvMDQvMjAxOCAxMjo1Nw==
 ---
 
 # 덤프뜨기
