@@ -7,6 +7,7 @@ tags:
     - 쉐도잉
 ---
 
+# 1회차
 I met my love on it..  
 
 Oh, boy. **Did that kid stink `or what`?**  
@@ -157,5 +158,63 @@ Perry!
 
 **We'll `meet back` in the entrance `in an hour`.**  
 > `한시간 뒤에` 입구에서 `다시 만나`.  
+
+# 2회차  
+Come on, Stacy. 
+We gotta hurry so we can get a spot in li -yayaya..    
+
+I've never sang in front of so many people.  
+> have sung은 very common non-standard construction라고 한다..  
+> 사투리라고..?  
+
+Oh, Candace?  
+
+Huh! I can't do this.  
+
+Oh, yes you can!  
+You're not a quitter, you're a fighter.  
+
+I am?  
+
+Sure, you are!  
+You're a lean, mean, singing machine.  
+
+That's it! Yeah!  
+Now you're looking like a winner!  
+
+Hey, Candace.  
+
+And that it's what a gorilla looks like  
+
+Oh, Hi Jeremy! Are you auditioning too?  
+
+Nah, I came to see this how new band called PFT.  
+
+I downloaded their song this morning, it's tight!  
+
+A hundredth contestant gets to sing onstage with the band.  
+
+Really?  
+
+Hey, looks like that's you.  
+
+Conguraturations! You're the hundredth contestant!  
+
+Ladies and gentlemen, this young lady has the `honor` of singing onstage with PFT.  
+> 신사 숙녀 여러분, 이 어린 소녀가 PTF와 함께 무대에서 노래할 `영광`을 가졌습니다!  
+
+So now, the band you've been waiting for waiting for is Phineas and the Ferb Tones!  
+>> [현재완료 진행](http://hieugene92.tistory.com/entry/have-pp-have-been-pp-have-been-ing-%EC%B0%A8%EC%9D%B4%EC%A0%90)  
+>> 과거부터 지금까지 해왔고, 지금도 하고 있다  
+
+Phineas?  
+
+Candace? You're a hundredth contestant? How's long defidence?  
+
+
+
+
+
+
 
 <!-- more -->

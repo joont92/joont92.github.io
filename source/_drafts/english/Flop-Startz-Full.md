@@ -75,14 +75,19 @@ Come on, Stacy! We gotta hurry so we could get a spot in li-- yayaya.
 I've never sang in front of so many people! Uh, Candace?   
 I can't do this.
 Oh yes, you can.
-You're not a quitter; you're a fighter! I am? Sure you are! You're a lean, mean, singing machine! That's it, yeah! Now you're looking like a winner! Hey, Candace.
+You're not a quitter; you're a fighter! 
+I am? Sure you are! You're a lean, mean, singing machine! That's it, yeah! Now you're looking like a winner! Hey, Candace.
 And that is what a gorilla looks like when you try to take away its food.
 Oh! Hi, Jeremy! Are you auditioning too? Nah.
 I came to see this hot new band called PFT.
 I downloaded their song this morning.
-It's tight! The hundredth contestant gets to sing onstage with the band! Really? Hey, looks like that's you.
-Congratulations! You're the hundredth contestant! Ladies and gentlemen, this young lady has the honor of singing onstage with PFT.
-So now, the band you've been waiting for Phineas and the Ferb-Tones! Phineas? Candace? You're the hundredth contestant? How serendipitous.
+It's tight! 
+The hundredth contestant gets to sing onstage with the band!  
+Really? Hey, looks like that's you.
+Congratulations! You're the hundredth contestant! 
+Ladies and gentlemen, this young lady has the honor of singing onstage with PFT.
+So now, the band you've been waiting for Phineas and the Ferb-Tones! Phineas?  
+Candace? You're the hundredth contestant? How serendipitous.
 This'll be like a brother and sister thing! Now I'm assuming you've heard our hit single.
 I mean, who hasn't, right? It's a big hit.
 So here's the words but don't worry if you get lost.
@@ -97,7 +102,11 @@ Why don't you come by my office in an hour and we can talk about your future.
 Future? Cool.
 He must be a psychic.
 Come on, come on, come on! See?! There they are onstage!!! Ladies and gentlemen, once again Marty the Rabbit Boy and His Musical Blender! Hon, we're getting you an eye exam.
-No, no! Wait! Perry! Doofenshmirtz Evil Incorporated! Ha ha, everything is ready! Oh, what is it now? Oh, you are my new temp? Well, let me just get you up the speed.
+No, no! Wait! Perry! 
+Doofenshmirtz Evil Incorporated! Ha ha, everything is ready!  
+
+# 3회차
+Oh, what is it now? Oh, you are my new temp? Well, let me just get you up the speed.
 I know it's bit of a mess.
 I'm just putting the finishing touches of my latest maniacal plan.
 You see, in a few minutes, I will unleash an unprecedented reign of terror upon the entire Tri-State Area! And Perry the Platypus will never be the wiser.

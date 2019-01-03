@@ -486,7 +486,7 @@ So you think that Phineas and Ferb are still under that stupid tree in the backy
 
 That would be my guess.  
 > 내 추측엔 그래  
->> (will, would 차이)[https://ilikeen.tistory.com/724]  
+>> [will, would 차이](https://ilikeen.tistory.com/724)  
 >> 좀 더 약한 추측  
 
 ```
