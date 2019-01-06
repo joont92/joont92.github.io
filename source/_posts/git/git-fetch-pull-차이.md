@@ -1,5 +1,5 @@
 ---
-title: 'fetch, pull 차이'
+title: 'git fetch, pull 차이'
 date: 2018-01-03 11:50:41
 tags:
     - fetch
