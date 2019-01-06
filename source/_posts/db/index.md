@@ -2,6 +2,9 @@
 title: index
 date: 2018-03-07 23:07:04
 tags:
+    - Real MySQL
+    - 인덱스  
+    - B-Tree
 ---
 
 # 순차 IO / 랜덤 IO

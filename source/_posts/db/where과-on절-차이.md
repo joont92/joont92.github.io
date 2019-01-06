@@ -3,7 +3,7 @@ title: where과 on절 차이
 date: 2018-01-02 23:01:54
 tags:
     - where
-    - 'on'
+    - on
 ---
 
 <https://blog.leocat.kr/notes/2017/07/28/sql-join-on-vs-where>  
