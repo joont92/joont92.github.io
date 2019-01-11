@@ -87,6 +87,14 @@ TypedQuery<Member> query =
 
 이것보다는 전자가 더 명확하다.  
 
+참고로 LIKE 연산처럼 `%` 같은 특수문자가 필요할 경우 전달하는 파라미터에 붙여서 사용하면 된다.  
+```java
+TypedQuery<Member> query = 
+    em.createQuery("SELECT m FROM Member m WHERE m.username LIKE :username", Member.class)
+    .setParameter("username", "%joont%"); // 이런식으로
+```
+
+
 > **파라미터 바인딩 방식은 선택이 아닌 필수이다**  
 > - JPQL에 직접 문자를 더하면 SQL Injection을 당할 수 있다  
 > - JPA에서 파라미터만 다를 뿐 같은 쿼리로 인식하므로, JPQL을 SQL로 파싱한 결과를 재사용할 수 있다  
@@ -838,5 +846,141 @@ List<Member> result =
     - JPA 표준명세에서 정하는 NULL과의 논리연산은  
     NULL과 False를 AND 연산하면 False.  
     NULL과 True를 OR 연산하면 True이다.  
+
+# 벌크 연산(UPDATE, DELETE)  
+JPQL로 여러 건을 한번에 수정하거나 삭제할 떄 사용한다.  
+아래는 UPDATE 벌크 연산이다.  
+
+```java
+String sql = "UPDATE Product p " +
+    "SET p.prce = p.price * 1.1 " +
+    "WHERE p.stockAmount < :stockAmount";
+
+int resultCount = em.createQuery(sql)
+        .setParameter("stockAmount", 10)
+        .executeUpdate();
+```
+
+`executeUpdate` 메서드를 사용한다. 벌크 연산으로 영향을 받은 엔티티 건수를 반환한다.  
+아래는 DELETE 벌크 연산이다.  
+
+```java
+String sql = "DELETE FROM Product p " +
+    "WHERE p.price < :price";
+
+int resultCount = em.createQuery(sql)
+        .setParameter("price", 100)
+        .executeUpdate();
+```
+
+## 벌크 연산시 주의사항  
+벌크 연산은 영속성 컨텍스트를 무시하고 데이터베이스에 직접 쿼리한다는 특징이 있으므로 주의해야 한다.  
+아래는 발생가능한 문제 상황이다.  
+
+```java
+Product product = em.find(Product.class, 1);
+assertThat(product.getPrice(), is(1000));
+
+String sql = "UPDATE Product p " +
+    "SET p.prce = p.price * 1.1";
+em.createQuery(sql).executeUpdate();
+
+assertThat(product.getPrice(), is(1100)); // FAIL!!
+```
+
+벌크 연산은 영속성 컨텍스트와 2차 캐시를 무시하고 데이터베이스에 직접 쿼리한다.  
+따라서 위와 같이 영속성 컨텍스트와 데이터베이스 간에 데이터 차이가 발생할 수 있는 것이다.  
+이를 해결하기 위한 방법은 아래와 같다.  
+
+- `em.refrest(entity)` 사용  
+    > 벌크 연산 직후에 `em.refresh(entity)`를 사용하여 데이터베이스에서 다시 상품을 조회하면 된다.  
+- 벌크 연산 먼저 실행  
+    > 벌크 연산을 가장 먼저 실행하면 이미 변경된 내용을 데이터베이스에서 가져온다.  
+    > 가장 실용적인 해결책이다.  
+- 벌크 연산 수행 후 영속성 컨텍스트 초기화  
+    > 영속성 컨텍스트가 초기화되면 데이터베이스에서 다시 조회해오기 때문에 이것도 방법이다.  
+
+# 영속성 컨텍스트와 JPQL  
+영속성 컨텍스트에 이미 있는 엔티티를 JPQL로 다시 조회해올 경우 어떻게 처리될까?  
+
+```java
+Member member1 = em.find(Member.class, 1);
+
+List<Member> list = 
+    em.createQuery("SELECT m FROM Member m", Member.class)
+    .getResultLst();
+```
+
+이미 영속성 컨텍스트에 들어있는 1번 member가 JPQL에 의해 다시 한번 조회되는 상황이다.  
+결과부터 말하자면 JPQL 쿼리는 쿼리대로 다 날라가고, 조회한 엔티티를 영속성 컨텍스트에 다 저장한다.  
+여기서 중요한 점은 1번 member의 경우 영속성 컨텍스트에 이미 들어있으므로, JPQL로 조회해온 1번 member는 그냥 버려진다는 것이다.  
+
+![JPQL 조회시 영속성 컨텍스트](https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTMwMzE2NDQ0MzImdHlwZT1sJno9MjAxOS8wMS8xMSAwNzozMw==)  
+
+보다시피 조회해온 member들 중 1번 member는 영속성 컨텍스트에 이미 있으므로 그 결과가 버려진다.  
+영속성 컨텍스트에 없는 2번 member의 경우 영속성 컨텍스트에 저장된다.  
+
+새로 조회해온 결과를 기존 영속성 컨텍스트에 덮어쓰지 않는 이유는 `영속 상태인 엔티티의 동일성을 보장해야하기 때문`이다.  
+> find로 들고오든, JPQL로 들고오든 동일한 엔티티를 반환해야 한다.  
+
+```java
+Member member1 = em.find(Member.class, 1);
+Member member2 = 
+    em.createQuery("SELECT m FROM Member WHERE m.id = :id", Member.class)
+    .setParameter("id", 1)
+    .getSingleResult();
+
+assertSame(member1, member2); // SUCCESS
+```
+
+![JPQL 실행 시 플로우](https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTMwMzE2ODk4NTQmdHlwZT1sJno9MjAxOS8wMS8xMSAwNzo1Mg==)  
+
+보다시피 영속성 컨텍스트에 1번 member 엔티티가 있더라도 무조건 SQL을 실행해서 조회해온다.  
+(JPQL을 분석해서 영속성 컨텍스트를 조회하는 것은 너무 힘들기 때문이다.)  
+그리고 조회해온 엔티티를 영속성 컨텍스트에 넣을 때, 이미 있는 엔티티일 경우 결과를 버린다.  
+
+# JPQL과 플러시 모드  
+플러시 모드는 `FlushMode.AUTO(Default)`, `FlushMode.COMMIT`이 있다.  
+이때까지 `FlushMode.AUTO` 는 트랜잭션이 끝날때나 커밋될 때만 플러시를 호출하는 것으로 알고 있었으나, 사실은 시점이 하나 더 있다. JPQL 쿼리를 실행하기 직전이다.  
+
+```java
+Member member1 = em.find(Member.class, 1);
+member1.setName("modified name");
+
+Member member2 = 
+    em.createQuery("SELECT m FROM Member WHERE m.id = :id", Member.class)
+    .setParameter("id", 1)
+    .getSingleResult();
+
+assertThat(member1.getName(), member2.getName());
+```
+
+변경감지는 플러시 될때 발생하므로, JPQL에서 아직 변경되지 않은 name 값을 가진 1번 member를 가져올 것이라고 생각할 수 있지만,  
+`FlushMode.AUTO`는 영속 상태인 엔티티의 동일성을 보장하기 위해 `JPQL 실행 전에 플러시를 수행한다`.  
+그러므로 위의 테스트는 성공한다.  
+> 어떻게 동작하는지 정확히는 모르겠으나, 영속성 컨텍스트에 있는 엔티티에 대해 JPQL을 실행할 떄만 플러시를 수행한다.  
+> 즉, 위의 상황에서 JPQL로 Team을 조회해올 경우 플러시가 발생하지 않는다.  
+
+하지만 이 상황에서 `FlushMode.COMMIT`으로 설정하면 쿼리전에 플러시를 수행하지 않으므로 위의 테스트가 실패하게 된다.  
+이때는 직접 `em.flush`를 호출해주거나, Query 객체에 직접 플러시 모드를 설정해주면 된다.  
+
+```java
+em.setFlushMode(FlushMode.COMMIT); // 커밋시에만 플러시
+
+Member member1 = em.find(Member.class, 1);
+member1.setName("modified name");
+
+em.flush(); // 1. em.flush 직접 호출
+
+Member member2 = 
+    em.createQuery("SELECT m FROM Member WHERE m.id = :id", Member.class)
+    .setParameter("id", 1)
+    .setFlushMode(FlushMode.AUTO) // 2. setFlushMode 설정
+    .getSingleResult();
+
+assertThat(member1.getName(), member2.getName());
+```
+
+FlushMode.COMMIT은 너무 잦은 플러시가 일어나는 경우, 플러시 횟수를 줄여서 성능을 최적화하고자 할 때 사용할 수 있다.  
 
 <!-- more -->

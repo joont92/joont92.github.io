@@ -161,9 +161,9 @@ Perry!
 
 # 2회차  
 Come on, Stacy. 
-We gotta hurry so we can get a spot in li -yayaya..    
+**We gotta hurry** so we can get a spot in li -yayaya..    
 
-I've never sang in front of so many people.  
+**I've never sang in front of so many people.**  
 > have sung은 very common non-standard construction라고 한다..  
 > 사투리라고..?  
 
@@ -177,18 +177,20 @@ You're not a quitter, you're a fighter.
 I am?  
 
 Sure, you are!  
-You're a lean, mean, singing machine.  
+You're a `lean, mean, singing machine`.  
+>> 뭔가 강하고 효율적인걸 나타낼 때 사용함  
+>> lean, mean XXX machine 의 형태로 사용함  
 
 That's it! Yeah!  
-Now you're looking like a winner!  
+**Now you're looking like a winner!**  
 
 Hey, Candace.  
 
-And that it's what a gorilla looks like  
+And that it's what a gorilla looks like when you try to take away its food.  
 
 Oh, Hi Jeremy! Are you auditioning too?  
 
-Nah, I came to see this how new band called PFT.  
+Nah, **I came to see this hot new band called PFT.**  
 
 I downloaded their song this morning, it's tight!  
 
@@ -196,25 +198,105 @@ A hundredth contestant gets to sing onstage with the band.
 
 Really?  
 
-Hey, looks like that's you.  
+Hey, **looks like that's you.**  
 
 Conguraturations! You're the hundredth contestant!  
 
 Ladies and gentlemen, this young lady has the `honor` of singing onstage with PFT.  
 > 신사 숙녀 여러분, 이 어린 소녀가 PTF와 함께 무대에서 노래할 `영광`을 가졌습니다!  
 
-So now, the band you've been waiting for waiting for is Phineas and the Ferb Tones!  
+So now, **the band you've been waiting for is Phineas and the Ferb Tones!**  
 >> [현재완료 진행](http://hieugene92.tistory.com/entry/have-pp-have-been-pp-have-been-ing-%EC%B0%A8%EC%9D%B4%EC%A0%90)  
 >> 과거부터 지금까지 해왔고, 지금도 하고 있다  
 
 Phineas?  
 
-Candace? You're a hundredth contestant? How's long defidence?  
+Candace? You're a hundredth contestant? How `serendipitous`.  
+> `우연한 일`이네.  
 
+This'll be like a brother and sister thing.  
 
+Now **I'm assuming you've heard our hit single.**  
+I mean, who hasn't? It's a big hit.  
 
+And here's the word, and **don't worry if you get lost.**  
 
+The lyrics are meaningless anyway.  
 
+**I'll point it's your turn.**  
 
+Ladies and gentlemen, the Ferbettes.  
+I'm Phineas and ths is Ferb, and we're gonna sing a song.  
+
+Bow, Chicka, Bow-Wow!  
+(That's what my baby said)  
+
+Mow-mow-mow!  
+(And my heart start pumping!)  
+
+Chicka, Chicka, Chew, Wow!  
+Never gonna stop.  
+Gitchee, Gitchee, Goo means that I love you.  
+
+I said a Bow, Chicka, Bow-Wow!  
+(That's what my baby said)  
+
+Mow-mow-mow.  
+(And my heart start pumping!)  
+
+Chicka, Chicka, Chew, Wow!  
+Never gonna stop.  
+Gitchee, Gitchee, Goo means that I love you.  
+
+I said a Bow, Chicka, Bow-wow!  
+Candace!  
+
+Wait a minute, what are you doing?  
+
+**I'm `cuing` you.**  
+> 너한테 `신호 주는 중`인데.  
+
+How did you get a hit single?  
+
+Wah, it wasn't easy.  
+It took most of the morning and half a dozen phone calls.  
+
+And if you're willing to put in the work..  
+
+That's it! I'm gonna tell mom.  
+
+Okay, **tell her what?**  
+
+Ohh, I'm just gonna tell.  
+
+Gitchee, Gitchee, Goo means that I love you.  
+
+Mom, mom, mom! Mom, you gotta see this.  
+
+**Let me guess**, it's unbelievable.. Whoo!!!  
+
+Come on, come on, come on!!  
+
+Hi, I'm Ben Baxter, Huge-O-Records.  
+**Why don't `come by` my office in an hour?**  
+And we can talk about your future.  
+> 한시간 후에 내 사무실에 `잠깐 들리지` 그래?  
+
+Future? Cool. **He must be a psychic.**  
+
+Come on! Come on! Come on! See!  
+
+There they are onstage!  
+
+Ladies and gentlemen, once again Marty the Rabbit Boy and His Musical Blender! 
+
+Hon, we're getting you an eye exam.  
+> 눈 검사 받아야겠네.  
+
+No, no, wait!  
+
+Perry!  
+
+Doofenshmirtz Evil Incorporated! Haha, everything is ready.  
 
 <!-- more -->

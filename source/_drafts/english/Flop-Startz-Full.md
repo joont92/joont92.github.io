@@ -93,15 +93,19 @@ I mean, who hasn't, right? It's a big hit.
 So here's the words but don't worry if you get lost.
 The lyrics are meaningless anyway.
 I'll point when it's your turn.
-Ladies and gentlemen, the Ferbettes! I'm Phineas and this is Ferb, and we're gonna sing a song! (Song: Gitchee Gitchee Goo) Bow, Chicka, Bow-Wow! ( That's what my baby says! ) Mow-mow-mow! ( And my heart starts pumping! ) Chicka-Chicka, Choo Wah! Never gonna stop! Gitchee Gitchee Goo means that I love you! I said a Bow, Chicka, Bow-Wow! ( That's what my baby says! ) Mow-mow-mow! ( And my heart starts pumping! ) Chicka-Chicka, Choo Wah! Never gonna stop! Gitchee Gitchee Goo means that I love you! I said a Bow, Chika, Bow-Wow! Candace! Wait a minute! What are you doing? I'm cuing you? How'd you get a hit single?! Well, it wasn't easy.
-It took most of the morning and half a dozen phone calls.
+Ladies and gentlemen, the Ferbettes! I'm Phineas and this is Ferb, and we're gonna sing a song! (Song: Gitchee Gitchee Goo) Bow, Chicka, Bow-Wow! ( That's what my baby says! ) Mow-mow-mow! ( And my heart starts pumping! ) Chicka-Chicka, Choo Wah! Never gonna stop! Gitchee Gitchee Goo means that I love you! I said a Bow, Chicka, Bow-Wow! ( That's what my baby says! ) Mow-mow-mow! ( And my heart starts pumping! ) Chicka-Chicka, Choo Wah! Never gonna stop! Gitchee Gitchee Goo means that I love you! I said a Bow, Chika, Bow-Wow! Candace! 
+Wait a minute! What are you doing? I'm cuing you? How'd you get a hit single?! 
+Well, it wasn't easy. It took most of the morning and half a dozen phone calls.
 But if you're willing to put in the work- That's it! I'm gonna tell Mom! Okay tell her what? Ooh, I'm just gonna tell.
 Gitchee Gitchee Goo means that I love you! Mom! Mom! Mom! Mom, you've gotta see this! Let me guess.
-Is it unbelieva- WOOAH! Come on, come on, come on! Hi, I'm Ben Baxter, Huge-O-Records.
+Is it unbelieva- WOOAH! Come on, come on, come on! 
+Hi, I'm Ben Baxter, Huge-O-Records.
 Why don't you come by my office in an hour and we can talk about your future.
 Future? Cool.
 He must be a psychic.
-Come on, come on, come on! See?! There they are onstage!!! Ladies and gentlemen, once again Marty the Rabbit Boy and His Musical Blender! Hon, we're getting you an eye exam.
+Come on, come on, come on! See?! There they are onstage!!! 
+Ladies and gentlemen, once again Marty the Rabbit Boy and His Musical Blender! 
+Hon, we're getting you an eye exam.
 No, no! Wait! Perry! 
 Doofenshmirtz Evil Incorporated! Ha ha, everything is ready!  
 
