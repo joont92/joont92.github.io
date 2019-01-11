@@ -65,10 +65,169 @@ QueryDSL은 오픈소스 프로젝트이며, 이름 그대로 데이터를 조�
     
     빌드하면 지정한 `outputDirectory에 지정한 target/generated-sources` 위치에 `QMember.java` 처럼 Q로 시작하는 쿼리 타입들이 생성된다.  
 
-# 사용  
-기본 구조는 아래와 같다.  
+# 사용(4.1.3 버전 기준)  
+
+## 기본 사용법
+동적으로 생성할 쿼리는 `JPAQuery`를 사용하여 만들 수 있는데, 이것보단 `JPAQueryFactory`를 사용하는게 권장된다고 한다.  
 
 ```java
+JPAQueryFactory queryFactory = new JPAQueryFactory(em);
+QMember member = QMember.member;
+
+Member foundMember = 
+    queryFactory.selectFrom(member) // select + from
+    .where(customer.username.eq("joont"))
+    .fetchOne();
 ```
 
-<!-- more -->
+대충 위의 형태로 사용할 수 있다.  
+
+### 결과반환  
+- fetch : 조회 대상이 여러건일 경우. 컬렉션 반환  
+- fetchOne : 조회 대상이 1건일 경우(1건 이상일 경우 에러). generic에 지정한 타입으로 반환  
+- fetchFirst : 조회 대상이 1건이든 1건 이상이든 무조건 1건만 반환. 내부에 보면 `return limit(1).fetchOne()` 으로 되어있음  
+- fetchCount : 개수 조회. long 타입 반환  
+- fetchResults : 조회한 리스트 + 전체 개수를 포함한 QueryResults 반환. count 쿼리가 추가로 실행된다.  
+
+### 프로젝션  
+프로젝션을 지정한다.  
+
+```java
+List<Member> foundMembers = 
+    queryFactory.select(member)
+    .from(member, order)
+    .fetch();
+```
+
+(아직 나오진 않았지만 from 절에 위처럼 쿼리 타입을 연속으로 줄 경우, 두 엔티티가 조인된다.)  
+
+member와 order가 조인된 상태에서 member 엔티티의 속성만 가져온다.  
+(select를 생략하면 기본적으로 from의 첫번째 엔티티를 프로젝션 대상으로 쓴다)  
+
+### from
+쿼리할 대상을 지정한다.  
+
+```java
+List<Member> foundMembers = 
+    queryFactory.from(member)
+    .fetch();
+```
+
+member 테이블을 전체 조회하게 된다. 프로젝션 지정(select)가 빠졌지만 위와 동일하게 from의 첫번째 엔티티를 사용한다.  
+
+> from과 select를 나누기 보단 `selectFrom` 절을 쓰는것이 더 낫다.  
+
+### 조인  
+join, innerJoin, leftJoin, rightJoin 을 지원한다.  
+개인적으로 from절에 multiple arguments를 주는것보다 이게 더 좋다.(SQL에서도...)  
+
+```java
+QTeam team = QTeam.team;
+
+List<Member> foundMembers = 
+    queryFactory.selectFrom(member)
+    .innerJoin(member.team, team)
+    .fetch();
+```
+
+join의 첫번쨰 인자로는 join할 대상, 두번쨰 인자로는 join할 대상의 쿼리 타입을 주면 된다. on 절은 자동으로 붙는다.  
+
+- on 절도 사용할 수 있다.  
+    ```java
+    List<Member> foundMembers = 
+        queryFactory.selectFrom(member)
+        .innerJoin(member.team, team)
+        .on(member.username.eq("joont"))
+        .fetch();
+    ```
+
+### 조건  
+```java
+List<Member> foundMembers = 
+    queryFactory.selectFrom(member)
+    .where(member.username.eq("joont")) // 1. 단일 조건  
+    .where(member.username.eq("joont"), member.homeAddress.city.eq("seoul")) // 2. 복수 조건. and로 묶임  
+    .where(member.username.eq("joont").or.member.homeAddress.city.eq("seoul")) // 3. 복수 조건. and나 or를 직접 명시할 수 있음  
+    .fetch();
+```
+
+### 그룹핑
+group by도 가능하다.  
+
+```java
+List<String> foundCities = 
+    queryFactory.from(member)
+    .select(member.homeAddress.city)
+    .groupBy(member.homeAddress.city)
+    .fetch();
+```
+
+city로 group by 한 뒤 city만 출력하게 된다.  
+
+- having도 가능하다. 집계함수도 쓸 수 있다.  
+    ```java
+    List<String> foundItems = 
+        queryFactory.select(item.category) // category가 그냥 String이라고 가정
+        .from(item)
+        .groupBy(item.category)
+        .having(item.price.avg().gt(1000)) // 집계함수 사용
+        .fetch();
+    ```
+
+### 정렬
+```java
+List<Member> foundMembers = 
+    queryFactory.selectFrom(member)
+    .orderBy(member.id.asc(), member.username.desc())
+    .fetch();
+```
+
+### 페이징  
+시작 인덱스를 지정하는 `offset`,  
+조회할 개수를 지정하는 `limit`,  
+두개를 인수로 받는 QueryModifiers를 사용하는 `restrict`를 지원한다.  
+
+근데 실제로 페이징 처리를 하려면 전체 데이터 개수를 알고 있어야하므로, fetchResults()를 사용해야 한다.  
+
+```java
+QueryResults<Member> result = 
+    queryFactory.selectFrom(member)
+    .offset(10)
+    .limit(10)
+    .fetchResults();
+
+List<Member> foundMembers = result.getResults(); // 조회된 member
+long total = result.getTotal(); // 전체 개수  
+long offset = result.getOffset(); // offset
+long limit = result.getLimit(); // limit
+```
+
+## 다중 결과 반환   
+다중 프로젝션 할 경우 Tuple 클래스로 받을 수 있다.  
+
+```java
+List<Tuple> foundMembers = 
+    queryFactory.select(member.username, member.homeAddress.city)
+    .from(member)
+    .fetch();
+
+System.out.println(founeMembers.get(0));
+System.out.println(founeMembers.get(1));
+```
+
+`class com.querydsl.core.types.QTuple$TupleImpl` 클래스가 리턴되는데 이것보단 아래 bean population을 쓰는게 더 나아보인다.  
+
+```java
+List<MemberDTO> foundMembers = 
+    queryFactory.select(Projections.fields(UserDTO.class, member.username, member.homeAddress.city))
+    .from(member)
+    .fetch();
+```
+
+## 서브쿼리  
+
+## 동적 조건  
+
+## 수정, 삭제, 배치 쿼리  
+
+<!-- more --> 
