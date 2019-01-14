@@ -847,6 +847,14 @@ List<Member> result =
     NULL과 False를 AND 연산하면 False.  
     NULL과 True를 OR 연산하면 True이다.  
 
+
+# 네이티브 SQL
+JPA는 표준 SQL이 지원하는 대부분의 SQL 문법과 함수들을 지원하지만 특정 데이터베이스만 지원하는 함수나 문법, SQL 쿼리 힌트 같은 것들은 지원하지 않는다.  
+이런 기능을 사용하기 위해선 `네이티브 SQL`을 사용해야 한다.  
+네이티브 SQL이란 JPA에서 일반 SQL을 직접 사용하는 것을 말한다.  
+
+
+
 # 벌크 연산(UPDATE, DELETE)  
 JPQL로 여러 건을 한번에 수정하거나 삭제할 떄 사용한다.  
 아래는 UPDATE 벌크 연산이다.  
@@ -939,7 +947,7 @@ assertSame(member1, member2); // SUCCESS
 (JPQL을 분석해서 영속성 컨텍스트를 조회하는 것은 너무 힘들기 때문이다.)  
 그리고 조회해온 엔티티를 영속성 컨텍스트에 넣을 때, 이미 있는 엔티티일 경우 결과를 버린다.  
 
-# JPQL과 플러시 모드  
+## JPQL과 플러시 모드  
 플러시 모드는 `FlushMode.AUTO(Default)`, `FlushMode.COMMIT`이 있다.  
 이때까지 `FlushMode.AUTO` 는 트랜잭션이 끝날때나 커밋될 때만 플러시를 호출하는 것으로 알고 있었으나, 사실은 시점이 하나 더 있다. JPQL 쿼리를 실행하기 직전이다.  
 

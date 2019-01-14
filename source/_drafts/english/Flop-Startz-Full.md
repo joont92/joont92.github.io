@@ -110,12 +110,23 @@ No, no! Wait! Perry!
 Doofenshmirtz Evil Incorporated! Ha ha, everything is ready!  
 
 # 3회차
-Oh, what is it now? Oh, you are my new temp? Well, let me just get you up the speed.
+Oh, what is it now? Oh, you are my new temp? 
+Well, let me just get you up the speed.
 I know it's bit of a mess.
 I'm just putting the finishing touches of my latest maniacal plan.
-You see, in a few minutes, I will unleash an unprecedented reign of terror upon the entire Tri-State Area! And Perry the Platypus will never be the wiser.
-Perry the Platypus? You're a temp? Are times that hard? Ugh! I told Mom I don't need glasses! What the -- Uh, No! No! Wait! Ugggggh MMMMMOOOOM?!? Doofenshmirtz Evil Incor-- Sorry, Perry the Platypus, but you are too late! Ooh, this one's nice.
-Mom! Come here! You've gotta see this! But Candace! I haven't payed for this yet! Hey! Ha ha ha ha! When it comes to havoc, nobody wreaks like me! Whoaa! Wait, wait, wait, you're not supposed to touch that! Hey, hey, no fair! Wow, what a great painting! How did you get permission for that? Oh, they didn't mind.
+You see, in a few minutes, 
+I will unleash an unprecedented reign of terror upon the entire Tri-State Area! 
+And Perry the Platypus will never be the wiser.
+Perry the Platypus? You're a temp? Are times that hard? 
+Ugh! I told Mom I don't need glasses! 
+What the -- Uh, No! No! Wait! Ugggggh MMMMMOOOOM?!? 
+Doofenshmirtz Evil Incor-- Sorry, Perry the Platypus, but you are too late! 
+Ooh, this one's nice.
+Mom! Come here! You've gotta see this! But Candace! I haven't payed for this yet! Hey!  
+Ha ha ha ha! When it comes to havoc, nobody wreaks like me! 
+Whoaa! Wait, wait, wait, you're not supposed to touch that! Hey, hey, no fair! 
+Wow, what a great painting! How did you get permission for that? 
+Oh, they didn't mind.
 The building's scheduled for demolition.
 Seeeeeee??!! AAAAHHHH!! Uh, ma'am, you're gonna have to come back and pay for that.
 Yes of course, officer.
@@ -132,11 +143,18 @@ Anytime.
 Boys, let me start by saying we love your act and we want to be in the Phineas and the Ferb-Tones business.
 And by the way, aren't you a little young to be pop stars? No.
 Well, okay then! We prepared to offer you a very lucrative contract if you'll just sign exclusively with us for your follow-up single.
-Follow-up single? Who do you think we are, some two-bit hacks who will keep writing new songs just because you pay us obscene amounts of cash?! Phineas and the Ferb-Tones are strictly a one-hit wonder! Good day to you, sir! Diva tantrum, check.
+Follow-up single? Who do you think we are, some two-bit hacks who will keep writing new songs just because you pay us obscene amounts of cash?! 
+Phineas and the Ferb-Tones are strictly a one-hit wonder! Good day to you, sir! Diva tantrum, check.
 Elevator music, check.
 Ah, who needs 'em? We still got this video tape of their performance.
-We could do live CDs, DVDs, pod-casts, and we can digitally re-create their images to make our own sitcom! The Phineas and Ferb Show! We could squeeze twenty years of entertainment out of this one video tape.
-Whoaa! That giant robot's coming right at us! Wow, you sure like a lot of pepper.
+We could do live CDs, DVDs, pod-casts, and we can digitally re-create their images to make our own sitcom! 
+The Phineas and Ferb Show! 
+We could squeeze twenty years of entertainment out of this one video tape.
+Whoaa! That giant robot's coming right at us! 
+
+
+# 4회차
+Wow, you sure like a lot of pepper.
 I'm more of a paprika man myself.
 (coughs) It will take more than condiments to foil my brilliant plan! (sneezes) The tape! Ooh! What an unbelievable stroke of luck! Oof! I'm okay! It's still better than the Curse you, Perry the Platypus! Oh, there you are, Perry.
 (Perry chatters) Come on, guys.
