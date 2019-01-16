@@ -352,115 +352,190 @@ Haha, everything is ready.
 
 # 3회차  
 Oh, what is it now?  
+> 또 뭐야?  
 
 You are my new temp?  
 Well, let me just get you up the speed.  
 I know it's bit of `mess`.  
 **I'm just `putting the finishing touches`** of my latest `maniacal` plan.  
-> 새임시직원인가?  
-> 속도를 높여줄게.  
+> 새 임시직원인가?  
+> ..?  
 > 조금 `지저분한 상태`라서.  
 > 난 내 최신의 `미친듯한` 계획의 `마무리 작업을 하는 중이야`.  
 
 Just see in a few minutes.  
 ...  
 and Perry the Platypus wll never be the `wise`r.  
-> 더 `현명해질`수 없을거야
+> 몇분후에 보여줄게? 잠시 보여줄게?  
+> 오리너구리 Perry는 더 `현명해질`수 없을거야  
 
 Oh! Perry the Platypus?!  
 You are a temp?  
-**Are times that hard?**  
-> 그렇게 힘든가?  
+`Are times that hard?`  
+> 엇! 오리너구리 Perry?  
+> 니가 임시직원이야?  
+> `그렇게 힘든가?`  
 
 Ugh! I told mom I don't need glasses.  
 What the..  
 Ah, no, no, wait!!  
 Mom~~  
+> 난 엄마한테 안경 필요없다고 말헀는데..  
+> 이게 무슨..  
+> 아! 안돼 안돼 기다려!!  
+> 엄마~~  
 
 Sorry, Perry the Platypus, but you're too late.  
+> 미안, 오리너구리 Perry, 하지만 너 너무 늦었어.  
 
 Woo~ this one's nice.  
+> 우~ 이거 좋은데  
 
 Mom, come here. You gotta see this.  
-But Candace. **I haven't paid for this yet.**  
->> https://english.stackexchange.com/questions/16882/difference-between-havent-yet-and-didnt-yet
+But Candace, **I haven't paid for this yet.**  
+> 엄마 일로 와보세요, 이거 보셔야해요  
+> 하지만 Candace, 나 아직 계산 안했는데  
+>> https://english.stackexchange.com/questions/16882/difference-between-havent-yet-and-didnt-yet  
 
-Ha,ha,ha,ha. **When it comes to `havoc`**.  
-Nobody `wreaks` like me!!  
-> `대파괴, 큰 혼란`  
-> `(큰 피해를) 입히다`  
+Ha,ha,ha,ha. **`When it comes to` `havoc`**, nobody `wreaks` like me!!  
+> `대파괴``에 관해서는` 누구도 나처럼 `큰 피해를 입힐` 수 없지!  
+>> When it comes to : ~에 관해선  
+>> About은 말의 시작으로 오기에는 어색하다  
 
 Oh, wait, wait, wait.  
-You're not supposed to touch that!  
+**You're not supposed to touch that!**  
 Hey, hey, no fair!  
+> 오, 잠시, 잠시, 잠시.  
+> 너 그거 손대면 안돼!  
+> 이봐, 이봐, 불공평하잖아!  
+>> supposed to : 기본적으로 have to의 뜻을 가지고, 약속된 것에 대해 말할때  
+>> 사람에게는 말 그대로 약속된 것이 맞고,(너 이거 하기로 했잖아)  
+>> 사물(등)에게는 무언가(법, 도덕)에 의해 약속된 것(여기서 담배피시면 안되요)  
 
-Wow, what a great painting.  
->> 정말 ~~ 하는군  
+Wow, **`what a great` painting.**  
+> 와, `정말 멋진` 그림이다.  
 
-How did you get permission for that?  
+**How did you get permission for that?**  
+> 어떻게 저걸 허락받았어?  
 
 **Oh, they didn't mind.**  
 **The building's scheduled for `demolition`.**  
+> 오, 쟤네들 신경안쓰던데  
 > 저 빌딩은 `폭파` 예정이거든  
 
 See.  
 Ahaaaaaaaaaaa!!  
+> 보세요.  
+> 꺄악!!!!!!!  
 
-Oh, maam. **You're gonna have to come back and pay for that.**  
+Oh, maam. You're gonna have to come back and pay for that.  
+> 오, 부인. 돌아가셔서 계산하셔야 되요.  
 
 Yes, of course, officer.  
+> 네, 경찰관님.  
 
-Hey, **weren't you Lindana?**  
+Hey, weren't you Lindana?  
+> 이봐요, Lindana 아니었어요  
 
 Yes, I was. I can't believe you recognize me!  
+> 네, 그랬어요. 절 알아보신다니 믿을 수 없네요!  
 
 Well, I was a huge fan.  
-You still have to pay for the jacket.  
+**You still have to pay for the jacket.**  
+> 전 완전 팬이었거든요.  
+> 그래도 여전히 이 재킷에 대해 계산은 하셔야 되요  
+>> still have to : 아직 더 해야한다, 여전히 더 해야한다  
 
 I know.  
+> 알아요.  
 
 Very `clever`, Perry the Platypus.  
 I was trying to ignore you, but you forced my hand.  
+> 매우 `똑똑하군`, 오리너구리 Perry.  
+> 난 널 무시하고 있었는데, 니가 결국 내 손을 강요했어.  
 
 And now, I shall relax with nice, tasty deli platter.  
 Oh-oh-no, where are my manners?  
-**`Here you go`**, Perry the Platypus.  
-> `여기(상대방한테 무엇을 주면서 하는 말)`, 
+`Here you go`, Perry the Platypus.  
+> 그럼 이제, 이 좋은 deli platter랑 같이 쉬어야겠어  
+> 오, 내 매너좀 보게.  
+> `여기(상대방한테 무엇을 주면서 하는 말)`, 오리너구리 Perry.  
 
-**Care for some pepper?** **`Just say when`.**  
+Care for some pepper? **`Just say when`.**  
 > 후추도 먹을래? `말만해`.  
 
 Anytime~  
 > 언제든~  
 
-Boys, **let me start by saying.**  
+Boys, let me start by saying.  
 We love your act and we want to be in the Phineas and Ferb Tones business.  
 But by the way, aren't you a little young to be pop stars?  
+> 제가 말하겠습니다.  
+> 우린 당신들의 행동을 사랑하고 Phineas and Ferb Tones 사업을 같이 하고 싶어요.  
+> 근데, 당신들 팝 스타가 되기엔 좀 어리지 않나요?  
 
 No.  
+> 아뇨.  
 
 Well, okay then!  
 We prepared to offer you a very `lucrative` contract if you'll just sign `exclusively` with us for your `follow-up` single.  
+> 음 네 그러면!  
 > 만약 니 싱글 `후속`곡을 위해 우리랑 `독점적으로` 계약한다면 우린 너에게 매우 `수익성이 좋은` 계약서를 제공할 준비가 되어있다.  
 
 Follow-up single?!  
-Who do you think we are,  
-some `two-bits` hacks who will keep writting new songs `just because` you pay us `obscene` amounts of cash?  
+Who do you think we are, some `two-bits` hacks who will keep writting new songs **`just because`** you pay us `obscene` amounts of cash?  
+> 싱글 후속곡이요?  
 > 누가 우리를 당신이 `터무니없는` 액수의 현금을 지불`한다고 해서` 신곡을 계속 쓰는 `별볼일 없는` 애들로 생각하는거죠?  
 
-Phineas and Ferb tones are `strictly` a one-hit wonder!  
+Phineas and Ferb Tones are `strictly` a one-hit wonder!  
 `Good day to you`, sir.  
-> `안녕하 계세요`.  
+> Phinease and Ferb Tones는 엄격하게 히트곡이 하나뿐인 가수에요!  
+> `안녕히 계세요`.  
 
 Diva tentrum, check.  
 Elevator music, check.  
+> Diva tentrum, 체크.  
+> 엘리베이터 음악, 체크.  
 
 Well, who needs 'em?  
-We still got this video tape of their performance.  
+We still got this video tape of their `performance`.  
 We could do live CDs, DVDs, pod-casts, and we can digitally re-create their images to make our own sitcom!  
 The Phineas and Ferb shows!  
-We could squeeze twenty years of entertainment out of this one video tape.  
+We could squeeze twenty years of entertainment **out of** this one video tape.  
+> 음, 누가 쟤네가 필요하데?  
+> 우린 여전히 쟤네 `공연`이 담긴 비디오 테이프가 있어.  
+> 우린 CD들, DVD들, 팟 캐스트들을 할 수 있지, 그리고 우린 우리의 시트콤을 만들기위해 디지털 방식으로 그들의 이미지를 다시 만들수있어!  
+> Phineas and Ferb 쇼지!  
+> 우린 20년치의 예능을 이 비디오 테이프로 부터 짜낼수있지.  
 
-Whoaa! the giant robot is coming right at us!  
+Whoaa! The giant robot is coming right at us!  
+> 우워! 거대한 로봇이 우리한테 오고 있어!!  
+
+# 4회차  
+Wow, you `sure like` a lot of pepper.  
+I'm more of a paprika man myself.  
+> 와, 너 `정말` 많은 후추를 `좋아하네`.  
+> 난 파프리카 체질이지.  
+>> be more of : ~체질이다, ~에 더 가깝다  
+
+**It will take more than `condiments`** to foil my `brilliant` plan!  
+> 내 `멋진` 계획을 저지하려면 `양념` 이상의 것이 필요할거야!  
+
+The tape!  
+
+Ooh! What an unbelivable `stroke of` luck!  
+> 휴! 믿을수 없는 `뜻밖의` 행운이군!  
+
+I'm okay. Still better than..  
+> 난 괜찮아. 여전히 ..  
+
+Curse you, Perry the Platypus!!  
+> 뒤져라, 오리너구리 Perry!!  
+
+Oh, there you are Perry.  
+
+Come on guys, we still have one thing left to do.  
+
+
 
 <!-- more -->

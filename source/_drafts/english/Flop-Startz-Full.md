@@ -156,7 +156,11 @@ Whoaa! That giant robot's coming right at us!
 # 4회차
 Wow, you sure like a lot of pepper.
 I'm more of a paprika man myself.
-(coughs) It will take more than condiments to foil my brilliant plan! (sneezes) The tape! Ooh! What an unbelievable stroke of luck! Oof! I'm okay! It's still better than the Curse you, Perry the Platypus! Oh, there you are, Perry.
+(coughs) It will take more than condiments to foil my brilliant plan! 
+(sneezes) The tape! 
+Ooh! What an unbelievable stroke of luck! 
+Oof! I'm okay! It's still better than the  
+Curse you, Perry the Platypus! Oh, there you are, Perry.
 (Perry chatters) Come on, guys.
 We still have one thing left to do.
 And the winner of the today's "Next Super American Pop Teen Idol Star" is Marty the Rabbit Boy and his Musical Blender! Oh, give him a hand! He's going to Hollywood! Hey, Candace.
