@@ -144,4 +144,9 @@ newMember.getOrderList().addAll(aliveOrder);
 memberRepository.save(newMember);
 ```
 
+> 참고로 여기서 merge가 진행되고 나면 기존에 oldMember의 자식들에 변형이 가해진다(무슨 기준인지는 모르겠다)  
+> 이거까지 신경쓰는건 좋지 않은 것 같다..  
+> id를 바꾸고 merge 할 생각이라면 merge 할 대상만 신경쓰도록 하고,  
+> 기존 entity의 list에 뭔가를 수행하고 싶을 경우 merge 전에 해주는게 좋겠다.  
+
 <!-- more -->
