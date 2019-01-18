@@ -98,6 +98,34 @@ MySQL DBMS에서 기본으로 사용하고 있고, 이 격리수준에서는 NON
 > 참고로 10번 트랜잭션에서 SELECT FOR UPDATE 를 수행할 경우 변경된 내용을 가져오게 된다.  
 > SELECT FOR UPDATE의 경우 레코드에 쓰기 잠금을 걸어야하는데, 언두 영역에 있는 데이터는 쓰기 잠금을 걸 수 없기 때문이다.  
 
+비슷한 내용은 아래와 같다.  
+
+```sql
+START TRANSACTION; -- transaction id : 1
+SELECT * FROM MEMBER WHERE name='junyoung';
+
+    START TRANSACTION; -- transaction id : 2
+        SELECT * FROM MEMBER WHERE name = 'junyoung';
+        UPDATE MEMBER SET name = 'joont';
+    COMMIT;
+
+UPDATE MEMBER SET name = 'zion.t' WHERE name = 'junyoung';
+COMMIT;
+```
+
+이 상황에서 최종 결과는 `name = joont`가 된다.  
+REPETABLE READ이기 때문에,  
+2번 트랜잭션에서 `name = joont`로 변경하고 COMMIT을 하면 `name = junyoung`의 내용을 언두로그에 남겨놔야 한다.  
+그래야 1번 트랜잭션에서 일관되게 데이터를 보는 것을 보장해줄 수 있기 때문이다.  
+
+이 상황에서 아래 구문에서 UPDATE 문을 실행하게 되는데, UPDATE의 경우 변경을 수행할 로우에 대해 잠금이 필요하다.  
+하지만 현재 1번 트랜잭션이 바라보고 있는 `name = junyoung` 의 경우 레코드 데이터가 아닌 언두영역의 데이터이고,  
+언두영역에 있는 데이터에 대해서는 쓰기 잠금을 걸 수가 없다.  
+
+그러므로 위의 UPDATE 구문은 레코드에 대해 쓰기 잠금을 시도하려고 하지만 `name = junyoung`인 레코드는 존재하지 않으므로,  
+`0 rows affected`가 출력되고, 아무 변경도 일어나지 않게 된다.  
+그러므로 최종적으로 결과는 `name = joont`가 된다. 자이언티가 되지 못해 아쉽다.  
+
 # SERIALIZABLE  
 가장 단순하고 가장 엄격한 격리수준이다.  
 InnoDB에서 기본적으로 순수한 SELECT 작업은 아무런 잠금을 걸지않고 동작하는데,  
