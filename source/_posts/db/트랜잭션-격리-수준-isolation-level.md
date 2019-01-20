@@ -6,10 +6,12 @@ tags:
     - isolatation level
     - 격리 수준  
     - mysql isolation
+    - REPETABLE READ
+    - Phantom READ
 ---
 
-트랜잭션 격리수준(isolation level)이란 동시에 여러 트랜잭션이 처리될 때, 
-특정 트랜잭션이 다른 트랜잭션에서 변경한 데이터를 볼 수 있도록 허용할지 말지를 결정하는 것이다.  
+트랜잭션 격리수준(isolation level)이란 동시에 여러 트랜잭션이 처리될 때, 트랜잭션끼리 얼마나 서로 고립되어 있는지를 나타내는 것이다.  
+즉, 간단하게 말해 특정 트랜잭션이 다른 트랜잭션에 변경한 데이터를 볼 수 있도록 허용할지 말지를 결정하는 것이다.  
 
 격리수준은 크게 아래의 4개로 나뉜다.  
 - READ UNCOMMITTED
@@ -24,18 +26,13 @@ tags:
 # ISOLATION LEVEL 조회, 변경, 테스트
 - 조회
 ```sql
-SHOW GLOBAL VARIABLES LIKE 'tx_isolation';
+SHOW VARIABLES like 'tx_isolation';;
 -- 또는
 SELECT @@tx_isolation;
 ```
 
 - 변경
-```
-```
-
-- 테스트  
-
-
+나와있는데로 해봤는데 안바뀌는데 방법좀..  
 
 # READ UNCOMMITTED  
 READ UNCOMMITTED 격리수준에서는 어떤 트랜잭션의 변경내용이 COMMIT이나 ROLLBACK과 상관없이 다른 트랜잭션에서 보여진다.  
@@ -91,25 +88,22 @@ MySQL DBMS에서 기본으로 사용하고 있고, 이 격리수준에서는 NON
 언두 영역에 백업된 모든 레코드는 변경을 발생시킨 트랜잭션의 번호가 포함되어 있다.)  
 
 > REPETABLE READ 격리수준에서는 트랜잭션이 시작된 시점의 데이터를 일관되게 보여주는 것을 보장해야 하기 때문에  
-> 한 트랜잭션의 실행시간이 길어질수록 언두로그에서 관리하는 공간이 계속 늘어날 수 있다.  
-> (A 트랜잭션이 실행되는 동안 다른 여러 트랜잭션에서 해당 데이터에 커밋을 했을 경우 그 모든 데이터를 다 언두로그에 남겨놔야 한다)  
+> 한 트랜잭션의 실행시간이 길어질수록 해당 시간만큼 계속 멀티 버전을 관리해야 하는 단점(?)이 있다.  
 > 하지만 실제로 영향을 미칠 정도로 오래 지속되는 경우는 없어서.. READ COMMITTED와 REPETABLE READ의 성능차이는 거의 없다고 한다.  
 
-> 참고로 10번 트랜잭션에서 SELECT FOR UPDATE 를 수행할 경우 변경된 내용을 가져오게 된다.  
-> SELECT FOR UPDATE의 경우 레코드에 쓰기 잠금을 걸어야하는데, 언두 영역에 있는 데이터는 쓰기 잠금을 걸 수 없기 때문이다.  
-
-비슷한 내용은 아래와 같다.  
+## REPETABLE READ에서 발생할 수 있는 데이터 부정합
+1. **UPDATE 부정합**  
 
 ```sql
 START TRANSACTION; -- transaction id : 1
-SELECT * FROM MEMBER WHERE name='junyoung';
+SELECT * FROM Member WHERE name='junyoung';
 
     START TRANSACTION; -- transaction id : 2
-        SELECT * FROM MEMBER WHERE name = 'junyoung';
-        UPDATE MEMBER SET name = 'joont';
+    SELECT * FROM Member WHERE name = 'junyoung';
+    UPDATE Member SET name = 'joont';
     COMMIT;
 
-UPDATE MEMBER SET name = 'zion.t' WHERE name = 'junyoung';
+UPDATE Member SET name = 'zion.t' WHERE name = 'junyoung'; -- 0 row(s) affected
 COMMIT;
 ```
 
@@ -123,14 +117,51 @@ REPETABLE READ이기 때문에,
 언두영역에 있는 데이터에 대해서는 쓰기 잠금을 걸 수가 없다.  
 
 그러므로 위의 UPDATE 구문은 레코드에 대해 쓰기 잠금을 시도하려고 하지만 `name = junyoung`인 레코드는 존재하지 않으므로,  
-`0 rows affected`가 출력되고, 아무 변경도 일어나지 않게 된다.  
+`0 row(s) affected`가 출력되고, 아무 변경도 일어나지 않게 된다.  
 그러므로 최종적으로 결과는 `name = joont`가 된다. 자이언티가 되지 못해 아쉽다.  
+
+2. **Phantom READ**  
+한 트랜잭션 내에서 같은 쿼리를 두 번 실행했는데, 첫 번째 쿼리에서 없던 유령(Phantom) 레코드가 두 번째 쿼리에서 나타나는 현상을 말한다.  
+REPETABLE READ 이하에서만 발생하고(SERIALIZABLE은 발생하지 않음), INSERT에 대해서만 발생한다.  
+아래와 같은 상황에서 재현될 수 있다.  
+
+```sql
+START TRANSACTION; -- transaction id : 1 
+SELECT * FROM Member; -- 0건 조회
+
+    START TRANSACTION; -- transaction id : 2
+    INSERT INTO MEMBER VALUES(1,'joont',28);
+    COMMIT;
+
+SELECT * FROM Member; -- 여전히 0건 조회 
+UPDATE Member SET name = 'zion.t' WHERE id = 1; -- 1 row(s) affected
+SELECT * FROM Member; -- 1건 조회 
+COMMIT;
+```
+
+REPETABLE READ에 에 의하면 원래 출력되지 않아야 하는데 UPDATE 문의 영향을 받은 후 부터 출력된다.  
+이 시점에 스냅샷을 적용시키는 것 같다.  
+
+참고로 DELETE에 대해서는 적용되지 않는다.  
+
+```sql
+START TRANSACTION; -- transaction id : 1 
+SELECT * FROM Member; -- 1건 조회
+
+    START TRANSACTION; -- transaction id : 2
+    DELETE FROM Member WHERE id = 1;
+    COMMIT;
+
+SELECT * FROM Member; -- 여전히 1건 조회 
+UPDATE Member SET name = 'zion.t' WHERE id = 1; -- 0 row(s) affected
+SELECT * FROM Member; -- 여전히 1건 조회 
+COMMIT;
+```
 
 # SERIALIZABLE  
 가장 단순하고 가장 엄격한 격리수준이다.  
 InnoDB에서 기본적으로 순수한 SELECT 작업은 아무런 잠금을 걸지않고 동작하는데,  
 격리수준이 SERIALIZABLE일 경우 읽기 작업에도 `공유 잠금`을 설정하게 되고, 이러면 동시에 다른 트랜잭션에서 이 레코드를 변경하지 못하게 된다.  
-즉, 한 트랜잭션에서 읽고 쓰는 데이터를 다른 트랜잭션에서는 절대 접근할 수 없게 되는 것이다.  
 이러한 특성 때문에 동시처리 능력이 다른 격리수준보다 떨어지고, 성능저하가 발생하게 된다. 
  
 <!-- more -->

@@ -4,6 +4,9 @@ date: 2019-01-01 21:24:46
 tags:
     - 자바 ORM 표준 JPA 프로그래밍
     - 객체지향 쿼리 언어
+    - JPQL 문법  
+    - 네이티브 쿼리  
+    - 벌크 연산  
 ---
 
 JPA에서 현재까지 사용했던 `검색`은 아래와 같다.  
@@ -62,6 +65,7 @@ Query의 경우 예제처럼 조회 컬럼이 1개 이상일 경우 `Object[]`, 
 - query.getSingleResult()  
     > 결과가 정확히 1건 일때 사용한다.  
     > 결과가 없으면 javax.persistence.NoResultException, 결과가 1건 이상이면 javax.persistence.NonUniqueResultException이 발생한다.  
+    > 근데 얘는 `Optional`을 반환해야 하지 않을까?  
 
 # 파라미터 바인딩  
 아래와 같은 `이름 기준 파라미터 바인딩`을 지원한다.  
@@ -94,7 +98,6 @@ TypedQuery<Member> query =
     .setParameter("username", "%joont%"); // 이런식으로
 ```
 
-
 > **파라미터 바인딩 방식은 선택이 아닌 필수이다**  
 > - JPQL에 직접 문자를 더하면 SQL Injection을 당할 수 있다  
 > - JPA에서 파라미터만 다를 뿐 같은 쿼리로 인식하므로, JPQL을 SQL로 파싱한 결과를 재사용할 수 있다  
@@ -114,8 +117,6 @@ SELECT m.team FROM Memher m // team
 
 둘 다 엔티티를 프로젝션 대상으로 사용했다.  
 참고로 이렇게 조회한 엔티티는 영속성 컨텍스트에서 관리된다.  
-> JPQL로 조회할 때는 쿼리 캐시가 되어있지 않은 이상 영속성 컨텍스트를 뒤지지 않고 그냥 조회 -> 영속성 컨텍스트에 저장헐 것이라고 생각함.  
-> JPQL을 실행하면서 영속성 컨텍스트에 있는 애들과 비교한다는건 말이 안되는 행위인듯  
 
 ## 임베디드 타입 프로젝션  
 엔티티를 통해서 조회한다.  
@@ -177,7 +178,8 @@ NEW 명령어를 사용하려면 아래 2가지를 주의해야 한다.
 - 패키지명을 포함한 클래스명을 입력해야 한다.  
 - 순서와 타입이 일치하는 생성자가 필요하다.  
 
-이 기능이 직접 쓰라고 있는 기능은 아닐것이다.. 라이브러리들이 사용하라고 있는 기능인 것 같다.  
+직접 쓰라고 있는 기능은 아닌 것 같다.  
+라이브러리들이 적절히 구현해라고 만들어놓은 기능인듯(QueryDSL 등)  
 
 # 페이징 API
 JPA는 데이터베이스들의 페이징들을 아래의 두 API로 추상화했다.  
@@ -207,7 +209,7 @@ AVG | 평균값을 구한다. 숫자타입만 사용할 수 있다. 숫자가 �
 SUM | 합을 구한다. 숫자타입만 사용할 수 있다. | 정수합 : Long<br/>소수합 : Double<br/>  
 
 > **집합 함수 사용 시 참고사항**  
-> - 통계를 계산할 때 NULL값은 무시된다.  
+> - 통계를 계산할 때 NULL값은 무시된다(`COUNT(*)`은 제외).  
 > - 값이 없을 때 SUM, AVG, MAX, MIN를 사용하면 NULL을 리턴한다. COUNT는 0을 리턴한다.  
 > - DISTINCT를 집합 함수안에 사용하면 중복된 값을 제거하고 집합을 구한다.  
 
@@ -620,10 +622,37 @@ Enum | 패키지명을 포함한 전체 이름 | com.joont.MemberType.Admin |
 숫자, 문자, 날짜, case, 엔티티 타입 같은 가장 기본적인 타입들을 스칼라 타입이라고 한다.  
 
 - **문자함수**   
+    함수 | 설명 | 예제 | 
+    ---|----|----|-
+    CONCAT(문자1, 문자2) | 문자를 합한다 | CONCAT('A', 'B') = AB | 
+    SUBSTRING(문자, 위치[, 길이]) | 위치부터 시작해 길이만큼 문자를 구한다. 길이 값이 없으면 나머지 전체 길이를 뜻한다 | SUBSTRING('ABCDEF', 2, 3) = BCD | 
+    TRIM([[LEADING | TRAILING | BOTH] [트림 문자] FROM] 문자) | `LEADING : 왼쪽만`, `TRAILING : 오른쪽만`, `BOTH : 양쪽` 다 트림 문자를 제거한다. 기본값은 `BOTH`이고, 트림 문자의 기본값은 `공백(space)`이다. | TRIM(' ABC ') = ABC<br/>TRIM(LEADING 'A' FROM 'ABC') = BC | 
+    LOWER(문자) | 소문자로 변경 | LOWER('ABC') = abc | 
+    UPPER(문자) | 대문자로 변경 | UPPER('abc') = ABC | 
+    LENGTH(문자) | 문자 길이 | LENGTH('ABC') = 3 | 
+    LOCATE(찾을 문자, 원본 문자[, 검색 시작 위치]) | 검색위치부터 문자를 검색한다. 1부터 시작하고 못찾으면 0을 반환한다. | LOCATE('DE', 'ABCDEFG') = 4 | 
 
 - **수학함수**  
+    함수 | 설명 | 예제 | 
+    ---|----|----|-
+    ABS(식수학식) | 절대값을 구한다 | ABS(-10) = 10 | 
+    SQRT(수학식) | 제곱근을 구한다 | SQRT(4) = 2.0 | 
+    MOD(수학식, 나눌 수) | 나머지를 구한다 | MOD(4, 3) = 1 | 
+    SIZE(컬렉션 값 연관 경로식) | 컬렉션의 크기를 구한다 | SIZE(t.members) | 
+    INDEX(별칭) | LIST 타입 컬렉션의 위치값을 구함. 단 컬렉션이 @OrderColumn을 사용하는 LIST 타입일 때만 사용할 수 있다 | t.members m where INDEX(m) > 3 | 
 
 - **날짜함수**  
+    함수 | 설명 | 
+    ---|----|-
+    CURRENT_DATE | 현재 날짜 | 
+    CURRENT_TIME | 현재 시간 | 
+    CURRENT_TIMESTAMP | 현재 날짜 + 시간 | 
+
+    하이버네이트는 날짜 타입에서 년,월,일,시,분,초 값을 구하는 기능을 지원한다 
+    (YEAR,MONTH,DAY,HOUR,MINUTE,SECOND)  
+    ```sql
+    SELECT YEAR(m.createdDate), MONTH(m.createdDate), DAY(m.createdDate) FROM Member;
+    ```
 
 ## CASE 식  
 - **기본 CASE**  
@@ -809,7 +838,7 @@ class Member{
 
 위처럼 엔티티에 `@NamedQuery`, `@NamedQueries` 어노테이션을 사용해서 직접 정의해주면 된다.  
 (Named 쿼리의 이름에 있는 `Member`가 뭔가 기능적으로 하는게 있는 것은 아니다. 그냥 관리의 편의성을 위함이다.  
-Named 쿼리가 영속성 유닛 단위로 관리되므로 충돌을 방지하기 위해 이름으로 구분한거라는데, 무슨 말일까?)  
+그리고 Named 쿼리는 영속성 유닛 단위로 관리되므로 충돌을 방지하기 위해 이름으로 구분한 것이기도 하다)  
 그리고 아래와 같아 사용해주면 된다.  
 
 ```java
@@ -822,6 +851,35 @@ List<Member> result =
 ## XML에 정의  
 사실상 자바로 멀티라인 문자를 다루는 것은 상당히 귀찮은 일이므로, Named 쿼리를 작성할 때는 XML을 사용하는 것이 더 편리하다.  
 
+```xml
+<!--xml version="1.0" encoding="UTF-8"?-->
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" version="2.0">
+
+    <named-query name="Member.findByUserName">
+        <query>
+            select m 
+            from Member m 
+            where m.username = :username
+        </query>
+    </named-query>
+
+    <named-query name="Member.findByAgeOver">
+        <query><![CDATA[
+            select m 
+            from Member m 
+            where m.age > :age
+        ]]></query>
+    </named-query>
+
+    <named-native-query name="Inter.findByAlal" result-class="sample.jpa.Inter">
+        <query>select a.inter_seq, a.inter_name_ko, a.inter_name_en from tb_inter a where a.inter_name_ko = ?</query>
+    </named-native-query>
+
+</entity-mappings>
+```
+
+XML에서 `&, <, >,`는 예약문자어 이므로 `&amp;, &lt;, &gt;`를 사용해야 한다.  
+`<![CDATA[ ]]>`를 사용하면 그 사이에 있는 문자를 그대로 출력하므로 예약 문자도 사용할 수 있다.  
 
 # 기타  
 - `Enum은 = 비교연산만 지원한다` 는 JPQL 명세이고, 하이버네이트에서는 아래가 가능하다  
@@ -830,7 +888,7 @@ List<Member> result =
         em.createQuery("select d from Delivery d where d.deliveryStatus like '%CO%'", Delivery.class)
         .getSingleResult();
     ```
-- `임베디드 타입은 비교를 지원하지 않는다` 는 JPQL 명세이고, 하이버네이트에서는 아래가 가능하다  
+- `임베디드 타입은 비교를 지원하지 않는다` 또한 JPQL 명세이고, 하이버네이트에서는 아래가 가능하다  
     ```java
     Delivery foundDelivery = 
         em.createQuery("select d from Delivery d where d.address = :address", Delivery.class)
@@ -849,11 +907,58 @@ List<Member> result =
 
 
 # 네이티브 SQL
-JPA는 표준 SQL이 지원하는 대부분의 SQL 문법과 함수들을 지원하지만 특정 데이터베이스만 지원하는 함수나 문법, SQL 쿼리 힌트 같은 것들은 지원하지 않는다.  
+JPA는 표준 SQL이 지원하는 대부분의 SQL 문법과 함수들을 지원하지만,  
+특정 데이터베이스만 지원하는 함수나 문법, SQL 쿼리 힌트 같은 것들은 지원하지 않는다.  
 이런 기능을 사용하기 위해선 `네이티브 SQL`을 사용해야 한다.  
 네이티브 SQL이란 JPA에서 일반 SQL을 직접 사용하는 것을 말한다.  
 
+실제 데이터베이스 쿼리를 사용한다는 점 외에는 JPQL을 사용할때와 거의 비슷하다.  
+(원래는 위치기반 파라미터만 지원하지만 하이버네이트는 이름기반 파라미터까지 지원한다)  
 
+## 엔티티 조회
+`Query createNativeQuery(String sqlString, Class resultClass)` 를 말한다.  
+> 반환타입을 줘도 TypedQuery가 아닌 Query를 반환하는 이유는,  
+> JPA 1.0에서 규약이 그렇게 정의되어 버렸기 때문에 그렇다고하니 신경쓰지 않아도 된다.  
+
+- 이 메서드로 조회해온 엔티티는 영속성 컨텍스트에서 관리된다.  
+- 그러므로 모든 필드를 다 조회하는 SQL을 실행해야 한다  
+- 특정 필드만 조회해오면 오류가 발생한다.  
+
+```java
+String sql = "SELECT * FROM Member WHERE id = 1";
+
+Member memberFromNative = (Member)em.createNativeQuery(sql, Member.class).getSingleResult();
+Member memberFromJPQL = em.find(member.class, 1);
+
+assertSame(memberFromnNative, memberFromJPQL); // success
+```
+
+## 값 조회  
+`Query createNativeQuery(String sqlString)` 를 말한다.  
+
+```java
+String sql = "SELECT id, name, age FROM Member";
+
+List<Object[]> list = em.createNativeQuery(sql).getResultList();
+
+for(Object[] row : list){
+    Integer id = row[0];
+    String name = row[1];
+    Integer age = row[2];
+}
+```
+
+## 결과 매핑 사용  
+네이티브 쿼리에서 여러값들이 나올 때 결과를 여러 엔티티나 엔티티+스칼라 형태로 적절히 합치는건데.. 굳이 이것까지..  
+
+## Named 네이티브 쿼리  
+어노테이션의 경우 `@NamedNativeQuery` 사용하면 되고,  
+XML의 경우 `<named-native-query>` 사용하면 된다.  
+
+> 될수 있으면 JPQL을 사용하고, 기능이 부족하면 HQL 등을 사용해보고, 그래도 안되면 네이티브 SQL을 사용하자  
+
+# 스토어드 프로시저  
+JPQL에서 사용 가능하지만(Named 스토어드 프로시저도 가능) MySQL에서 성능 이점이 그리 많지 않아 잘 사용되지 않으니 패스  
 
 # 벌크 연산(UPDATE, DELETE)  
 JPQL로 여러 건을 한번에 수정하거나 삭제할 떄 사용한다.  
@@ -923,7 +1028,7 @@ List<Member> list =
 결과부터 말하자면 JPQL 쿼리는 쿼리대로 다 날라가고, 조회한 엔티티를 영속성 컨텍스트에 다 저장한다.  
 여기서 중요한 점은 1번 member의 경우 영속성 컨텍스트에 이미 들어있으므로, JPQL로 조회해온 1번 member는 그냥 버려진다는 것이다.  
 
-![JPQL 조회시 영속성 컨텍스트](https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTMwMzE2NDQ0MzImdHlwZT1sJno9MjAxOS8wMS8xMSAwNzozMw==)  
+![JPQL 조회시 영속성 컨텍스트](/temp/JPQL-조회시-영속성-컨텍스트.jpeg)  
 
 보다시피 조회해온 member들 중 1번 member는 영속성 컨텍스트에 이미 있으므로 그 결과가 버려진다.  
 영속성 컨텍스트에 없는 2번 member의 경우 영속성 컨텍스트에 저장된다.  
@@ -941,7 +1046,7 @@ Member member2 =
 assertSame(member1, member2); // SUCCESS
 ```
 
-![JPQL 실행 시 플로우](https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTMwMzE2ODk4NTQmdHlwZT1sJno9MjAxOS8wMS8xMSAwNzo1Mg==)  
+![JPQL 실행시 플로우](/temp/JPQL-실행시-플로우.jpeg)  
 
 보다시피 영속성 컨텍스트에 1번 member 엔티티가 있더라도 무조건 SQL을 실행해서 조회해온다.  
 (JPQL을 분석해서 영속성 컨텍스트를 조회하는 것은 너무 힘들기 때문이다.)  
@@ -969,7 +1074,7 @@ assertThat(member1.getName(), member2.getName());
 > 어떻게 동작하는지 정확히는 모르겠으나, 영속성 컨텍스트에 있는 엔티티에 대해 JPQL을 실행할 떄만 플러시를 수행한다.  
 > 즉, 위의 상황에서 JPQL로 Team을 조회해올 경우 플러시가 발생하지 않는다.  
 
-하지만 이 상황에서 `FlushMode.COMMIT`으로 설정하면 쿼리전에 플러시를 수행하지 않으므로 위의 테스트가 실패하게 된다.  
+여기서 플러시 모드를 `FlushMode.COMMIT`으로 설정하면 쿼리전에 플러시를 수행하지 않으므로 위의 테스트가 실패하게 된다.  
 이때는 직접 `em.flush`를 호출해주거나, Query 객체에 직접 플러시 모드를 설정해주면 된다.  
 
 ```java
@@ -990,5 +1095,7 @@ assertThat(member1.getName(), member2.getName());
 ```
 
 FlushMode.COMMIT은 너무 잦은 플러시가 일어나는 경우, 플러시 횟수를 줄여서 성능을 최적화하고자 할 때 사용할 수 있다.  
+> 한 트랜잭션 안에서 특정 엔티티에 대한 insert, update, delete를 수행하고  
+> 그 뒤에서 JPQL로 전혀 다른 엔티티의 값을 읽어올 경우 불필요한 flush가 날라가게 된다.  
 
 <!-- more -->

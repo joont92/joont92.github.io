@@ -2,6 +2,7 @@
 title: QueryDSL
 date: 2019-01-10 23:36:34
 tags:
+    - QueryDSL 문법  
 ---
 
 JPQL을 편하게, 동적으로 작성할 수 있도록 JPA에서 공식 지원하는 Creteria 라는것이 있다.  
@@ -132,7 +133,7 @@ List<Member> foundMembers =
 
 join의 첫번쨰 인자로는 join할 대상, 두번쨰 인자로는 join할 대상의 쿼리 타입을 주면 된다. on 절은 자동으로 붙는다.  
 
-- on 절도 사용할 수 있다.  
+- 추가적인 on 절도 사용할 수 있다.  
     ```java
     List<Member> foundMembers = 
         queryFactory.selectFrom(member)
@@ -215,19 +216,83 @@ System.out.println(founeMembers.get(0));
 System.out.println(founeMembers.get(1));
 ```
 
-`class com.querydsl.core.types.QTuple$TupleImpl` 클래스가 리턴되는데 이것보단 아래 bean population을 쓰는게 더 나아보인다.  
+리턴되는 클래스가 `class com.querydsl.core.types.QTuple$TupleImpl` 인데, 이것보단 아래 빈 생성(bean population)을 쓰는게 더 나아보인다.  
+
+## 빈 생성  
+자바빈을 말한다(스프링 빈 아님).  
+출력되는 다중 결과를 빈으로 변경해서 리턴할 수 있다.  
 
 ```java
 List<MemberDTO> foundMembers = 
-    queryFactory.select(Projections.fields(UserDTO.class, member.username, member.homeAddress.city))
+    queryFactory.select(Projections.bean(UserDTO.class, member.username, member.homeAddress.city))
     .from(member)
     .fetch();
 ```
 
+위의 `bean` 메서드를 호출하면 전달받은 인자와 동일하게 UserDTO의 setter를 호출한다.  
+`field` 메서드를 사용하면 필드에 직접 접근하고(private도 가능),  
+`constructor` 메서드를 사용하면 생성자를 사용한다. 지정한 프로젝션과 파라미터 순서가 같은 생성자가 필요하다.  
+
+엔티티의 필드명과 빈의 필드명이 다를 경우 아래와 같이 사용할 수 있다.  
+```java
+queryFactory.select(Projections.bean(UserDTO.class, member.username.as("name"), member.homeAddress.city))
+    ....
+```
+
+Member 엔티티 필드 username을 MemberDTO의 name에 전달하게 된다.  
+
 ## 서브쿼리  
+JPAExpression 을 사용하면 된다.  
+
+```java
+QMember member = QMember.member;
+QMember subQueryMember = new QMember("subQueryMember"); // 추가로 생성해줘야 함  
+
+List<Tuple> foundMembers = 
+    queryFactory.select(member.name, member.homeAddress.city)
+        .from(member)
+        .where(member.name.in(
+                JPAExpressions.select(memberForSubquery.name)
+                .from(memberForSubquery)
+        ))
+        .fetch();
+```
 
 ## 동적 조건  
+`com.querydsl.core.BooleanBuilder` 를 사용하면 동적 조건을 생성할 수 있다.  
+
+```java
+BooleanBuilder builder = new BooleanBuilder();
+if(param.getId() != null){
+    builder.and(member.id.eq(param.getId()));
+}
+if(param.getName() != null){
+    builder.and(member.name.contains(param.getName()));
+}
+
+List<Member> list = 
+    queryFactory.selectFrom(member)
+    .where(booleanBuilder)
+    .fetch();
+```
 
 ## 수정, 삭제, 배치 쿼리  
+- **update**  
+    ```java
+    QCustomer customer = QCustomer.customer;
+    // rename customers named Bob to Bobby
+    queryFactory.update(customer).where(customer.name.eq("Bob"))
+        .set(customer.name, "Bobby")
+        .execute();
+    ```
+
+- **delete**  
+    ```java
+    QCustomer customer = QCustomer.customer;
+    // delete all customers
+    queryFactory.delete(customer).execute();
+    // delete all customers with a level less than 3
+    queryFactory.delete(customer).where(customer.level.lt(3)).execute();
+    ```
 
 <!-- more --> 
