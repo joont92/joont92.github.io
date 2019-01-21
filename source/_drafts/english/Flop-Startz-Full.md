@@ -163,7 +163,8 @@ Oof! I'm okay! It's still better than the
 Curse you, Perry the Platypus! Oh, there you are, Perry.
 (Perry chatters) Come on, guys.
 We still have one thing left to do.
-And the winner of the today's "Next Super American Pop Teen Idol Star" is Marty the Rabbit Boy and his Musical Blender! Oh, give him a hand! He's going to Hollywood! Hey, Candace.
+And the winner of the today's "Next Super American Pop Teen Idol Star" is Marty the Rabbit Boy and his Musical Blender! Oh, give him a hand! 
+He's going to Hollywood! Hey, Candace.
 What's wrong? I'm better than that guy.
 Oh, I should've taken blender lessons.
 So why did you run off earlier? My brothers.
@@ -173,15 +174,21 @@ Then you shouldn't let your brothers' fun ruin your good time.
 You know, if you get a chance to sing, you oughta sing.
 I gotta go, I'll see you later.
 Hey Candace, you're still the hundredth contestant.
-Wanna come up and help us out? (Song: Gitchee Gitchee Goo) Bow, Chicka, Bow-Wow! That's what my baby says! Mow-mow-mow! And my heart starts pumping! Chicka-Chicka, Choo Wah! Never gonna stop! Gitchee Gitchee Goo means that I love you! I said a Bow, Chicka, Bow-Wow! That's what my baby says! Mow-mow-mow! And my heart starts pumping! Chicka-Chicka, Choo Wah! Never gonna stop! Gitchee Gitchee Goo means that I love you! Gitchee Gitchee Goo means that I love you! Gitchee Gitchee Goo means That I love you baby, baby, baby! ( Baby-baby-baby-baby, ) Gitchee Gitchee Goo means that I love you! That was great! I've been thinking of my brothers all wrong! They're not a nuisance.
-They're my ticket to- Thanks, you've been great! This is the last time we're ever gonna sing that song.
+Wanna come up and help us out? (Song: Gitchee Gitchee Goo) Bow, Chicka, Bow-Wow! That's what my baby says! Mow-mow-mow! And my heart starts pumping! Chicka-Chicka, Choo Wah! Never gonna stop! Gitchee Gitchee Goo means that I love you! I said a Bow, Chicka, Bow-Wow! That's what my baby says! Mow-mow-mow! And my heart starts pumping! Chicka-Chicka, Choo Wah! Never gonna stop! Gitchee Gitchee Goo means that I love you! Gitchee Gitchee Goo means that I love you! Gitchee Gitchee Goo means That I love you baby, baby, baby! ( Baby-baby-baby-baby, ) Gitchee Gitchee Goo means that I love you! 
+That was great! I've been thinking of my brothers all wrong! They're not a nuisance.
+They're my ticket to- 
+Thanks, you've been great! This is the last time we're ever gonna sing that song.
 We're retiring, good night! The mall is now closed and will re-open at 9:00 A.
 M.
 tomorrow.
 Thank you for shopping with us.
-( She's Lindana! ) (Song: I'm Lindana and I Wanna Have Fun!) I'm Lindana and I wanna have fun You loved her in the '80s.
-( She wants to have fun ) I'm Lindana and I wanna have fun! Get ready to love her again.
-Lindana's mega hit I'm Lindana and I Wanna Have Fun, ( She's Lindana ) I'm Lindana and I wanna have fun! ( She wants to have fun ) has been remixed and re-translated into your favorite languages I wanna, wanna, wanna have fun fun fun! ( Fun fun fun ) Portuguese! Dutch! I'm not Veronica or Alison or Donna Canadian! Japanese! Esperanto! Pig Latin! And I don't wanna scrub the sink or mow the lawn- Dog! And everyone's favorite- Hey, Mom.
+( She's Lindana! ) (Song: I'm Lindana and I Wanna Have Fun!) I'm Lindana and I wanna have fun 
+You loved her in the '80s.
+( She wants to have fun ) I'm Lindana and I wanna have fun! 
+Get ready to love her again.
+Lindana's mega hit I'm Lindana and I Wanna Have Fun, 
+( She's Lindana ) I'm Lindana and I wanna have fun! ( She wants to have fun ) 
+has been remixed and re-translated into your favorite languages I wanna, wanna, wanna have fun fun fun! ( Fun fun fun ) Portuguese! Dutch! I'm not Veronica or Alison or Donna Canadian! Japanese! Esperanto! Pig Latin! And I don't wanna scrub the sink or mow the lawn- Dog! And everyone's favorite- Hey, Mom.
 Whatcha watchin'? Oh, nothing.
 ( She wants to have fun! ) I wanna, wanna, wanna have fun, fun, fun! 
 

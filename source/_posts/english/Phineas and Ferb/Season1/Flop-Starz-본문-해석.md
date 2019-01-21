@@ -334,7 +334,8 @@ Come on! Come on! Come on! See!
 There they are onstage!  
 > 저기 그들이 무대 위에 있어요!  
 
-Ladies and gentlemen, once again Marty the Rabbit Boy and His Musical Blender! 
+Ladies and gentlemen, once again Marty the Rabbit Boy and His Musical `Blender`!  
+> 신사 숙녀 여러분, 다시한번 토끼소년 Marty와 그의 음악 `믹서기`입니다!  
 
 Hon, **we're getting you an eye exam.**  
 > 눈 검사 받으러가자.  
@@ -534,8 +535,71 @@ Curse you, Perry the Platypus!!
 
 Oh, there you are Perry.  
 
-Come on guys, we still have one thing left to do.  
+Come on guys, **we still have one thing left to do**.  
 
+And the winner of the today's 
+Next 'Super American Popteen Idol Star' is,  
+Marty the Rabbit Boy and His Musical Blender!  
 
+Oh, **`give him a hand`!!**  
+He is going to Hollywood!  
+>> give him a hand는 ~를 도와주다 라는 뜻도 있음  
+>> 즉, 상황과 문맥에 맞춰 해석해야 함  
+
+Hey, Candace. What's wrong?  
+
+I'm better than that guy.  
+Oh! I sholud've taken blendar lesson.  
+
+So why did you run off earler?  
+
+My brothers!  
+They always ruin everything.  
+
+Well, you like to sing, right?  
+
+Yeah.  
+
+**Then you shouldn't let your brothers' fun ruin your good time.**  
+> 그럼 너는 너의 형제들의 재미로 니 좋은 시간을 망치면 안돼.  
+
+You know, if you get a chance to sing, you `oughta` sing.  
+> oughta == ought to  
+
+I gotta go, I'll see you later.  
+
+Hey, Candace.  
+You're still the hundredth contestant.  
+Wanna come up and help us out?  
+
+(노래)  
+
+That was great!  
+**I've been thinking of my brothers all wrong.**  
+> 내 형제들에 대해 전부 잘못 생각해왔다  
+
+They're not a `nuisance`!  
+They're my tickets..  
+> 그들은 `골칫거리`가 아니야  
+
+Thanks, **you've been great.**  
+**This is the last time we're ever gonna sing that song.**  
+We're retiring, Good night!  
+>> 정해진 미래라 진행형?  
+
+The mall is now closed and will re-open it 9 AM tomorrow.  
+Thank you for shopping with us.  
+
+You're loved her in the 80's.  
+Get ready the love her again!  
+Lindana is megahit, I'm Lindana and I wanna have fun!  
+has been remixed and re-translated into your favorite languages!  
+...  
+
+Hey, mom. Whatcha watching?  
+> 뭐보고 있어요?  
+>> Watcha == What are you  
+
+No, nothing.  
 
 <!-- more -->
