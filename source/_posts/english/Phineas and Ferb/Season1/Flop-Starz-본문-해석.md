@@ -325,8 +325,9 @@ And we can talk about your future.
 > 그럼 우린 당신의 미래에 대해 얘기해볼 수 있을거야  
 
 Future? Cool. **He must be a `psychic`**.  
-> 미래? 멋진데. 그는 `초능력자`일거야.  
->> 해석은 다를거 없지만, 뭔가 확실히 그런거 같을떄? he must be happy  
+> 미래? 멋진데. 그는 `초능력자`구나.  
+>> 뭔가 모르는 사람이지만 확실할 때?  
+>> You must be junyoung! : 니가 준영이구나!  
 
 Come on! Come on! Come on! See!  
 > 서둘라요! 서둘러요! 서둘러요! 보세요!  
@@ -519,8 +520,8 @@ I'm more of a paprika man myself.
 > 난 파프리카 체질이지.  
 >> be more of : ~체질이다, ~에 더 가깝다  
 
-**It will take more than `condiments`** to foil my `brilliant` plan!  
-> 내 `멋진` 계획을 저지하려면 `양념` 이상의 것이 필요할거야!  
+**It will take `more than` `condiments`** to `foil` my `brilliant` plan!  
+> 내 `멋진` 계획을 `저지하려면` `양념` `이상의` 것이 필요할거야!  
 
 The tape!  
 
@@ -539,7 +540,7 @@ Come on guys, **we still have one thing left to do**.
 
 And the winner of the today's 
 Next 'Super American Popteen Idol Star' is,  
-Marty the Rabbit Boy and His Musical Blender!  
+Marty the Rabbit Boy and his Musical Blender!  
 
 Oh, **`give him a hand`!!**  
 He is going to Hollywood!  
@@ -551,7 +552,8 @@ Hey, Candace. What's wrong?
 I'm better than that guy.  
 Oh! I sholud've taken blendar lesson.  
 
-So why did you run off earler?  
+So why did you `run off` earler?  
+> 왜 더 일찍 나갔어? 도망쳤어?  
 
 My brothers!  
 They always ruin everything.  
@@ -584,11 +586,12 @@ They're my tickets..
 
 Thanks, **you've been great.**  
 **This is the last time we're ever gonna sing that song.**  
-We're retiring, Good night!  
+We're `retiring`, Good night!  
+> 우린 은퇴합니다, 잘지내요!  
 >> 정해진 미래라 진행형?  
 
 The mall is now closed and will re-open it 9 AM tomorrow.  
-Thank you for shopping with us.  
+**Thank you for shopping with us.**  
 
 You're loved her in the 80's.  
 Get ready the love her again!  
