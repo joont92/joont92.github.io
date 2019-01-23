@@ -21,7 +21,7 @@ PUT은 전체 엔티티를 전달해줘야하고, PATCH는 변경하고자 하�
 
 // PATCH
 {
-    "name" : "joont92" // send only data I want to change
+    "name" : "joont92" // send only data you want to change
 }
 ```
 
@@ -37,5 +37,7 @@ content : option list
 
 위처럼 자식의 내용을 다 지우고 다시 인서트 하는 형태의 API의 경우 PUT이 좀 더 바람직하다.  
 `교체`의 개념과 딱 맞기 떄문이다.  
+
+근데 여기서 전달받은 options의 element에 식별자가 있으면 update 한다고 할 경우, 이건 PUT이 맞을까?  
 
 <!-- more -->

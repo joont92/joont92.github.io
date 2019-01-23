@@ -100,7 +100,7 @@ SELECT * FROM Member WHERE name='junyoung';
 
     START TRANSACTION; -- transaction id : 2
     SELECT * FROM Member WHERE name = 'junyoung';
-    UPDATE Member SET name = 'joont';
+    UPDATE Member SET name = 'joont' WHERE name = 'junyoung';
     COMMIT;
 
 UPDATE Member SET name = 'zion.t' WHERE name = 'junyoung'; -- 0 row(s) affected
