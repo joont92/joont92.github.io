@@ -8,7 +8,7 @@ tags:
 
 <http://wonwoo.ml/index.php/post/1070#comment-7184>
 
-event를 발생시키는 publisher(ApplicationEventPublsh),  
+event를 발생시키는 publisher(ApplicationEventPublish),  
 event를 받는 lister(ApplicationEventLister),
 event가 있음(ApplicationEvent).  
 
