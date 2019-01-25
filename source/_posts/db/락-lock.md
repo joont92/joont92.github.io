@@ -36,9 +36,14 @@ mysqldump 같은것이 우리가 모르는 사이에 내부적으로 이 명령�
     ```
     
     READ든 WRITE든 걸게 되면 다른 트랜잭션에서 해당 테이블에 변경 작업을 할 수 없게 된다.  
-    READ는 일관된 `읽기`를 위해 락을 거는 것이고, WRITE는 데이터 변경을 위해 락을 거는 것이므로,  
-    READ 락을 건 상태로 데이터 변경을 원한다면 다시 WRITE 락을 획득해야 한다.  
+    READ는 일관된 `읽기`를 위해 락을 거는 것이고, WRITE는 데이터 변경을 위해 락을 거는 것이다.  
+
+    - Table READ 락의 경우 다른 트랜잭션에서 READ가 가능하지만 WRITE가 불가능하고,  
+    READ 락을 건 트랜젹션이 해당 테이블의 데이터 변경을 원한다면 다시 WRITE 락을 획득해야 한다.  
     아니면 `Table was locked with a READ lock and can't be updated` 와 같은 에러가 발생한다.  
+
+    - Table WRITE 락의 경우 락을 건 트랜잭션만이 해당 테이블에 접근 가능하고, 다른 트랜잭션은 접근 불가능하다.  
+    여기서 접근이란 read, write를 모두 포함하므로 Table WRITE 락이 걸린 테이블은 다른 트랜잭션에서 조회도 불가능하다.  
 
     ```sql
     UNLOCK TABLES
