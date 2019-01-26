@@ -522,8 +522,16 @@ I'm more of a paprika man myself.
 
 **It will take `more than` `condiments`** to `foil` my `brilliant` plan!  
 > 내 `멋진` 계획을 `저지하려면` `양념` `이상의` 것이 필요할거야!  
+>> more than : ~보다 많이
+```
+I have more water than you : 너보다 물을 더 많이 가지고 있어  
+You're more than me : 넌 나보다 많네  
+We need more than two : 2개보다 더 많이 필요해  
+I need more than a job : 직업 이상의 것이 필요해  
+```
 
 The tape!  
+> 테이프!  
 
 Ooh! What an unbelivable `stroke of` luck!  
 > 휴! 믿을수 없는 `뜻밖의` 행운이군!  
@@ -535,12 +543,15 @@ Curse you, Perry the Platypus!!
 > 뒤져라, 오리너구리 Perry!!  
 
 Oh, there you are Perry.  
+> 오, 거기있었네 Perry.  
 
 Come on guys, **we still have one thing left to do**.  
+> 가자 얘들아, 우린 여전히 하나 할게 남았어.  
 
-And the winner of the today's 
-Next 'Super American Popteen Idol Star' is,  
+And the winner of the today's Next 'Super American Popteen Idol Star' is,  
 Marty the Rabbit Boy and his Musical Blender!  
+> 오늘의 차세대 미국 10대 아이돌 스타의 우상자는,  
+> 토끼소년 Marty와 그의 음악 믹서기입니다!
 
 Oh, **`give him a hand`!!**  
 He is going to Hollywood!  
@@ -548,61 +559,85 @@ He is going to Hollywood!
 >> 즉, 상황과 문맥에 맞춰 해석해야 함  
 
 Hey, Candace. What's wrong?  
+> Candace, 왜 그래?  
 
 I'm better than that guy.  
 Oh! I sholud've taken blendar lesson.  
+> 난 쟤보다 잘했어.  
+> 후! 믹서기 수업 들을걸.  
 
 So why did you `run off` earler?  
-> 왜 더 일찍 나갔어? 도망쳤어?  
+> 왜 시작전에 나갔어?  
 
 My brothers!  
 They always ruin everything.  
+> 내 형제들때문에!  
+> 그들은 항상 모든걸 망쳐  
 
 Well, you like to sing, right?  
+> 음, 너 노래부르고 싶잖아, 맞지?  
 
 Yeah.  
+> 응.  
 
 **Then you shouldn't let your brothers' fun ruin your good time.**  
 > 그럼 너는 너의 형제들의 재미로 니 좋은 시간을 망치면 안돼.  
 
 You know, if you get a chance to sing, you `oughta` sing.  
-> oughta == ought to  
+> 노래부를 기회가 있으면, 노래 불러야지.  
+>> oughta == ought to  
 
 I gotta go, I'll see you later.  
+> 나 갈게, 나중에 봐.  
 
 Hey, Candace.  
 You're still the hundredth contestant.  
 Wanna come up and help us out?  
+> 이봐 Candace.  
+> 넌 여전히 100번째 참가자야.  
+> 올라와서 우리 도와주고 싶니?  
 
 (노래)  
 
 That was great!  
 **I've been thinking of my brothers all wrong.**  
+> 멋졌어!  
 > 내 형제들에 대해 전부 잘못 생각해왔다  
 
 They're not a `nuisance`!  
 They're my tickets..  
 > 그들은 `골칫거리`가 아니야  
+> 그들은 나의 티켓을..  
 
 Thanks, **you've been great.**  
 **This is the last time we're ever gonna sing that song.**  
 We're `retiring`, Good night!  
+> 감사합니다, 훌륭했어요.  
+> 우리가 이 노래를 부르는건 이번이 마지막입니다.  
 > 우린 은퇴합니다, 잘지내요!  
 >> 정해진 미래라 진행형?  
 
 The mall is now closed and will re-open it 9 AM tomorrow.  
-**Thank you for shopping with us.**  
+Thank you for shopping with us.  
+> 쇼핑몰은 이제 닫았고, 아침 9시에 다시 열립니다.  
+> 쇼핑해주셔서 감사합니다.  
 
-You're loved her in the 80's.  
+You loved her in the 80's.  
 Get ready the love her again!  
-Lindana is megahit, I'm Lindana and I wanna have fun!  
+Lindana is `megahit`, I'm Lindana and I wanna have fun!  
 has been remixed and re-translated into your favorite languages!  
 ...  
+
+> 우린 그녀를 80년대에 사랑했습니다.  
+> 다시 그녀를 사랑할 준비를 하죠!  
+> Lindana는 대히트였습니다, 난 Lindana야 난 행복하고싶어!  
+> 당신이 가장 좋아하는 언어로 리믹스되고 다시 번역되었습니다!  
 
 Hey, mom. Whatcha watching?  
 > 뭐보고 있어요?  
 >> Watcha == What are you  
 
 No, nothing.  
+> 아무것도.  
 
 <!-- more -->
