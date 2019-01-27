@@ -9,23 +9,24 @@ Well, duh.
 That's why Ferb built this remote.
 Oh, you are so busted.
 Mom?! Mom?! Mom?! Um, where's Mom? She's playing bridge at Mrs.Garcia-Shapiro's! 
-Heh, they won't get away with it this time! Oh, Candace, dear.
+Heh, they won't get away with it this time! 
+Oh, Candace, dear.
 Bubela, how good to see you.
 What a coincidence.
 Do you know your mom is here? Mmm-mmm.
-Yeah, I do, Mrs.
-Garcia-Shapiro.
+Yeah, I do, Mrs.Garcia-Shapiro.
 I need to talk to her if you don't mind.
 Oy-vey.
 Look how tall you are now.
 You must've grown a couple of inches since the last time I saw you.
-That was last week, Mrs.
-Garcia-Shapiro.
+That was last week, Mrs.Garcia-Shapiro.
 Well your mom's inside, dear.
 Where are your braces? I thought you were wearing braces.
 Yeah.
 MOM! MOM! MOM! What is it, Candace? Oh, you have got to see what Phineas and Ferb are doing! Hey, Ferb.
-What's the red button for? MOM! What is it? What do you want me to see? Quick! Hi, Mom! Hi, boys! Well, if that's all, I'll just be getting back to the game.
+What's the red button for? MOM! 
+What is it? What do you want me to see? Quick! Hi, Mom! Hi, boys! 
+Well, if that's all, I'll just be getting back to the game.
 Good thing we've beefed up the suspension.
 Woah! What else can it do? Hi, Phineas.
 Oh, hi, Isabella.

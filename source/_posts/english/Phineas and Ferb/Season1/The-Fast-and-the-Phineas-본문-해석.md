@@ -38,8 +38,67 @@ She's playing bridge at Mrs.Garcia-Shapiro's!
 
 Heh, they won't get away with it this time!  
 
-Oh, Candace. They bobola, how to you time?  
-What are..  
+Oh, Candace. dear bubule.  
+how to good to see you?  
+What a `coincidence`, Do you know your mom is here?  
+> `우연의 일치`  
     
+I do Mrs.Garcia-Shapiro.  
+I need to talk to her if you don't mind.  
+
+Oi bey, **look how tall you are now.**  
+You must've grown a couple of inchies since last time I saw you.  
+>> [의문사](https://m.blog.naver.com/PostView.nhn?blogId=antonovych&logNo=220769958011&proxyReferer=https%3A%2F%2Fwww.google.com%2F)  
+
+That was last week, Mrs.Garcia-Shapiro.  
+
+Well, your mom's inside, dear.  
+Where are your `braces`?  
+I though you were wearing braces.  
+> `교정기` 
+
+Yeah, mom! Mom! Mom!  
+
+What is it Candace?  
+
+You've got to see what Phineas and Ferb are doing!  
+
+Hey, Ferb. What's the red button for?  
+
+Mom!!!!!!!!!  
+
+What is it?  
+What do you want me to see?  
+
+Quick!!  
+
+Hi, mom~  
+
+Hi, boys~  
+Well, if that's all I'll just be getting back to the game.  
+
+Good thing we've `beefed up` the `suspension`.  
+> 서스펜션을 보강한건 잘 한 일이었어.  
+> `보강하다`, `서스펜션(자동차에서 차체 무게를 받쳐주는 장치)`
+>> [서스펜션](https://www.google.com/search?q=suspension&newwindow=1&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjsi_Sr7Y3gAhXFxLwKHenCD9wQ_AUIDigB&biw=1920&bih=1000)  
+
+Woah! What else can it do?  
+
+Hi, Phinease.  
+
+Oh, hi, Isabella.  
+
+What'cha doin?  
+
+We're entering the Swap Oil 500 today.  
+
+Aren't you gonna need a pit crew?  
+
+Do you know pit crew?  
+
+Well, I know a few people who work well together.  
+
+Great, you're hired.  
+See at the track.  
 
 <!-- more -->
