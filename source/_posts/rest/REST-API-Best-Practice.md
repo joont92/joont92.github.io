@@ -14,6 +14,7 @@ REST API는 Github API가 좋은 에제이다.
 
 # Rest API 좋은 가이드라인(읽어봐야함)
 <https://allegro-restapi-guideline.readthedocs.io/en/latest/>  
+<https://docs.microsoft.com/ko-kr/azure/architecture/best-practices/api-design>  
 
 # 리스트에 대한 안티패턴  
 ```json

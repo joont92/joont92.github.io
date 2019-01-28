@@ -2,7 +2,6 @@
 title: '@RequestMapping'
 date: 2018-03-03 00:21:23
 tags:
-    - '@RequestMapping'
     - DefaultAnnotationHandlerMapping
     - AnnotationHandlerAdapter
     - 토비의 스프링
