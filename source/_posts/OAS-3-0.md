@@ -9,7 +9,6 @@ tags:
 git : <https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md>  
 swagger : <https://swagger.io/docs/specification/basic-structure/>  
 
-
 # meta data, server 정보  
 ```yml
 openapi: 3.0.0
@@ -29,8 +28,7 @@ servers:
 <https://swagger.io/docs/specification/data-models/data-types/>  
 - string, number, integer, boolean, array, object 사용가능  
 - string 은 date와 file을 포함함
-
-## 
+- array는 items가 필수로 와야함. items 아래 type 혹은 $ref
 
 # api 정의  
 ## path 정의  
@@ -61,6 +59,7 @@ paths:
 - deprecated 할 수 있음  
 
 ## parameter 정의  
+<https://swagger.io/docs/specification/describing-parameters/>  
 기본 형태는 아래와 같음  
 
 ```yml
@@ -82,12 +81,72 @@ paths:
     - path의 경우 url에 path templating과 이름을 동일하게 해줘야 한다는 점 빼고는 모두 동일하게 사용 가능  
 - schema에서 전달받은 파라미터에 대해 정의함. 타입, 최소값 등을 줄 수 있음. 추가적인 정보는 [여기](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.1.md#schemaObject) 확인  
 
+## request body
+<https://swagger.io/docs/specification/describing-request-body/>  
+```yml
+paths:
+    /pets:
+        post:
+            summary: Add a new pet
+            requestBody:
+            description: Optional description in *Markdown*
+            required: true
+            content:
+                application/json:
+                schema:
+                    $ref: '#/components/schemas/Pet'
+    /pets:
+        post:
+            summary: Add a new pet
+            requestBody:
+                description: Optional description in *Markdown*
+                required: true
+                content:
+                application/json:
+                    schema:
+                        type: object
+                        properties:
+
+```
+
 
 # object 정의  
-`components` 아래에 정의한다.  
+`components` 아래에 정의하고, 재사용을 목적으로 한다.  
 
 ## schemas
+
+
 ## 공통 parameter 정의 가능
+
+
+## enum reuse
+```yml
+paths:
+  /products:
+    get:
+      parameters:
+      - in: query
+        name: color
+        required: true
+        schema:
+          $ref: '#/components/schemas/Color'
+      responses:
+        '200':
+          description: OK
+          
+components:
+  schemas:
+    Color:
+      type: string
+      enum:
+        - black
+        - white
+        - red
+        - green
+        - blue
+```
+
+## 상속(code generation에서)
 
 
 3. Swagger 상속
