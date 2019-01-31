@@ -111,13 +111,22 @@ paths:
 
 
 # object 정의  
+<https://swagger.io/docs/specification/components/>  
 `components` 아래에 정의하고, 재사용을 목적으로 한다.  
+`$ref`를 이용해 참조한다.  
 
 ## schemas
+일반 오브젝트(DTO 등)  
 
+## parameters
+<https://swagger.io/docs/specification/describing-parameters/#common-for-various-paths>  
 
-## 공통 parameter 정의 가능
+`Common Parameters for Various Paths` 부분 참조  
 
+## responses
+<https://swagger.io/docs/specification/describing-responses/>  
+
+status 별로 선언가능하며 description, object 등을 내려줄 수 있다  
 
 ## enum reuse
 ```yml
@@ -145,35 +154,5 @@ components:
         - green
         - blue
 ```
-
-## 상속(code generation에서)
-
-
-3. Swagger 상속
-ItemParameter:
-    allOf:
-        - $ref: '#/definitions/PageParameter’
-        - type: object
-          properties:
-              name:
-                  type: string
-              status:
-                  $ref: '#/definitions/ItemStatusCode'
-              shipping_type:
-                  $ref: '#/definitions/ShippingType'
-allOf를 사용하면 상속 구현이 가능하다!
-4. swagger global consumes 무시하는법
-swagger는 global로 consumes가 선언되어 있어도 GET, DELETE에 대해서는 consumes를 붙이지 않는다.
-하지만 파라미터로 오브젝트타입(@RequestBody)를 받으면 consume를 그대로 적용하게 된다.
-이러면 @RequestBody -> @ModelAttribute 오버라이딩을 하더라도 검색용으로 사용할 수 없게 된다. (GET은 body가 없으니까)
-이는 사용하는 api 쪽에서 wildCard를 줘서 해결할 수 있다.(빈 공백은 무시함)
-items:
-    get:
-        operationId: getItems
-        description: 상품 목록 조회
-        consumes:
-            - '*'
-     parameters:
-            - ...
 
 <!-- more -->

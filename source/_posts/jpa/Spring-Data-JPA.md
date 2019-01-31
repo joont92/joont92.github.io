@@ -295,4 +295,16 @@ Spring Data JPA는 이런 문제를 우회해서 필요한 메서드만 구현�
     }
     ```
 
+# spring data jpa + queryDSL
+pageable 합치기  
+
+```java
+QItem item = QItem.item;
+JPQLQuery<Item> query = from(item);
+// making condition
+query.where(condition).distinct();
+long totalCount = query.fetchCount();
+List<Item> results = getQuerydsl().applyPagination(pageable, query).fetch();
+```
+
 <!-- more -->
