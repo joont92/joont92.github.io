@@ -31,8 +31,7 @@ And `boredem` is something of up with which I will not put.
 >> 1. for one : 내 경우에는, 개인적으로  
 >> 2. 도치법을 사용..?  
 
-The first thing they're gonna ask us when we `get back` to the school is  
-"What did we do over the summer?"  
+**The first thing they're gonna ask us when we `get back` to the school is "What did we do over the summer?"**  
 > 우리가 학교에 `돌아갔을` 때 걔들이 젤 먼저 물어보는건 "여름에 뭐했어?" 야.  
 
 I mean, no school for three months.  
@@ -48,7 +47,7 @@ Please exit to the left.
 > 왼쪽으로 내려주세요~  
 
 Man, that was `lame`. Why, if I built a roller coaster I would..  
-That's it! I know what we're gonna do today!  
+That's it! **I know what we're gonna do today!**  
 > 이봐, 그건 `시시했어`. 내가 롤러코스터를 만들었다면..  
 > 그거야! 우리가 오늘 뭐 해야할지 알겠어!  
 
@@ -62,7 +61,7 @@ You boys `stays out of trouble`. OK?
 Okay, mom.  
 > 알곘어요 엄마.  
 
-We are gonna build a roller coaster!  
+**We are gonna build a roller coaster!**  
 > 우린 롤러코스터를 만들거야!  
 
 I'm `in charge`, right? You did tell them I'm in charge.  
@@ -74,7 +73,7 @@ Nobody has to be in charge.
 > 진정해, Candace.  
 > 아무도 대장일 필요 없단다.  
 
-But what if there's an emergency?  
+**But what if there's an emergency?**  
 > 그럼 긴급한 상황에는 어떻게해요?  
 >> 1. what if : ~면 어쩌지  
 
@@ -93,7 +92,7 @@ Yes!
 Mom says I'm in charge, `conditionally`~  
 > 엄마가 내가 대장이라고 했어, `조건부로`~  
 
-Whatever.  
+**Whatever.**  
 > 그러든지.  
 >> 1. 응 너 대장~ 이런 느낌.  
 남의 말에 대한 대꾸에서 무슨 일이 있건 상관없음을 또는 그들의 말에 관심 없음을 나타냄(네이버 사전)  
@@ -108,7 +107,7 @@ It's summer.
 > 지금 여름이야.  
 
 That's cool.  
-You wait till the last minute then.  
+**You wait till the last minute then.**  
 > 멋지네.  
 > 그럼 넌 마지막 순간까지 기다려.  
 >> 2. 숙제 마지막에 몰아서 해라~ 이런 뜻  
@@ -120,7 +119,7 @@ And I'm in charge, conditionally!
 
 Hello, Oh hi, Stacy!  
 No, I can't go to the mall right now.  
-Mom `just` went to the store.  
+**Mom `just` went to the store.**  
 She left me in charge.  
 Well, you know, conditionally.  
 > 여보세요, 오 안녕, 스테이시!  
@@ -131,10 +130,10 @@ Well, you know, conditionally.
 Oh, if you go, can you see Jeremy is there?  
 > 오 만약 간다면, Jeremy가 있는지 봐줄 수 있어?  
 
-No, no, he is the cute one that works at Mr.Slushy Burger.  
+No, no, **he is the cute one that works at Mr.Slushy Burger.**  
 > 아니아니 Mr.Slushy Burger에서 일하는 귀여운 애 있잖아.  
 
-Yeah, he `totally` smiled at me last time I was there.  
+Yeah, **he `totally` smiled at me last time I was there.**  
 `I just about died!`  
 > 응, 내가 지난번에 거기 갔을 때 그는 `완전히` 웃어줬었어.  
 > `거의 죽을뻔 했어!`  
@@ -215,7 +214,7 @@ Some might say.
 >> 개떼구를...  
 
 Hey, Ferb.  
-Does your step-brother `ever` talk?  
+**Does your step-brother `ever` talk?**  
 > 안녕, Ferb.  
 > 니 의붓형은 얘기`해본적`이 있어?  
 
@@ -224,7 +223,7 @@ He is more of man of action.
 > Ferb?  
 > 그는 `행동가`에 `가깝지`  
 
-I was gonna go to the pool, you wanna go swimming?  
+**I was gonna go to the pool,** you wanna go swimming?  
 > 난 수영장에 갈려고 했어, 너 수영하고 싶어?  
 
 Kind of in the middle of something here.  
@@ -239,7 +238,7 @@ Okay.
 > 그래.  
 
 Hey, Ferb.  
-You got enough `rivets` up there?  
+**You got enough `rivets` up there?**  
 > 이봐, Ferb.  
 > 위에 `대갈못` 충분해?  
 
@@ -272,10 +271,10 @@ Mom, you gotta come home, right now.
 Did the satellite crashes into the house?  
 > 위성이 집에 충돌했니?  
 
-No no no, you gotta see what Phineas and Ferb are doing.  
+No no no, **you gotta see what Phineas and Ferb are doing.**  
 > 아뇨 아뇨 아뇨, Phineas랑 Ferb가 뭘 하고 있는지 보셔야 돼요.  
 
-`Seems like` we've had this conversation before?  
+**`Seems like` we've had this conversation before?**  
 > 전에도 이 얘기를 했던거 `같은데`?  
 
 What do you mean?  

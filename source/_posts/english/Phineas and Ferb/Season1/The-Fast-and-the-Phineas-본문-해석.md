@@ -5,7 +5,7 @@ tags:
 ---
 
 So Ferb, what should we do today?  
-I mean, `besides` `giving Perry a bath`.  
+I mean, **`besides` `giving Perry a bath`.**  
 > `~ 외에` `목욕시키다`  
 
 What is that wonderful noise?  
@@ -60,7 +60,7 @@ That was last week, Mrs.Garcia-Shapiro.
 
 Well, your mom's inside, dear.  
 Where are your `braces`?  
-I thought you were wearing braces.  
+**I thought you were wearing braces.**  
 > `교정기` 
 
 Yeah, mom! Mom! Mom!  
@@ -99,7 +99,7 @@ What'cha doin?
 
 We're entering the Swap Oil 500 today.  
 
-Aren't you gonna need a pit crew?  
+**Aren't you gonna need a pit crew?**  
 
 Do you know pit crew?  
 

@@ -148,9 +148,22 @@ List<Member> foundMembers =
     queryFactory.selectFrom(member)
     .where(member.username.eq("joont")) // 1. 단일 조건  
     .where(member.username.eq("joont"), member.homeAddress.city.eq("seoul")) // 2. 복수 조건. and로 묶임  
-    .where(member.username.eq("joont").or.member.homeAddress.city.eq("seoul")) // 3. 복수 조건. and나 or를 직접 명시할 수 있음  
+    .where(member.username.eq("joont").or(member.homeAddress.city.eq("seoul"))) // 3. 복수 조건. and나 or를 직접 명시할 수 있음  
+    .where((member.username.eq("joont").or(member.homeAddress.city.eq("seoul"))).and(member.username.eq("joont").or(member.homeAddress.city.eq("busan"))))
     .fetch();
 ```
+
+`(E1 and E2) or (E3 and E4)` 같은 형태도 가능하다. 그냥 괄호로 묶어주면 된다.  
+
+```java
+List<Member> foundMembers = 
+    queryFactory.selectFrom(member)
+    .where((member.username.eq("joont").or(member.homeAddress.city.eq("seoul"))).and(member.username.eq("joont").or(member.homeAddress.city.eq("busan"))))
+    .fetch();
+```
+
+두가지 조건이 괄호로 묶이게 되었을때, or 이면 합집합이고 and 이면 교집합이다.  
+참고로 `(E1 and E2) or (E3 and E4)` 는 괄호가 생략되고 `(E1 or E2) and (E3 or E4)` 는 잘 동작한다.  
 
 ### 그룹핑
 group by도 가능하다.  
