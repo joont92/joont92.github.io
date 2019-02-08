@@ -3,6 +3,7 @@ title: MapStruct
 date: 2018-12-16 20:39:25
 tags:
     - '@Mapper'
+    - '@Mapping'
 ---
 
 # 기본 사용법  
@@ -36,9 +37,12 @@ public interface CarMapper {
 
 1. source와 target의 필드 이름이 다를 경우 직접 지정할 수 있다  
 2. ignore를 통해 특정 필드는 변환되지 않도록 설정할 수 있다. target만 신경쓰면 된다.  
-3. 클래스에서 다른 클래스를 참조할 경우 다른 Mapper를 사용하여 변환시킬수도 있다. 이를 지정하지 않으면 좀 비효율적인 방법으로 변환을 시도한다.  
+3. 기본적으로 deep mapping 하는 코드까지 generation 해주긴하나, 기본적인 방식으로만 generation 된다(이름에 맞춰서 get/set)  
+그러므로 custom한 mapper가 필요하다면 위와 같이 선언해줘야 한다.  
 
 install한 library로 빌드하면 `@Mapper` 인터페이스들을 찾아서 `XXXImpl`의 형태로 구현체를 모두 만든다.(빌드 방식 알아봐야함)  
+> 현재 componentModel을 spring으로 줬기때문에 생성되는 Impl은 스프링의 싱글톤 빈으로 관리된다(@Component 붙음)  
+
 생성된 구현체는 아래와 같다. 간단하다.  
 
 ```java
