@@ -113,7 +113,13 @@ paths:
 # object 정의  
 <https://swagger.io/docs/specification/components/>  
 `components` 아래에 정의하고, 재사용을 목적으로 한다.  
-`$ref`를 이용해 참조한다.  
+`$ref` 속성을 이용하고 `#`으로 참조한다.  
+
+```yml
+$ref: '#/components/schemas/Item'
+```
+
+`#`는 현 위치를 말한다.  
 
 ## schemas
 일반 오브젝트(DTO 등)  
