@@ -6,6 +6,7 @@ tags:
     - CascadeType.ALL
     - add list insert
     - delete doesn't work
+    - orphanRemoval doesn't work
 ---
 
 엔티티의 자식에 CascadeType.PERSIST를 지정할 경우 JPA에서 추가적으로 수행하는 동작이 있고,  
@@ -162,7 +163,7 @@ public void cascadeTest(){
 두번쨰의 경우 clear로 날려버렸기 때문에 총 2개의 order에 대해 persist operation이 수행되어 2개가 insert 된 것이다.(기존에 있던 것을 삭제하고 싶으면 `orphanRemoval = true`를 줘야한다)  
 그러므로 위의 두 행위는 결과적으로 데이터베이스에 동일한 행위를 수행하게 되는 것이다.  
 
-# 예상치 못한 동작  
+# 예상치 못한 동작1 
 ```java
 class Member{
     @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
@@ -189,5 +190,8 @@ public void deleteTest(){
 order가 삭제될 것이라고 예상할 수 있지만, flush시에 orderList에 남아있는 모든 order에 대해 persist 연산을 수행하므로 결과적으로 delete 메서드가 날라가지 않는 현상이 발생한다.  
 그러므로 `CascadeType.PERSIST`를 사용하고자 할 경우 삭제하는 order에 맞춰 orderList에서 요소를 삭제해주거나,  
 `orphanRemoval = true`를 사용해 orderList에서 삭제되면 자동으로 delete 가 날라가게끔 해야한다. 
+
+# 예상치 못한 동작2
+
 
 <!-- more -->
