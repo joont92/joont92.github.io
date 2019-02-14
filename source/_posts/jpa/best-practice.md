@@ -27,7 +27,7 @@ public void setMember(Member member){
 public void addOrder(Order order){
 	orders.add(order);
 	order.setmember(this);
-} 
+}
 근데 책에서 설명할때는 bug를 방지하여 조건검사를 어느정도 넣어주는것을 봤는데, 이걸 제거해도 되는것인지?
 
 회원 중복검사를 하는 로직은 service 메서드에서 private으로 구현했다
