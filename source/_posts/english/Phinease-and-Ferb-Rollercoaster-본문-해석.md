@@ -1,5 +1,5 @@
 ---
-title: Rollercoaster 본문/해석
+title: Phinease and Ferb - Rollercoaster 본문/해석
 date: 2018-10-10 14:41:28
 tags: 
     - Phineas and Ferb
@@ -35,7 +35,7 @@ And `boredem` is something of up with which I will not put.
 > 우리가 학교에 `돌아갔을` 때 걔들이 젤 먼저 물어보는건 "여름에 뭐했어?" 야.  
 
 I mean, no school for three months.  
-Our life should be a roller coaster!  
+**Our life should be a roller coaster!**  
 > 내 말은, 3개월간 학교를 안 가니까, 우리의 삶은 롤러코스터 같아야 해!  
 
 And I mean, good roller coaster.  
@@ -51,7 +51,7 @@ That's it! **I know what we're gonna do today!**
 > 이봐, 그건 `시시했어`. 내가 롤러코스터를 만들었다면..  
 > 그거야! 우리가 오늘 뭐 해야할지 알겠어!  
 
-Phineas, Ferb. I'm gonna go pick up a few things.  
+Phineas, Ferb. **I'm gonna go pick up a few things.**  
 You boys `stays out of trouble`. OK?  
 > Phineas, Ferb. 나 몇가지 좀 사러갔다 올게.  
 > `말썽 피우지 마렴`. 알겠지?  
@@ -127,14 +127,14 @@ Well, you know, conditionally.
 > 엄마가 `방금` 마트에 갔어.  
 > 나한테 책임을 맡기고.. 뭐, 조건부로. ㅎㅎ  
 
-Oh, if you go, can you see Jeremy is there?  
+Oh, if you go, **can you see if Jeremy is there?**  
 > 오 만약 간다면, Jeremy가 있는지 봐줄 수 있어?  
 
 No, no, **he is the cute one that works at Mr.Slushy Burger.**  
 > 아니아니 Mr.Slushy Burger에서 일하는 귀여운 애 있잖아.  
 
 Yeah, **he `totally` smiled at me last time I was there.**  
-`I just about died!`  
+**`I just about died!`**  
 > 응, 내가 지난번에 거기 갔을 때 그는 `완전히` 웃어줬었어.  
 > `거의 죽을뻔 했어!`  
 
@@ -149,7 +149,7 @@ I'm gonna see the two as she catches them `red-handed`.
 > 그들은 절대 `곤경에 빠지지` 않아, 왜냐면 엄마가 절대 못잡거든.  
 `하지만 언젠가는`, 난 엄마에게 `현장에서 잡힌` 그 둘을 보게 될거야.  
 
-Will you `hold it down`? I'm trying to use the phone!  
+**Will you `hold it down`?** I'm trying to use the phone!  
 > `조용히 해줄`래? 지금 전화 쓰는 중이거든!  
 
 Mom left me in charge  
@@ -158,7 +158,7 @@ so there will be no `shenanigans` today.
 
 What are you doing right now?  
 What do you ask?  
-What do you mean you can see it from your house?  
+**What do you mean you can see it from your house?**  
 See what?!?!  
 > 지금 뭐해?  
 > 뭘 물어보는거야?  
@@ -175,8 +175,8 @@ When I'm gonna go tell mom and when she sees what you're doing,
 you're going down. Down! Down! Down! D! O! W! N! Down!  
 > 엄마한테 가서 말하고 엄마가 니가 뭐하는지 보게되면, 넌 내려오게 될거야!  
 
-We are gonna need a blowtorch and some more peanut butters.  
-> 우리는 소형 토치랑 땅콩 버터가 더 필요할꺼야.  
+We are gonna need a `blowtorch` and some more peanut butters.  
+> 우리는 `소형 토치`랑 땅콩 버터가 더 필요할꺼야.  
 
 Hey, Candace, is Phineas... home?  
 > 안녕 Candace, Phineas가.. 집인가?  
@@ -216,7 +216,7 @@ Some might say.
 Hey, Ferb.  
 **Does your step-brother `ever` talk?**  
 > 안녕, Ferb.  
-> 니 의붓형은 얘기`해본적`이 있어?  
+> 니 의붓형은 말을 하긴하니?    
 
 Ferb?  
 He is more of man of action.  
@@ -226,8 +226,8 @@ He is more of man of action.
 **I was gonna go to the pool,** you wanna go swimming?  
 > 난 수영장에 갈려고 했어, 너 수영하고 싶어?  
 
-Kind of in the middle of something here.  
-> 지금 뭔가를 하는 중이야.  
+**`Kind of in the middle of something` here.**  
+> 여기서 `지금 뭐좀 하는 중이라...`  
 
 Oh, right.  
 Okay, I will see you later then.  

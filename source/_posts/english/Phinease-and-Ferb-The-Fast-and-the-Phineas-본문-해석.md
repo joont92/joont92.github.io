@@ -1,7 +1,9 @@
 ---
-title: The Fast and the Phineas 본문/해석
+title: Phinease and Ferb - The Fast and the Phineas 본문/해석
 date: 2019-01-24 09:15:59
 tags:
+    - Phineas and Ferb
+    - The Fast and the Phineas
 ---
 
 So Ferb, what should we do today?  

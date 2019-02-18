@@ -1,5 +1,5 @@
 ---
-title: Lawn Gnome Beach Party of Terror 본문/해석
+title: Phinease and Ferb - Lawn Gnome Beach Party of Terror 본문/해석
 date: 2018-11-18 22:29:12
 tags:
     - Phineas and Ferb
