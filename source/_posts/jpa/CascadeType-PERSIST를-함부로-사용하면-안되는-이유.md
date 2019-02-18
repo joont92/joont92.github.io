@@ -166,10 +166,14 @@ public void cascadeTest(){
 # 예상치 못한 동작1 
 ```java
 class Member{
+    // ...
+
     @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST)
     private List<Order> orderList = new ArrayList<>();
 }
 class Order{
+    // ...
+
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
@@ -192,6 +196,71 @@ order가 삭제될 것이라고 예상할 수 있지만, flush시에 orderList�
 `orphanRemoval = true`를 사용해 orderList에서 삭제되면 자동으로 delete 가 날라가게끔 해야한다. 
 
 # 예상치 못한 동작2
+```java
+@Entity
+class Member{
+    // ...
 
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
+}
+
+@Entity
+class Item{
+    // ...
+
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Order> orders;
+}
+
+@Entity
+class Order{
+    // ...
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nane = "item_id")
+    private Item item;
+}
+```
+
+Member, Item이 있고 중간에 연결테이블로 Order를 가지고 있는 일반적인 구조이다.  
+여기서 만약 아래와 같은 행위를 수행하면 어떻게 될까?  
+
+```java
+Member member = em.find(Member.class, 1);
+
+List<Order> orders = member.getOrders();
+for(Order order : orders){
+    Integer size = order.getItem().getOrders().size();
+    // ...
+}
+
+member.getOrders().clear(); // expecting delete operation
+```
+
+Member가 가진 order들의 item이 가진 order들의 size를 가져오고 있다.  
+(좀 어거지스럽긴 하지만 뭐 발생할려고 하면 어떻게든 발생할 수는 있는 상황이다.)  
+어찌됐든 여기서 중요한것은, size를 얻기 위한 행위 때문에 Item이 lazy 로딩 되었고, item의 Order들이 lazy 로딩 되었다는 점이다.  
+
+하고싶은 행위를 다 하고... 결과적으로 member 내의 order들이 다 쓸모없다고 판단해서 버리기로 한 모양이다.  
+orphanRemoval에 의해 `clear()` 만 해줘도 다 삭제되어야 하는데, 삭제가 잘 될까?  
+
+**아쉽게도 삭제되지 않는다.**  
+Member의 입장에서는 orders의 개수가 0개가 되었으므로 삭제를 시도하려고 할 것이다.  
+하지만 위에서 size를 얻기위해 Item, Item의 orders를 Lazy 로딩 시킨것이 문제이다.  
+(굳이 lazy 로딩이 아닌 EAGER로 초기 로딩 등등 어떻게든 반대편도 영속성 컨텍스트에 올라갔다는 점이 중요 포인트이다)  
+
+Item이 영속성 컨텍스트에 올라가게 되었는데, orders에는 CascadeType.ALL(PERSIST)가 걸려있다.  
+> 그러므로 member의 orders를 비워서 delete operation을 수행하고 싶어도,  
+> item의 orders 요소들이 아직 남아있기 때문에 PERSIST operation이 발생하게 되고,  
+> 결과적으로 delete가 씹히게 되는 것이다.  
+
+이를 해결하기 위한 가장 적절한(?) 방법으로는, 양쪽 다 CascadeType.ALL을 걸지않고 정말 필요한 한쪽만 거는 것이다.  
+위의 경우도 다시보면 item쪽에서 order를 cascade로 여러개 등록시킬 상황은 굳이 존재하지 않는다(물론 있을수도 있다)  
+과감히 제거해주면, delete 명령이 정상적으로 동작할 것이다.  
 
 <!-- more -->
