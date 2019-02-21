@@ -5,8 +5,6 @@ tags:
 	- DDD
 ---
 
-<http://aeternum.egloos.com/1105776?fbclid=IwAR34k-M99pRGvZ_FA_FOcKqKhBcy6tfPgoF3tAc-oGrV59sf9SmVM7zMkRc>  
-
 REFERENCE OBJECT : 실세계의 추적 가능한 개념
 VALUE OBJECT : 단순 값
 
@@ -35,9 +33,12 @@ final 또한 자식의 변화를 막을 수 없음(참조변경만을 막을 뿐
 # Reference Object
 계속 변화해야함
 - 여기서는 별칭이 문제가 아니라 요구사항임. 항상 추적 가능해야함
-- Reference Object를 불변 객체로 만드는 것이 최선의 방법
-	- 최초 속성이 그대로 유지되는 추적 가능한 도메인이라는 가정
-		- setter를 만들지 않는 방법
+- 최초 속성이 그대로 유지되는 추적 가능한 도메인이라면 Reference Object를 불변 객체로 만드는 것이 최선의 방법
+	- setter를 만들지 않으면 됨  
 	- 그렇지 않다면 가변 객체로 변경해야함  
+
+> - 참조  
+> 	- <http://aeternum.egloos.com/1105776>  
+>	- <http://aeternum.egloos.com/1111257>  
 
 <!-- more -->

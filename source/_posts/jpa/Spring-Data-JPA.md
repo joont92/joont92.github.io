@@ -115,7 +115,7 @@ SELECT m FROM Member m WHERE m.email = ?1 AND m.name = ?2
 - findByNameAndEmail 의 형태로 작성. `By` 뒤부터 파싱 ([조건은 여기에](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation))  
 - findDistinctBy 로 `distinct` 가능  
 - 엔티티 탐색 가능. camel case로 해도 되지만 애매하니 findByAddress_ZipCode 처럼 `_`로 이어주는게 좋을 듯  
-- findFirst3By, findTop10By, findFirstBy(1건), findLastBy 처럼 `limit` 가능  
+- findFirst3By, findTop10By, findFirstBy(1건), findLastBy 처럼 `limit` 가능(LastBy는 없을 것 같은데.. desc를 할려나?)  
 - findByAgeOrderByNameDesc 처럼 `order by` 가능  
 - 반환형은 `Page, List, 단건` 모두 가능. 쿼리 결과야 잘 맞춰서 사용해야 함  
 - 반환형으로 Stream도 가능  
