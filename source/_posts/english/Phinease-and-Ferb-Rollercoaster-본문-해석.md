@@ -248,7 +248,7 @@ Hey, Where's Pairy?
 Good Morning, Agent P.  
 (생략)  
 Now, get out there.  
-We're all `counting on` you.  
+**We're all `counting on` you.**  
 > 좋은 아침이네 agent P.  
 > (생략)  
 > 이제 밖으로 나가게.  
@@ -285,10 +285,10 @@ And when I came home, there was a `stunning` `lack of monkeys`.
 > 애들이 저글링을 하기 위해 원숭이를 훈련시키고 있었다는 말을 한게 기억이 나네.  
 근데 내가 집에 갔을떄, `놀랍게도` `원숭이가 부족했지`.  
 
-I still don't know how they `cleand` that `up` so fast..  
+**I still don't know how they `cleand` that `up` so fast..**  
 > 난 아직도 어떻게 그들이 그걸 그렇게 빨리 `치웠는지` 모르겠어요..  
 
-So, what's emergency in this time?  
+**So, what's emergency in this time?**  
 > 그래서, 이번에는 무슨 응급상황이니?  
 
 They are building a roller coaster.  
@@ -349,7 +349,7 @@ I haven't really worked on all the bugs yet.
 > 글쎼, 내가 그 질문에 답변해볼께.  
 > 아직 모든 버그를 연구하지는 않았어.(뭐라는겨;)  
 
-I mean, tin foil `alone costs a lot`.  
+I mean, **tin foil `alone costs a lot`.**  
 > 내 말은, 은박지 `하나만해도 돈이 많이 든다`.  
 
 But mom, I'm telling you. They are building it, and it's huge!  
@@ -400,20 +400,23 @@ May I present a `spectacle` `most of the morning` `in the making`!
 The coolest coaster ever!!!!  
 > 지금까지의 가장 멋진 롤러 코스터!!  
 
+So, who wants go first?  
+> 그래서, 누가 먼저 탈래?  
+
 To fasten, insert the tab into the metal buckle.  
 To release, just pull back on the.. oops..  
 > 고정하려면, 탭을 금속 버클에 삽입해.  
 > 풀려면, 그냥 뒤로.. 이런..  
 
-Well, you `get the picture`.  
+Well, **you `get the picture`.**  
 Well, that's about it.  
 Enjoy the ride.  
 > 뭐, `이해했지`?  
 > 음, 이게 다야.  
 > 재밌게 타렴.  
 
-You guys all signed waivers, right?  
-> 너네들 전부 포기각서에 싸인했지?  
+You guys all signed `waiver`s, right?  
+> 너네들 전부 `포기각서`에 싸인했지?  
 
 Relax, they're just rubber.  
 > 진정해, 이거 그냥 고무야.  
@@ -439,7 +442,7 @@ Quckly! we must seperate magnet from the magnfire `before it's too late`!!!
 > 지금 2톤의 은박지 공이 200마일로 우리한테 날아오고 있네!!  
 빨리! `너무 늦기전에` 자석을 확대렌즈에서 분리해야해!!!  
 
-I know I have that club card `in here somewhere`  
+I know **I have that club card `in here somewhere`**  
 > `여기 어딘가에` 클럽카드가 `있는거` 아는데..  
 
 ```
@@ -460,8 +463,8 @@ We're doomed!!
 Curse you!  
 > 뒤져라!!  
 
-What am I `supposed to be looking at`?  
-> `뭘 보라는거야`?  
+Okay, give up. What am I `supposed to be looking at`?  
+> 그래, 포기했다. `뭘 보라는거야`?  
 >> <http://prologue.blog.naver.com/PostView.nhn?blogId=bluewater_33&logNo=140120886910&parentCategoryNo=122&categoryNo=&viewDate=&isShowPopularPosts=false&from=postView>
 >> 여기선 아래쪽에 있는 `어쩌라는 거야..`의 어감이 쓰인 듯 하다  
 
@@ -470,7 +473,10 @@ What are we supposed to do?
 > 우리 어떻게 해야 하지?  
 ```
 
-I'm gonna `go get` the cart.  
+No! It's not possible!  
+> 아냐! 이건 불가능해!  
+
+`I'm gonna go get` the cart.  
 > 카트 `가지러 가야겠다`  
 >> `gonna go 동사` 형태를 꽤나 많이 쓰는 듯.  
 >> get, pick 같은 동사뒤에 자주 사용되며, `~가지러 가야겠다` 정도로 쓰이는 것 같다.  
@@ -478,7 +484,15 @@ I'm gonna `go get` the cart.
 ```
 I'm gonna go get the book.  
 > 책 가지러 가야곘다  
-```
+```  
+
+It was right here, and it was huge!  
+MOM!!  
+> 여기 있었고, 거대헀었다고요!!  
+> 엄마!!  
+
+Time to go, I've got frozen.  
+> 갈시간이야, 아이스크림 있어.  
 
 So you think that Phineas and Ferb are still under that stupid tree in the backyard, right?  
 > 그러니까 Phinese랑 Ferb가 뒷마당에 있는 멍청한 나무아래 아직 있다고 생각하는거죠? 맞죠?  
@@ -493,10 +507,29 @@ It would be here.
 > 아마 거기 있을거야  
 ```
 
+Fine.  
+Then lets go home, now!   
+> 좋아요. 그럼 지금 집에가요, 당장!  
+
+Oh, there you are, Perry.  
+Nice hat, Isabella.  
+> 오 거기있었네, Perry.  
+> 모자 예쁘네, Isabella.  
+
+Funny, I don't remember this in the blueprints.  
+And I'm sure this is new.  
+> 재밌네, 이게 계획에 있었는지는 기억이 안나는데.  
+> 이건 확실히 새로운거야.  
+
 I `worry about` you sometimes, Candace.  
 > 난 가끔 니가 `걱정돼`, Candace.  
 
-Anyone want fires?  
+Welcome to Mr.Slushy Burger.  
+`May I take your order?`  
+> Mr.Slush Burger에 오신것을 환영합니다.  
+> `주문하시겠어요?`  
+
+**Anyone want fires?**  
 > 감자튀김 먹을 사람?  
 
 ```
@@ -507,9 +540,21 @@ Anyone go PC cafe?
 > PC방 갈사람? 
 ```
 
+Croissant?  
+> 크로아상?  
+
+Anyone want a croissant?  
+> 크로아상 먹을 사람?  
+
 Candace is in charge.  
 > Candace 책임이야.  
 >> 앞뒤 문맥에 따라 이해하면 된다    
+
+Okay, we're here.  
+Are you happy now, Candace?  
+
+Yes! See, Mom? I told you they weren't there!  
+> 아싸! 봐요 엄마? 내가 걔네 없다고 헀죠?  
 
 `Way too` cool!  
 > `너무` 멋졌어!  
@@ -549,7 +594,7 @@ You could teach Petty some tricks.
 > Perry한테 trick들을 가르쳐야지  
 >> teach A B : A에게 B를 가르치다(간단한 거지만 익숙해지기 위해)  
 
-It really was `the cooleat coaster ever`.  
+**It really was `the cooleat coaster ever`.**  
 > `지금까지 탄 것 중 최고의 롤러코스터`였어.  
 > the 최상급 + ever : 지금까지의 가장 ~ 한  
 
@@ -561,7 +606,7 @@ It's the slowest runner ever.
 > 지금까지 중 가장 느린 러너야.  
 ```
 
-You know what I mean?  
+**You know what I mean?**  
 > 뭔 말인지 알제?  
 >> <https://www.youtube.com/watch?v=EhA2cKj2oZc>  
 
@@ -573,7 +618,7 @@ There's `a world of` possibilities.
 >> 근데 실제로 이렇게 잘 안쓰이는 듯 하다. `~~한 세상이다` 로 거의 쓰이는 듯.  
 >> 같은 뜻 아닐까? 무수한 가능성이 있다 == 가능성의 세상이다.  
 
-Give it a rest, Candace!  
+**Give it a rest, Candace!**  
 > 그만좀해라, Candace!  
 
 ```

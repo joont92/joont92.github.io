@@ -65,7 +65,7 @@ Here is sooo dangerous as you see, please behave yourself.
 > 여긴 보다시피 매우 위험하니, 행동을 조심해주세요.  
 ```
 
-**He's finally `cleaning out` the `basement`.**  
+He's finally `cleaning out` the `basement`.  
 > 그는 마침내 `지하실`을 `청소하고` 있거든.  
 >> [clean, clean up, clean out](https://ell.stackexchange.com/questions/81356/the-difference-between-clean-up-clean-out-and-clean)  
 >> clean up은 일반적인 청소를 말함. `This bedroom must be cleaned up!`  
