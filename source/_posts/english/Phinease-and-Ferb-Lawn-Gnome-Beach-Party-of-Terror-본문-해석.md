@@ -190,6 +190,7 @@ The price is way above our thought.
 
 **This `isn't even worth`** a call to mom.  
 > 엄마한테 전화할 `가치도 없네`.  
+>> isn't even woth + 명사(동명사) 형태로 쓰이는 듯  
 >> worth를 잘쓰면 좋을듯  
 
 You know, if you guys ever wanna be popular, you're gonna have to stop playing in the sandboxes.  
