@@ -83,8 +83,9 @@ public Job stepNextConditionalJob() {
 
 - 처음 시작할떄는 무조건 start  
 - ExitStatus를 catch하고 싶다면 on 사용하고, 뒤에 연결할 step에 to 사용  
-- from은 이벤트 리스너. 뒤에 등록하는 step의 이벤트를 listen함  
+- from은 이벤트 리스너. 인자로 받는 step의 이벤트를 listen함  
     - on + end 뒤에만 붙일 수 있는데, 왜 그런건지..  
+    - step을 종료시키기 위해서 붙여야하는 패턴인건지?  
 
 요청당 job을 등록하고,  
 job에 해당하는 instruction은 step으로..  
