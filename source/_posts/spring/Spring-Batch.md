@@ -30,8 +30,12 @@ Spring Quartz는 스케줄러이고, Spring Batch는 대용량 처리 배치이�
 
 - Job은 하나의 배치 작업 단위를 뜻함  
 - Job 안에 여러 Step이 존재함  
-    - 실제 배치작업(비즈니스 로직)이 들어있는 곳이다  
+    - Step이 실제 배치작업(비즈니스 로직)이 들어있는 곳이다  
 - Step 안에 Tasklet 또는 Reader & Processor & Writer 묶음이 존재함  
+    - 진짜 비즈니스 로직을 작성하는 곳  
+    - 말 그대로 진짜 스텝이다. job이 실행해야 할 step을 작성하는 것이다.  
+        - job 을 큰 작업, step 을 세부 작업이라고 생각하면 안된다  
+        - 'job은 일괄 등록 요청, 요청 개수 만큼 step 생성' 은 잘못된 생각이다  
     - 둘은 같은 레벨이므로 하나만 실행가능  
     - Reader & Processing 후에 Tasklet 불가능  
 - JOB은 @Configuration에 등록하고, 서비스가 뜨면 실행된다  
@@ -87,9 +91,8 @@ public Job stepNextConditionalJob() {
     - on + end 뒤에만 붙일 수 있는데, 왜 그런건지..  
     - step을 종료시키기 위해서 붙여야하는 패턴인건지?  
 
-요청당 job을 등록하고,  
-job에 해당하는 instruction은 step으로..  
-(상품 연동 한건한건이 전부 step)  
-step도 실패관리가 될까?  
-
 ## Batch Status, Exit Status  
+
+
+요청하는 일괄처리 개수만큼 job을 등록함  
+step은 말 그대로 

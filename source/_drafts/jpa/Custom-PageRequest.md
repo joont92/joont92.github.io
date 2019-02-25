@@ -15,7 +15,7 @@ PageRequest는 AbstractPageRequest를 extends하고,
 AbstractPageRequest의 getOffset 메서드를 보면 page * size 의 형태로 리턴하기 때문
 이를 override 해서 시작페이지를 지정하게끔 할 수 있다.
 
-
+```java
 public class LimitPageRequest extends PageRequest implements Pageable{
     /*
      *
@@ -41,5 +41,6 @@ public class LimitPageRequest extends PageRequest implements Pageable{
         return page; // getPageNumber에서 이 메서드를 사용하는 듯
     }
 }
+```
 
 <!-- more -->

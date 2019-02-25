@@ -1,5 +1,5 @@
 ---
-title: index
+title: mysql index
 date: 2018-03-07 23:07:04
 tags:
     - Real MySQL
