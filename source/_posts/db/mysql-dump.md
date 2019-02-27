@@ -42,6 +42,11 @@ ex) `test` db의 `employees` 테이블에서 `emp_no`이 `1` 이상 `10`이하�
 mysqldump -u[아이디] -p[패스워드] [database명] [table명] -w 'emp_no >= 1 and emp_no <= 10'
 ```
 
+## 특정상황  
+1. **Unkown table 'COLUMN_STATISTICS' in information_schema**  
+mysql 8 부터 추가된 옵션 떄문이라고 함. mysql dump에 `--column-statistics=0` 옵션을 추가해주면 됨  
+<https://serverfault.com/questions/912162/mysqldump-throws-unknown-table-column-statistics-in-information-schema-1109>  
+
 # 복구하기
 ```
 mysql -u[아이디] -p[패스워드] [데이터베이스명] < 덤프파일명.sql
