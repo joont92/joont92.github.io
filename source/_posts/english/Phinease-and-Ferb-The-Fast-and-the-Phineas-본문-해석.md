@@ -6,6 +6,8 @@ tags:
     - The Fast and the Phineas
 ---
 
+# 1회차
+
 So Ferb, what should we do today?  
 I mean, **`besides` `giving Perry a bath`.**  
 > 그래서 Ferb, 우리 오늘 뭐해야할까?  
@@ -127,5 +129,107 @@ Well, I know a few people who work well together.
 
 Great, you're hired.  
 See you at the track.  
+
+# 2회차
+
+Hey, Ferb. Where's Perry?  
+
+Good morning, Agent.P.  
+The evil doctor doofershment is up to his all trick.  
+
+your mission is to `find out` why,  
+and if necessary, put a stop to it.  
+> 알아내다  
+
+Hi, Phinease.  
+I got your pit crew.  
+
+Cool, see you in the pits.  
+
+Okay, girl.  
+We're dealing with 426 cubic-inch `fully-blown` V8,  
+and limited slip differential.  
+> ~의 모든 특성을 갖춘, 완전히 발달한  
+
+Would that  
+
+Phineas! Phineas! Phineeeeeeaaaaas!!!!!  
+
+Hey, I can't hear the cars.  
+
+Hey, Candace.  
+I didn't know you were a racing fan.  
+
+Jeremy...  
+Who me?  
+Oh, yeah! I'm a big fan of those.. those a.. that red one is cute.  
+
+Oh, that is Billy Ray Digler's car.  
+He is great.  
+
+Yeah, he is the best.  
+That Billy Roy..  
+
+Billy Ray.  
+
+I love it when he turns left and he turns.. left again..  
+
+And in the thrid lane, the newcomers Team Phineas!  
+
+...   
+
+Yes, yes he does.  
+
+And look, he is already got his own screaming fans!  
+
+Phineas!  
+
+Hey, Candace is `rooting for` us.  
+> 응원하다  
+
+Candace, you're on the big screen.  
+
+Phineas!!!!!!!!!!  
+
+And your little brother's gonna be on TV.  
+
+Phineas? On TV?  
+
+TV! That's it!  
+They're so busted.  
+Can you wait here for a seconds?  
+Tnanks.  
+
+What is it, Candace?  
+I'm right in the middle of 3-no trumps.  
+
+Turn on the TV!!!!  
+
+Alright, alright, Candace.  
+That's better be good.  
+
+What, what do you see?  
+
+Just a second, honey.  
+
+Turn on the cable box, first.  
+
+Hmm, alright.  
+'Kay, that's not it.  
+
+Is this one?  
+No, this iss another phone.  
+
+
+
+Mom, hurry up!!  
+
+Oh, I turn on the streo.  
+
+Okay, just a second.  
+
+Are you embressed about flanking? itching? peeling?  
+Candace, this is dandruff commercial.  
+Is there something you're trying to tell me?  
 
 <!-- more -->
