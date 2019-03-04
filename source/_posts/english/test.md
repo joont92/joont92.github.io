@@ -51,7 +51,9 @@ Yeah, yeah, he's the best.
 That Billy Roy.
 Billy Ray.
 Billy Ray.
-I-I love it when he turns left and then he turns left again, and then- And in the 3rd lane, the newcomers Team Phineas! Now is it just me, or does he look a little bit young to be behind the wheel of a 700 horse power racing machine? Yes.
+I-I love it when he turns left and then he turns left again, and then- 
+And in the 3rd lane, the newcomers Team Phineas! 
+Now is it just me, or does he look a little bit young to be behind the wheel of a 700 horse power racing machine? Yes.
 Yes, he does.
 And look, he's already got his own screaming fans! PHINEAS! Hey, Candace is rooting for us! Candace, you're on the big screen! PHINEAS! And your little brother's gonna be on TV! Phineas--? On TV? TV! That's it! They are so busted! Can you wait here for a second? Thanks.
 What is it, Candace? I'm right in the middle of a 3-No trump.
