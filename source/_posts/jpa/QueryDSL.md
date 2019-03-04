@@ -70,6 +70,8 @@ QueryDSL은 오픈소스 프로젝트이며, 이름 그대로 데이터를 조�
 
 ## 기본 사용법
 동적으로 생성할 쿼리는 `JPAQuery`를 사용하여 만들 수 있는데, 이것보단 `JPAQueryFactory`를 사용하는게 권장된다고 한다.  
+> JPQLQuery 인터페이스가 queryDSL 동적 쿼리 생성의 기준이 되는 인터페이스이고,  
+> JPAQuery는 JPQLQuery를 구현한 클래스이다. 근데 왜 이름이 JPAQuery일까?  
 
 ```java
 JPAQueryFactory queryFactory = new JPAQueryFactory(em);
@@ -291,6 +293,8 @@ List<Member> list =
 
 ## 수정, 삭제, 배치 쿼리  
 - **update**  
+    `JPAUpdateClause` 클래스를 통해 실행할 수 있다.(인터페이스는 `UpdateClause`이다)  
+    `JPAQueryFactory`의 `update` 메서드를 통해 생성할 수 있다.  
     ```java
     QCustomer customer = QCustomer.customer;
     // rename customers named Bob to Bobby
@@ -300,6 +304,8 @@ List<Member> list =
     ```
 
 - **delete**  
+    `JPADeleteClause` 클래스를 통해 실행할 수 있다.(인터페이스는 `DeleteClause`이다)  
+    `JPAQueryFactory`의 `delete` 메서드를 통해 생성할 수 있다.  
     ```java
     QCustomer customer = QCustomer.customer;
     // delete all customers
