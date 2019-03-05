@@ -90,10 +90,10 @@ public class SimpleJpaRepository<T, ID> implements JpaRepository<T, ID>, JpaSpec
     - 여기서 사용되는 `entityInformation.isNew`는 식별자가 객체일때는 null, primitive 타입일때는 0이면 새로운 객체라고 판단한다.  
     - `Persistable` 인터페이스를 구현한 객체를 빈으로 등록하면 위의 조건을 직접 정의할 수 있다.  
 
-# 쿼리 메서드 기능  
-인터페이스에 선언한 메서드의 이름으로 적절한 JPQL 쿼리를 생성해주는 마법같은(ㅋㅋ) 기능이다.  
+# 사용
 
 ## 메서드 이름으로 쿼리 생성  
+인터페이스에 선언한 메서드의 이름으로 적절한 JPQL 쿼리를 생성해주는 마법같은(ㅋㅋ) 기능이다.  
 ```java
 public interface MemberRepository extends JpaRepository<Member, Long>{
     List<Member> findByEmailAndName(String email, String name);
@@ -117,7 +117,22 @@ SELECT m FROM Member m WHERE m.email = ?1 AND m.name = ?2
 - findFirst3By, findTop10By, findFirstBy(1건) 로 `limit` 기능을 사용할 수 있다. findLast3By 같은건 없음  
 - findByAgeOrderByNameDesc 처럼 `order by` 가능  
 - findBy 말고 countBy, deleteBy도 있음  
-- 반환타입은 아래 참조  
+
+## 반환 타입  
+Spring Data JPA는 유연한 반환 타입을 지원한다.  
+<https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-return-types>  
+기본적으로 결과가 한건 이상이면 컬렉션 인터페이스를 사용하고, 단건이면 반환 타입을 지정한다.  
+
+```java
+List<Member> findByMember(String name); // 컬렉션  
+Member findByEmail(String email); // 단건
+```
+
+단건의 경우 `T` 형태와 `Optional<T>` 형태 2개로 받을 수 있다.  
+결과가 2건이상 나오면 `javax.persistence.NonUniqueResultException` 예외가 발생하고,  
+결과가 0건일 경우 `T`는 null, `Optional<T>`는 Optional.empty() 를 리턴한다.  
+
+> 참고로 단건의 경우 내부적으로 `query.getSingleResult()`를 사용해서 결과가 0건일 경우 `javax.persistence.NoResultException`이 발생해야하지만, 이는 다루기가 까다로우므로 exception을 발생시키지 않는 방향으로 기능을 제공한다.  
 
 ## Named Query  
 엔티티나 xml에 작성한 Named Query도 찾아갈 수 있다.  
@@ -190,22 +205,6 @@ public interface MemberRepository extends JpaRepository<Member, Long>{
 @Query("~~")
 // ~~~
 ```
-
-## 반환 타입  
-Spring Data JPA는 유연한 반환 타입을 지원한다.  
-<https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-return-types>  
-기본적으로 결과가 한건 이상이면 컬렉션 인터페이스를 사용하고, 단건이면 반환 타입을 지정한다.  
-
-```java
-List<Member> findByMember(String name); // 컬렉션  
-Member findByEmail(String email); // 단건
-```
-
-단건의 경우 `T` 형태와 `Optional<T>` 형태 2개로 받을 수 있다.  
-결과가 2건이상 나오면 `javax.persistence.NonUniqueResultException` 예외가 발생하고,  
-결과가 0건일 경우 `T`는 null, `Optional<T>`는 Optional.empty() 를 리턴한다.  
-
-> 참고로 단건의 경우 내부적으로 `query.getSingleResult()`를 사용해서 결과가 0건일 경우 `javax.persistence.NoResultException`이 발생해야하지만, 이는 다루기가 까다로우므로 exception을 발생시키지 않는 방향으로 기능을 제공한다.  
 
 ## 페이징과 정렬  
 아래의 두 파라미터를 사용하면 쿼리 메서드에 페이징과 정렬 기능을 추가할 수 있다.  
@@ -335,6 +334,9 @@ Spring Data JPA는 이런 문제를 우회해서 필요한 메서드만 구현�
     ```
     이 클래스 이름 규칙은 변경할 수 있다.  
     config에 설정했던 spring data jpa 설정의 속성값인 `repository-impl-postfix` 값을 지정해주면 된다. 기본값은 Impl 이다.  
+    ```java
+    @EnableJpaRepositories(basePackages = "com.joont.repository", repositoryImplementationPostfix = "impl")
+    ```
 3. 마지막으로 레파지토리 인터페이스에서 사용자정의 인터페이스를 상속받으면 된다.  
     ```java
     public interface MemberRepository extends JpaRepository<Member, Long>, MemberRepositoryCustom{
@@ -346,8 +348,11 @@ Spring Data JPA는 이런 문제를 우회해서 필요한 메서드만 구현�
 spring은 2가지 방법으로 QueryDSL을 지원하지만,  
 하나는 기능에 조금 한계가 있어서 다양한 기능을 사용하려면 `JPAQuery`를 직접 사용하거나 Spring Data JPA가 제공하는 `QueryDslRepositorySupport`를 사용하면 된다.  
 
+아래는 사용 예제이다.  
+코드를 직접 써야하므로 사용자 정의 레파지토리를 구현해야한다.  
+
 ```java
-public class OrderRepositoryImpl extends QueryDslRepositorySupport implements CustomOrderRepository {
+public class OrderRepositoryImpl extends QueryDslRepositorySupport implements OrderRepositoryCustom {
 
     public OrderRepositoryImpl() {
         super(Order.class);
@@ -375,24 +380,28 @@ public class OrderRepositoryImpl extends QueryDslRepositorySupport implements Cu
 }
 ```
 
-코드를 직접 작성해야 하므로 `***Custom` 형태를 사용하였다.  
-그리고 위처럼 `QueryDslRepositorySupport` 클래스를 상속받아서 사용하면 된다.  
+`QueryDslRepositorySupport` 클래스를 상속받아서 사용하고 있다.  
+참고로 생성자에서 `QueryDslRepositorySupport`에 클래스 정보를 넘겨줘야 한다.  
 
-// QueryDslRepositorySupport가 정확히 해주는 일은?  
+기존에 생성하기 나름 번거로웠던 JPAQuery, JPAUpdateClause, JPADeleteClause 등을 간단하게 생성할 수 있다.  
+참고로 반환은 전부 인터페이스 타입인 JPQLQuery, UpdateClause, DeleteClause 등을 반환한다.  
+이 외에도 EntityManager, QueryDSL헬퍼 등을 반환하는 메서드도 구현되어 있다.  
 
-// BooleanBuilder를 사용한 패턴은?  
-
-// applyPagination에 관해서도 쓰자  
-
-
+## QueryDSL에 Pageable 적용하기 
+QueryDslRepositorySupport를 사용하면 Spring Data JPA의 Pageable을 간단하게 적용할 수 있다.  
 
 ```java
 QItem item = QItem.item;
 JPQLQuery<Item> query = from(item);
 // making condition
 query.where(condition).distinct();
+
 long totalCount = query.fetchCount();
 List<Item> results = getQuerydsl().applyPagination(pageable, query).fetch();
-```
+
+return new PageImpl<>(results, pageable, totalCount);
+```  
+
+Page를 리턴함으로써 완벽하게 Pageable을 사용할 수 있다.  
 
 <!-- more -->
