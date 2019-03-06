@@ -78,6 +78,12 @@ JOB들의 실제 로직들인 STEP이 저장된 BATCH_STEP_EXECUTION
     - EXECUTION에 사용한 파라미터들을 저장  
     - VALUE OBJECT COLLECTION Table 형태로 사용함  
 
+> BatchStatus, ExitStatus  
+> JOB_EXECUTION, STEP_EXECUTION 테이블을 보면 status, exit_code라는 것이 있다.  
+> status는 job이나 step의 실행 결과를 기록할 때 사용하는 Enum이고,  
+> exit_code는 job이나 step의 실행 후 상태를 나타내는 일반 string이다.  
+> 기본적으로 exit_code는 status와 같도록 설정되어 있으나, 커스텀한 exit_code가 있으면 추가할 수 있는 구조이다.  
+
 # 스프링 배치 사용  
 ## step flow 제어  
 Job 내에 Step 등록 시 호출 Flow를 제어 가능하다(순서, 조건별 분기 등등)  
@@ -105,6 +111,7 @@ public Job stepNextConditionalJob() {
 - 처음 시작할떄는 무조건 start  
 - ExitStatus를 catch하고 싶다면 on 사용하고, 뒤에 연결할 step에 to 사용  
 - from은 이벤트 리스너. 인자로 받는 step의 이벤트를 listen함  
+    - 위의 상황에선 step1의 이벤트를 이미 캐치하고 있으므로, 추가로 이벤트를 캐치하려면 from을 사용해야했음  
     - on + end 뒤에만 붙일 수 있는데, 왜 그런건지..  
     - step을 종료시키기 위해서 붙여야하는 패턴인건지?  
 

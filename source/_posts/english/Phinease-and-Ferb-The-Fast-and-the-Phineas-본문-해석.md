@@ -137,12 +137,11 @@ Hey, Ferb. Where's Perry?
 Good morning, Agent.P.  
 The evil doctor doofershment is up to his all trick.  
 
-your mission is to `find out` why,  
-and if necessary, put a stop to it.  
+**your mission is to `find out` why, and if necessary, put a stop to it.**  
 > 알아내다  
 
 Hi, Phinease.  
-I got your pit crew.  
+**I got your pit crew.**  
 
 Cool, see you in the pits.  
 
@@ -155,13 +154,14 @@ Would that
 
 Phineas! Phineas! Phineeeeeeaaaaas!!!!!  
 
-Hey, I can't hear the cars.  
+**Hey, I can't hear the cars.**  
+> 이봐, 차소리 안들려!  
 
 Hey, Candace.  
 I didn't know you were a racing fan.  
 
 Jeremy...  
-Who me?  
+**Who me?**  
 Oh, yeah! I'm a big fan of those.. those a.. that red one is cute.  
 
 Oh, that is Billy Ray Digler's car.  
@@ -180,7 +180,7 @@ And in the thrid lane, the newcomers Team Phineas!
 
 Yes, yes he does.  
 
-And look, he is already got his own screaming fans!  
+And look, **he is already got his own screaming fans!**  
 
 Phineas!  
 
@@ -196,8 +196,8 @@ And your little brother's gonna be on TV.
 Phineas? On TV?  
 
 TV! That's it!  
-They're so busted.  
-Can you wait here for a seconds?  
+They're so busted.  a
+**Can you wait here for a second?**  
 Tnanks.  
 
 What is it, Candace?  
@@ -206,30 +206,29 @@ I'm right in the middle of 3-no trumps.
 Turn on the TV!!!!  
 
 Alright, alright, Candace.  
-That's better be good.  
+**This better be good.**  
+> 별것 없으면 가만 안둔다.별것 없기만 해봐라
 
-What, what do you see?  
+Well, Well, do you see it?  
 
-Just a second, honey.  
+**Just a second**, honey.  
 
 Turn on the cable box, first.  
 
 Hmm, alright.  
-'Kay, that's not it.  
+Wait. 'Kay, that's not it.  
 
 Is this one?  
-No, this iss another phone.  
-
-
-
-Mom, hurry up!!  
+No, this is another phone.  
 
 Oh, I turn on the streo.  
+
+Mom, hurry up!!  
 
 Okay, just a second.  
 
 Are you embressed about flanking? itching? peeling?  
 Candace, this is dandruff commercial.  
-Is there something you're trying to tell me?  
+**Is there something you're trying to tell me?**  
 
 <!-- more -->
