@@ -30,15 +30,6 @@ Spring Quartz는 스케줄러이고, Spring Batch는 대용량 처리 배치이�
 
 - Spring Batch 를 사용하고 싶으면 스프링 부트 어플리케이션 루트에 `@EnableBatchProcessing` 어노테이션을 써줘야함  
 - Job은 하나의 배치 작업 단위를 뜻함  
-- Job 안에 여러 Step이 존재함  
-    - Step이 실제 배치작업(비즈니스 로직)이 들어있는 곳이다  
-    - 말 그대로 진짜 스텝이다. job이 실행해야 할 step을 작성하는 것이다.  
-        - job 을 큰 작업, step 을 세부 작업이라고 생각하면 안된다  
-        - 'job은 일괄 등록 요청, 요청 개수 만큼 step 생성' 은 잘못된 생각이다  
-- Step 안에 Tasklet 또는 Reader & Processor & Writer 묶음이 존재함  
-    - 진짜 비즈니스 로직을 작성하는 곳  
-    - 둘은 같은 레벨이므로 하나만 실행가능  
-    - Reader & Processing 후에 Tasklet 불가능  
 - JOB은 @Configuration에 등록하고, 서비스가 뜨면 실행된다  
     ```java
     @Bean
@@ -52,6 +43,16 @@ Spring Quartz는 스케줄러이고, Spring Batch는 대용량 처리 배치이�
 - 등록한 Batch Job들을 관리하려면 Spring Batch에서 정의한 메타 테이블들을 사용해야 한다  
     - 배치와 관련된 전반적인 데이터를 관리한다  
     - spring batch와 같이 다운되는 `schema-XXX.sql` 파일에 스키마가 들어있다  
+- Job 안에 여러 Step이 존재함  
+    - Step이 실제 배치작업(비즈니스 로직)이 들어있는 곳이다  
+    - 말 그대로 진짜 스텝이다. job이 실행해야 할 step을 작성하는 것이다.  
+        - job 을 큰 작업, step 을 세부 작업이라고 생각하면 안된다  
+        - 'job은 일괄 등록 요청, 요청 개수 만큼 step 생성' 은 잘못된 생각이다  
+- Step 안에 Tasklet 또는 Reader & Processor & Writer 묶음이 존재함  
+    - 진짜 비즈니스 로직을 작성하는 곳  
+    - 둘은 같은 레벨이므로 하나만 실행가능  
+    - Reader & Processing 후에 Tasklet 불가능  
+- Job, Step, Tasklet(ItemReader, ItemWriter 등) 은 전부 스프링 빈이다  
 
 > 지정한 JOB만 실행되도록 하는 방법  
 > `application.yml`에 `spring.batch.job.names: ${job.name:NONE}` 를 추가하고,  
@@ -114,9 +115,67 @@ public Job stepNextConditionalJob() {
     - 위의 상황에선 step1의 이벤트를 이미 캐치하고 있으므로, 추가로 이벤트를 캐치하려면 from을 사용해야했음  
     - on + end 뒤에만 붙일 수 있는데, 왜 그런건지..  
     - step을 종료시키기 위해서 붙여야하는 패턴인건지?  
+- step에서 contribution.setExitStatus 를 세팅해줘야만 job에서 catch 가능  
+- custom ExitStatus를 세팅하려면 StepExecutionListenerSupport 를 상속받은 클래스를 추가로 등록해야 한다  
 
-## Batch Status, Exit Status  
+## decide
+step들의 flow 속에서 분기만 담당하는 애들  
+ExitStatus 세팅하는 부분을 분리할 수 있다  
+
+## Scope, jobParameter
+@JobScope, @StepScope 를 선언하면 빈 생성시점이 해당 scope가 실행되는 시점까지 지연된다  
+Scope를 이렇게 뒤로 미루면서 얻는 장점이 여러가지가 있다  
+- 비즈니스 로직 처리단계에서 Job Parameter 할당받을 수 있음  
+- 병렬처리 가능(step당 각자 tasklet을 가지므로)  
+
+## jobParameter
+@JobScope, @StepScope 에서 파라미터(외부/내부)를 받을 수 있다  
+step에 @JobScope를 선언하고 parameter를 매개변수로 받는 방법과,  
+tasklet, itemReader 등에 @StepScope를 선언하고 parameter를 매개변수로 받는 방법이 있다.  
+> jobParameter가 필요한 곳에서 사용하도록 해야할듯  
+> 예를들어 step 단위에서 parameter가 필요하다면 @JobScope에서 파라미터를 받아야 할 것이고, 
+> tasklet 단위에서 parameter가 필요하다면 @StepScope에서 파라미터를 받아야 할 것이다  
+
+jobParameter는 @JobScope(step), @StepScope(chunk) 빈을 생성할때만 사용할수있으며,  
+step과 chunk의 최상위에는 job이 있다.  
+즉, job을 생성할때 던진 파라미터를 이용해서 scope bean에서 job parameter로 사용하는 것이다(아마도)  
+> 이 scope 빈을 @XXXScope로 생성하지 않고 일반 싱글톤으로 생성하면 job Parameter를 찾을 수 없다  
+> jobParameter는 job으로 부터 오는것이니까  
+> job을 생성(실행)할 때 던진 parameter를 가지고 @JobScope, @StepScope 빈을 생성하며 parameter를 주는 것이다  
+> 그러므로 job 코드에는 parameter로 null이 들어가게 된다(... 아마도?)  
+
+```java
+JobParameters jobParameters = new JobParametersBuilder()
+                        .addString("input.file.name", fileName)
+                        .addLong("time", System.currentTimeMillis())
+                        .toJobParameters();
+jobLauncher.run(job, jobParameters);
+```  
+
+jobLauncher.run을 따라가보면(SimpleJobLauncher 기준)  
+jobExecution이 있으면 오류가 발생하고, jobExecution이 없으면 jobExecution을 생성한다  
+그리고 해당 jobExecution은 async로 실행시킨다(아마도)  
+
+# chunk
+chunk 지향 처리란 itemReader, itemProcerssor, itemWriter로 이어지는 형태를 말함
+tasklet은 내부에 모든 로직이 다 있다  
+reader에서 job을 읽어오고, process에서 처리하고 writer로 쓴다  
+reader, process는 1건씩 처리되고, chunkSize만큼 processing이 완료되면 writer로 한방에 쓴다?  
+
+chunk는 배치에서 한번에 트랜잭션으로 처리할 단위이다  
+pageSize와는 다르다. pageSize는 한번에 조회하는 단위이다.  
+pageSize와 chunkSize를 같게해야 성능상 좋다  
+
+## reader  
+reader로 읽을 수 있는 데이터는 데이터베이스만이 아니라 입력 데이터, 파일, jms 등등 여러가지이다  
+cursor, paging  
 
 
-요청하는 일괄처리 개수만큼 job을 등록함  
-step은 말 그대로 
+
+---
+
+# 장점
+1. spring batch에 사용할 단위들을 bean으로 생성할 수 있고, scope가 Job, Step scope 단위라는 점  
+그러므로 파라미터를 원하는 타이밍에 자유자재로 받을 수 있고, 병렬처리에도 좋다  
+
+2. chunk 
