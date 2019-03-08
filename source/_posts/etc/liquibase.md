@@ -61,6 +61,19 @@ gradle에 있는 liquibase 관련 task들 중 `liquibaseDiffChangeLog`를 실행
 이 말은 해당 변경사항은 적용되었다는 뜻이다.  
 liquibase는 이 테이블 로우를 참고하여 changeSet이 이미 반영되었으면 skip, 반영되지 않았다면 반영한다.  
 
+## sql 쿼리를 그대로 적용하는법  
+```xml
+<changeSet author="junyoung.park (generated)" id="20190307124000-7">
+    <sql>
+        CREATE TABLE BATCH_STEP_EXECUTION_SEQ (
+            ID BIGINT NOT NULL,
+            UNIQUE_KEY CHAR(1) NOT NULL,
+            constraint UNIQUE_KEY_UN unique (UNIQUE_KEY)
+        ) ENGINE=InnoDB;
+    </sql>
+</changeSet>
+```
+
 # 여러 파일 적용
 한번에 여러 changelog 파일을 실행할 수 있다.  
 

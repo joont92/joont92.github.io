@@ -5,6 +5,11 @@ tags:
     - UML 표기법
 ---
 
+# UML 종류
+<https://myeonguni.tistory.com/752>  
+클래스 다이어그램, 시퀀스 다이어그램, 활동 다이어그램 외에는 잘 안쓴다  
+패키지 다이어그램 가끔씩 쓰고..  
+
 # UML 정의와 표기법  
 <http://www.nextree.co.kr/p6753/>  
 
