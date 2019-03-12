@@ -5,6 +5,8 @@ tags:
     - aws presigned url
 ---
 
+서버에서 직접 multipart를 받아 S3 버킷에 업로드하면 서버쪽에서 multipart 파일을 쥐고 있어야 하는 둥 리소스 낭비가 크므로 S3에 접근할 수 있는 Presigned url을 생성하여 클라이언트가 직접 업로드하게 한다.  
+
 <https://docs.aws.amazon.com/ko_kr/AmazonS3/latest/dev/PresignedUrlUploadObjectJavaSDK.html>  
 presigned url 이란 AWS S3 버킷에 바로 파일을 업로드 할 수 있는 URL을 말한다.  
 

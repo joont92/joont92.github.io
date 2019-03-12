@@ -231,4 +231,112 @@ Are you embressed about flanking? itching? peeling?
 Candace, this is dandruff commercial.  
 **Is there something you're trying to tell me?**  
 
+# 3회차  
+Okay, Ferb. Are we good to go?  
+
+`And with the race about to start`, here's the Doofenshmirtz Evil Incorporated `blimp`!!  
+> `그리고 경기가 시작되려고 하는 가운데`, `소형 비행선`  
+
+Ah, Perry the platypus. I'm glad to here.  
+Actually, I was just `getting ready` to _serve some PLATYPUS UNDER GLASS!!_  
+> 사실, 난 방금 제공할 `준비를 하고 있었어`  
+
+You're just in time to witness my latest invention my Deflate-inator Ray!  
+> 넌 내 최근 발명품을 `목격하기` 위해 때마침 잘 왔네  
+
+Which I will demonstrate, by deflating all the tires of the Jefferson County Motor Speedway!  
+> 난 Jefferson County Motor Speedway의 모든 타이어의 공기를 빼면서 이것을 증명하겠다!  
+
+After which, I will deflate everything in the `Tri-State Area`!  
+> `3개 주에 걸치는 지역`  
+
+That way, if anyone wants anything flated, they will have to talk to me!    
+
+Phineas, you're in a big trouble  
+
+Candace, you've got a little...  
+
+Smile!  
+
+Souvenir picture? Only a dollar.  
+
+Wait a second!  
+
+Hey!  
+
+Now I gotcha!  
+
+Hey `Missy`, two pictures, two `buck`s.  
+> `아가씨`, `달러`  
+
+Oh, yeah, uh, I've only got a dollar, but uh, I just want the one.  
+
+You can just tear the other one up, okay?  
+
+**I've got 'em**, NOW!  
+
+And on the fast on the inside lane is Number 42, Team Phineas!  
+
+Hey, Ferb. Do you think we can get any more power?  
+
+I mean, I know it's just a battery.
+But I was thinking, let's open it up and see what this puppy can-  
+Uh, Ferb? We're actually slowing down now.  
+
+Ferb? Hello?  
+OH YEAH! NOW THAT'S WHAT I'M TALKIN' ABOUT!  
+
+Hey, Ferb. We should bring Phineas in for a pit stop.  
+
+All right, Fireside Girls, let's move, move move!  
+
+That helmet looks so `manly`.  
+> `남자다운`  
+
+Thanks.  
+
+Hit it, Ferb.  
+
+I'm so proud of you girls.
+And the bow was a nice touch, Gretchen.  
+
+Listen to those fools, as they worship their candy-colored race car man.
+How about a little demonstration of my deflationary prowess?  
+
+I got it!  
+
+The Team Phineas car is avoiding every obstacle!  
+It's like he can see the whole darn track at once!  
+
+# 4회차  
+Go Phineas! Go, Phineas. Gi Phineas! Go, Phineas.  
+
+OH YEAH!!!  
+
+We'are okay!!  
+
+Well, mom. What do you think of this?  
+
+You've looked better.  
+
+Hmm? What do you mean?  
+
+Already they fear me, listen to this scream! Huh?  
+
+**Imagine the `mayhem` `once` my Deflate-inator ray is fully changed.**  
+> `난장판` `~할 때`  
+>> ~ 할 때 에서 딱히 1번 이라는 뜻을 담고 있지는 않은 듯 하다  
+
+Run! Run like the wind, my little indentured redent!  
+
+And I will give you cheese~  
+
+Heh, I know I had some around somewhere.  
+
+I suppose I should've seen that coming.  
+> 그게 돌아오는걸 봤어야했는데  
+
+And mom! You gotta believe me!  
+
+
 <!-- more -->

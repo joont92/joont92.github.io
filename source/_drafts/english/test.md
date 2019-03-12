@@ -71,9 +71,13 @@ If summer only lasts- Oh, I turned on the stereo! Mom, hurry up! Okay, just a se
 Is there something you're trying to tell me?  
 
 Okay, Ferb.
-Are we good to go? And with the race about to start, there's the Doofenshmirtz Evil Incorporated blimp! Doofenshmirtz Evil Incorporated! Ah, Perry the Platypus.
-I'm glad you're here.
-Actually, I was just getting ready to serve some PLATYPUS UNDER GLASS! You're just in time to witness my latest invention my Deflate-inator Ray! Which I will demonstrate by deflating all the tires of the Jefferson County Motor Speedway! After which, I will deflate everything in the Tri-State Area! That way, if anyone wants anything flated, they will have to talk to me.
+Are we good to go? And with the race about to start, there's the Doofenshmirtz Evil Incorporated blimp! 
+Doofenshmirtz Evil Incorporated! 
+Ah, Perry the Platypus. I'm glad you're here.
+Actually, I was just getting ready to serve some PLATYPUS UNDER GLASS! 
+You're just in time to witness my latest invention my Deflate-inator Ray! Which I will demonstrate by deflating all the tires of the Jefferson County Motor Speedway!  
+After which, I will deflate everything in the Tri-State Area!  
+That way, if anyone wants anything flated, they will have to talk to me.
 Phineas, you are in big trouble, mister--! Candace, you've got a little Smile! Souvenir picture? Only a dollar.
 Wait a second.
 Hey! Now, I gotcha! Hey hey, Missy.
@@ -90,18 +94,20 @@ Hit it, Ferb.
 I'm so proud of you girls.
 And the bow was a nice touch, Gretchen.
 Listen to those fools, as they worship their candy-colored race car man.
-How about a little demonstration of my deflationary prowess? I got it! (Song: Go, Go, Phineas) The Team Phineas car is avoiding every obstacle! It's like he can see the whole darn track at once! Go Phineas! Go, go Phineas! OH YEAH! We're okay! Well Mom, what do you think of this? You'velooked better.
-Huh? What do you mean--? Already they fear me, listen to their screams, huh? Imagine the mayhem once my Deflate-inator ray is fully charged.
+How about a little demonstration of my deflationary prowess? I got it! (Song: Go, Go, Phineas) The Team Phineas car is avoiding every obstacle! It's like he can see the whole darn track at once!  
+
+
+Go Phineas! Go, go Phineas! OH YEAH! We're okay! Well Mom, what do you think of this? You'velooked better.
+Huh? What do you mean--? Already they fear me, listen to their screams, huh? 
+Imagine the mayhem once my Deflate-inator ray is fully charged.
 Run! Run like the wind, my little indentured rodent.
 And I will give you some cheese.
-
 Heh, I know I had some around here somewhere.
 I think there's some- There used to be some Roquefort around the back here.
 I don't.
 .
 Hmm? Hmm.
 I suppose I should've seen that coming.
-
 But Mom, you've gotta believe me! Wait a minute.
 I bet it's still on TV! That's good, Candace.
 Go watch a little TV.
