@@ -8,7 +8,7 @@ tags:
 <https://cheonjoosung.github.io/git/2017/07/10/it_git_permissionerror.html>
 
 ```
-git remote set-url 'https://<github-username>@github.com/<github-username>/<github-reppository-name>'
+git remote set-url origin 'https://<github-username>@github.com/<github-username>/<github-reppository-name>'
 ```
 
 <!-- more -->
