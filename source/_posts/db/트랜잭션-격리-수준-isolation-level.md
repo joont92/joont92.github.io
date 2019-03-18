@@ -76,7 +76,7 @@ REPETABLE READ 격리수준은 간단하게 말해서
 **트랜잭션이 시작되기 전에 커밋된 내용에 대해서만 조회할 수 있는 격리수준**이다.  
 MySQL DBMS에서 기본으로 사용하고 있고, 이 격리수준에서는 NON-REPETABLE READ 부정합이 발생하지 않는다.  
 
-![REPETABLE READ](https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTMwNDAzNjI2MTkmdHlwZT1sJno9MjAxOS8wMS8xMyAxMzo0MA==)  
+![REPETABLE READ](https://lh3.googleusercontent.com/aztiVgFOP67hzvVKSVF5DtUlZk6WTl2l0Q8sCa-X_BlKjM_f4DjT411J2BLFbYYIYBrenuLmhro9mUDhd6FXoZ2298ihKp7KXBzHJbIM0R5JqQ6Qqlr1K9A0s-FMi0wI3D7JYPa2ur-0YDIjtBrD_FtPk9qpzqNsS9Qmv1dIZiV4hAKVnOGYziXuD7t0AUku_NsTTN5eliIrn8DRbhj5OyHNGk38txnSa7u0_mJwTNEiWTdt9W36jnEtYXRLE2a9u-ELIyHPqDovAMK6jif1q-M69gxdMOjLVyuyWCeBCvfNY5Z9UUMFMQCtaFnNVchougVdVwtefNYIpEPJuLTJosEuQ0OytK-fPzEeoZwARjDWHYGR8Tu4XGUSjrW7R94JfMEPUwecwqvWE1Qo1tExCj0ctmEa_dIDKKuCTmmHwevbfcEDy6vMIsMHqN_BK3wOO8xdiy9X5o_f1I3HbJc_xL6SHZoGkFV71HiMXyUFjA1i3ecyA9UQrnLhE3Jc2UKBaajkSKAFJue_kWkh8b1oeEQdH5_dPL9sbRSX0UrelfuyLlXuYM_3Y4xs-Kn18niWYa_ulWC5pfLANTgN3twXubzdtemm4prAxpF_fAW9yQlbC9tWr1llrjpRtY4blE16y4ZCB-wuWekrpcyD-P0lwTFPS9LUcPI=w690-h919-no)
 
 1. 10번 트랜잭션이 500000번 사원을 조회 
 2. 12번 트랜잭션이 500000번 사원의 이름을 변경하고 `커밋`  

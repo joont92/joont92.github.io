@@ -1,0 +1,111 @@
+---
+title: TDD의 핵심
+date: 2019-03-16 09:19:24
+tags:
+---
+
+# TDD가 왜 중요할까?  
+시스템 규모를 믿을 수 있는 방식으로 키우고, 늘 일어나는 예상치 못한 변화에 대처하고 싶다면 두가지 기술적인 토대가 필요하다  
+- 테스트 자동화  
+    - 시스템 규모와 상관없이 수동테스트를 자주 하는것은 비실용적이다  
+    - 회기 오류를 잡아줄 꾸준한 테스트가 필요하다  
+    - 기존 기능을 망가뜨리지 않고 새 기능을 추가할 수 있다  
+- 꾸준한 리팩토링
+    - 개발자들은 코드를 작성하는 것보다 코드를 읽는데 훨씬 더 시간을 많이 보낸다  
+    - 그러므로 코드를 가능한 한 단순하게 유지해야 한다  
+    - 단순함에는 노력이 많이 들어간다  
+    - 설계 개선하고 단순화하며, 중복을 제거하며, 코드가 명확하게 자신의 역할을 표현하게끔 코드를 사용할때마다 꾸준히 리팩토링 해야한다  
+
+하지만 여기서 문제는, 대부분의 개발자들이 테스트 작성을 `업무`로 보지 않으며, 따분하다고 여기기 까지 한다는 것이다.  
+테스트 주도 개발은 이러한 상황을 근본적으로 뒤집는다.  
+
+작업을 완료한 후 작업 결과를 검증하려고 테스트를 작성하는 것이 아니라(Test Last),  
+**코드를 작성하기 전에 테스트를 먼저 작성한다**.  
+즉, 테스트 작성 자체가 설계 활동이 되는 것이다.  
+
+- 테스트를 먼저 작성함으로써 코드에서 하고 싶은바에 대한 생각을 명확하게 하고,  
+- 테스트를 먼저 작성하려는 노력으로 설계 아이디어의 품질에 대한 피드백도 빠르게 얻을 수 있게된다  
+    - 코드를 테스트하기 쉽게 만들면 좀 더 깔끔하고 모듈화된 코드가 만들어지기 때문이다  
+
+# TDD 간단 정리  
+TDD 작성 순서는 아래와 같다  
+
+![TDD cycle](https://lh3.googleusercontent.com/EMuooqywXPsh2t20YCljB3BHHIA3H9snXX98dTDDx1ZEkGY8I-G-jXT35XmiUM8iaPKMd3vKZGagFN2NmR_FfkLzyici22h-l6kcW7VViJNz8QzMe89vASzCD88ivExTrMc_66bcBoMrU3lS8SWpOuWDCOQnrByvQuczwtJ9JmcfGbgvFD6EaJqIH1KMd84BliUWvzqOkdEAlDr8P0F6pVOm9BAtdKNqt7DBZEmDlWEc9OTKlAbEhvffRGCH2V1-oHHV8WSsRWfXJ-mDDx7seaCJYBW8Wpa4tnG9aJ9FtYNjqZkL4R-O3YT2lFqxtIPJtsCB285H8sPLErBCQaEp5xNnlvtL3U2PAhVagp9mrQO_KhX_8v5nKVmntbOJwBOeRZLbWqyRz8ccCfZ6hQ-dRaz-rSgk14hH2URM9GdKKN3PB5hrw2KBDVVIhSytdUrSAcFiwezPSSrorpk9SODjVFPMDLP5TyK8zg1ncGP8jeuDmefo5C0eQv3RDwbRx8uJvlvXzhmiKRKvqWTor_kyTCfUV5ebQBa27M56heqJyn6YT-oVrmd_z4EXDb_-JWvwDum2vcF16PoW2-5j8P4SjQtiGqP0xLP8IVICbkATr9qWnoG5S6SF47Jg2TUDhemwJoF7j0v9yCZbBYD9g4z7EK3WigEYu_w=w475-h372-no)  
+
+다들 잘 아는 `Red-Green-Refactor` cycle이다.  
+1. 테스트를 작성한다  
+    - 프로덕션 코드가 없으므로 당연히 실패한다(Red)  
+2. 해당 테스트가 동작하게(Green) 만든다  
+3. 테스트는 건드리지 않고 프로덕션 코드를 리팩토링 한다  
+4. 이를 반복한다  
+
+테스트를 먼저 작성함으로써 얻는 이점은 아래와 같다  
+1. 다음 작업에 대한 인수 조건이 명확해진다  
+    - 작업이 끝나는 시점을 스스로 알아내야 하기 때문이다  
+2. 느슨하게 결합된 구성 요소를 작성할 수 있게 된다  
+    - 격리된 상태에서, 더 높은 수준으로, 모두 결합된 상태로 구성 요소를 손쉽게 테스트 할 수 있다  
+3. 코드가 하는 일에 대한 설명이 더해진다  
+    - 테스트 코드는 일종의 스펙 문서 역할도 한다  
+4. 완전한 회귀 스위트가 늘어난다  
+
+> 사실상 2,3,4 번은 Test First Development 보단 단순히 테스트 작성에서 얻을 수 있는 이점들이다.  
+> 하지만 언급했다시피, 테스트를 나중에 작성하는 방식은 힘들고, 현실적으로 위의 이점들을 다 가져가지 못할 가능성이 크다.  
+
+그리고 테스트를 실행하면 얻는 이점은 아래와 같다  
+- 컨텍스트를 선명하게 인지하는 동안 오류를 탐지한다(?) 
+- 언제 작업이 충분히 완료되었는지 알게된다  
+    - '금도긋' 하듯 과도한 최적화를 하거나 불필요한 기능을 더하지 않게 된다  
+
+> **TDD의 황금률(?)**  
+> 실패하는 테스트 없이는 새 기능을 작성하지 말라  
+
+## 좀 더 큰 그림  
+어플리케이션 내에 있는 클래스들을 대상으로 단위 테스트를 작성하는 것으로 TDD를 시작해보고 싶을 수 있으나, 결과적으로 단위 테스트만 있는 프로젝트는 TDD 프로세스가 주는 아주 중요한 혜텍을 놓치는 셈이 된다.  
+**좀 더 큰 그림을 봐야한다.**  
+(물론 단위테스트가 없는 프로젝트 보다는 백배 천배 낫다)  
+
+![ATDD](https://lh3.googleusercontent.com/_vdjJTmSigJ4J05Nj3WXOsWx7SBiBUVhC5vvUoxzRROZHXUp3LZ5zmjc2B-G7CCGy_ZJ_Y7h4RtFqUFGLHe0Mo29XclfuIKSMoX16Z7mM2pI9Rzia76AZQYSP4ST9QlidSOH-5bxfxp2nTDR8odzTTG8m2i08vWkdgbWg0yOCDeGr4qexVulxjUhTg8OmyK0HZ0Du8NT4nB4_O2D5ECj3DRlRQOguscVUbD-9Y6hBn1yARJXYRumoMpdhJhEGA72gqvgXMRbj482hCJcL3cwM3M19Z4JGj_S8L0gbV6cUTlBjqBJSi13-jcRZQgAF1gR1bv39uU8fAN-loBvvWamADMmJrg3A8SPMYqb13KNavO5MllQZhrJMlYa0mwelmAswfNDlUE8310HzsuT3WuxQc4X9C-kO4YEwb3NpvH57mq1zcK-W1k6EFneGyOHWf5xF3W5JSfFiuzCZqFKq9ErI5dXIlhdYndLmu-tfy7qX1-4gV4H6P_tvlTCC6i-vWSXzR2zMsqfzZwnxAaaX2ZGngXKHLvV0h5YurneilSkUwAnx1wC6kOf-a_P8-ouoqajFAQJn9NzqWxIspZizPCNWZekkbEwjSpNfsAkCc3GFykLbSTWvhQesbNXxW1SkAtTFucsASVL9C1g627o7ovTPdMc4c0-jj0=w960-h720-no)  
+
+기존의 TDD 라이프 사이클에서 앞단에 `인수 테스트(Acceptance test) 작성` 이라는 부분이 추가 되었다.  
+([인수테스트-단위테스트-통합테스트-전-구간-테스트](/tdd/인수테스트-단위테스트-통합테스트-전-구간-테스트.md))  
+> 여기서는 전 구간 테스트를 사용하여 인수 테스트를 수행한다  
+
+그리고 TDD의 황금률에, 이 인수 테스트까지 같이해서 코드 작성을 시작한다.  
+
+1. 실패하는 인수 테스트를 작성한다  
+    - 이 테스트가 실패한다는 말은 아직까지 해당 기능을 구현하지 않았다는 것을 보여준다  
+2. 단위 테스트들을 작성해나가며 기능을 완성해나간다  
+    - 전 구간 테스트이기 때문에, 많은 단위 테스트들을 포함한다  
+    - TDD cycle을 사용하여 단위 기능들을 개발해나간다  
+3. 인수테스트가 통과하면, 작업이 끝난다  
+    - 이때서야 시스템이 배포될 수 있다  
+
+# 외부 품질과 내부 품질  
+- **외부 품질** 
+    - 시스템이 고객과 사용자의 요구를 얼마나 잘 충족하는가(기능, 신뢰성, 가용성, 응답성 등)이다  
+    - 보통 계약의 일부라, 이를 이해하지 못할 사람은 없다  
+    - 전 구간 테스트를 사용한다  
+    - 전 구간 테스트로는 코드를 얼마나 잘 작성했는지는 알 수 없다  
+- **내부 품질**  
+    - 시스템이 개발자와 관리자의 요구를 얼마나 잘 충족하는가(이해하기 쉬운가, 변경하기 쉬운가) 이다  
+    - 외부 품질과 똑같이 중요하지만, 달성하기는 많이 어렵다  
+    - 단위 테스트를 사용한다  
+    - 단위 테스트로는 시스템이 전체적으로 동작하는지를 충분히 확신할 수 없다  
+
+## 높은 내부 품질은 어떻게 달성할 수 있을까?  
+- `높은 응집과 낮은 결합`을 유지해야한다  
+    - 코드의 동작 방식을 얼마나 쉽게 바꿀 수 있는지를 설명하는 척도이기 때문이다  
+    - 한 요소의 변경이 다른 요소의 변경에 영향을 미친다면, 그 두 요소는 `결합`되어 있는 것이다.  
+        - 이를 최대한 낮게 유지해야 한다  
+    - `응집도`는 해당 요소의 책임이 의미있는 단위를 형성하는지 나타내는 척도이다  
+        - 날짜와 URL을 파싱하는 기능이 같이 들어간 클래스는 응집도가 낮다고 표현할 수 있다  
+        - 그리고, 두 가지 기능을 다 잘할 가능성이 낮다  
+- 객체에 대한 단위테스트를 많이 해야한다  
+    - 객체를 생성하고, 객체의 의존성을 제공하며, 객체와 상호 작용하고, 예상대로 동작하는지 검사할 필요가 있다  
+- 설계를 잘못하면 단위 테스트를 작성하거나 이해하기 어렵다  
+    - 예를 들면 클래스가 멀리 떨어져있는 시스템의 일부와 긴밀하게 결합되어 있거나, 암시적인 의존성이 있거나, 불분명한 책임이 너무 많을때 등이 있다  
+
+결과적으로 `높은 응집과 낮은 결합`을 가진 객체가 많아야 높은 내부 품질을 유지할 수 있게 되는데, 테스트 작성이 이를 측정하는 기준점이 될 수 있다.  
+TDD는 테스트를 먼저 작성함으로써, 이러한 설계에 관한 즉각적인 피드백을 바로 얻을 수 있다는 큰 장점이 있다.  
+
+<!-- more -->

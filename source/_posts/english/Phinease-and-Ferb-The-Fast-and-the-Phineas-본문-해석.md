@@ -305,8 +305,8 @@ How about a little demonstration of my deflationary prowess?
 
 I got it!  
 
-The Team Phineas car is avoiding every obstacle!  
-It's like he can see the whole darn track at once!  
+The Team Phineas car is avoiding every `obstacle`!  
+**It's like he can see the whole darn track at once!**  
 
 # 4회차  
 Go Phineas! Go, Phineas. Gi Phineas! Go, Phineas.  
@@ -327,16 +327,96 @@ Already they fear me, listen to this scream! Huh?
 > `난장판` `~할 때`  
 >> ~ 할 때 에서 딱히 1번 이라는 뜻을 담고 있지는 않은 듯 하다  
 
-Run! Run like the wind, my little indentured redent!  
+Run! Run like the wind, my little `indentured` `redent`!  
 
-And I will give you cheese~  
+And I will give you some cheese~  
 
-Heh, I know I had some around somewhere.  
-
-I suppose I should've seen that coming.  
+**Heh, I know I had some around here somewhere.**  
 > 그게 돌아오는걸 봤어야했는데  
 
-And mom! You gotta believe me!  
+And mom! You've gotta believe me!  
+>> [you gotta와 you've gotta는 차이가 없다](https://english.stackexchange.com/questions/229693/i-gotta-go-or-ive-gotta-go)  
+>> `you've gotta`가 정확한 표현이고, `you gotta`는 slang이다.
 
+Wait a minute, **I bet it's still on TV.**  
+
+That's good Candace.    
+
+And look at this amazing Phineas!  
+
+M-m-mom-mom, quick! Come look-look-look-look-look!!  
+
+Alright, I'm coming.  
+
+Oh, no! **A blimp is about to hit the broadcasting tower!**  
+
+Uh-huh?  
+
+Meap.  
+
+Deal me back in, `Viv`.  
+>> A silly, funny, pretty, unique girl with a nice heart. Also a good nickname for vivienne.  
+
+Hmm, looks like we're walking.  
+
+"Why don't you go back home, Candace?"  
+**"I'm busy with my bridge game, Candace."**  
+**She has no iead!**  
+
+Huh? **Gotcha!**  
+
+MOM!MOM!MOM!MOM!MOM!  
+
+Oh, Candace, hello.  
+I can't believe you've grown so much, it's unbelievable..  
+
+Mom, you've gotta see this!  
+It's about your car!  
+
+Alright.  
+
+Come on, come on, come on!  
+
+Candace, you're `wearing out` the hills of my shoes.  
+> `닳다`
+
+See, mom. Look look! I told you!  
+
+Huh!  
+But.. who did this?  
+
+Phineas and Ferb.  
+
+You mean..  
+
+Yeah, yeah, yeah.
+
+They wash my car!  
+
+Yeah!  
+No, what?  
+
+It's beautiful. I gotta `admit`.  
+**I thought you were `exaggerating` a bit,** 
+**but this is really worth getting excited about!**  
+> `인정하다` `과장하다`  
+> 그러나 이것은 흥분할 가치가 있어!  
+
+Hi, mom. We're home.  
+
+Hi, boys.  
+
+I saw what you did today.  
+
+Yeah? **How'd you like it?**  
+> 'd가 뭐의 약자지?  
+> would를 쓰면 어떻게 해 드릴까요? 기분이 어떻겠니? 가 된다  
+
+I loved it!  
+Now who wants some snacks?  
+
+Thanks, mom!  
+
+Honey, close your mouth.  
 
 <!-- more -->
