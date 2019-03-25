@@ -75,161 +75,235 @@ I do Mrs.Garcia-Shapiro.
 
 Oi bey, **look how tall you are now.**  
 **You must've grown a couple of inchies since last time I saw you.**  
+> 너 키 큰것좀 봐  
+> 지난번에 봤을떄보다 키가 몇 인치는 더 큰거같네  
 >> [의문사](https://m.blog.naver.com/PostView.nhn?blogId=antonovych&logNo=220769958011&proxyReferer=https%3A%2F%2Fwww.google.com%2F)  
 >> 의문사에서 동사,주어 순서를 뒤집고 앞에 문장을 두는 형태  
 
 That was last week, Mrs.Garcia-Shapiro.  
+> 그거 저번주에요 Garcia-Shapiro 부인  
 
 Well, your mom's inside, dear.  
 Where are your `braces`?  
 **I thought you were wearing braces.**  
-> `교정기` 
+> 너희 엄마는 안에 있단다  
+> 니 `교정기`는 어디갔니?  
+> 난 니가 교정기끼고 있었다고 생각했는데  
 
 Yeah, mom! Mom! Mom!  
+> 네, 엄마! 엄마! 엄마!  
 
 What is it Candace?  
+> 뭐니 Candace?  
 
 You've got to see what Phineas and Ferb are doing!  
+> Phineas랑 Ferb가 뭐하는지 보셔야해요!  
 
 Hey, Ferb. What's the red button for?  
+> 야 Ferb. 빨간 버튼은 뭘 위한거야?  
 
 Mom!!!!!!!!!  
+> 엄마!!!!!!!!  
 
 What is it?  
 **What do you want me to see?**  
->> A가 ~ 하기를  
+> 뭔데?  
+> 내가 뭘 보길 바래?  
 
 Quick!!  
+> 빨리!!  
 
 Hi, mom~  
+> 안녕 엄마~~
 
 Hi, boys~  
 Well, **if that's all I'll just be getting back to the game.**  
+> 안녕 얘들아~  
+> 음, 만약 이게 다라면, 난 다시 게임하러 갈게  
 
 **Good thing we've `beefed up` the `suspension`.**  
-> 서스펜션을 보강한건 잘 한 일이었어.  
-> `보강하다`, `서스펜션(자동차에서 차체 무게를 받쳐주는 장치)`
+>`서스펜션(자동차에서 차체 무게를 받쳐주는 장치)`을 `보강한건` 잘 한 일이었어.  
 >> [서스펜션](https://www.google.com/search?q=suspension&newwindow=1&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjsi_Sr7Y3gAhXFxLwKHenCD9wQ_AUIDigB&biw=1920&bih=1000)  
 
 Woah! **What else can it do?**  
+> 와우! 다른건 뭐 할수있어?  
 
 Hi, Phinease.  
+> 안녕, Phineas  
 
 Oh, hi, Isabella.  
+> 오, 안녕, Isabella  
 
 What'cha doin?  
+> 모해?  
 
 We're entering the Swap Oil 500 today.  
+> 우린 오늘 Swap Oil 500에 참가할거야  
 
 **Aren't you gonna need a pit crew?**  
+> 피트 크루가 필요하진 않아?  
 
 Do you know pit crew?  
+> 피트 크루 아는사람 있어?  
 
 Well, I know a few people who work well together.  
+> 음, 같이 일 잘하는 사람 몇명 알아  
 
 Great, you're hired.  
 See you at the track.  
+> 훌륭해, 넌 고용됬어  
+> 트랙에서 봐  
 
 # 2회차
 
 Hey, Ferb. Where's Perry?  
+> 야 Ferb. Perry 어딨어?  
 
 Good morning, Agent.P.  
 The evil doctor doofershment is up to his all trick.  
+> 좋은 아침이네, 요원 P.  
+> 악당 doofershment 박사가 ..?  
 
 **your mission is to `find out` why, and if necessary, put a stop to it.**  
-> 알아내다  
+> 니 임무는 이유를 `찾아내는` 것이다.  
+> 그리고 필요하다면, 그것을 `멈추게해라`  
 
 Hi, Phinease.  
 **I got your pit crew.**  
+> 안녕 Phineas  
+> 피트 크루들 구해왔어  
 
 Cool, see you in the pits.  
+> 멋지네, 피트에서 봐  
 
 Okay, girl.  
 We're dealing with 426 cubic-inch `fully-blown` V8,  
-and limited slip differential.  
-> ~의 모든 특성을 갖춘, 완전히 발달한  
+... and limited slip differential.  
+> 좋아 얘들아  
+> 우린 426 큐빅 크기에 `완전히 발달한` V8을 다룰거야  
 
-Would that  
+Would that be electronically fuel-injected?  
+> 그건 전자적으로 연료가 주입돼?  
 
 Phineas! Phineas! Phineeeeeeaaaaas!!!!!  
+> Phineas! Phineas! Phineeeeeeaaaaas!!!!!  
 
 **Hey, I can't hear the cars.**  
 > 이봐, 차소리 안들려!  
 
 Hey, Candace.  
 I didn't know you were a racing fan.  
+> 어 Candace  
+> 난 니가 레이싱 팬인줄 몰랐는데  
 
 Jeremy...  
 **Who me?**  
 Oh, yeah! I'm a big fan of those.. those a.. that red one is cute.  
+> Jeremy..  
+> 누구 나?  
+> 오 그래! 난 저... 저거.. 의 팬이야.. 빨간거 귀엽네  
 
 Oh, that is Billy Ray Digler's car.  
 He is great.  
+> 오 저건 Bill Ray Digler의 자동차네  
+> 그는 멋져  
 
 Yeah, he is the best.  
 That Billy Roy..  
+> 응, 그는 최고지  
+> 저 Billy Roy..  
 
 Billy Ray.  
+> Billy Ray야  
 
 I love it when he turns left and he turns.. left again..  
+> 난 그가 왼쪽으로 돌고 또 돌떄가..  
 
 And in the thrid lane, the newcomers Team Phineas!  
+> 3번쨰 라인에는 새로운 주자 Team Phineas입니다!  
 
 ...   
 
 Yes, yes he does.  
+> 네, 네 그렇죠  
 
 And look, **he is already got his own screaming fans!**  
+> 보세요, 그는 이미 그의 열렬한 팬도 있네요!  
 
 Phineas!  
+> Phineas!!!!  
 
 Hey, Candace is `rooting for` us.  
-> 응원하다  
+> 야, Candace가 우리를 `응원하고` 있어  
 
 Candace, you're on the big screen.  
+> Candace, 너 대형 스크린에 나오고 있어  
 
 Phineas!!!!!!!!!!  
+> Phineas!!!!!!!!!!  
 
 And your little brother's gonna be on TV.  
+> 그리고 니 동생들은 TV에 나오겠는걸  
 
 Phineas? On TV?  
+> Phineas? TV에?  
 
 TV! That's it!  
-They're so busted.  a
+They're so busted.  
 **Can you wait here for a second?**  
 Tnanks.  
+> TV! 그거야!  
+> 딱 걸렸어.  
+> 여기서 조금만 기다려줄래?  
+> 고마워  
 
 What is it, Candace?  
-I'm right in the middle of 3-no trumps.  
+I'm right in the middle of 3 no-trumps.  
+> 뭐야 Candace?  
+> 난 지금 3 no-trumps 상태라고(?)  
 
 Turn on the TV!!!!  
+> 티비 켜요!!!  
 
 Alright, alright, Candace.  
-**This better be good.**  
-> 별것 없으면 가만 안둔다.별것 없기만 해봐라
+**`This better be good.`**  
+> 그래, 그래, Candae.  
+> 별것 없으면 가만 안둔다(별것 없기만 해봐라)
 
 Well, Well, do you see it?  
+> 보여요?  
 
 **Just a second**, honey.  
+> 잠시만, 얘야  
 
 Turn on the cable box, first.  
+> 케이블 박스 먼저 켜야돼  
 
 Hmm, alright.  
 Wait. 'Kay, that's not it.  
+> 음 그래  
+> 잠시만, Kay 이게 아닌데  
 
 Is this one?  
 No, this is another phone.  
+> 이거야?  
+> 아냐, 이건 다른 폰인데  
 
 Oh, I turn on the streo.  
+> 오, 나 라디오를 켰네  
 
 Mom, hurry up!!  
+> 엄마, 빨리요!!!  
 
 Okay, just a second.  
+> 알았어, 잠시만 기다려  
 
-Are you embressed about flanking? itching? peeling?  
-Candace, this is dandruff commercial.  
+Are you `embarrassed about` flanking? itching? peeling?  
+Candace, this is `dandruff` commercial.  
 **Is there something you're trying to tell me?**  
+> flanking, itching, peeling에 `당황하셨나요`?  
+> Candace, 이건 `비듬` 광고네.  
+> 이게 니가 나한테 말할려 했던거야?  
 
 # 3회차  
 Okay, Ferb. Are we good to go?  
