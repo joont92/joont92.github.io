@@ -307,152 +307,217 @@ Candace, this is `dandruff` commercial.
 
 # 3회차  
 Okay, Ferb. Are we good to go?  
+> 좋아, Ferb. 가도 되는거지?  
 
-`And with the race about to start`, here's the Doofenshmirtz Evil Incorporated `blimp`!!  
-> `그리고 경기가 시작되려고 하는 가운데`, `소형 비행선`  
+And with the **`race about to start`**, here's the Doofenshmirtz Evil Incorporated `blimp`!!  
+> 그리고 `경기가 시작되려고 하는 가운데`, Doofershmirtz Evil 주식회사의 `소형 비행선` 이 지나갑니다!  
 
-Ah, Perry the platypus. I'm glad to here.  
-Actually, I was just `getting ready` to _serve some PLATYPUS UNDER GLASS!!_  
-> 사실, 난 방금 제공할 `준비를 하고 있었어`  
+Ah, Perry the platypus. I'm glad you're here.  
+Actually, **I was just `getting ready` to serve** some PLATYPUS UNDER GLASS!!  
+> 아, 오리너구리 Perry. 
+> 사실, 난 지금 막 유리밑에 있는 오리너구리를 제공할 `준비를 하고 있었지`!!  
 
-You're just in time to witness my latest invention my Deflate-inator Ray!  
-> 넌 내 최근 발명품을 `목격하기` 위해 때마침 잘 왔네  
+**You're just `in time` to `witness`** my latest invention my Deflate-inator Ray!  
+> 넌 내 최근 발명품을 `목격하기` 위해 `때마침` 잘 왔네  
 
-Which I will demonstrate, by deflating all the tires of the Jefferson County Motor Speedway!  
-> 난 Jefferson County Motor Speedway의 모든 타이어의 공기를 빼면서 이것을 증명하겠다!  
+Which I will `demonstrate`, by `deflating` all the tires of the Jefferson County Motor Speedway!  
+> 난 Jefferson County Motor Speedway의 모든 타이어의 `공기를 빼면서` 이것을 `증명하겠다`!  
 
 After which, I will deflate everything in the `Tri-State Area`!  
-> `3개 주에 걸치는 지역`  
+> 그 뒤엔, 난 `3개 주에 걸치는 지역`에 있는 모든것의 공기를 뺄거야!  
 
-That way, if anyone wants anything flated, they will have to talk to me!    
+`That way`, if anyone wants anything `flated`, they will have to talk to me!  
+> `그런 상태로`, 누군가가 `공기가 찬` 것을 원한다면, 그들은 나한테 말해야할거야!  
 
-Phineas, you're in a big trouble  
+Phineas, **you're in a big trouble**  
+> Phineas, 너 큰일났어  
 
 Candace, you've got a little...  
+> Candace, 너 조금..  
 
 Smile!  
+> 웃으세요!  
 
-Souvenir picture? Only a dollar.  
+`Souvenir` picture? Only a dollar.  
+> `기념품` 사진? 1달러에요.  
 
 Wait a second!  
+> 잠시만!  
 
 Hey!  
+> 이봐!  
 
 Now I gotcha!  
+> 잡았다!  
 
 Hey `Missy`, two pictures, two `buck`s.  
-> `아가씨`, `달러`  
+> 이봐 `아가씨`, 사진 2장이니까 2`달러`에요.  
 
 Oh, yeah, uh, I've only got a dollar, but uh, I just want the one.  
+> 아.. 1달러밖에 없네요, 그치만 음, 하나만 주시면 되요.  
 
-You can just tear the other one up, okay?  
+You can just `tear` the other one up, okay?  
+> 나머지 하나는 `찢어도` 되요, 알겠죠?  
 
-**I've got 'em**, NOW!  
+I've got 'em, NOW!  
+> 드디어 얻었다!  
 
 And on the fast on the inside lane is Number 42, Team Phineas!  
+> 안쪽차선에서 빠른 쪽은 42번인 Team Phineas 입니다!  
 
-Hey, Ferb. Do you think we can get any more power?  
+Hey, Ferb. **Do you think we can get any more power?**  
+> 야 Ferb. 파워 더 올릴수 있을 것 같애?  
 
-I mean, I know it's just a battery.
+I mean, I know it's just a battery.  
 But I was thinking, let's open it up and see what this puppy can-  
 Uh, Ferb? We're actually slowing down now.  
+> 내 말은, 이거 그냥 배터리로 알고있는데.  
+> 하지만 생각해봤는데, 이 강아지가 뭘 할수있는지 보자고...  
+> 어, Ferb? 우리 실제로 지금 느려지고 있어.   
 
 Ferb? Hello?  
 OH YEAH! NOW THAT'S WHAT I'M TALKIN' ABOUT!  
+> Ferb? 여보세요?  
+> 오 예!! 이제 내가 말하던거야!!  
 
 Hey, Ferb. We should bring Phineas in for a pit stop.  
+> 야 Ferb. pit stop에 Phineas를 데려와야해.  
 
 All right, Fireside Girls, let's move, move move!  
+> 좋아, 얘들아. 움직여, 움직여!  
 
 That helmet looks so `manly`.  
-> `남자다운`  
+> 헬멧 진짜 `남자답다`.  
 
 Thanks.  
+> 고마워.  
 
-Hit it, Ferb.  
+`Hit it`, Ferb.  
+> `시작해(출발해)`, Ferb.  
 
-I'm so proud of you girls.
+**I'm so proud of you girls.**
 And the bow was a nice touch, Gretchen.  
+> 난 너희들이 정말 자랑스러워.  
+> 그리고 bow는 정말 잘했어, Gretchen.  
 
-Listen to those fools, as they worship their candy-colored race car man.
+Listen to those fools, as they worship their candy-colored race car man.  
 How about a little demonstration of my deflationary prowess?  
 
 I got it!  
+> 내가 잡았어!  
 
 The Team Phineas car is avoiding every `obstacle`!  
-**It's like he can see the whole darn track at once!**  
+**It's like he can see the whole `darn` track at once!**  
+> Team Phineas의 차는 모든 장애물을 피하고 있어요!  
+> 마치 그가 이 `빌어먹을` 트랙을 한번에 볼 수 있는것 같네요!!  
 
 # 4회차  
 Go Phineas! Go, Phineas. Gi Phineas! Go, Phineas.  
+> 가자 Phineas! 가자 Phineas, 가자 Phineas! 가자 Phineas.  
 
 OH YEAH!!!  
+> 오 예!!!!  
 
 We'are okay!!  
+> 우린 괜찮아요!  
 
 Well, mom. What do you think of this?  
+> 엄마. 이건 어떻게 생각해요?  
 
 You've looked better.  
+> 더 좋아보였어?  
 
 Hmm? What do you mean?  
+> 음? 무슨 뜻이에요?  
 
-Already they fear me, listen to this scream! Huh?  
+Already they `fear` me, listen to this scream! Huh?  
+> 이미 그들은 나를 `겁내고` 있어, 이 비명소리를 들어보라고! 어?  
 
-**Imagine the `mayhem` `once` my Deflate-inator ray is fully changed.**  
+**Imagine the `mayhem` `once` my Deflate-inator ray is fully charged.**  
 > `난장판` `~할 때`  
 >> ~ 할 때 에서 딱히 1번 이라는 뜻을 담고 있지는 않은 듯 하다  
 
-Run! Run like the wind, my little `indentured` `redent`!  
+Run! Run like the wind! My little `indentured` `redent`!  
+> 뛰어! 바람처럼 뛰어라! 나의 `노동자` `설치류`야!  
 
 And I will give you some cheese~  
+> 그럼 내가 치즈를 좀 줄게~~  
 
 **Heh, I know I had some around here somewhere.**  
-> 그게 돌아오는걸 봤어야했는데  
+> 음, 여기 어딘가 있는걸로 아는데  
+
+**I suppose I should've seen that coming**  
+> 저게 돌아오는걸 봤어야 했는데  
 
 And mom! You've gotta believe me!  
+> 엄마! 저를 믿으셔야 해요!  
 >> [you gotta와 you've gotta는 차이가 없다](https://english.stackexchange.com/questions/229693/i-gotta-go-or-ive-gotta-go)  
 >> `you've gotta`가 정확한 표현이고, `you gotta`는 slang이다.
 
 Wait a minute, **I bet it's still on TV.**  
+> 잠시만, 아직 티비에 나올거야  
 
-That's good Candace.    
+That's good Candace.  
+Go watch a little TV.  
+> 좋네 Candace.  
+> 가서 티비좀 봐.  
 
 And look at this amazing Phineas!  
+> 이 대단한 Phineas를 보세요!  
 
 M-m-mom-mom, quick! Come look-look-look-look-look!!  
+> 엄마, 빨리, 봐요봐요봐요!!  
 
 Alright, I'm coming.  
+> 좋아, 갈게  
 
 Oh, no! **A blimp is about to hit the broadcasting tower!**  
+> 안돼요! 소형기구가 저희 방송국 타워를 치려고 해요!  
 
 Uh-huh?  
+> 어허?  
 
 Meap.  
+> 흑  
 
 Deal me back in, `Viv`.  
+> 다시 돌아갈게?   
 >> A silly, funny, pretty, unique girl with a nice heart. Also a good nickname for vivienne.  
 
 Hmm, looks like we're walking.  
+> 음, 우리 걸어가야 할 것 같네  
 
 "Why don't you go back home, Candace?"  
 **"I'm busy with my bridge game, Candace."**  
-**She has no iead!**  
+**She has no idea!**  
+> 집으로 가는게 어떠니 Candace?  
+> 난 지금 bridge 게임 하느라 바쁘거든, Candace.  
+> 그녀는 아무것도 몰라!  
 
 Huh? **Gotcha!**  
+> 어? 잡았다!  
 
 MOM!MOM!MOM!MOM!MOM!  
+> 엄마!엄마!엄마!엄마!엄마!  
 
 Oh, Candace, hello.  
 I can't believe you've grown so much, it's unbelievable..  
+> 오, Candace 안녕.  
+> 난 니가 그렇게 컸다는걸 믿을수 없으나, 이건 믿을수없는..  
 
 Mom, you've gotta see this!  
 It's about your car!  
+> 엄마, 이거 보셔야해요!  
+> 이건 당신의 차에 관한거에요!  
 
 Alright.  
+> 알겠어  
 
 Come on, come on, come on!  
+> 빨리요, 빨리요, 빨리요!  
 
 Candace, you're `wearing out` the hills of my shoes.  
-> `닳다`
+> Candace, 넌 지금 내 신발의 힐을 `닳게`하고있어  
 
 See, mom. Look look! I told you!  
 
@@ -473,14 +538,15 @@ No, what?
 It's beautiful. I gotta `admit`.  
 **I thought you were `exaggerating` a bit,** 
 **but this is really worth getting excited about!**  
-> `인정하다` `과장하다`  
+> 이건 정말 아름답다. 난 `인정해야겠어`  
+> 난 니가 `과장하고` 있다고 생각했었거든  
 > 그러나 이것은 흥분할 가치가 있어!  
 
 Hi, mom. We're home.  
 
 Hi, boys.  
 
-I saw what you did today.  
+**I saw what you did today.**  
 
 Yeah? **How'd you like it?**  
 > 'd가 뭐의 약자지?  
