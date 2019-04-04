@@ -51,7 +51,7 @@ I suppose. Good luck, Agent.P
 Huh! There it is!  
 > 오! 있다!  
 
-Uh.. Execuse me? Mr.Ph~~  
+Uh.. Execuse me? Mr.Producer?  
 
 I can't talk to you right now, my lead actress just quit!  
 
@@ -74,8 +74,10 @@ Hello?
 
 Wow, I could get used to this.  
 
-Miss.Candace.  
-This is your contract  
+Miss Candace, here's your contract and your bagel.  
+This is Antoine, your dialog coach, Nikki, your swimming stand-in, and your personal trainers Olga and Chicago Joe.  
+Charmed, I'm sure.  
+Drop and give me 20!   
 
 Candace, baby!  
 Let me introduct you to the directors of this film.  
@@ -88,18 +90,19 @@ What are you doing here?
 
 We're directing the movie.  
 
-Our new agent arraged whole thing.  
+Our new agent `arraged` whole thing.  
+> 마련했어  
 
 Look, my client get 3% of gross, and a piece of the back end, or he walks.  
 
 Yeah, that's right.  
-You mess with the bull, you can get the horns, buddy.  
+You mess with the bull, you get the horns, buddy.  
 > 그래, 맞아  
 > 넌 황소를 건드렸고, 혼쭐이 날거야, 친구.  
 >> If you provoke somebody, you can expect an aggressive reaction.
 
-Hello?  
-Syd, baby. You got that 3rd act in line yet.  
+Hello? Syd, baby.  
+You got that 3rd act in line yet.  
 
 Wait, wait!  
 Don't you think they're little to be big-budget movie directors?  
