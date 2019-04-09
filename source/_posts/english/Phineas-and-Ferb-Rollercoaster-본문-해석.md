@@ -1,5 +1,5 @@
 ---
-title: Phinease and Ferb - Rollercoaster 본문/해석
+title: Phineas and Ferb - Rollercoaster 본문/해석
 date: 2018-10-10 14:41:28
 tags: 
     - Phineas and Ferb

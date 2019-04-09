@@ -198,9 +198,9 @@ public void testMultiplication() {
     Dollar five = new Dollar(5);
 
     Dollar product = five.times(2);
-    assertThat(product.amount).isEqaulTo(new Dollar(10));
+    assertThat(product).isEqaulTo(new Dollar(10));
     product = five.times(3);
-    assertThat(product.amount).isEqaulTo(new Dollar(15));
+    assertThat(product).isEqaulTo(new Dollar(15));
 }
 ```
 

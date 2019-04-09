@@ -1,5 +1,5 @@
 ---
-title: 'Phineas and Ferb - Lights, Candace, Action! 본문/해석'
+title: Phineas and Ferb - Lights, Candace, Action! 본문/해석
 date: 2019-04-01 09:46:35
 tags:
 ---  
