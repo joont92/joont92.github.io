@@ -20,7 +20,7 @@ mac을 편리하게 사용하고자 직접 세팅한 내용을 공유하고자 �
 `환경설정 - 키보드 - 보조키`에서 option, command 키 바꿀 수 있음
 
 1. home, end 사용하기  
-KeyBindins/DefaultKeyBinding.dict를 수정하면 된다  
+~/Library/KeyBindins/DefaultKeyBinding.dict를 수정하면 된다  
 <http://junho85.pe.kr/580>  
 > key bindings 값 찾기  
 <http://junho85.pe.kr/579>  
