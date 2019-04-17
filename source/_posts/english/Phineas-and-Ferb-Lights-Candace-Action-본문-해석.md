@@ -2,8 +2,12 @@
 title: Phineas and Ferb - Lights, Candace, Action! 본문/해석
 date: 2019-04-01 09:46:35
 tags:
+    - Phineas and Ferb
+    - 영어 회화
+    - 쉐도잉
 ---  
 
+# 1회차
 "To think, To dream, Weather 'tis nobler to love, I know not"  
 Ah.. the princess sensibility..  
 My favorite play..  
@@ -34,6 +38,7 @@ Huh, I would be perfect for that part.
 I've been practicing it for my drama club all summer.  
 I'm gonna get discovered~~  
 > 난 발견될거야~~  
+>> <http://blog.naver.com/PostView.nhn?blogId=bosangmaster&logNo=221110252654&parentCategoryNo=&categoryNo=61&viewDate=&isShowPopularPosts=true&from=search>  
 
 That's serendipitous.  
 Hey, where's Perry?  
@@ -73,6 +78,7 @@ You bet! With the money I save I'll be able to hire the hottest new directors in
 Hello?  
 
 Wow, I could get used to this.  
+>> <https://ilikeen.tistory.com/207>  
 
 Miss Candace, here's your contract and your bagel.  
 This is Antoine, your dialog coach, Nikki, your swimming stand-in, and your personal trainers Olga and Chicago Joe.  
@@ -107,5 +113,31 @@ You got that 3rd act in line yet.
 Wait, wait!  
 Don't you think they're little to be big-budget movie directors?  
 With 176,000,000 hits, They could be in diapers for all I care.  
+
+# 2회차  
+Phineas, I don't remember any monsters in the Princess Sensibility.  
+
+We just finished the rewrites this morning.  
+
+The curse of the princess monsters?  
+
+That is not what I signed up for,  
+Besides, I can't wear this.  
+No one will see my face.  
+
+Yeah, but in the end, the curse is lifted!  
+And in your big dramatic scene, you will look `stunning`!  
+This film could make you a star..  
+> `굉장히 아름다운(멋진`  
+
+Really?  
+Uh.. uh.. star..?  
+
+Hey, ugly monster.  
+You're needed on the set.  
+
+I~~'m comming~~  
+
+
 
 <!-- more -->
