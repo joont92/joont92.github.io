@@ -24,7 +24,6 @@ KeyBindins/DefaultKeyBinding.dict를 수정하면 된다
 <http://junho85.pe.kr/580>  
 > key bindings 값 찾기  
 <http://junho85.pe.kr/579>  
-기
 
 1. windows의 aero snap 사용하기  
 `btt - keyboard`  
@@ -32,9 +31,9 @@ Command + Control + 방향키로 `Maximize Window Left, Right, Top Half, Bottom 
 
 1. 최대화  
 `btt - keyboard`  
-Command + A = 현재 위치에서 최대화  
-Command + S = 다른 모니터(듀얼모니터)로 넘기기  
-Command + D = 다른 모니터로 넘기기 + 최대화  
+Command + ctrl + A = 현재 위치에서 최대화  
+Command + ctrl + S = 다른 모니터(듀얼모니터)로 넘기기  
+Command + ctrl + D = 다른 모니터로 넘기기 + 최대화  
 
 # 일반 마우스
 앞으로 가기, 뒤로가기가 있는 버티컬 키보드 사용  

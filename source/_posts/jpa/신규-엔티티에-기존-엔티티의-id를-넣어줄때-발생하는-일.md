@@ -111,16 +111,15 @@ memberRepository.save(newMember);
 만약 기존의 1번 member에 해당하는 order가 있었다고 할 경우, 해당 order는 그대로 있고 신규로 전달된 order들이 저장되게 될 것이다.  
 그러므로 만약 기존 1번 member에 해당하는 order가 2개 있고, 전달된 order가 2개인 상태에서 위의 메서드를 실행하게 되면 order가 총 4개가 되어버린다.  
 
-이럴땐 `orphanRemoval = true` 속성을 주면 해결할 수 있다.  
+사실상 이건 명확한 교체가 아니므로, 
+의도한 상황이라면 상관없는데, 그게 아니라면 `orphanRemoval = true`를 사용하여 존재하지 않는 엔티티에 대해 삭제하게끔 해야한다.  
+
 ```java
 class Member{
     @OneToMany(mappedBy = "member", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Order> orderList = new ArrayList<>();
 }
 ```
-
-사실상 이건 명확한 교체가 아니므로, 
-의도한 상황이라면 상관없는데, 그게 아니라면 `orphanRemoval = true`를 사용하여 존재하지 않는 엔티티에 대해 삭제하게끔 해야한다.  
 
 ```java
 Member newMember = newMemberDTO.toEntity(); // orderList를 가지고 있음
