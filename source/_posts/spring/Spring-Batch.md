@@ -150,7 +150,7 @@ JobParameters jobParameters = new JobParametersBuilder()
                         .addLong("time", System.currentTimeMillis())
                         .toJobParameters();
 jobLauncher.run(job, jobParameters);
-```  
+```
 
 jobLauncher.run을 따라가보면(SimpleJobLauncher 기준)  
 jobExecution이 있으면 오류가 발생하고, jobExecution이 없으면 jobExecution을 생성한다  

@@ -23,4 +23,4 @@ Before a pull request :
  - There is no tests yet so verify that your code is running well. Blog generation (`hexo g`) must not outputs errors
  - Check code style with eslint.
  - Don't forget to update the documentation if it's necessary
- 
+

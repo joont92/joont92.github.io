@@ -93,7 +93,7 @@ By default.
 > 들었지?  
 > 우린 아빠를 `괴롭힐` 수 없고, 그건 내가 책임자란 뜻이야.  
 > 기본적으로.  
-```  
+```
 I don't have idea for this technology, which makes me study.  
 > 나는 이 기술에 대한 지식이 없고, 그게 나를 공부하게 만든다.  
 
@@ -270,7 +270,7 @@ Oh, no, wait, wait, wait.
 That was the garage door opener.  
 > 오 잠시잠시잠시  
 > 이건 창고 문 오프너네..  
- 
+
 You are mine, now!!  
 > 넌 이제 내거다!!  
 
@@ -798,7 +798,7 @@ I think it's time to `get you out of` the sun `for a little while`.
 
 I think she had fun.  
 > 걔는 재밌었던거 같애.  
- 
+
 // ...
 
 With a `slight` chance of `scattered` lawn gnoms.  

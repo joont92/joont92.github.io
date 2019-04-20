@@ -400,7 +400,7 @@ long totalCount = query.fetchCount();
 List<Item> results = getQuerydsl().applyPagination(pageable, query).fetch();
 
 return new PageImpl<>(results, pageable, totalCount);
-```  
+```
 
 Page를 리턴함으로써 완벽하게 Pageable을 사용할 수 있다.  
 

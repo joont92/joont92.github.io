@@ -117,6 +117,6 @@ OutputStream output = new FileOutputStream("test.txt");
 PrintStream printOut = new PrintStream(output);
 
 System.setOut(printOut);
-```  
+```
 
 <!-- more -->

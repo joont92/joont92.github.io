@@ -22,7 +22,7 @@ tags:
 })
 public interface CarMapper {
     CarMapper INSTANCE = Mappers.getMapper( CarMapper.class );
- 
+
     @Mapping(source = "numberOfSeats", target = "seatCount") // 1
     CarDto toDto(Car car);
 

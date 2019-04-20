@@ -52,7 +52,7 @@ A gorgeous responsive theme for Hexo blog framework
 - Algolia
 - Facebook Insights
 - Gitment
- 
+
 ## Quick start
 
 1. Download the latest version built and ready for production here : [releases](https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/releases)

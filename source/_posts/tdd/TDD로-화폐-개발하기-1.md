@@ -74,7 +74,7 @@ Dollar(int amount) {
 void times(int multiplier) {
     amount *= multiplier;
 }
-```  
+```
 
 > 단계들이 굉장히 작다고 느껴질 수 있는데,  
 > **TDD의 핵심은 작은 단계를 밟아야 한다는 것이 아니라, 이런 작은 단계를 밟을 능력을 갖추어야 한다는 것이다**  
@@ -150,7 +150,7 @@ Dollar times(int multiplier) {
 public void testEquality() {
     assertThat(new Dollar(5)).isEqualTo(new Dollar(5));
 }
-```  
+```
 
 빠르게 통과시켜보자  
 ```java

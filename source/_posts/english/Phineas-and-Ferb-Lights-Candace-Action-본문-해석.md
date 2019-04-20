@@ -1,11 +1,11 @@
 ---
 title: Phineas and Ferb - Lights, Candace, Action! 본문/해석
-date: 2019-04-01 09:46:35
+date: 2019-01-01 09:59:12
 tags:
     - Phineas and Ferb
     - 영어 회화
     - 쉐도잉
----  
+---
 
 # 1회차
 "To think, To dream, Weather 'tis nobler to love, I know not"  
@@ -138,6 +138,65 @@ You're needed on the set.
 
 I~~'m comming~~  
 
+Perry the platypus?  
+Why do you keep breaking down my doors?  
 
+Why don't you knock first? It's not even locked!  
+This time, you'll pay.  
+That's right, `fork it over`.  
+> 그거야, `지불해`.  
+
+ What? Are you kidding me?  
+ This isn't just drywall, you know.  
+ It's solid oak.  
+
+**That's more like it!**  
+> 그래 그거야, 그게 훨씬 낫다  
+
+You can't just go `busting` into people's houses for no reason, you know.  
+> 너는 이유없이 사람들의 집을 부수고 갈 수 없어, 알다시피  
+> 꺠 부수다  
+
+Besides, I've given up evil to pursue the art of cheese making.  
+
+Do you like stinky Limburger?  
+It's a Doofenshmirtz family recipe.  
+
+It's not ready yet.  
+It still has to age for 58 and 1/2 years.  
+> 아직 58년 반동안 나이를 먹어야 한다  
+
+But who's got that kind of time?  
+Which is why, I created, The Age Accelerator Inator.  
+>> <https://www.myenglishteacher.eu/ask/question/which-is-why-or-that-is-why/>  
+
+Okay, Candace.  
+This is very important scene.  
+It is `nothing less than` emotional backbone of the whole film.  
+> 다름 아닌 바로
+
+Oh, and the villagers are coming at you with everything they've got.  
+> 오, 그리고 마을 사람들이 그들이 가진 모든것을 들고 너한테 덤벼들고 있어  
+
+Oh, what do you mean the villagers..  
+
+Action!  
+The airport!  
+
+Beautiful! That's a print!  
+Oh, that's a little embarrasing.  
+
+Wow! Is this banana hat for some cool tropical dance number?  
+
+We're trying to come up with some exciting camera angles for the big chase scene.  
+So we strapped a camera on to this starving monkey.  
+
+Aah! Get away!  
+Sorry that monkey cam didn't work out.  
+
+We're gonna try it with Ferb this time.
+Now take this sandwich and remember, Ferb hasn't eaten lunch yet.  
+
+Hold on tight.
 
 <!-- more -->

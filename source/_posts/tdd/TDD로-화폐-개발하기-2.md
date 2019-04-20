@@ -110,7 +110,7 @@ public boolean equals(Object object) {
     return amount == money.amount
         && getClass() == money.getClass();
 }
-```  
+```
 
 간단하게 테스트를 통과시켰다  
 클래스 타입 비교로 통화를 비교한다는게 조금 그렇긴하지만 일단은 그냥 넘어간다  
@@ -119,7 +119,7 @@ public boolean equals(Object object) {
 # 하위클래스를 없애기 위한 시도 - 직접 참조 제거  
 상위 클래스 추출이 성공했으니, 남아있는 `times()` 메서드의 리턴타입도 상위 클래스로 변경해도 괜찮겠다  
 그리고 여기 남아있는 직접 참조 또한 제거하자  
-```java 
+```java
 class Dollar {
     Money times(int multiplier) {
         return Money.dollar(amount * multiplier);

@@ -106,7 +106,7 @@ To enable `all-categories` page:
 
 1. Run `hexo new page "all-categories"`. A new folder named `all-categories` will be created in `source/`
 2. Replace `source/all-categories/index.md` content with:
- 
+
 ``` markdown
 ---
 title: "all-categories"
@@ -123,7 +123,7 @@ To enable `all-tags` page:
 
 1. Run `hexo new page "all-tags"`. A new folder named `all-tags` will be created in `source/`
 2. Replace `source/all-tags/index.md` content with:
- 
+
 ``` markdown
 ---
 title: "all-tags"
@@ -140,14 +140,14 @@ To enable `all-archives` page:
 
 1. Run `hexo new page "all-archives"`. A new folder named `all-archives` will be created in `source/`
 2. Replace `source/all-archives/index.md` content with:
- 
+
 ``` markdown
 ---
 title: "all-archives"
 layout: "all-archives"
 comments: false
 ---
-```  
+```
 
 This page will be reachable at: `/all-archives`. On this page, users will be able to search and filter posts by date.  
 **Search pattern** : YYYY/MMM/DD
@@ -389,7 +389,7 @@ E.g : `{% image fancybox right clear group:travel image2.png http://google.fr/im
 |Width of thumbnail image (optional)| Width to the thumbnail image. If the thumbnail image is empty, width will be attached to thumbnail image created from original image. E.g : `150px` or `85%`.|
 |Height of thumbnail image (optional)| Height to the thumbnail image. If the thumbnail image is empty, height will be attached to thumbnail image created from original image. E.g : `300px` or `20%`.|
 |Title (optional)| Title of image displayed in a caption under image. `Alt` HTML attribute will use this title. E.g : `"A beautiful sunrise"`.|
- 
+
 #### Tabbed code block
 
 Tabbed code blocks are useful to group multiple code blocks related. For example, the source code of a web component (html, css and js). Or compare a source code in different languages.

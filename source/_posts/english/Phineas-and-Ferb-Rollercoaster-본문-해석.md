@@ -484,7 +484,7 @@ No! It's not possible!
 ```
 I'm gonna go get the book.  
 > 책 가지러 가야곘다  
-```  
+```
 
 It was right here, and it was huge!  
 MOM!!  

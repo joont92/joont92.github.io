@@ -12,7 +12,7 @@ Before you submit your issue, please provide as much information as possible.
  - **Site configuration file** (Optional):
  - **Theme configuration file** (Optional):
  - **Hexo plugin** (Optional): <!-- run `npm ls --depth 0` at the root of your blog -->
- 
+
 ### Actual behavior
 
 
