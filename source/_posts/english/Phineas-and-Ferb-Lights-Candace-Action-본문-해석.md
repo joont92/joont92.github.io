@@ -199,4 +199,15 @@ Now take this sandwich and remember, Ferb hasn't eaten lunch yet.
 
 Hold on tight.
 
+# 3회차
+Okay.  
+In this scene, the monster, that's you  
+gets attacked by 800 cubic feet of rats, spiders, and snakes.  
+
+There is no way I am doing that!  
+
+Relax, they're made out of rubber.  
+
+Well the snakes are rubber, anyway.
+
 <!-- more -->
