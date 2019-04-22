@@ -81,9 +81,9 @@ public void testEquality() {
 **각 과정을 진행할때마다 계속 테스트를 돌리면서 진행했고, 수월하게 리팩토링 할 수 있었다**  
 이제 Franc도 똑같이 진행할 것이다  
 아까 DollerTest를 복사해서 FranTest를 만들어줬기 때문에 Franc 또한 Dollar 처럼 수월하게 리팩토링이 가능하다  
-> 만약 Franc에 대한 테스트를 추가하지 않았다면, 아니면 혹시나 더 추가되어야 할 것 같은 테스트가 있으면 얼른 추가해준다  
-> **이렇듯 있어야 할 것 같은 테스트가 있다면 작성해줘야 한다**  
->  
+> 만약 Franc에 대한 테스트를 추가하지 않았다면 라팩토링 전에 추가해주는 것이 좋다  
+> **(이 외에도 있어야 할 것 같은 테스트가 있다면 작성해줘야 한다)**  
+>
 > 그렇게 하지 않으면 리팩토링 하다가 결국 뭔가 꺠트릴 것이고,  
 > 리팩토링에 대해 안좋은 느낌을 갖게 되고,  
 > 리팩토링을 덜 하게 되고,  
@@ -118,7 +118,6 @@ public boolean equals(Object object) {
 
 # 하위클래스를 없애기 위한 시도 - 직접 참조 제거  
 상위 클래스 추출이 성공했으니, 남아있는 `times()` 메서드의 리턴타입도 상위 클래스로 변경해도 괜찮겠다  
-그리고 여기 남아있는 직접 참조 또한 제거하자  
 ```java
 class Dollar {
     Money times(int multiplier) {
@@ -163,7 +162,14 @@ static Dollar dollar(int amount) {
 }
 ```
 
-**Dollar에 대한 참조까지 제거해주자**  
+`times()`의 직접 참조도 제거하고,  
+```java
+public Money times(Integer multiplier) {
+    return Money.dollar(amount * multiplier);
+}
+```
+
+Dollar에 대한 참조까지 제거해주자  
 ```java
 public void testMultiplication() {
     Money money = Money.dollar(5);
@@ -185,12 +191,14 @@ abstract class Money {
 > 테스트 메서드뿐 아니라 모든 클라이언트 코드에서도 이런식으로 결합도를 낮추면 변화에 유연해진다  
 
 이제 Franc에 대해서도 똑같이 작업해준다  
-똑같이 변경해놓고 보니, DollarTest에 있는 testMultiplication과 FrancTest에 있는 testMultiplication이 중복되어 보인다  
+
+똑같이 변경해놓고 보니, `DollarTest`와 `FrancTest`의 테스트들의 형태가 매우 중복되어 보인다  
+나는 이 시점에서 두 테스트를 합쳐서 `MoneyTest`로 만들었다  
 > 이런식으로 하위클래스가 분리되다보면 몇몇 테스트가 불필요한 여분의 것이 된다  
 
 # 하위클래스를 없애기 위한 시도 - 추상화  
-직접 참조는 제거했지만 아직 하위 클래스는 제거할 수 없는 상태이다  
-Dollar와 Franc을 추상화 할수있는 뭔가가 필요하다  
+`times()`의 모양을 같게 하려면 `Money.dollar`와 `Money.franc`을 같게 만들어야한다  
+그러므로 둘을 추상화 할수있는 뭔가가 필요하다  
 `통화`라는 개념을 도입하면 뭔가 하위 클래스 제거에 좀 더 가까워질 것 같다  
 
 먼저 통화 개념에 대한 테스트를 작성해본다  
@@ -234,6 +242,7 @@ public String currency() {
 ```java
 // Money
 protected String currency;
+
 String currency() {
     return currency;
 }
@@ -274,7 +283,7 @@ public static Money dollar(int amount) {
 // Franc도 동일
 ```
 
-이제 또 동일해졌다. 위로 올리자.  
+컴파일 에러를 해결했으니 위로 올리자.  
 ```java
 // Money
 public Money(int amount, String currency) {
@@ -298,10 +307,10 @@ times를 먼저 손봐야한다
 > 이런식으로 단계적으로 밟아가는 과정이 답답할수도 있다  
 > 중요한 것은 **이런식으로 일해야 한다는 것이 아니라, 이런식으로 일할수도 있어야 한다**는 것이다  
 > 종종걸음 step이 답답하면 조금 보폭을 늘려도 되고, 성큼성큼 걷는것이 불안하면 조금 보폭을 줄이면 된다  
-> TDD란 조종해나가는 과정이다. 올바른 보폭이란 존재하지 않는다  
+> **TDD란 조종해나가는 과정이다. 올바른 보폭이란 존재하지 않는다**  
 
 ## 다시 돌아가서 생각을..
-times를 위로 올려야하는데, 아무리 봐도 이 둘을 동일하게 만들 명백한 방법이 없다  
+`times()` 메서드를 바로 위로 올려보려고 했는데, 생김새가 좀 막막하다  
 ```java
 // Dollar
 public Money times(Integer multiplier) {
@@ -314,8 +323,8 @@ public Money times(Integer multiplier) {
 }
 ```
 
-**이렇게 방법이 없을땐 잠시 후퇴해서 보는것도 방법이다**  
-팩토리 메서드를 다시 생성자로 돌려보자  
+잘 모르겠으니 팩토리 메서드를 다시 생성자로 돌려보자  
+**(이렇게 방법이 없을땐 잠시 후퇴해서 보는것도 방법이다)**  
 (+ 여기서 currency는 클래스에 있는 값을 바로 쓰도록 한다. 굳이 파라미터로 또 전달할 필요 없다)  
 
 ```java
@@ -350,7 +359,7 @@ public Money times(Integer multiplier) {
 ```
 
 이렇게 하고 테스트를 돌렸더니, Money 클래스가 Dollar 클래스가 아니라는둥, Money 클래스가 Franc 클래스가 아니라는 둥의 결과가 출력된다  
-문제는 equals에 있었던 것이다. 비교해야 될 것은 클래스가 아니라 currency이다  
+이 말인 즉, 문제는 equals에 있었던 것이다. 비교해야 될 것은 클래스가 아니라 currency이다  
 
 이를 위해 추가적인 테스트가 작성되어야하는데, 현재 빨간막대 상태이다  
 빨간 막대 상태일때는 테스트를 추가하지 않는 것이 좋다  
@@ -375,6 +384,8 @@ public boolean equals(Object obj) {
 
 테스트가 통과하니, 다시 times의 `new Dollar, new Franc`을 `new Money`로 바꾼다  
 이 테스트 또한 잘 통과하고, 이제 times의 형태가 같아졌으니 push up 할 수 있다!!  
+
+**뒤로 돌아가지 않았다면 이처럼 팩토리 메서드 사용을 제거할 수 있다는 사실을 알기 힘들었을 것이다**  
 
 # 하위클래스를 없애기 위한 시도 - 나머지 부분 제거  
 이제 두 클래스에 남은건 생성자밖에 없다  
