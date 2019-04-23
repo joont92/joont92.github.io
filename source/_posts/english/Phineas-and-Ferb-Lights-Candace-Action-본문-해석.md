@@ -208,6 +208,73 @@ There is no way I am doing that!
 
 Relax, they're made out of rubber.  
 
-Well the snakes are rubber, anyway.
+Well the snakes are rubber, anyway.  
+
+AAH! Get em' off me! Get em' off me!  
+> 떼어내!  
+
+Okay. Candace, this is your beauty shot.  
+The curse has been lifted, and you're no longer a monster.  
+And this scene, it's all about what the heart wants, but the mind can't have.  
+Take one.  
+> 저주가 풀렸고, 
+
+"To dream, To be free of the curse.."  
+
+Beautiful. Keep going.  
+Cue the magical girly dust!  
+
+"Whether 'tis nobler to be loved"  
+
+Cue wind machine.  
+
+
+
+Cut the wind machine!  
+
+Okay. Drop the flower `petals`.  
+> 꽃잎  
+
+"Whether 'tis nobler.."  
+
+Wrong `prop`.  
+What the heck, let's keep it!  
+> 잘못된 소품이야  
+> 에라 모르곘다, 그냥 하자!  
+
+Okay, people.  
+That's a wrap.  
+
+Here's your big dramatic scene, Candace.  
+
+Huh,huh.. "To think, To dream.."  
+
+Cut!  
+
+Uh? Oh, I'm sorry.  
+
+Do it again.  
+
+"To think, to.. to.. think, To dream.."  
+
+That's a horrible.  
+I can't let anybody see this!  
+
+That's what's called rough cut.  
+
+Ferb's gonna fix it in editing.  
+`Tighten up `the `dialog`.  
+Do a little voice `modulation`.  
+Play with the filter~  
+And now take a look!  
+> `엄격해지다` `대화`  
+> `조절`  
+
+"To think, To dream, To be free of the curse"  
+I.. I.. I look beautiful!  
+
+That's what they call, the movie magic.  
+
+You two are the best brothers a great actress could ever have!  
 
 <!-- more -->
