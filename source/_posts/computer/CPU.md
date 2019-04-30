@@ -6,9 +6,9 @@ tags:
     - i3
     - i5
     - i7
----  
+---
 
-# 발전 순서(intel 기준)  
+# 발전 순서(intel 기준)
 참고하면 좋은 글  
 <https://m.post.naver.com/viewer/postView.nhn?volumeNo=7627623&memberNo=10558726>  
 
