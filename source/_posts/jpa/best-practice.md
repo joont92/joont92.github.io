@@ -17,7 +17,7 @@ Spring orm이 제공하는 것 LocalContainerEntityManagerFactory
 
 @Transactional은 RuntimeException만 롤백한다
 
-- 엔티티 설계에서 참조할 수 있는 부분 편의메서드가 내가 작성한 것 만큼 빡빡하게 조건검사를 하지 않는다
+- 엔티티 설계에서 참조할 수 있는 부분. 편의메서드가 내가 작성한 것 만큼 빡빡하게 조건검사를 하지 않는다
 
 public void setMember(Member member){
 	this.member = member;

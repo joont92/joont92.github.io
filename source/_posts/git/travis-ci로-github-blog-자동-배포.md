@@ -8,7 +8,12 @@ tags:
 ---
 
 1. github app에서 travis CI 설치
-2. 
+2. github setting - developer setting에서 personal access token 발급
+3. .travis_ci, _config.yml 설정
+4. push하고 travis에서 빌드 잘 되는지 확인
+
+- theme
+    > 테마는 submodule로 저장해줘야하고, 테마에서 _config.yml을 수정할 것이므로 theme fork한것을 submodule에 넣어야함
 
 - travis ci app 설치 및 진행 방식  
     > <https://okky.kr/article/515352>

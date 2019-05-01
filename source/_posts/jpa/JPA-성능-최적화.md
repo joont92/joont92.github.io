@@ -194,19 +194,30 @@ Member member = em.createQuery("SELECT m FROM Member m", Member.class)
 
 ## 트랜잭션 밖에서 읽기
 트랜잭션 없이 엔티티를 조회하는 것을 의미한다.  
-JPA에서 엔티티를 변경하려면 트랜잭션을 필수이므로, 조회가 목적일 때만 사용해야 한다.  
+JPA에서 엔티티를 변경하려면 트랜잭션이 필수이므로, 조회가 목적일 때만 사용해야 한다.  
 
 JPA는 기본적으로 아래의 2가지 특성이 있다  
 - 트랜잭션이 커밋될 때 영속성 컨텍스트를 플러시한다
 - 영속성 컨텍스트만 있으면 트랜잭션 없이 읽기가 가능하다
 
-스프링을 사용하지 않을 경우에는 트랜잭션을 시작하지않고, 엔티티매니저만 가져와서 사용하면 간단히 사용할 수 있다.  
-스프링을 사용할 경우에는 아래와 같이 작성해주면 된다  
-
+### 스프링을 사용하지 않을 때
 ```java
-@Transactional(propagation = Propagation.NOT_SUPPORTED)
-```
+EntityManager em = emf.createEntityManger();
+// EntityTransaction tx = em.getTransaction();
 
-> 그냥 안써주면 어떻게 될까?  
-> 사실상 클래스 레벨에 전방위적으로 `@Transactional`을 적용한 경우에는 위처럼 작성하는게 맞는 행위지만, 메서드 각각에 `@Transactional`을 달아주면 위의 행위는 사실상 불필요하다  
-> 그냥 트랜잭션 없이 읽기를 수행하기 위해 위와 같이 달아줘야 하는걸까?  
+try {
+    // tx.begin();
+    
+    Some some = em.find(Some.class, 1L);
+    SomeChild someChild = some.getSomeChildren().get(0);
+}
+```
+트랜잭션을 시작하는 부분 없이 엔티티매니저만 가져와서 조회를 수행해도 정상 동작하고, 보다시피 lazy 로딩까지도 동작한다.  
+> 참고로 여기서 스프링이 `@PersistenceContext`를 통해 가져온 EntityManager를 사용할 경우 예외가 발생한다(org.hibernate.LazyInitializationException)  
+> 위처럼 메서드내에서 생성된 entityManager에만 유효하다(@PersistenceContext는 공유되는 애라서 그런가..)  
+
+### 스프링을 사용할 때
+스프링을 사용하면 @Transactional 어노테이션을 보고 트랜잭션과 영속성 컨텍스트가 같이 생성하는 생성된다  
+즉 위처럼 명시적으로 EntityManager를 생성해서 영속성 컨텍스트를 초기화할 수 없으므로, OSIV를 on 해줘야만 트랜잭션 밖에서 읽기가 가능하다
+(물론 일반적인 방법에서의 얘기이다)  
+OSIV를 끄고 @Transactional 어노테이션도 붙이지 않는다면 어느 시점에 영속성 컨텍스트를 생성해야할지 모르기 때문이다  
