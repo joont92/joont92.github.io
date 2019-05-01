@@ -1,3 +1,6 @@
 [submodule "themes/hiero"]
 	path = themes/hiero
 	url = https://github.com/joont92/hexo-theme-hiero.git
+[submodule "themes/next"]
+	path = themes/next
+	url = https://github.com/joont92/hexo-theme-next.git
