@@ -8,7 +8,7 @@ tags:
     - i7
 ---
 
-# 발전 순서(intel 기준)
+# CPU 발전 순서(intel 기준)
 참고하면 좋은 글  
 <https://m.post.naver.com/viewer/postView.nhn?volumeNo=7627623&memberNo=10558726>  
 
@@ -18,13 +18,13 @@ tags:
     - 최초의 64bit CPU는 AMD 애슬론64
 - 전 세계적으로 널리 사용됨  
 
-> 32bit cpu는 최대 4GB 메모리까지만 지원한다  
-> - 32bit로 표현가능한 숫자는 42억개 정도  
-> - 42억개의 주소를 읽어들일 수 있음을 뜻함  
-> - 메모리에서 1개의 주소당 보통 1byte의 크기를 가짐  
-> - 42억개의 주소 * 1byte == 4gb  
+### 32bit cpu, 64bit cpu  
+<https://zeddios.tistory.com/61>  
 
-CPU에서 32bit, 64bit는 1클럭 당 처리할 수 있는 최대 bit 크기를 말한다.  
+CPU가 처리하는 데이터의 최소단위인 `레지스터`의 크기가 몇 bit냐를 말한다  
+즉 32bit cpu라는것은 레지스터의 크기가 32bit임을 말하고,  
+bit는 0과 1로 표현되니 32bit가 표현가능한 최대 수는 2^32(4GB)가 된다  
+즉 42억개의 주소까지밖에 표현하지 못하므로, 32bit cpu에 8GB 램을 넣어도 4GB까지 밖에 인식되지 않는것이다  
 
 ## 펜티엄
 - 최초로 이름을 갖게된 CPU이다
