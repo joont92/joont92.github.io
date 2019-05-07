@@ -170,8 +170,6 @@ pageSize와 chunkSize를 같게해야 성능상 좋다
 reader로 읽을 수 있는 데이터는 데이터베이스만이 아니라 입력 데이터, 파일, jms 등등 여러가지이다  
 cursor, paging  
 
-
-
 ---
 
 # 장점
