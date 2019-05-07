@@ -8,8 +8,8 @@ tags:
 # git-crypt란?
 git-crypt를 사용하면 특정 파일 또는 폴더를 `원격 repository에 올릴때는 encrypt하고, 로컬로 내려받을때는 decrypt 하는 식`으로 관리할 수 있다.  
 
-git-crypt repostiroy <https://github.com/AGWA/git-crypt>  
-git-crypt 적용법 <https://s-opensource.org/2017/07/18/introduction-gpg-encryption-git-crypt/>  
+git-crypt repostiroy : <https://github.com/AGWA/git-crypt>  
+git-crypt 적용법 : <https://s-opensource.org/2017/07/18/introduction-gpg-encryption-git-crypt/>  
 
 
 # 적용법
@@ -55,7 +55,7 @@ config/production/** filter=git-crypt diff=git-crypt
         의 형태로 decrypt 한다.  
 
 # 기타  
-1. 만약 키를 공유하고 싶으면?  
+1. 만약 레파지토리끼리 키를 공유하고 싶으면?  
 한쪽 레파지토리에서 생성된 `.git/git-crypt/keys/default`를 다른 레파지토리에서 경로 그대로 복사해서 사용하면 됨  
 근데 이 방식으로 `git-crypt unlock`이 바로 되지는 않는다. 번거롭게 key 파일 위치를 지정해줘야 한다.  
 
