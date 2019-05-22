@@ -97,7 +97,7 @@ Bowie yeah, David Bowie has it.
 
 **Conan** :  
 Yes I know.  
-When I've interviewed him I've noticed it's quite striking with hime.  
+When I've interviewed him I've noticed it's quite striking with him.  
 > 네 저도 알아요.  
     제가 그를 인터뷰 했을때 알아차렸는데, 상당히 눈에 띄더군요.  
 
@@ -107,7 +107,7 @@ It's more striking in him.
 
 **Alice** :  
 Onetime it took my boyfiend,  
-one boy friend one time..  
+one boyfriend one time..  
 One boyfriend who soon wasn't my boyfriend took 9 months to notice.  
 > 한번은 제 남자친구는 그럤죠,  
     한 번에 한 남자친구..(이건 뭔 소린지)  

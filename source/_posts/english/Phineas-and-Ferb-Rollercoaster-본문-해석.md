@@ -25,7 +25,7 @@ Well, he is a `platypus`, they don't do much.
 > 그래, 걔는 `오리너구리`지, 그들은 뭘 많이 안해.  
 
 `I for one`, am starting to get board.  
-And `boredem` is something of up with which I will not put.  
+And `boredom` is something of up with which I will not put.  
 > `개인적으로` 지루해지기 시작했어.  
 > 그리고 `지루함은` 내가 참지 못할거야.  
 >> 1. for one : 내 경우에는, 개인적으로  
@@ -52,7 +52,7 @@ That's it! **I know what we're gonna do today!**
 > 그거야! 우리가 오늘 뭐 해야할지 알겠어!  
 
 Phineas, Ferb. **I'm gonna go pick up a few things.**  
-You boys `stays out of trouble`. OK?  
+You boys `stay out of trouble`. OK?  
 > Phineas, Ferb. 나 몇가지 좀 사러갔다 올게.  
 > `말썽 피우지 마렴`. 알겠지?  
 >> 1. go 동사 형태를 꽤나 자주 사용하는 듯  
