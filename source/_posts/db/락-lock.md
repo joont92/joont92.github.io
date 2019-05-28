@@ -133,4 +133,7 @@ last_name에 대한 인덱스는 없고, first_name에 대한 인덱스만 있�
 인덱스로 조회된 레코드에 모두 락을 거는 방식은 똑같은데, 이후에 바로 불필요한 부분에 대해서 락을 해제하는 식으로 동작하기 때문이다.  
 그러므로 최대한 인덱스를 사용헐 수 있게 튜닝해주는 것이 좋다.  
 
+참고 : [이성욱, 『Real MySQL』, 위키북스(2012)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788992939003&orderClick=LEA&Kc=)
+
+
 <!-- more -->

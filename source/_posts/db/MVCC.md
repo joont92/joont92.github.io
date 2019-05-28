@@ -55,4 +55,7 @@ WHERE id = 12
 - 언두 로그 영역에 있는 데이터를 복구한다  
 - 언두 로그에서 해당 내용을 삭제한다.  
 
+참고 : [이성욱, 『Real MySQL』, 위키북스(2012)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788992939003&orderClick=LEA&Kc=)
+
+
 <!-- more -->

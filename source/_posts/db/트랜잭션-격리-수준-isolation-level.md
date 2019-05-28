@@ -164,4 +164,7 @@ InnoDB에서 기본적으로 순수한 SELECT 작업은 아무런 잠금을 걸�
 격리수준이 SERIALIZABLE일 경우 읽기 작업에도 `공유 잠금`을 설정하게 되고, 이러면 동시에 다른 트랜잭션에서 이 레코드를 변경하지 못하게 된다.  
 이러한 특성 때문에 동시처리 능력이 다른 격리수준보다 떨어지고, 성능저하가 발생하게 된다. 
 
+참고 : [이성욱, 『Real MySQL』, 위키북스(2012)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788992939003&orderClick=LEA&Kc=)
+
+
 <!-- more -->
