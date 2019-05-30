@@ -51,7 +51,7 @@ MVC 아키텍처는 기본적으로 **프론트 컨트롤러 패턴**과 함께 
 
 ## 4) 컨트롤러의 결과 리턴 : 모델과 뷰
 모델이 준비되었으므로 뷰를 선택한다.  
-뷰 오브젝트를 직접 선택할 수도 있지만 보통을 뷰 리졸버를 사용하여 뷰의 논리적인 이름만을 리턴해주는 방식을 사용한다.  
+뷰 오브젝트를 직접 선택할 수도 있지만 보통은 뷰 리졸버를 사용하여 뷰의 논리적인 이름만을 리턴해주는 방식을 사용한다.  
 컨트롤러가 최종적으로 리턴해주는 정보는 모델과 뷰, 2가지이다.  
 이를 리턴해주고 컨트롤러의 역할은 끝이난다.
 
@@ -68,10 +68,11 @@ MVC 아키텍처는 기본적으로 **프론트 컨트롤러 패턴**과 함께 
 ---
 
 # DispatcherServlet의 변경 가능한 전략
-아까 위에서도 봤듯이, DispatcherServlet은 자신이 작업을 직접 처리하지 않고, 다른 클래스들에게 행위를 위임하여 값을 받아오는 식으로 처리한다.  
-여기서 사용되는 클래스들을 `전략`이라고 부르고, 기본적으로 자주 사용되는 것들은 default로 등록되어있다.  
-`DispatcherServlet`은 전략패턴이 잘 적용되어 있으므로, 이러한 전략들을 아주 간단하게 변경 가능하다.(!!!)  
-간단하게 확장하고 싶은 전략들을 빈으로 등록만 해두면 된다.  
+위에 나와있듯이, DispatcherServlet은 하나의 요청에 대해 상당히 많은 작업들을 거친다  
+(하나의 요청에 HandlerMapping 거치고 HandlerAdapter 거치고 ViewResolver 거치고 등등..)  
+이 작업들을 `전략`이라고 부른다. 기본적으로 default 전략들이 있고, 별다른 설정을 하지 않는다면 이 기본 전략들을 사용하여 요청을 수행하게 된다  
+중요한것은, 스프링의 `DispatcherServlet`은 전략패턴이 잘 적용되어 있으므로 이 전략들을 아주 쉽게 확장(변경)할 수 있다는 점이다(!!)  
+간단하게 확장하고 싶은 전략들을 빈으로 등록만 해두면, DispatcherServlet이 플로우를 수행하면서 해당 전략을 기본전략 대신해서 실행하게 된다(등록된 확장 전략들이 있는가 체크하고 있으면 수행, 없으면 기본 전략 수행)  
 > `DispatcherServlet`은 스프링이 관리하는 오브젝트가 아니므로 직접 `DI` 하는 방식으로 전략이 확장되는 것은 아니다.  
 `DispatcherServlet`은 기본적으로 **DispatcherServlet.properties** 파일을 통해 설정을 초기화하고,
 내부적으로 가지고 있는 어플리케이션 컨텍스트를 통해 확장 가능한 전략이 있나 찾은 뒤, 이를 가져와 디폴트 전략을 대신해서 사용하는 방식이다.  
@@ -118,11 +119,9 @@ URL과 요청 정보를 기준으로 어떤 컨트롤러를 사용할지 결정�
 - default
     1. DefaultRequestToViewNameTraslator
 
-전략의 변경을 위해 빈을 직접 등록하게 되면 해당 전략의 default 전략들이 모두 무시되므로, 유의해야 한다.  
-또한 디폴트 전략에 추가 옵션을 주고 싶으면 해당 빈을 등록하면서 옵션을 줘야 한다.  
+> 전략의 변경을 위해 빈을 직접 등록하게 되면 해당 전략의 default 전략들이 모두 무시되므로, 유의해야 한다.  
+> 또한 디폴트 전략에 추가 옵션을 주고 싶으면 해당 빈을 등록하면서 옵션을 줘야 한다.  
 
-<div style="text-align: right">
-From <img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30" style="display:inline-block;"/>
-</div>
+참고 : [이일민, 『토비의 스프링 3.1』, 에이콘출판(2012)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788960773431&orderClick=LAG&Kc=)
 
 <!-- more -->

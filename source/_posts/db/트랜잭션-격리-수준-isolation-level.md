@@ -26,7 +26,7 @@ tags:
 # ISOLATION LEVEL 조회, 변경, 테스트
 - 조회
 ```sql
-SHOW VARIABLES like 'tx_isolation';;
+SHOW VARIABLES like 'tx_isolation';
 -- 또는
 SELECT @@tx_isolation;
 ```
@@ -61,13 +61,13 @@ A 트랜잭션에서 최종 커밋하면 B 트랜잭션에서 28살 이라는 �
 1. B 트랜잭션에서 10번 사원의 나이를 조회  
 2. 27살이 조회됨  
 3. A 트랜잭션에서 10번 사원의 나이를 27살에서 28살로 바꾸고 `커밋`  
-4. B 트랜잭션에서 10번 사원의 나이를 다시 조회  
+4. B 트랜잭션에서 10번 사원의 나이를 다시 조회(변경되지 않은 이름이 조회됨)  
 5. 28살이 조회됨  
 
 이는 하나의 트랜잭션내에서 똑같은 SELECT를 수행했을 경우 항상 같은 결과를 반환해야 한다는 REPEATABLE READ 정합성에 어긋나는 것이다.  
 일반적인 웹 어플리케이션에서는 크게 문제되지 않지만, 작업이 금전적인 처리와 연결되어 있다면 문제가 발생할 수 있다.  
 예를 들어 여러 트랜잭션에서 입금/출금 처리가 계속 진행되는 트랜잭션들이 있고  
-오늘 입금 총 합을 보여주는 트랜잭션이 있다고하면, 총합을 계산하는 SELECT 쿼리는 실행될 때 마다 다른 결과값을 가져올 것이다.  
+오늘의 입금 총 합을 보여주는 트랜잭션이 있다고하면, 총합을 계산하는 SELECT 쿼리는 실행될 때 마다 다른 결과값을 가져올 것이다.  
 
 이런 문제가 발생할 수 있기 떄문에 격리수준에 의해 실행되는 SQL 문장이 어떤 결과를 출력할 지 정확히 예측하고 있어야 한다.  
 
@@ -93,70 +93,70 @@ MySQL DBMS에서 기본으로 사용하고 있고, 이 격리수준에서는 NON
 
 ## REPETABLE READ에서 발생할 수 있는 데이터 부정합
 1. **UPDATE 부정합**  
+    ```sql
+    START TRANSACTION; -- transaction id : 1
+    SELECT * FROM Member WHERE name='junyoung';
 
-```sql
-START TRANSACTION; -- transaction id : 1
-SELECT * FROM Member WHERE name='junyoung';
+        START TRANSACTION; -- transaction id : 2
+        SELECT * FROM Member WHERE name = 'junyoung';
+        UPDATE Member SET name = 'joont' WHERE name = 'junyoung';
+        COMMIT;
 
-    START TRANSACTION; -- transaction id : 2
-    SELECT * FROM Member WHERE name = 'junyoung';
-    UPDATE Member SET name = 'joont' WHERE name = 'junyoung';
+    UPDATE Member SET name = 'zion.t' WHERE name = 'junyoung'; -- 0 row(s) affected
     COMMIT;
+    ```
 
-UPDATE Member SET name = 'zion.t' WHERE name = 'junyoung'; -- 0 row(s) affected
-COMMIT;
-```
+    이 상황에서 최종 결과는 `name = joont`가 된다.  
+    REPETABLE READ이기 때문에,  
+    2번 트랜잭션에서 `name = joont`로 변경하고 COMMIT을 하면 `name = junyoung`의 내용을 언두로그에 남겨놔야 한다.  
+    그래야 1번 트랜잭션에서 일관되게 데이터를 보는 것을 보장해줄 수 있기 때문이다.  
 
-이 상황에서 최종 결과는 `name = joont`가 된다.  
-REPETABLE READ이기 때문에,  
-2번 트랜잭션에서 `name = joont`로 변경하고 COMMIT을 하면 `name = junyoung`의 내용을 언두로그에 남겨놔야 한다.  
-그래야 1번 트랜잭션에서 일관되게 데이터를 보는 것을 보장해줄 수 있기 때문이다.  
+    이 상황에서 아래 구문에서 UPDATE 문을 실행하게 되는데, **UPDATE의 경우 변경을 수행할 로우에 대해 잠금이 필요하다**.  
+    하지만 현재 1번 트랜잭션이 바라보고 있는 `name = junyoung` 의 경우 레코드 데이터가 아닌 언두영역의 데이터이고,  
+    언두영역에 있는 데이터에 대해서는 쓰기 잠금을 걸 수가 없다.  
 
-이 상황에서 아래 구문에서 UPDATE 문을 실행하게 되는데, UPDATE의 경우 변경을 수행할 로우에 대해 잠금이 필요하다.  
-하지만 현재 1번 트랜잭션이 바라보고 있는 `name = junyoung` 의 경우 레코드 데이터가 아닌 언두영역의 데이터이고,  
-언두영역에 있는 데이터에 대해서는 쓰기 잠금을 걸 수가 없다.  
-
-그러므로 위의 UPDATE 구문은 레코드에 대해 쓰기 잠금을 시도하려고 하지만 `name = junyoung`인 레코드는 존재하지 않으므로,  
-`0 row(s) affected`가 출력되고, 아무 변경도 일어나지 않게 된다.  
-그러므로 최종적으로 결과는 `name = joont`가 된다. 자이언티가 되지 못해 아쉽다.  
+    그러므로 위의 UPDATE 구문은 레코드에 대해 쓰기 잠금을 시도하려고 하지만 `name = junyoung`인 레코드는 존재하지 않으므로,  
+    `0 row(s) affected`가 출력되고, 아무 변경도 일어나지 않게 된다.  
+    그러므로 최종적으로 결과는 `name = joont`가 된다. 자이언티가 되지 못해 아쉽다.   
+    > 간단하게 말해 DML 구문은 멀티버전을 관리하지 않는다
 
 2. **Phantom READ**  
-한 트랜잭션 내에서 같은 쿼리를 두 번 실행했는데, 첫 번째 쿼리에서 없던 유령(Phantom) 레코드가 두 번째 쿼리에서 나타나는 현상을 말한다.  
-REPETABLE READ 이하에서만 발생하고(SERIALIZABLE은 발생하지 않음), INSERT에 대해서만 발생한다.  
-아래와 같은 상황에서 재현될 수 있다.  
+    한 트랜잭션 내에서 같은 쿼리를 두 번 실행했는데, 첫 번째 쿼리에서 없던 유령(Phantom) 레코드가 두 번째 쿼리에서 나타나는 현상을 말한다.  
+    REPETABLE READ 이하에서만 발생하고(SERIALIZABLE은 발생하지 않음), INSERT에 대해서만 발생한다.  
+    아래와 같은 상황에서 재현될 수 있다.  
 
-```sql
-START TRANSACTION; -- transaction id : 1 
-SELECT * FROM Member; -- 0건 조회
+    ```sql
+    START TRANSACTION; -- transaction id : 1 
+    SELECT * FROM Member; -- 0건 조회
 
-    START TRANSACTION; -- transaction id : 2
-    INSERT INTO MEMBER VALUES(1,'joont',28);
+        START TRANSACTION; -- transaction id : 2
+        INSERT INTO MEMBER VALUES(1,'joont',28);
+        COMMIT;
+
+    SELECT * FROM Member; -- 여전히 0건 조회 
+    UPDATE Member SET name = 'zion.t' WHERE id = 1; -- 1 row(s) affected
+    SELECT * FROM Member; -- 1건 조회 
     COMMIT;
+    ```
 
-SELECT * FROM Member; -- 여전히 0건 조회 
-UPDATE Member SET name = 'zion.t' WHERE id = 1; -- 1 row(s) affected
-SELECT * FROM Member; -- 1건 조회 
-COMMIT;
-```
+    REPETABLE READ에 에 의하면 원래 출력되지 않아야 하는데 UPDATE 문의 영향을 받은 후 부터 출력된다.  
+    이 시점에 스냅샷을 적용시키는 것 같다.  
 
-REPETABLE READ에 에 의하면 원래 출력되지 않아야 하는데 UPDATE 문의 영향을 받은 후 부터 출력된다.  
-이 시점에 스냅샷을 적용시키는 것 같다.  
+    참고로 DELETE에 대해서는 적용되지 않는다.  
 
-참고로 DELETE에 대해서는 적용되지 않는다.  
+    ```sql
+    START TRANSACTION; -- transaction id : 1 
+    SELECT * FROM Member; -- 1건 조회
 
-```sql
-START TRANSACTION; -- transaction id : 1 
-SELECT * FROM Member; -- 1건 조회
+        START TRANSACTION; -- transaction id : 2
+        DELETE FROM Member WHERE id = 1;
+        COMMIT;
 
-    START TRANSACTION; -- transaction id : 2
-    DELETE FROM Member WHERE id = 1;
+    SELECT * FROM Member; -- 여전히 1건 조회 
+    UPDATE Member SET name = 'zion.t' WHERE id = 1; -- 0 row(s) affected
+    SELECT * FROM Member; -- 여전히 1건 조회 
     COMMIT;
-
-SELECT * FROM Member; -- 여전히 1건 조회 
-UPDATE Member SET name = 'zion.t' WHERE id = 1; -- 0 row(s) affected
-SELECT * FROM Member; -- 여전히 1건 조회 
-COMMIT;
-```
+    ```
 
 # SERIALIZABLE  
 가장 단순하고 가장 엄격한 격리수준이다.  
