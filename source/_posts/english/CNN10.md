@@ -1,0 +1,204 @@
+---
+title: CNN10
+date: 2019-06-04 08:10:13
+tags:
+---
+
+Hey. I'm Carl Azuz for CNN 10.  
+
+This is our penultimate, or would you say "punultimate" show for the 2019 winter spring season.  
+
+`It's great to have you watching, as always.`  
+> 항상 그랬듯이, 시청해주셔서 감사합니다  
+
+We start today in Southern Africa.  
+
+A change has been made in the nation of Botswana, and it concerns elephants.  
+
+Since 2014, it's been illegal to hunt them there.  
+
+Botswana has an `estimated 130,000 African elephants`, more than any other African country.  
+> 13만 마리로 추정되는 아프리카 코끼리
+
+`It put the hunting ban in place in 2014` to help the animals recover from habitat loss and poaching when people kill them illegally.  
+> 2014년에 사냥 금지령을 내렸다
+
+Now, though, Botswana's government has eliminated the ban, which means elephant hunting is once again allowed there, `as it already is in neighboring nations`.  
+> 이미 이웃 나라에서와 같이
+
+`The idea is that` legal hunting will take place in the wilderness, far away from where people live.  
+> ~ 할거라는 생각이다
+
+The government says elephant populations are now stable, so they can be hunted, and it says that problems between residents and elephants had been increasing.  
+
+Scores of people are killed or injured by elephants each year.
+
+And a villager who spoke to CNN says the animals destroy crops and don't benefit the community.  
+
+Conservationists, of course, have a different view, One told CNN that hunting is a, quote, "outdated practice which has no place in the modern world."  
+
+And another said that allowing elephant hunting is like allowing people to shoot cats, dogs or great apes. 
+
+But he also says that if elephant hunting is managed correctly, it won't affect overall numbers of elephants in Botswana.  
+
+Poaching, however, can. 
+
+There are signs that poaching's been on the rise in Botswana.  
+
+It's carried out by people who hope to illegally sell the ivory from elephant tusks on the black market. 
+
+It's not known exactly what kind of impact legal hunting will have on poaching or elephant populations as a whole, but it's something that Botswana's people, its government and conservationists will be watching.
+
+
+Ten Second Trivia. On a smart phone, captions, select-to-speak and magnification are all part of what settings category: Accessibility, 
+
+Network & internet, Appearance or Device connection? These are all common accessibility settings which makes computers more, well, accessible. 
+
+OK, so yesterday, we told you about a robot that can walk packages to your doorstep. We've covered the subjects on drone deliveries, self-driving 
+
+cars, robotic window cleaners. Technology is moving ahead at a feverish pace, and much of it is aimed at making everyday living easier or at least 
+
+more automated. 
+
+But what about making everyday living more accessible for people with disabilities? How are robots in the internet of things, when more and more 
+
+items are connected to the internet, how are they improving everyday accessibility?
+
+(BEGIN VIDEOTAPE)
+
+ROBERT RIENER, FULL PROFESSOR OF SENSORY MOTOR SYSTEMS, ETH ZURICH: We need all stakeholders in our society to make technology available to all. 
+
+MICHAEL HAGMANN, PRODUCT PILOT, MYOSWISS: People with no disability, they cannot really imagine what that really means for people like me. 
+
+KURSAT CEYLAN, CO-FOUNDER, WEWALK: There are 253 million visually impaired people in the world, and these people have been still using just a plain 
+
+stick.
+
+UNIDENTIFIED FEMALE: Cities can be difficult cases to navigate at the best of times. But for some with disabilities, they can turn into gold bits 
+
+(ph). With nearly 200 million people globally experiencing a severe disability, stairs, curbs, train gaps, even crosswalks can be impossible 
+
+obstacles. 
+
+But as devices grow smarter, cities are becoming more accessible. In fact, the assistive tech industry will be worth an estimated $30 billion by 2024. 
+
+That's up from $14 billion in 2015. And when those with disabilities are around 40 percent less likely to be employed, access, of course, has a huge 
+
+impact on the economy as well.
+
+RIENER: It's very important to invest in our field because there's a multiplicator effect. If we develop new technologies it does not just help 
+
+single persons, it helps a large group of users. 
+
+UNIDENTIFIED FEMALE: Three of the most cutting-edge examples are already changing lives. 
+
+JOSE DI FELICE, PRODUCT PILOT, SCEWO: My accident was in Dijon with a motorcycle. In the first second, you know what happens. This is a new 
+
+kind of wheelchair, but the main thing is you can climb up the stairs. 
+
+UNIDENTIFIED MALE: You can go up the stairs by yourself? 
+
+DI FELICE, Genius, right?
+
+BERNHARD WINTER, CEO & CO-FOUNDER, SCEWO: Jose, he wrote us, about half a year ago, an e-mail that he would like to test the wheelchair. Our goal is 
+
+to develop a wheelchair that can climb stairs. 
+
+DI FELICE: Thank you so much. It's really good. You've done so well. 
+
+WINTER: It's working, isn't it?
+
+DI FELICE: It's perfect. I've almost got tears in my eyes. 
+
+WINTER: The goal was to make a really cool robot at the start, but then it switched over to developing this product, because we saw there was such a 
+
+huge need for the people. 
+
+UNIDENTIFIED FEMALE: That need is felt in cities across the world. In Paris, the European Union's largest city, only nine out of more than 300 
+
+metro stations have full disabled access as of 2019. 
+
+RIENER: I think there's a boom in the development of assistive technologies. Systems are getting more robust and smaller and smaller. 
+
+UNIDENTIFIED FEMALE: These smaller systems are allowing assistive tech to become increasing wearable. 
+
+HAGMANN: I'm diagnosed with Bethlem Myopathy. It's a genetic disease. I lose muscle cells everywhere. I have not enough muscle strength to really 
+
+hold me.
+
+JAIME DUARTE, CEO & FOUNDER, MYOSWISS: Hi, Michael. 
+
+HAGMANN: Hey.
+
+DUARTE: I have the Myosuit for you to try. 
+
+HAGMANN: Oh, great. 
+
+DUARTE: What we are developing as an exomuscle is rather a system that assists people that need extra force or extra assistance in their daily 
+
+life. You hear the motors of the system. So the way that the tendon is routed from the muscles here in the backpack, it's really extending the hip 
+
+and the knee. So it's the same muscle groups that we use, this muscle that we need, the glutaeus and the quadriceps, to really extend both joints at 
+
+the same time.
+
+HAGMANN: I really have this vision in mind to do a mountain hike with my son. My family thinks, "Yes, you are crazy, Michael." So I never really 
+
+thought that I would do a marathon. 
+
+UNIDENTIFIED MALE: You're a hero.
+
+RIENER: Robotics does not only connect to the body of a person, but also to many other devices, which are connected via the internet of things. 
+
+UNIDENTIFIED FEMALE: By 2025, there'll be an estimated 25 billion connections between these things around the world. This will transform how 
+
+devices operate within cities. 
+
+CEYLAN: Unfortunately, I cannot name a single city as a perfectly disabled-friendly city. That's why we are trying to provide this 
+
+independency for visually-impaired people. Welcome.
+
+UNIDENTIFIED FEMALE: Hi.
+
+CEYLAN: WeWalk is a smart cane developed for visually-impaired people. You can easily connect WeWalk to your smartphone, via WeWalk's application. 
+
+And it's so joyful. You know, you can talk with your cane, and your care is answering you. Choose navigation on the touchpad.
+
+WEWALK SMART CANE APPLICATION: Navigation. 
+
+CEYLAN: Click it.
+
+WEWALK SMART CANE APPLICATION: Start.
+
+UNIDENTIFIED FEMALE: Another of WeWalk's capabilities is obstacle detection. Embedded in the handle is an ultrasonic sensor that maps the 
+
+user's surroundings. If an obstacle is detected, the stick warns the user by vibration. 
+
+DUYGU KAYAMAN, USER, WEWALK: To me WeWalk represents the end of an ear and the start of a new one. 
+
+UNIDENTIFIED FEMALE: All of these technologies have had interest from other industries, indicating that the good health of the assistive tech 
+
+sector can only be a good thing for society. 
+
+RIENER: There's a lot of new movement and there will be a lot of new results. We apply cool technology, robotic technology which attracts many 
+
+people who do not have a relationship to any kind of person with a disability. So it opens the minds of many people. 
+
+(END VIDEOTAPE)
+
+AZUZ: Dierks Bentley isn't just the name of a country music artist, it's the name of a Golden Retriever, this Golden Retriever. And he's testing 
+
+out the newest piece of equipment for a fire department in North Carolina, oxygen masks for pets aimed to help revive animals that have inhaled smoke, 
+
+like in a house fire. And though each kit costs about $65, these were donated to the fire department by their local humane society. 
+
+They come in different sizes, so they should fit "Airdales," Labrador "Rebreathers," long-"aired" and short-"aired" cats, and guinea pigs, like 
+
+guinea pigs, potentially saving "oxygenerations" of animals, giving both piece of mind and a breath of fresh air. I'm Carl Azuz. We have one more 
+
+show to go in this season, and we hope you'll join us again tomorrow for Friday's awesome edition of CNN10. 
+
+END 
+
+
+<!-- more -->
