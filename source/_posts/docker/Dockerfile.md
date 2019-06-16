@@ -9,9 +9,9 @@ tags:
 
 # Dockerfile이란?
 도커 이미지를 만들 때 꼭 필요한 설정파일이다  
-도커 이미지 빌드시에 이 파일의 인스트럭션들을 참조하여 이미지를 만든다  
+이 파일내에 작성된 인스트럭션들을 참조하여 이미지가 만들어진다  
 
-기본으로 `Dockerfile` 이라는 이름을 사용하고, 이름을 변경하고 싶다면 이미지 빌드시에 추가 옵션을 줘야한다
+기본으로 `Dockerfile` 이라는 이름을 사용하고, 이름을 변경하고 싶다면 이미지 빌드시에 추가 옵션을 줘야한다(-f)  
 
 # 인스트럭션
 `Dockerfile` 내에 있는 명령어들을 말한다  
@@ -51,16 +51,21 @@ openjdk 는 이미지명이며, 8-jdk는 태그명이다
 
 ### COPY
 호스트 머신의 파일이나 디렉터리를 도커 컨테이너 안으로 복사하는 인스트럭션이다  
-이전에 만든 컨테이너안의 현재 디렉토리로 호스트 머신의 Test.java 를 복사하는 과정이다  
+이미지가 빌드될 때 1번만 실행되는 명령어이다  
+
+컨테이너안의 현재 디렉토리로 호스트 머신의 Test.java 이 복사된다  
 
 ### RUN
 도커 이미지를 `실행할 컨테이너 안에서` 실행할 명령을 정의한다  
-복사된 Test.java를 javac로 컴파일하는 과정이다  
-호스트 머신에 Test.class가 없나 확인하지 말자  
+이 또한 이미지가 빌드될 때 1번만 실행되는 명령어이다  
+
+복사된 Test.java를 javac로 컴파일하고 있다  
 
 ### CMD
 컨테이너 안에서 실행할 프로세스(명령)를 지정한다  
-컴파일된 Test.class 파일을 실행하는 과정이다  
+이는 이미지가 컨테이너화 될 때(실행될 때)마다 실행되는 명령어이다  
+
+컴파일된 Test.class 파일을 실행하고 있다  
 
 작성법이 조금 특이한데, 총 3가지 작성법을 제공한다  
 - CMD command param1 param2 [...]
@@ -71,13 +76,13 @@ openjdk 는 이미지명이며, 8-jdk는 태그명이다
     - 쉘 없이 바로 실행하면서 매개변수를 던져주는 형태이다  
     - 도커에서 권장하는 형태이다
     - 쉘 스크립트 구문을 사용할 수 없다
-        ```
+        ```dockerfile
         CMD ["echo", "Hello, $name"]
 
         $ Hello $name
         ```
     - 만약 쉘 스크립트를 사용하고 싶다면 쉘을 실행시키면서 인자로 전달해줘야 한다
-        ```
+        ```dockerfile
         CMD ["/bin/bash", "-c", "echo Hello, $name"]
         ```
 - CMD ["param1", "param2" [, ...]]
@@ -85,7 +90,7 @@ openjdk 는 이미지명이며, 8-jdk는 태그명이다
 
 #### CMD는 Dockerfile 내에 하나만 작성할 수 있다
 만약 CMD를 여러개 작성한다면 가장 앞부분껀 전부 무시되고 가장 마지막에 있는 명령만이 실행된다  
-```
+```dockerfile
 CMD ["javac", "Test.java"]
 CMD ["java", "Test"]
 ```
@@ -104,7 +109,7 @@ CMD 명령이 무시됨을 볼 수 있다
 CMD와 마찬가지로 컨테이너 안에서 실행될 프로세스(명령)를 지정하는 인스트럭션이다  
 CMD와 다른점은 조금 기준점(?) 이 되는 프로세스를 지정하는 것이랄까..  
 ENTRYPOINT를 입력하면 CMD에 전달된 인자들은 전부 ENTRYPOINT의 인자로 전달된다  
-```
+```dockerfile
 FROM openjdk:jdk-8
 
 ENTRYPOINT ["java"]
@@ -112,7 +117,7 @@ CMD ["version"]
 ```
 
 또한 아래와 같이 사용해서 컨테이너의 용도를 어느정도 제한 할수도 있다  
-```
+```dockerfile
 FROM golang:1.10
 
 ENTRYPOINT ["go"]
@@ -128,32 +133,34 @@ $ go version go1.10.3 linux/amd64 # 출력
 
 ### LABEL
 이미지를 만든 사람의 이름 등을 적을 수 있다  
-```
+```dockerfile
 LABEL maintainer="joont92@github.com"
 ```
 
 ### ENV
 도커 안에서 사용할 환경 변수를 지정한다  
-```
+```dockerfile
 ENV CLASSPATH=/workspace/javatest
 
 CMD ["java", "Main"]
 ```
 
 ### ARG
-이미지 빌드할 떄 환경변수를 전달받게끔 하기 위해 사용한다  
-이미지 빌드시에만 사용할 수 있다  
-```
-ARG classpath
+이미지 빌드할 떄 환경변수를 정의하여 사용할 수 있다  
+```dockerfile
+ARG classpath=.
 ENV CLASSPATH=${classpath}
 
 CMD ["java", "Main"]
 ```
 
+외부에서 환경변수를 전달 받을수도 있다
 `--build-arg`를 통해 인자를 전달한다  
 ```sh
 $ docker image build --build-arg classpath=/workapce/javatest -t javatest:latest .
 ```
+> 이미지 빌드시에만 사용할 수 있다  
+> 컨테이너 생성시에 클래스패스를 바꾸는 것은 불가능하다  
 
 참고 : [야마다 아키노리, 『도커/쿠버네티스를 활용한 컨테이너 개발 실전 입문』, 심효섭 옮김, 위키북스(2019)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158391447&orderClick=LEA&Kc=)
 
