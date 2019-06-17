@@ -47,6 +47,7 @@ VOLUME /var/log
 $ docker image build -t volume_container:latest .
 $ docker container run -d volume_container:latest
 ```
+> 참고로 볼륨 컨테이너를 띄우면 바로 종료되는데, 이렇게 종료된 컨테이너를 사용해도 상관없다
 
 `--volumes-from` 옵션으로 다른 컨테이너에 연결한다면  
 ```sh
@@ -116,10 +117,10 @@ services:
             - /var/lib/mysql
             - /var/log
 ```
-> 참고로 볼륨 컨테이너의 경우 종료된 상태여도 상관없다  
-
 v3의 경우 컨테이너를 따로 생성하지 않아도 된다는 장점이 있다  
 
+볼륨 컨테이너는 충분히 좋은 기능이지만, 그래도 범위가 같은 도커 호스트 안이라는 사실은 변하지 않는다  
+이렇듯 데이터 이식 면에서는 아직 개선할 부분이 많이 남아있다
 
 참고 : 
     - <https://darkrasid.github.io/docker/container/volume/2017/05/10/docker-volumes.html>  
