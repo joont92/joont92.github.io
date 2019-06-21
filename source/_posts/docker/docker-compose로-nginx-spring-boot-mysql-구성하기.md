@@ -154,9 +154,11 @@ spring.jpa.show-sql=true
 ```
 여기서 특별한 부분은 datasource url로 ip 대신 `test_database` 라고 준 부분이다  
 이는 `docker-compose.yml`에 써놓은 mysql의 서비스명과 동일한데,  
-`docker-compose.yml` 내에 작성한 컨테이너들은 모두 같은 네트워크에서 동작하므로, 서비스 이름으로 서로를 참조할 수 있기 때문이다  
-> 기존에는 `links` 라는 속성으로 지정해줘야 했으나, docker-compose 설정파일 v3 부터 이를 작성할 필요없게 되었다  
-> 근데 이 기능을 뭐라고 부를까..?  
+이는 `docker-compose.yml` 내에 작성한 컨테이너들은 모두 같은 네트워크 대역으로 묶어서 생성하기 때문이다  
+> compose 단위로 새로운 네트워크 대역으로 생성한다  
+> 그냥 단일 도커들만 실행하면 기본 네트워크 대역에 할당된다  
+>> compose 없이 컨테이너 각각 띄워보고 들어가서 ip 확인해보면 대역대가 같다  
+>> 하지만 compose 로 생성한 컨테이너는 대역대가 다르다  
 
 이제 작성이 끝났으니, docker-compose 로 컨테이너들을 실행시켜보자  
 ```sh
