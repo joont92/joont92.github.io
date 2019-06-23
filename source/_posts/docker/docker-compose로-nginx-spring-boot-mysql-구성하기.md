@@ -231,6 +231,8 @@ server {
 > 즉, 다른 컨테이너에서는 8080으로 통신이 가능하지만, 외부에서는 8080으로 더이상 접근할 수 없다  
 
 github url : <https://github.com/joont92/docker-study/tree/master/step02>  
-참고 : <https://github.com/hellokoding/hellokoding-courses/blob/master/docker-examples/dockercompose-springboot-mysql-nginx/docker-compose.yaml>  
+
+참고 : 
+- <https://github.com/hellokoding/hellokoding-courses/blob/master/docker-examples/dockercompose-springboot-mysql-nginx/docker-compose.yaml>  
 
 <!-- more -->

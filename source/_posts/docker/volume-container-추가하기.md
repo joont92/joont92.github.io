@@ -122,8 +122,8 @@ v3의 경우 컨테이너를 따로 생성하지 않아도 된다는 장점이 �
 볼륨 컨테이너는 충분히 좋은 기능이지만, 그래도 범위가 같은 도커 호스트 안이라는 사실은 변하지 않는다  
 이렇듯 데이터 이식 면에서는 아직 개선할 부분이 많이 남아있다
 
-참고 : 
-    - <https://darkrasid.github.io/docker/container/volume/2017/05/10/docker-volumes.html>  
-    - <https://stackoverflow.com/questions/45494746/docker-compose-volumes-from-usage-example>
+참고 :  
+- <https://darkrasid.github.io/docker/container/volume/2017/05/10/docker-volumes.html>  
+- <https://stackoverflow.com/questions/45494746/docker-compose-volumes-from-usage-example>
 
 <!-- more -->
