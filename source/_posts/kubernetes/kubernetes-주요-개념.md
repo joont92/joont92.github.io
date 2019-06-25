@@ -171,7 +171,7 @@ label은 여러개 설정할 수 있다
             port: 80
             nodePort: 33333
     ```
-    클러스터 내에서 `<내부IP>:<포트>`으로도 접속 가능하고, `<NodeIP>:<NodePort>`로도 접근 가능하다  
+    클러스터 내에서 `<내부IP>:<포트>`으로도 접속 가능하고, 외부에서 `<NodeIP>:<NodePort>`로도 접근 가능하다  
 - **LoadBalancer**  
     보통 클라우드 서비스에서만 설정 가능한 방식으로, 외부 IP를 가지고 있는 로드밸런서를 할당한다  
     외부 IP를 가지고 있기 때문에 외부에서 접근이 가능하다  
@@ -190,6 +190,34 @@ label은 여러개 설정할 수 있다
         externalName: xxxx-rds.amazonaws.com
     ```
     이렇게 설정하면 클러스터 내의 Pod 들이 이 서비스를 호출할 경우 `xxxx-rds.amazoneaws.com` 으로 포워딩해주게 된다(일종의 프록시 역할)  
+
+#### 쿠버네티스 로드밸런싱(알아봐야함)
+각 노드별로 들어가있는 kube-proxy 내에 
+각 노드별로 kube-proxy가 들어가있다  
+kube-proxy 내에는 각각 iptables가 있고, 이 iptables 내에 pod들에 대한 정보가 있다?  
+
+모든 노드의 IP(머신일테니까):포트 로 외부에서 접근하면 해당 서비스에 접근할 수 있다  
+아마도 L4 스위치를 위한 기능인 것 같다  
+
+kube-proxy?  
+
+Pod과 Pod 간에는 클러스터 IP로 통신  
+<https://cloud.google.com/kubernetes-engine/docs/concepts/network-overview?hl=ko>  
+
+<https://cloud.google.com/blog/products/containers-kubernetes/introducing-container-native-load-balancing-on-google-kubernetes-engine>  
+
+<https://kubernetes.io/ko/docs/tutorials/services/source-ip/>  
+
+서비스를 NodePort 로 설정하고 앞의 LB에서 VM 단위로 로드밸런싱 하는게 별로 최적화된 방법이 아니라고 하는 듯  
+서비스에서 해주는 어플리케이션 레벨의 로드밸런싱이 효과적이다는 말을 하는것 같다  
+(어떻게..?)  
+VM 간에 연결이 되어야하는..  
+
+VM의 서비스(kube-proxy)로 왔을때, 적절히 다른 Pod로 넘겨준다  
+각 Pod들은 여러 VM에 퍼져있다  
+
+Iptables에서 랜덤으로 다른 Pod로 넘긴다  
+그러므로 IPvs 로 가라고 했다..?  
 
 ### 기본 오브젝트 - 볼륨
 쿠버네티스는 다양한 외장 디스크를 추상화된 형태로 제공하여,  
@@ -218,7 +246,7 @@ metadata:
 spec:
     replicas: 3
     selector:
-        matchLabels:
+        matchLabels: 
             tier: frontend
     template:
         metadata:
@@ -235,15 +263,20 @@ spec:
     설정된 값보다 Pod의 수가 적으면 추가로 띄우고, Pod의 수가 더 많으면 남는 Pod를 삭제한다  
 - selector  
     ReplicaSet으로 관리할 Pod를 선택한다  
-    현재는 label을 기반으로 select 하고 있다
-    왜 다른 애들과 문법이 다른지..  
+    현재는 label을 기반으로 select 하고 있다  
+    > service 의 selector 와 문법이 달라서 혼동될 수 있는데, 그냥 지원되지 않는 것이라고 한다(deployment 는 됨)  
+    > <https://medium.com/@zwhitchcox/matchlabels-labels-and-selectors-explained-in-detail-for-beginners-d421bdd05362>
 - template  
     Pod를 추가로 띄울 때 어떻게 만들지에 대한 Pod 정보를 정의해놓은 부분이다
     새로 생성된 Pod도 selector에 의해 선택되어야 하므로 label이 필요하다  
 
-> ReplicaSet 생성 시 기존에 떠있는 Pod 들이 template에 있는 Pod와 일치하지 않더라도 삭제되지 않음에 주의해야 한다  
-> e.g. 기존에 `app: reverse-proxy` 레이블의 apache Pod가 떠있는 상태에서,   
-> `selector = app: reverse-proxy, template = nginx`의 ReplicaSet을 생성하더라도 apache Pod는 삭제되지 않는다  
+아래는 ReplicaSet에 대해 조금 주의(?)할 부분들이다  
+- ReplicaSet 생성 시 기존에 떠있는 Pod 들이 template에 있는 Pod와 일치하지 않더라도 삭제되지 않음에 주의해야 한다  
+    > e.g. 기존에 `app: reverse-proxy` 레이블의 apache Pod가 떠있는 상태에서,  
+    > `selector = app: reverse-proxy, template = nginx`의 ReplicaSet을 생성하더라도 apache Pod는 삭제되지 않는다  
+- selector 가 Pod 들을 묶는 기준이니까, 기존에 ReplicaSet가 띄워진 상태에서 selector 를 바꾸게 되면 기존의 Pod 들은 삭제되지 않고 남아있게 되나?  
+    > ReplicaSet으로 떠있는 상태에서 selector를 바꾸게 되면 문법적으로 오류가 발생한다  
+    > ReplicaSet에 대한 메타정보(떠있는 Pod들과 매핑 등)이 마스터 노드 어딘가에.. 저장되어서 그것으로 판단하는 것 같다  
 
 ### 컨트롤러 - Deployment
 ReplicaSet 보다 상위에 있는 개념으로 ReplicaSet 배포의 기본 단위가 되는 리소스이다  
