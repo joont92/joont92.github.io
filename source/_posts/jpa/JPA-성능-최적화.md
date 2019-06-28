@@ -215,9 +215,11 @@ try {
 트랜잭션을 시작하는 부분 없이 엔티티매니저만 가져와서 조회를 수행해도 정상 동작하고, 보다시피 lazy 로딩까지도 동작한다.  
 > 참고로 여기서 스프링이 `@PersistenceContext`를 통해 가져온 EntityManager를 사용할 경우 예외가 발생한다(org.hibernate.LazyInitializationException)  
 > 위처럼 메서드내에서 생성된 entityManager에만 유효하다(@PersistenceContext는 공유되는 애라서 그런가..)  
+> 공유되는 애인게 왜 문제가 되지?
 
 ### 스프링을 사용할 때
-스프링을 사용하면 @Transactional 어노테이션을 보고 트랜잭션과 영속성 컨텍스트가 같이 생성하는 생성된다  
-즉 위처럼 명시적으로 EntityManager를 생성해서 영속성 컨텍스트를 초기화할 수 없으므로, OSIV를 on 해줘야만 트랜잭션 밖에서 읽기가 가능하다
-(물론 일반적인 방법에서의 얘기이다)  
-OSIV를 끄고 @Transactional 어노테이션도 붙이지 않는다면 어느 시점에 영속성 컨텍스트를 생성해야할지 모르기 때문이다  
+스프링을 사용할떄는 OSIV를 사용하거나, 직접 EntityManager를 생성시켜주는 방법을 사용해야 한다  
+기본적으로 @Transactional 을 통해 트랜잭션이 생성될 때 영속성 컨텍스트를 생성하는 구조이기 떄문이다  
+트랜잭션을 시작하지 않을거라면 @Transactional 어노테이션을 제거해줘야하는데, 그러면 스프링 입장에서 언제 영속성 컨텍스트를 생성해줘야 할지 알지 못하게 된다  
+그러므로 OSIV를 사용하지 않을거면 EntityManagerFactory를 가져온 뒤 직접 엔티티 매니저를 생성해줘야만 트랜잭션 없이 읽기가 가능하다  
+이 과정 없이 트랜잭션 없이 읽기를 사용하려면(@Transactional 어노테이션을 제거해서) OSIV를 켜줘야한다  

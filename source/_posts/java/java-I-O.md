@@ -53,7 +53,7 @@ I/O는 Input/Output의 약자로, 입력/출력을 말한다.
 abstract 메서드로 `write(int b)` 를 제공한다. 방식은 `InputStream`과 동일하다.  
 (`flush`의 경우 버퍼가 있는 출력 스트림의 경우에만 의미가 있다.)  
 
-> **write(byte[] b), write(byte[] b, int off, int le)**  
+> **write(byte[] b), write(byte[] b, int off, int len)**  
 > - `write(byte[] b)` : 배열 b에 저장된 모든 내용을 출력소스에 쓴다  
 > - `write(byte[] b, int off, int len)` : 배열 b에 저장된 내용을 off 위치부터 len개 만큼 출력소스에 쓴다.  
 
