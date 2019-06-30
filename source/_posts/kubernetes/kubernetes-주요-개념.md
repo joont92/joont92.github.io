@@ -50,6 +50,7 @@ mac에서 kubernetes 설치는 `kubernetes` 탭의 `Enable Kubernetes`만 클릭
 ---
 
 여기까지가 기본적인 개념이고, 이제부터 쿠버네티스의 주요 리소스에 대해 설명하겠다  
+아래는 간단한 설명이며, 상세한 설명은 [조대협님의 블로그](https://bcho.tistory.com)를 보는 것이 좋을 것 같다  
 
 ## 오브젝트
 쿠버네티스에서 가장 중요한 부분은 `오브젝트`라는 개념인데, 이 오브젝트는 크게 `기본 오브젝트`와 `컨트롤러`로 나뉜다  
@@ -135,7 +136,7 @@ spec:
     - protocol: TCP
       port: 80
 ```
-보다시피 selector 로 `app: myapp` 이라고 선언해놓았는데, 이는 `app: myapp` 이라는 벨을 가진 Pod 들을 선택해서 `my-service` 라는 서비스로 묶겠다는 의미이다  
+보다시피 selector 로 `app: myapp` 이라고 선언해놓았는데, 이는 `app: myapp` 이라는 레이블을 가진 Pod 들을 선택해서 `my-service` 라는 서비스로 묶겠다는 의미이다  
 
 그렇다면 label은 어떻게 설정하는가?  
 위의 Pod 를 설정할 때 metadata에 `label: myapp` 이라는 부분을 봤을 것이다  
@@ -157,7 +158,7 @@ label은 여러개 설정할 수 있다
 - **ClusterIp**  
     디폴트 설정으로, 서비스에 내부 IP(Cluster IP)를 할당한다  
     그러므로 클러스터 내에서는 접근이 가능하지만, 클러스터 외부에서는 접근이 불가능하다  
-    클러스터 내의 컨테이너로 들어간 뒤 `curl http://my-service(:80)` 를 호출하면 myapp 레이블을 가진 pod의 80포트로 연결될 것이다(targetPort 지정가능, 지정하지 않을 시 port와 동일하게 설정)  
+    클러스터 내의 컨테이너로 들어간 뒤 `curl http://my-service[:80]` 를 호출하면 myapp 레이블을 가진 pod의 80포트로 연결될 것이다(targetPort 지정가능, 지정하지 않을 시 port와 동일하게 설정)  
 - **NodePort**  
     Cluster IP 로 접근가능하면서 모든 노드의 IP와 포트를 통해서도 접근이 가능하게 된다  
     ```yml
@@ -190,34 +191,6 @@ label은 여러개 설정할 수 있다
         externalName: xxxx-rds.amazonaws.com
     ```
     이렇게 설정하면 클러스터 내의 Pod 들이 이 서비스를 호출할 경우 `xxxx-rds.amazoneaws.com` 으로 포워딩해주게 된다(일종의 프록시 역할)  
-
-#### 쿠버네티스 로드밸런싱(알아봐야함)
-각 노드별로 들어가있는 kube-proxy 내에 
-각 노드별로 kube-proxy가 들어가있다  
-kube-proxy 내에는 각각 iptables가 있고, 이 iptables 내에 pod들에 대한 정보가 있다?  
-
-모든 노드의 IP(머신일테니까):포트 로 외부에서 접근하면 해당 서비스에 접근할 수 있다  
-아마도 L4 스위치를 위한 기능인 것 같다  
-
-kube-proxy?  
-
-Pod과 Pod 간에는 클러스터 IP로 통신  
-<https://cloud.google.com/kubernetes-engine/docs/concepts/network-overview?hl=ko>  
-
-<https://cloud.google.com/blog/products/containers-kubernetes/introducing-container-native-load-balancing-on-google-kubernetes-engine>  
-
-<https://kubernetes.io/ko/docs/tutorials/services/source-ip/>  
-
-서비스를 NodePort 로 설정하고 앞의 LB에서 VM 단위로 로드밸런싱 하는게 별로 최적화된 방법이 아니라고 하는 듯  
-서비스에서 해주는 어플리케이션 레벨의 로드밸런싱이 효과적이다는 말을 하는것 같다  
-(어떻게..?)  
-VM 간에 연결이 되어야하는..  
-
-VM의 서비스(kube-proxy)로 왔을때, 적절히 다른 Pod로 넘겨준다  
-각 Pod들은 여러 VM에 퍼져있다  
-
-Iptables에서 랜덤으로 다른 Pod로 넘긴다  
-그러므로 IPvs 로 가라고 했다..?  
 
 ### 기본 오브젝트 - 볼륨
 쿠버네티스는 다양한 외장 디스크를 추상화된 형태로 제공하여,  
@@ -267,13 +240,13 @@ spec:
     > service 의 selector 와 문법이 달라서 혼동될 수 있는데, 그냥 지원되지 않는 것이라고 한다(deployment 는 됨)  
     > <https://medium.com/@zwhitchcox/matchlabels-labels-and-selectors-explained-in-detail-for-beginners-d421bdd05362>
 - template  
-    Pod를 추가로 띄울 때 어떻게 만들지에 대한 Pod 정보를 정의해놓은 부분이다
-    새로 생성된 Pod도 selector에 의해 선택되어야 하므로 label이 필요하다  
+    Pod를 `추가로 띄울 때` 어떻게 만들지에 대한 Pod 정보를 정의해놓은 부분이다
+    새로 생성된 Pod도 selector에 의해 선택되어야 하므로 selector의 label과 동일하게 맞춰줘야 한다  
 
 아래는 ReplicaSet에 대해 조금 주의(?)할 부분들이다  
-- ReplicaSet 생성 시 기존에 떠있는 Pod 들이 template에 있는 Pod와 일치하지 않더라도 삭제되지 않음에 주의해야 한다  
+- ReplicaSet 생성 시 label이 일치하면 기존에 떠있는 Pod 들도 같이 ReplicaSet로 묶이는데, 이 Pod들이 template에 있는 Pod의 형태와 않더라도 삭제되지 않음에 주의해야 한다  
     > e.g. 기존에 `app: reverse-proxy` 레이블의 apache Pod가 떠있는 상태에서,  
-    > `selector = app: reverse-proxy, template = nginx`의 ReplicaSet을 생성하더라도 apache Pod는 삭제되지 않는다  
+    > `selector = app: reverse-proxy, template = nginx`의 ReplicaSet을 생성하면 기존의 apache Pod는 삭제되지않고 같은 ReplicaSet이 된다
 - selector 가 Pod 들을 묶는 기준이니까, 기존에 ReplicaSet가 띄워진 상태에서 selector 를 바꾸게 되면 기존의 Pod 들은 삭제되지 않고 남아있게 되나?  
     > ReplicaSet으로 떠있는 상태에서 selector를 바꾸게 되면 문법적으로 오류가 발생한다  
     > ReplicaSet에 대한 메타정보(떠있는 Pod들과 매핑 등)이 마스터 노드 어딘가에.. 저장되어서 그것으로 판단하는 것 같다  
@@ -364,6 +337,6 @@ $ kubectl rollout undo deployment frontend
 > 롤백되면 리비전이 다시 1로 돌아가는 것이 아니라, 3으로 올라간다  
 > 리비전은 최대 10까지 가능한 것 같다  
 
-참고 : 
+참고 :  
 - 쿠버네티스 개념 이해 <https://bcho.tistory.com/1256?category=731548>  
 - 쿠버네티스 서비스 <https://bcho.tistory.com/1262>  

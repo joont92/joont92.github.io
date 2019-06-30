@@ -38,6 +38,7 @@ tags:
 
 1. 생성되는 도커 컨테이너는 namespace 로 격리되고, 그 상태에서 통신을 위한 네트워크 인터페이스(eth0)를 할당받는다
 2. host PC의 veth interface 가 생성되고 도커 컨테이너 내의 eth0 과 연결한다
+    > 컨테이너의 네트워크 격리를 달성하기 위해 선택한 방법인 것 같다
 3. host PC의 veth interface 는 `docker0` 이라는 다른 veth interface 와 연결된다
 4. 이 과정이 컨테이너가 추가될 때 마다 반복된다
 
@@ -155,5 +156,5 @@ docker-proxy 는 iptables가 어떠한 이유로 NAT를 사용하지 못하게 �
 
 참고 :  
 - NET namespace, veth interface : <https://bluese05.tistory.com/28>
-- 도커 네트워크 구조 : <https://bluese05.tistory.com/28>
-- 도커 네트워크 외부 통신 : <https://bluese05.tistory.com/28>
+- 도커 네트워크 구조 : <https://bluese05.tistory.com/15>
+- 도커 네트워크 외부 통신 : <https://bluese05.tistory.com/53>
