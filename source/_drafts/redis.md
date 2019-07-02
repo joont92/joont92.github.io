@@ -66,5 +66,10 @@ mget 1111 1112
 
 https://www.joinc.co.kr/w/man/12/REDIS/IntroDataType
 
-자료구조 활용도  
-적절한 모델링  
+- Redis 자료 구조 활용
+- 모델링 방법
+- key는 object:id 의 형태를 취한다
+- keys 대신 scan 을 사용한다
+    - 되도록이면 키 값을 직접 지정해서 탐색하느 것이 좋다
+- Replication
+- master/slave
