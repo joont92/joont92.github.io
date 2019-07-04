@@ -76,6 +76,12 @@ docker0		8000.0242c0e58c93	no		veth1680438
 > 참고로 mac이나 window에서는 이 `docker0` 브릿지나 `veth interface` 들을 볼 수 없다  
 > VM 안으로 감쳐줘 있기 때문이다  
 
+## 사실 docker container의 네트워크 모드는 총 4개이다
+bridge, host, container, none 으로 총 4개가 존재한다  
+위에서 살펴본 구조가 bridge 네트워크로 생성한 container의 동작방식이며, default 값이다  
+kubernetes의 pod을 생성할때는 container 모드를 사용한다  
+자세한 내용은 <https://bluese05.tistory.com/38>를 참조한다  
+
 ## docker-compose 로 띄우면 다른 네트워크 대역을 가진다
 docker-compose 를 공부할 때 docker-compose 로 띄운 컨테이너들은 모두 같은 네트워크에 속한다는 말이 있었고, 실제로도 그랬다  
 단독으로 띄운 도커 컨테이너와 docker-compose 를 통해 띄운 도커 컨테이너들을 들어가서 ip를 확인해보면 각자 네트워크 대역대가 다름을 알 수 있다  

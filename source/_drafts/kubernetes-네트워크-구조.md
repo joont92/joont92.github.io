@@ -17,6 +17,10 @@ Pod 띄울 시 pause 라는 컨테이너가 추가로 생성되고, 이 컨테�
 즉 Pod 을 여러개 띄우기는 하지만, 물리적으로는 docker0 과 여러개의 docker container가 뜨는 구조이며, 이를 논리적으로 묶은것이 Pod  
 (그리고 이 논리적인 범위에 대해 여러가지를 해주는애가 pause?)  
 
+참고로 docker는 네트워크 타입이 bridge, host, container 등이 있는데 bridge가 기본이고, pod을 띄울떄는 container 형을 사용한다  
+container 형을 사용하면 ip가 같게 설정되고, 내부에서 localhost 통신 가능  
+(같은 포트로 띄우면 에러 발생함, netstat 등 다 해봐도 바로 됨)  
+
 ---
 
 Pod과 Pod 끼리도 통신할 수 있어야 하는데, 같은 node 라면 모두 docker0 과 연결된 컨테이너라 상관없지만 다른 노드에 있다면 어떨까?  
