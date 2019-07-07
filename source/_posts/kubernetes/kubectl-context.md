@@ -1,10 +1,9 @@
 ---
-title: kubectl context 변경
+title: kubectl context
 date: 2019-07-03 22:10:49
 tags:
-    - kubectl
     - kubectl context change
-    - kubectl config
+    - kubectx
 ---
 
 쿠버네티스 클러스터를 관리하는 cli 도구인 kubectl에는 환경을 바꿔가며 클러스터를 관리할 수 있는 context 라는 기능?이 존재한다  
@@ -69,10 +68,14 @@ preferences: {}
     > 현재 사용하는 context 를 지정하는 부분이다  
     > 현재 local-context 를 사용하라고 설정해놓았으므로, 터미널에서 kubectl 명령을 입력하면 로컬 쿠버네티스 클러스터를 관리하게 된다  
 
-# context 조회
-`kubectl config` 명령으로 조회할 수 있다  
-
+# context 조회 및 변경(feat. kubectx)
+가장 단순한 방법으로는 `~/.kube/config` 파일을 컨트롤하여 context를 조회하거나 수정하는 방법이 있고,  
+그 다음 방법으로는 `kubectl config` 명령을 이용하는 방법이 있다  
 ```sh
+# gcp-context 로 변경
+$ kubectl config use-context gcp-context
+
+# context 조회
 $ kubectl config get-contexts
 
 CURRENT   NAME            CLUSTER         AUTHINFO     NAMESPACE
@@ -80,17 +83,20 @@ CURRENT   NAME            CLUSTER         AUTHINFO     NAMESPACE
           local-context   local-cluster   local-user
 ```
 
-보다시피 context 목록과 현재 내가 사용중인 context 또한 볼 수 있다  
+하지만 이것보다 `kubectx` 라는 더 최적화된 도구가 있다  
+> github : <https://github.com/ahmetb/kubectx>  
 
-# context 변경
-필요에 따라 다른 쿠버네티스 클러스터에 접속하고자 하는 순간은 많을 것이다  
-(개발서버 쿠버네티스 클러스터에 붙었다가, 상용서버 쿠버네티스 클러스터에 붙었다가 등등)  
+간단하게 brew 로 설치할 수 있다  
+아래는 간단한 사용법이다  
+```sh
+# context 조회
+$ kubectl
+gcp-context # 노란색으로 표시
+local-context
 
-이럴 경우 위의 context 를 바꿔주면 다른 환경의 클러스터를 컨트롤 할 수 있는데, 방법은 2가지가 있다  
-1. `~/.kube/config` 파일을 수정한다  
-    > 위에서 봤다시피 `current-context` 값을 사용하고자 하는 context 값으로 변경해주면 된다
-2. kubectl 명령을 이용한다  
-    ```sh
-    $ kubectl config use-context gcp-context
-    ```
-    위와 같이 입력해주면 현재 context가 `gcp-context`로 변경된다  
+# local-context 로 변경
+$ kubectx local-context
+
+# 이전 context로 돌아가기
+$ kubectx -
+```

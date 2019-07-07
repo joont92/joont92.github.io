@@ -4,37 +4,95 @@ date: 2019-06-30 18:39:30
 tags:
 ---
 
+쿠버네티스 서비스 타입들이 이해가 안되서 찾아보다가 도커 네트워크를 공부했고, 쿠버네티스 네트워크까지 넘어왔다  
+참고한 글들에 다 너무 잘 나와있지만 개인적으로 한번 더 정리해봤다  
+
 # Pod Network
+Pod은 내부의 컨테이너들끼리 IP와 port를 공유한다는 특징이 있었는데, 어떻게 구성되어 있길래 그럴까?  
+아래는 Pod 의 네트워크를 잘 설명해주는 하나의 그림이다  
+
 ![kubernetes-pod-network](https://joont92.github.io/temp/kubernetes-pod-network.png)  
 > 출처 : <https://medium.com/google-cloud/understanding-kubernetes-networking-pods-7117dd28727>  
 
-컨테이너 내의 eth0 이 모두 veth0에 연결  
-Pod 띄울 시 pause 라는 컨테이너가 추가로 생성되고, 이 컨테이너가 Pod 으로 묶인 컨테이너들의 네트워크를 담당한다?  
-(localhost로 모두 통신할 수 있게끔)  
-참고로 Pod으로 묶인 컨테이너들은 localhost로 통신할 수 있으므로 같은 port 를 설정할 수 없다  
+기본적으로 도커 컨테이너를 하나 생성하면, 해당 컨테이너를 namespace로 격리한 뒤 eth0 interface를 생성하고, 노드에 veth interface를 생성해서 연결시키는 구조로 동작한다  
+하지만 위의 그림은 보다시피, 컨테이너별로 각기 다른 veth interface에 연결된 것이 아닌, 공통된 하나의 veth interface에 연결되어 있음을 볼 수 있다  
 
-그리고 여기서 Pod을 더 띄우게 되면, 지정한 개수만큼 container 가 더 뜨고 pause 컨테이너가 하나 다시 뜨게 된다  
-즉 Pod 을 여러개 띄우기는 하지만, 물리적으로는 docker0 과 여러개의 docker container가 뜨는 구조이며, 이를 논리적으로 묶은것이 Pod  
-(그리고 이 논리적인 범위에 대해 여러가지를 해주는애가 pause?)  
+이는 쿠버네티스가 Pod 내에서 컨테이너를 생성할 때 도커 컨테이너를 bridge 모드(default)가 아닌 container 모드로 띄웠기 때문이다  
+container 모드는 아래와 같이 다른 컨테이너를 지정함으로써 띄울 수 있는데, 이렇게 생성함으로써 생성된 도커 컨테이너는 지정한 도커 컨테이너와 네트워크를 공유하는 형태로 생성될 수 있게 된다  
+```sh
+$ docker run --net=container:{container_id} -d {image_name}
+```
+> 자세한 내용은 <https://bluese05.tistory.com/38>를 참조한다  
 
-참고로 docker는 네트워크 타입이 bridge, host, container 등이 있는데 bridge가 기본이고, pod을 띄울떄는 container 형을 사용한다  
-container 형을 사용하면 ip가 같게 설정되고, 내부에서 localhost 통신 가능  
-(같은 포트로 띄우면 에러 발생함, netstat 등 다 해봐도 바로 됨)  
+이렇게 생성된 컨테이너들을 각각 들어가서 ip 정보를 확인해보면, 모두 ip가 같음을 볼 수 있을 것이다  
+즉 결론은, Pod 내의 도커 컨테이너들은 모두 위처럼 container 모드로 실행되었기 때문에 아래와 같은 특성이 만족되는 것이다  
+- 외부에서 같은 IP로 접근할 수 있다(각 컨테이너들의 IP가 같음)
+- 컨테이너간 localhost 로 통신할 수 있다
+- 같은 port는 사용 불가능
 
----
+> 그림에는 있지만 언급하지 않은 `pause` 컨테이너가 있는데, 이는 위에서 언급한 일련의 기능들을 수행하기 위해 Pod 내에 추가적으로 생성되는 컨테이너이다  
+> Pod 이 실행될 때 마다 이 컨테이너가 먼저 실행되고, 이 컨테이너의 namespace를 다른 컨테이너들이 공유하고, 이 컨테이너가 다른 pod 들을 container 형태로 띄우는 건가?  
 
-Pod과 Pod 끼리도 통신할 수 있어야 하는데, 같은 node 라면 모두 docker0 과 연결된 컨테이너라 상관없지만 다른 노드에 있다면 어떨까?  
-문제가 되는 상황은 각각 다른 노드의 docker0 의 ip 대역대가 같아버리는 문제이다  
+# 노드가 다른 Pod 끼리의 통신
+위의 모델의 경우 같은 `docker0` 브릿자 아래에서는 Pod 간의 통신이 전혀 문제될 것이 없지만,  
+쿠버네티스 클러스터의 경우 보통 1개 이상의 노드를 관리하며, Pod 는 매번 다른 노드에 배포되는 특성이 있다  
 
-그래서 kubernetes 는 이런 문제를 없애기 위해, node 들의 ip 대역을 전방위 적으로 설정해서 겹치지 않게끔 한다  
-![kubernetes-pod-network-multi-node](https://joont92.github.io/temp/kubernetes-pod-network-multi-node.png)  
+`docker0` 브릿지는 각 노드마다 생성되는데, 중요한 점(문제되는 점)은 이 `docker0` 브릿지의 ip 대역대가 겹칠 수 있다는 것이다  
+`docker0` 아래의 컨테이너들은 전부 `docker0` 브릿지의 네트워크 대역을 따라가는데, 만약 `docker0` 브릿지의 네트워크 대역이 겹친다면 결국 Pod의 IP가 겹치는 문제가 발생한다  
+
+![kubernetes-pod-network-multi-node1](https://joont92.github.io/temp/kubernetes-pod-network-multi-node1.png)  
 > 출처 : <https://medium.com/google-cloud/understanding-kubernetes-networking-pods-7117dd28727>  
 
-그리고 이를 게이트웨이의 라우팅 테이블에서 관리한다
+이런식으로 말이다  
+이 상태에서는 Pod 간에 서로 통신할 수가 없다. src와 dest의 IP가 같기 때문이다  
+
+노드 안에서 생성되는 `doccker0` 브릿지의 경우 default 네트워크 대역이 정해져있고,  
+만약 default 값을 사용하지 않는다고 해도 다른 노드의 `docker0` 브릿지가 어떤 네트워크 대역을 사용하고 있는지 알지 못하기 때문에 문제가 해결되지는 않는다  
+
+쿠버네티스는 이러한 문제점을 해결하기 위해 2가지 방법을 사용했다  
+- `docker0` 브릿지들의 전체 네트워크 대역을 아우르는 주소 대역을 할당한다
+- 들어오는 패킷들이 어떤 브릿지로 가야하는지에 대해 라우팅 테이블을 설정한다
+
+이를 적용하면 아래와 같은 모습이 된다  
+
+![kubernetes-pod-network-multi-node2](https://joont92.github.io/temp/kubernetes-pod-network-multi-node2.png)  
+> 출처 : <https://medium.com/google-cloud/understanding-kubernetes-networking-pods-7117dd28727>  
+
+(docker에서 사용하는 `docker0` 브릿지로는 이 문제를 해결할 수 없기 때문에 이를 커스텀한 `cbr` 브릿지를 사용했다)  
+
+이제 Pod은 항상 라우팅 테이블을 거쳐 다른 Pod 이 존재하는 브릿지를 찾아갈 수 있기 때문에, 다른 노드에 있는 Pod 끼리도 원할하게 통신이 가능해진다!  
 
 # Service Network
+위에서 봤듯이 Pod 의 네트워크 메카니즘 때문에 다른 노드에 있는 Pod 끼리도 서로 통신이 가능하다  
+근데 문제는, Pod는 상황에 따라 늘어나거나 삭제되는 둥 변경이 많은 리소스라는 점이다  
+즉 새롭게 배치되면서 노드가 변경되고, 그에따라 IP가 변경되는 경우가 많다는 의미인데, 이런 상태에서는 Pod에서 다른 Pod로 통신하는 것이 사실상 불가능해진다  
 
-POD network : https://coffeewhale.com/k8s/network/2019/04/19/k8s-network-01/
+쿠버네티스는 이러한 문제를 해결하기 위해 `서비스` 라는 새로운 리소스를 등장시켰는데, 개념은 대충 아래와 같다  
+![kubernetes-service-network1](https://joont92.github.io/temp/kubernetes-service-network1.png)  
+> 출처 : <https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0>  
+
+보다시피 scalable 한 Pod 들을 서비스 라는 리소스 하나로 묶었다(label을 이용하여 묶는다)  
+아래는 생성된 서비스의 모습이다  
+```sh
+$ kubectl get services
+
+NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+echo         ClusterIP   10.3.241.152   <none>        8888/TCP   23s
+```
+
+보다시피 service 자체가 ClusterIP 라는 내부(가상) IP를 가지게 됨을 볼 수 있는데, 이로 인해 이제 내부 Pod 들은 이 ClusterIP를 입력하여 통신하므로써 서비스 내의 Pod 들과 통신할 수 있게 되는 것이다  
+이렇게 함으로써 Pod의 IP 변경에 대해 신경쓰지 않아도 되고, 서비스가 요청을 각 파드별로 적절히 로드밸런싱 해주는 효과까지 얻을 수 있게 된다  
+
+## 어떻게 처리되는 걸까?(feat. kube-proxy)
+그렇다면 서비스 IP를 Pod 의 IP로 바꿔주는 역할은 어디서 수행하게 되는걸까?  
+
+
+
+Pod 의 IP가 계속 바뀌니 Pod 의 IP를 외부에 연결할수가 없음  
+그래서 Service를 통해 가상 IP를 받음
+
+
+kube proxy : https://arisu1000.tistory.com/27839
 service network : https://coffeewhale.com/k8s/network/2019/05/11/k8s-network-02/
 
 #### 쿠버네티스 로드밸런싱(알아봐야함)
