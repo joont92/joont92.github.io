@@ -33,7 +33,7 @@ $ docker run --net=container:{container_id} -d {image_name}
 > 그림에는 있지만 언급하지 않은 `pause` 컨테이너가 있는데, 이는 위에서 언급한 일련의 기능들을 수행하기 위해 Pod 내에 추가적으로 생성되는 컨테이너이다  
 > Pod 이 실행될 때 마다 이 컨테이너가 먼저 실행되고, 이 컨테이너의 namespace를 다른 컨테이너들이 공유하고, 이 컨테이너가 다른 pod 들을 container 형태로 띄우는 건가?  
 
-# 노드가 다른 Pod 끼리의 통신
+## 노드가 다른 Pod 끼리의 통신
 위의 모델의 경우 같은 `docker0` 브릿자 아래에서는 Pod 간의 통신이 전혀 문제될 것이 없지만,  
 쿠버네티스 클러스터의 경우 보통 1개 이상의 노드를 관리하며, Pod 는 매번 다른 노드에 배포되는 특성이 있다  
 
@@ -71,7 +71,7 @@ $ docker run --net=container:{container_id} -d {image_name}
 ![kubernetes-service-network1](https://joont92.github.io/temp/kubernetes-service-network1.png)  
 > 출처 : <https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0>  
 
-보다시피 scalable 한 Pod 들을 서비스 라는 리소스 하나로 묶었다(label을 이용하여 묶는다)  
+보다시피 scalable 한 Pod 들을 서비스 라는 리소스 하나로 묶고(label을 이용하여 묶는다), 이 리소스를 통해 Pod에 도달할 수 있도록 한다    
 아래는 생성된 서비스의 모습이다  
 ```sh
 $ kubectl get services
@@ -80,20 +80,52 @@ NAME         TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
 echo         ClusterIP   10.3.241.152   <none>        8888/TCP   23s
 ```
 
-보다시피 service 자체가 ClusterIP 라는 내부(가상) IP를 가지게 됨을 볼 수 있는데, 이로 인해 이제 내부 Pod 들은 이 ClusterIP를 입력하여 통신하므로써 서비스 내의 Pod 들과 통신할 수 있게 되는 것이다  
+다른 Pod에서 서비스에 부여된 ClusterIP(내부 IP)로 요청을 보냄으로써 서비스에 포함된 Pod 들과 통신할 수 있게 되는 것이다  
 이렇게 함으로써 Pod의 IP 변경에 대해 신경쓰지 않아도 되고, 서비스가 요청을 각 파드별로 적절히 로드밸런싱 해주는 효과까지 얻을 수 있게 된다  
 
 ## 어떻게 처리되는 걸까?(feat. kube-proxy)
 그렇다면 서비스 IP를 Pod 의 IP로 바꿔주는 역할은 어디서 수행하게 되는걸까?  
+실제로 서비스에 부여된 ClusterIP의 경우 어디에도 연결되어 있는 네트워크 인터페이스가 없다  
+이는 어딘가 다른데서 이를 처리해주고 있음을 의미하는데, 그곳이 어디일까?  
+
+이 역할은 각 노드마다 하나씩 떠 있는 kube-proxy 라는 도커 컨테이너가 담당한다  
+
+서비스는 결국 `ClusterIP : Pod IP 들` 의 형태로 이루어진 iptables로 보면 된다  
+iptables에서 로드밸런싱 기능을 구현하여 서비스의 load balancing 을 달성했으며, 이 iptables 정보는 kube-proxy에 의해 계속해서 관리된다  
+
+Pod가 서비스 IP를 요청하면 cbr0 까지 올라가고 노드의 네트워크 인터페이스를 통해 나갈떄 iptables에 의해 변경되어서 나간다  
+그러므로 갔다가 다시 똑같은 노드로 돌아올 수도 있다  
+
+노드에 해당 포트로 들어왔을 때 해당 서비스로 연결하는 것이 노드포트이다  
+NodePort로 31111 지정했다는 것은, 해당 노드의 31111 포트로 들어왔을 때 서비스 ClusterIP로 포워딩 됨을 의미한다  
+해당 가상 IP로 연결되면 다시 위의 구조를 타서 Pod로 연결된다  
 
 
+서비스의 loadBalancer 타입은 클라우드에 로드밸런서를 하나 생성해주고,  
+이 로드밸런서를 클러스터 내의 서비스들에게 NodePort 타입으로 연결한다  
+<https://www.bogotobogo.com/DevOps/Docker/Docker_Kubernetes_NodePort_vs_LoadBalancer_vs_Ingress.php>  
+<https://medium.com/google-cloud/kubernetes-from-load-balancer-to-pod-3f2399637b0c>  
+(서비스 자체는 Pod 처럼 실제 네트워크 인터페이스가 연결된 실체가 아니므로, NodePort 를 통해서만 접근할 수 있다. 자체적으로 외부 IP를 가질 수 없다)    
+기본적인 동작은 이렇게 설명되지만, 이는 타입은 철저하게 클라우드 서비스 구현에 의존한다  
+즉, 클라우드 서비스 마다 이 기능이 다를 수 있으며, 어떤 클라우드는 이 기능을 제공하지 않을수도 있다  
+그리고 그림을 다시 보면, 외부 LoadBalancer에 cloud-controller 라는 애가 추가적으로 도움을 주고 있다  
+사실상 Node가 늘어나고 줄어들수도 있고, service port도 변경될 수 있으니 이런애가 없으면 운영이 불가능했을 것이다  
 
-Pod 의 IP가 계속 바뀌니 Pod 의 IP를 외부에 연결할수가 없음  
-그래서 Service를 통해 가상 IP를 받음
+ingress는 내부에 있다?  
+L7 레벨까지 지원하는 로드밸런서이다  
+외부에서 인그레스로는 어떻게 들어오는가?  
+ingress는 어디에 있는가? 마스터 노드에 있는가? 클러스터 내에 있다면 왜 NodePort 모드로 생성되어야 하는가? 그냥 ClusterIP 모드로 생성되면 안되는가?  
+인그레스까지 오는 것은 마찬가지로 로드 밸런서를 탄다(?)  
 
+라우팅과 로드밸런싱의 차이?  
 
 kube proxy : https://arisu1000.tistory.com/27839
 service network : https://coffeewhale.com/k8s/network/2019/05/11/k8s-network-02/
+
+# External Network(feat. Ingress)
+라우터의 IP를 치고 들어오는것이 아닌..가..  
+기본적인 DNS와 Route에 대한 개념이 필요하다
+
 
 #### 쿠버네티스 로드밸런싱(알아봐야함)
 각 노드별로 kube-proxy가 들어가있다  
