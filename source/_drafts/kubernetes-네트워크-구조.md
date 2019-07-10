@@ -123,8 +123,9 @@ kube proxy : https://arisu1000.tistory.com/27839
 service network : https://coffeewhale.com/k8s/network/2019/05/11/k8s-network-02/
 
 # External Network(feat. Ingress)
-라우터의 IP를 치고 들어오는것이 아닌..가..  
-기본적인 DNS와 Route에 대한 개념이 필요하다
+External Client가 Router랑 직접 연결이 된것도 아닌데 어떻게 서비스 IP로 요청하는 것이 라우터로 전달될 수 있지?  
+찾을 수 없는 IP 일 떄 다른 라우터로 넘기면서 찾는게 라우터의 역할인데..  
+10.3.241.152.80 으로 요청한다는 것을 라우터가 캐치해야 하는데, 그러려면 해당 노드가 라우터 하위에 있는 리소스여야하는데..  
 
 
 #### 쿠버네티스 로드밸런싱(알아봐야함)
