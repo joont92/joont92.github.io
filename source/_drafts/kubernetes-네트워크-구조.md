@@ -123,10 +123,11 @@ kube proxy : https://arisu1000.tistory.com/27839
 service network : https://coffeewhale.com/k8s/network/2019/05/11/k8s-network-02/
 
 # External Network(feat. Ingress)
-External Client가 Router랑 직접 연결이 된것도 아닌데 어떻게 서비스 IP로 요청하는 것이 라우터로 전달될 수 있지?  
-찾을 수 없는 IP 일 떄 다른 라우터로 넘기면서 찾는게 라우터의 역할인데..  
-10.3.241.152.80 으로 요청한다는 것을 라우터가 캐치해야 하는데, 그러려면 해당 노드가 라우터 하위에 있는 리소스여야하는데..  
-
+라우터에 대한 명확한 이해가 필요하다  
+IP를 받았을 때 특정 IP를 찾기 위해 넘겨주는 것인데,  
+외부에서 시리얼 포트로 공인 IP를 받으면 내부 네트워크로 전환?  
+어떻게 공인 IP를 받고 내부 IP를 찾아갈 수 있지?  
+NAT에 대한 이해?  
 
 #### 쿠버네티스 로드밸런싱(알아봐야함)
 각 노드별로 kube-proxy가 들어가있다  

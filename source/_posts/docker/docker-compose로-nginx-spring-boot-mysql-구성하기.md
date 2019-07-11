@@ -1,5 +1,5 @@
 ---
-title: docker-compose로 nginx + spring-boot + mysql 구성하기
+titke: [docker] docker-compose로 nginx + spring-boot + mysql 구성하기
 date: 2019-06-16 11:10:49
 tags:
     - docker-compose
