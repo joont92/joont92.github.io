@@ -85,7 +85,7 @@ metadata:
 spec:
   containers:
     - name: myapp-container
-      image: busybox
+      image: busybox # 이미지는 로컬을 참조하지 않고 항상 registry에서 땡겨오는 것 같다
       command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
 ```
 
