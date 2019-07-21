@@ -1,5 +1,5 @@
 ---
-title: mysql port 파라미터 안될 때  
+title: [db] mysql port 파라미터 안될 때  
 date: 2019-02-08 14:12:58
 tags:
     - mysql port doesn't work

@@ -1,5 +1,5 @@
 ---
-title: commit message convention
+title: [git] commit message convention
 date: 2019-03-19 02:40:05
 tags:
     - commit

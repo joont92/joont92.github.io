@@ -1,5 +1,5 @@
 ---
-title: bash_profile과 bashrc
+title: [linux] bash_profile과 bashrc
 date: 2017-12-26 18:07:27
 tags:
     - bash_profile

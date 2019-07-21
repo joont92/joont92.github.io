@@ -1,5 +1,5 @@
 ---
-title: java 자료형
+title: [java] java 자료형
 date: 2017-12-12 22:55:49
 tags:
   - java 형 변환

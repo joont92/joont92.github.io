@@ -1,5 +1,5 @@
 ---
-title: 한 컬럼에 여러 엔티티 저장하기(feat.@Any)
+title: [jpa] 한 컬럼에 여러 엔티티 저장하기(feat.@Any)
 date: 2019-02-17 20:49:25
 tags:
     - '@ManyToOne multiple entities'

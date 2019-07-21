@@ -1,5 +1,5 @@
 ---
-title: stream example
+title: [java] stream example
 date: 2019-01-22 17:04:45
 tags:
 ---

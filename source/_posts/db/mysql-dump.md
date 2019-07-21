@@ -1,5 +1,5 @@
 ---
-title: mysql dump
+title: [db] mysql dump
 date: 2018-04-10 13:02:20
 tags:
     - mysql dump

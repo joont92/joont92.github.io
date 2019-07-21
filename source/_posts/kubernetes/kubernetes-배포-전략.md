@@ -250,5 +250,7 @@ test-service의 label selector가 업데이트 됨으로써, test-service는 새
 이처럼 구버전과 신버전이 공존하는 텀이 없이 바로 신버전으로 전환할 수 있다(!!)  
 게다가 만약 새로 배포된 버전에 문제가 발생한다면, 다시 test-service의 label을 blue로 돌려줌으로써 쉽게 롤백도 가능하다  
 
+기존에 물려있던 트래픽에 대해서는.. 롤링배포와 블루그린 배포에서 차이점이 뭘까?
+
 참고 :  
 - [야마다 아키노리, 『도커/쿠버네티스를 활용한 컨테이너 개발 실전 입문』, 심효섭 옮김, 위키북스(2019)](http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791158391447&orderClick=LEA&Kc=)

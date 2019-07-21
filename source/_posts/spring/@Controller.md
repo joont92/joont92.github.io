@@ -1,5 +1,5 @@
 ---
-title: '@Controller'
+title: [spring] '@Controller'
 date: 2018-03-04 21:37:23
 tags:
     - '@RequestMapping param'

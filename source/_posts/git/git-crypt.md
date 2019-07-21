@@ -1,5 +1,5 @@
 ---
-title: git-crypt
+title: [git] git-crypt
 date: 2019-01-08 14:27:56
 tags:
     - git-crypt 적용

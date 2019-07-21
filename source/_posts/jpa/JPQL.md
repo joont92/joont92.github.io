@@ -1,5 +1,5 @@
 ---
-title: JPQL
+title: [jpa] JPQL
 date: 2019-01-01 21:24:46
 tags:
     - 자바 ORM 표준 JPA 프로그래밍

@@ -1,5 +1,5 @@
 ---
-title: group_concat
+title: [db] group_concat
 date: 2019-03-12 12:08:29
 tags:
     - mysql

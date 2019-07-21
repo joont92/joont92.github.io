@@ -1,5 +1,5 @@
 ---
-title: 엔티티 값을 변환해서 저장하기(@Converter)
+title: [jpa] 엔티티 값을 변환해서 저장하기(@Converter)
 date: 2019-02-09 01:39:07
 tags:
     - '@Converter'

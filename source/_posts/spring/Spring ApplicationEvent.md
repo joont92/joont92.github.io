@@ -1,5 +1,5 @@
 ---
-title: Spring ApplicationEvent
+title: [spring] Spring ApplicationEvent
 date: 2018-11-25 21:59:42
 tags:
     - Spring ApplicationEvent

@@ -1,5 +1,5 @@
 ---
-title: best practice
+title: [jpa] best practice
 date: 2019-01-25 19:51:51
 tags:
 ---

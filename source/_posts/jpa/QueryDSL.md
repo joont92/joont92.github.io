@@ -1,5 +1,5 @@
 ---
-title: QueryDSL
+title: [jpa] QueryDSL
 date: 2019-01-10 23:36:34
 tags:
     - QueryDSL 문법  

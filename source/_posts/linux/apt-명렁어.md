@@ -1,5 +1,5 @@
 ---
-title: apt 명렁어
+title: [linux] apt 명렁어
 date: 2017-12-25 18:07:27
 tags:
 ---

@@ -1,5 +1,5 @@
 ---
-title: lombok practice 정리
+title: [java] lombok practice 정리
 date: 2018-12-13 23:47:54
 tags:
     - lombok

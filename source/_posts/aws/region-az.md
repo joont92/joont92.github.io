@@ -1,5 +1,5 @@
 ---
-title: 'region, az'
+title: [aws] 'region, az'
 date: 2019-06-03 23:31:15
 tags:
 ---
