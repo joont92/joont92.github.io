@@ -1,5 +1,5 @@
 ---
-title: [java] 'Scanner, BufferedReader, StringTokenizer'
+title: '[java] Scanner, BufferedReader, StringTokenizer'
 date: 2018-03-10 16:11:47
 tags:
     - 자바 입력

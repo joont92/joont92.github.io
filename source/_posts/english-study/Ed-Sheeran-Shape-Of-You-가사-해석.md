@@ -1,5 +1,5 @@
 ---
-title: [english-study] Ed Sheeran - Shape Of You
+title: '[english-study] Ed Sheeran - Shape Of You'
 date: 2018-03-18 10:25:08
 tags:
     - Ed Sheeran

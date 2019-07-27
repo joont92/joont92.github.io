@@ -1,5 +1,5 @@
 ---
-title: [java] java list array 변환
+title: '[java] java list array 변환'
 date: 2019-03-09 03:27:17
 tags:
 ---

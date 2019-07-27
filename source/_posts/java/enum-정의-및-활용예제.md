@@ -1,5 +1,5 @@
 ---
-title: [java] enum 정의 및 활용예제
+title: '[java] enum 정의 및 활용예제'
 date: 2018-12-05 18:07:07
 tags:
     - enum

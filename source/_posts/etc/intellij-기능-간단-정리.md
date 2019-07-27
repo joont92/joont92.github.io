@@ -1,5 +1,5 @@
 ---
-title: intellij 기능 간단 정리
+title: 'intellij 기능 간단 정리'
 date: 2019-03-08 23:59:18
 tags:
 ---

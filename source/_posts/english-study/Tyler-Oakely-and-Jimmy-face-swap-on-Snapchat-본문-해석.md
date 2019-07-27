@@ -1,5 +1,5 @@
 ---
-title: [english-study] Tyler Oakely and Jimmy face swap on Snapchat
+title: '[english-study] Tyler Oakely and Jimmy face swap on Snapchat'
 date: 2018-04-08 18:20:39
 tags:
     - Jimmy Fallon

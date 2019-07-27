@@ -1,5 +1,5 @@
 ---
-title: [english-study] Steven Yeun is obsessed with Korean Peter Griffin 본문/헤석
+title: '[english-study] Steven Yeun is obsessed with Korean Peter Griffin 본문/헤석'
 date: 2018-04-14 14:11:04
 tags:
     - Conan O'brien

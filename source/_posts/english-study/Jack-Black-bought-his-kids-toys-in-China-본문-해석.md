@@ -1,5 +1,5 @@
 ---
-title: [english-study] Jack Black bought his kids toys in China
+title: '[english-study] Jack Black bought his kids toys in China'
 date: 2018-01-27 23:03:56
 tags:
     - Jimmy Kimmel

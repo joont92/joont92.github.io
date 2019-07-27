@@ -1,5 +1,5 @@
 ---
-title: [java] 'class, interface 상속'
+title: '[java] class, interface 상속'
 date: 2018-01-21 21:40:24
 tags:
     - class extends

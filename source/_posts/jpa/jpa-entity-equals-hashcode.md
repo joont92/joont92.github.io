@@ -1,5 +1,5 @@
 ---
-title: [jpa] 'jpa entity equals, hashcode'
+title: '[jpa] jpa entity equals, hashcode'
 date: 2019-02-13 19:01:42
 tags:
     - jpa equals hashcode

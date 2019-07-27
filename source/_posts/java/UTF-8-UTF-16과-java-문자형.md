@@ -1,5 +1,5 @@
 ---
-title: [java] UTF-8, UTF-16과 java 문자형
+title: '[java] UTF-8, UTF-16과 java 문자형'
 date: 2018-12-08 11:11:42
 tags:
     - char

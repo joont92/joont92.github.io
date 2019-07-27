@@ -1,5 +1,5 @@
 ---
-title: [english-study] note
+title: '[english-study] note'
 date: 2017-12-12 00:17:35
 tags:
 ---

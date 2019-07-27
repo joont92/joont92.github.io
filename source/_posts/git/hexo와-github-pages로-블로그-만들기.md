@@ -1,5 +1,5 @@
 ---
-title: [git] hexo와 github pages로 블로그 만들기
+title: '[git] hexo와 github pages로 블로그 만들기'
 date: 2017-12-28 23:45:09
 tags:
 ---
@@ -118,7 +118,7 @@ hexo new post [post_name]
 
 ```md
 ---
-title: [git] first post
+title: '[git] first post'
 date: 2017-09-23 10:51:08
 tags:
 ---

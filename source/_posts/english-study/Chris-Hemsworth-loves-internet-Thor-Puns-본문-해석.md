@@ -1,5 +1,5 @@
 ---
-title: [english-study] Chris Hemsworth loves internet Thor Puns
+title: '[english-study] Chris Hemsworth loves internet Thor Puns'
 date: 2018-01-07 23:04:33
 tags:
     - Conan O'brien

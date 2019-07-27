@@ -1,5 +1,5 @@
 ---
-title: [db] database connection pool
+title: '[db] database connection pool'
 date: 2018-01-18 16:25:35
 tags:
     - connection pool

@@ -1,5 +1,5 @@
 ---
-title: jhipster
+title: 'jhipster'
 date: 2018-11-25 23:07:08
 tags:
     - jhipster example  

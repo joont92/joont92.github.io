@@ -1,5 +1,5 @@
 ---
-title: [english-study] Conan & Steven Yeun enjoy a traditional Korean meal
+title: '[english-study] Conan & Steven Yeun enjoy a traditional Korean meal'
 date: 2018-05-05 14:38:53
 tags:  
     - Conan O'brien

@@ -1,5 +1,5 @@
 ---
-title: [spring] WebApplicationInitializer
+title: '[spring] WebApplicationInitializer'
 date: 2018-02-06 00:05:50
 tags:
     - web.xml 없애기

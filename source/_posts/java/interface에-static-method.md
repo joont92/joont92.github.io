@@ -1,5 +1,5 @@
 ---
-title: [java] interface에 static method
+title: '[java] interface에 static method'
 date: 2019-03-14 23:30:38
 tags:
     - interface static method

@@ -1,5 +1,5 @@
 ---
-title: [english-study] Phineas and Ferb - Lawn Gnome Beach Party of Terror
+title: '[english-study] Phineas and Ferb - Lawn Gnome Beach Party of Terror'
 date: 2018-11-18 22:29:12
 tags:
     - Phineas and Ferb

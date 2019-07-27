@@ -1,5 +1,5 @@
 ---
-title: [english-study] Emma Stone explained Twitter to Woody Allen
+title: '[english-study] Emma Stone explained Twitter to Woody Allen'
 date: 2018-03-01 12:27:55
 tags:
     - Conan O'brien

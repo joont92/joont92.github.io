@@ -1,5 +1,5 @@
 ---
-title: iterm2 꾸미기
+title: 'iterm2 꾸미기'
 date: 2019-02-11 17:30:02
 tags:
     - iterm zsh

@@ -1,5 +1,5 @@
 ---
-title: IP 주소의 class, 공인 IP와 사설 IP
+title: 'IP 주소의 class, 공인 IP와 사설 IP'
 date: 2019-06-06 14:52:50
 tags:
     - IP 주소

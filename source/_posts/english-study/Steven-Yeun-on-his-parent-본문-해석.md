@@ -1,5 +1,5 @@
 ---
-title: [english-study] Steven Yeun on his parent
+title: '[english-study] Steven Yeun on his parent'
 date: 2018-03-25 22:09:50
 tags:
     - Ellen DeGeneres

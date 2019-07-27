@@ -1,5 +1,5 @@
 ---
-title: [english-study] Ice Cube is annoyed by Kevin Hart
+title: '[english-study] Ice Cube is annoyed by Kevin Hart'
 date: 2018-04-01 09:57:01
 tags:
   - Conan O'brien

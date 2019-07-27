@@ -1,5 +1,5 @@
 ---
-title: [spring] spring boot test
+title: '[spring] spring boot test'
 date: 2018-12-16 21:29:37
 tags:
     - '@SpringBootTest'

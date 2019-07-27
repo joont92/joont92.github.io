@@ -1,5 +1,5 @@
 ---
-title: [english-study] Chris Evans Initially Turned Down 'Captain Ameraica'
+title: '[english-study] Chris Evans Initially Turned Down "Captain Ameraica"'
 date: 2018-02-11 00:52:51
 tags:
     - Jimmy Kimmel

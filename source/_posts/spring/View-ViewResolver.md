@@ -1,5 +1,5 @@
 ---
-title: [spring] View, ViewResolver
+title: '[spring] View, ViewResolver'
 date: 2018-02-04 18:03:37
 tags:
     - View

@@ -1,5 +1,5 @@
 ---
-title: [english-study] Psy&Snoop on working together
+title: '[english-study] Psy&Snoop on working together'
 date: 2017-12-19 21:45:32
 tags:
     - Jimmy Kimmel

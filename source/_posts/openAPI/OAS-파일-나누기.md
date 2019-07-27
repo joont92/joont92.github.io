@@ -1,5 +1,5 @@
 ---
-title: OAS 파일 나누기
+title: 'OAS 파일 나누기'
 date: 2019-02-12 15:36:55
 tags:
     - OAS file split

@@ -1,5 +1,5 @@
 ---
-title: [english-study] Phineas and Ferb - Lights, Candace, Action!
+title: '[english-study] Phineas and Ferb - Lights, Candace, Action!'
 date: 2019-01-01 09:59:12
 tags:
     - Phineas and Ferb

@@ -1,5 +1,5 @@
 ---
-title: Naming Convention
+title: 'Naming Convention'
 date: 2018-11-25 21:31:57
 tags:
     - Naming Convention

@@ -1,5 +1,5 @@
 ---
-title: [db] jdbc
+title: '[db] jdbc'
 date: 2018-01-13 18:00:52
 tags:
     - java mysql

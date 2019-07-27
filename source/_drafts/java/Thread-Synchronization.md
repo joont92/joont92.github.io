@@ -1,5 +1,5 @@
 ---
-title: 'Thread, Synchronization'
+title: ''Thread, Synchronization''
 date: 2018-06-10 13:05:24
 tags:
 ---

@@ -1,5 +1,5 @@
 ---
-title: [java] 'java se, ee 차이'
+title: '[java] java se, ee 차이'
 date: 2017-12-28 16:28:51
 tags:
     - java se

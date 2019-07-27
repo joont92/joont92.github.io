@@ -1,5 +1,5 @@
 ---
-title: [jpa] CascadeType.PERSIST를 함부로 사용하면 안되는 이유
+title: '[jpa] CascadeType.PERSIST를 함부로 사용하면 안되는 이유'
 date: 2018-12-27 11:43:03
 tags:
     - CascadeType.PERSIST

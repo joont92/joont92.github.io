@@ -1,5 +1,5 @@
 ---
-title: [linux] 우분투 intellij에서 mac keymap 사용시 이슈
+title: '[linux] 우분투 intellij에서 mac keymap 사용시 이슈'
 date: 2018-03-22 18:07:27
 tags:
     - ubuntu intellij

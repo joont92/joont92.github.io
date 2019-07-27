@@ -1,5 +1,5 @@
 ---
-title: msa란?
+title: 'msa란?'
 date: 2018-12-16 21:06:28
 tags:
     - msa

@@ -1,5 +1,5 @@
 ---
-title: EC2
+title: 'EC2'
 tags:
 ---
 

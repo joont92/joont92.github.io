@@ -1,5 +1,5 @@
 ---
-title: eureka 서버
+title: 'eureka 서버'
 date: 2018-11-26 00:12:15
 tags:
     - eureka

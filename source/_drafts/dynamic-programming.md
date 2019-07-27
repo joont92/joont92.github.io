@@ -1,5 +1,5 @@
 ---
-title: dynamic programming
+title: 'dynamic programming'
 tags:
 ---
 

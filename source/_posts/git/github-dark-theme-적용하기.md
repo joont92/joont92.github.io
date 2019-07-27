@@ -1,5 +1,5 @@
 ---
-title: [git] github dark theme 적용하기
+title: '[git] github dark theme 적용하기'
 date: 2019-01-03 18:01:36
 tags:
     - github dark

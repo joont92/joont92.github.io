@@ -1,5 +1,5 @@
 ---
-title: [db] 락(lock)  
+title: '[db] 락(lock)  '
 date: 2019-01-18 22:45:03
 tags:
 ---

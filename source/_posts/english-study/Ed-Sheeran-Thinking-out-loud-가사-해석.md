@@ -1,5 +1,5 @@
 ---
-title: [english-study] Ed Sheeran - Thinking Out Loud
+title: '[english-study] Ed Sheeran - Thinking Out Loud'
 date: 2018-01-27 22:43:43
 tags:
     - Ed Sheeran

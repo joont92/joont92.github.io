@@ -1,5 +1,5 @@
 ---
-title: Value Object, Reference Object
+title: 'Value Object, Reference Object'
 date: 2019-02-12 11:19:22
 tags:
 	- DDD

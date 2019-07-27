@@ -1,5 +1,5 @@
 ---
-title: [spring] MessageConverter
+title: '[spring] MessageConverter'
 date: 2018-05-17 23:44:44
 tags:
     - MessageConverter

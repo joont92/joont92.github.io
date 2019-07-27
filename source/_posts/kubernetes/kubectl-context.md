@@ -1,5 +1,5 @@
 ---
-title: kubectl context
+title: '[kubernetes] kubectl context'
 date: 2019-07-03 22:10:49
 tags:
     - kubectl context change

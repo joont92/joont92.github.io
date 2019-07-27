@@ -1,5 +1,5 @@
 ---
-title: 스프링 웹 기술과 스프링 MVC
+title: '스프링 웹 기술과 스프링 MVC'
 tags:
 ---
 

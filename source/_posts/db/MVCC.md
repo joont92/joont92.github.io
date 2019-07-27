@@ -1,5 +1,5 @@
 ---
-title: [db] MVCC
+title: '[db] MVCC'
 date: 2019-01-06 16:36:05
 tags:
     - Real MySQL

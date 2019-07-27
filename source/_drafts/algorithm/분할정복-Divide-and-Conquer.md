@@ -1,5 +1,5 @@
 ---
-title: 분할정복(Divide and Conquer)
+title: '분할정복(Divide and Conquer)'
 tags:
 ---
 

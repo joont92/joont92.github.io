@@ -1,5 +1,5 @@
 ---
-title: [java] final class
+title: '[java] final class'
 date: 2018-01-22 00:12:30
 tags:
     - final class

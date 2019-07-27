@@ -1,5 +1,5 @@
 ---
-title: [english-study] Justin Bieber - Love Yourself
+title: '[english-study] Justin Bieber - Love Yourself'
 date: 2018-03-01 11:31:50
 tags:
     - Justin Bieber
