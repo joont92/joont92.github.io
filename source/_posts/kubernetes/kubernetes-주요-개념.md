@@ -333,7 +333,7 @@ REVISION  CHANGE-CAUSE
 ```
 
 ```sh
-$ kubectl get pod --selector app=frontend
+$ kubectl get pods --selector app=frontend
 
 NAME                        READY   STATUS        RESTARTS   AGE
 frontend-6bfffbcf9f-n42dh   1/1     Running       0          1m
