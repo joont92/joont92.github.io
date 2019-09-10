@@ -1,5 +1,5 @@
 ---
-title: MapStruct
+title: 'MapStruct'
 date: 2018-12-16 20:39:25
 tags:
     - '@Mapper'

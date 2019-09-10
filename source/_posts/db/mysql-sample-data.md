@@ -1,5 +1,5 @@
 ---
-title: mysql sample data
+title: '[db] mysql sample data'
 date: 2018-02-10 13:02:20
 tags:
     - mysql sample data

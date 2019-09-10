@@ -1,5 +1,5 @@
 ---
-title: Spring Data JPA
+title: '[jpa] Spring Data JPA'
 date: 2019-01-24 21:35:04
 tags:
     - findBy  

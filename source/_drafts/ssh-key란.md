@@ -1,5 +1,5 @@
 ---
-title: ssh key란?
+title: 'ssh key란?'
 date: 2019-06-15 18:01:58
 tags:
 ---
@@ -15,6 +15,10 @@ ssh 통신을 하려면 무조건 ssh key 를 생성해야 하는것인가?
 보낼떄 private key로 암호화하고, 받는쪽에서 public key로 복호화하는 것인가?
 그렇다면 서버에는 무조건 public key가 저장되어 있어야 하지 않는가?
 
-known_hosts 이 파일은 뭔가?
+known_hosts 이 파일은 뭔가?  
+
+.htaccess, .htpasswd ??  
+
+ssl, https
 
 <!-- more -->

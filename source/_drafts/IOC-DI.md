@@ -1,5 +1,5 @@
 ---
-title: IOC/DI
+title: 'IOC/DI'
 tags:
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: OpenApi codegen
+title: 'OpenApi codegen'
 date: 2019-01-30 17:29:55
 tags:
     - openapi generator

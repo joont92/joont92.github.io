@@ -1,5 +1,5 @@
 ---
-title: AWS 프리티어(free-tier) 과금
+title: '[aws] AWS 프리티어(free-tier) 과금'
 date: 2019-04-04 12:38:25
 tags:
     - AWS

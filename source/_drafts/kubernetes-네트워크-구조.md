@@ -1,5 +1,5 @@
 ---
-title: '[kubernetes] 네트워크 구조'
+title: ''[kubernetes] 네트워크 구조''
 date: 2019-06-30 18:39:30
 tags:
 ---
@@ -31,23 +31,22 @@ $ docker run --net=container:{container_id} -d {image_name}
 - 같은 port는 사용 불가능
 
 > 그림에는 있지만 언급하지 않은 `pause` 컨테이너가 있는데, 이는 위에서 언급한 일련의 기능들을 수행하기 위해 Pod 내에 추가적으로 생성되는 컨테이너이다  
-> Pod 이 실행될 때 마다 이 컨테이너가 먼저 실행되고, 이 컨테이너의 namespace를 다른 컨테이너들이 공유하고, 이 컨테이너가 다른 pod 들을 container 형태로 띄우는 건가?  
+> 정확한 행위는 아직 잘 모르겠지만, Pod 가 실행될 때 마다 이 컨테이너가 먼저 실행되고, 이 컨테이너의 namespace를 다른 컨테이너들이 공유하고, 이 컨테이너가 다른 컨테이너들을 container mode로 띄우는 역할을 하지 않을까 싶다  
 
 ## 노드가 다른 Pod 끼리의 통신
-위의 모델의 경우 같은 `docker0` 브릿자 아래에서는 Pod 간의 통신이 전혀 문제될 것이 없지만,  
+위의 모델의 경우 같은 `docker0` 브릿지 아래에서는 Pod 간의 통신이 전혀 문제될 것이 없지만,  
 쿠버네티스 클러스터의 경우 보통 1개 이상의 노드를 관리하며, Pod 는 매번 다른 노드에 배포되는 특성이 있다  
 
-`docker0` 브릿지는 각 노드마다 생성되는데, 중요한 점(문제되는 점)은 이 `docker0` 브릿지의 ip 대역대가 겹칠 수 있다는 것이다  
+중요한 점(문제되는 점)은 `docker0` 브릿지는 각 노드마다 생성되는데, 이 `docker0` 브릿지의 ip 대역대가 노드마다 겹칠 수 있다는 것이다  
 `docker0` 아래의 컨테이너들은 전부 `docker0` 브릿지의 네트워크 대역을 따라가는데, 만약 `docker0` 브릿지의 네트워크 대역이 겹친다면 결국 Pod의 IP가 겹치는 문제가 발생한다  
 
 ![kubernetes-pod-network-multi-node1](https://joont92.github.io/temp/kubernetes-pod-network-multi-node1.png)  
 > 출처 : <https://medium.com/google-cloud/understanding-kubernetes-networking-pods-7117dd28727>  
 
 이런식으로 말이다  
-이 상태에서는 Pod 간에 서로 통신할 수가 없다. src와 dest의 IP가 같기 때문이다  
-
-노드 안에서 생성되는 `doccker0` 브릿지의 경우 default 네트워크 대역이 정해져있고,  
-만약 default 값을 사용하지 않는다고 해도 다른 노드의 `docker0` 브릿지가 어떤 네트워크 대역을 사용하고 있는지 알지 못하기 때문에 문제가 해결되지는 않는다  
+이 상태에서는 src와 dest의 IP가 같기 때문에 Pod 간에 서로 통신할 수가 없다  
+이런 형태는 일어날 확률이 매우 높은데, 이는 노드 안에서 생성되는 `doccker0` 브릿지의 경우 default 네트워크 대역이 정해져있기 때문이다  
+그리고 만약 default 값을 사용하지 않는다고 해도, 다른 노드의 `docker0` 브릿지가 어떤 네트워크 대역을 사용하고 있는지 알지 못하기 때문에 문제가 해결되지는 않는다  
 
 쿠버네티스는 이러한 문제점을 해결하기 위해 2가지 방법을 사용했다  
 - `docker0` 브릿지들의 전체 네트워크 대역을 아우르는 주소 대역을 할당한다
@@ -65,7 +64,7 @@ $ docker run --net=container:{container_id} -d {image_name}
 # Service Network
 위에서 봤듯이 Pod 의 네트워크 메카니즘 때문에 다른 노드에 있는 Pod 끼리도 서로 통신이 가능하다  
 근데 문제는, Pod는 상황에 따라 늘어나거나 삭제되는 둥 변경이 많은 리소스라는 점이다  
-즉 새롭게 배치되면서 노드가 변경되고, 그에따라 IP가 변경되는 경우가 많다는 의미인데, 이런 상태에서는 Pod에서 다른 Pod로 통신하는 것이 사실상 불가능해진다  
+즉 새롭게 배치되면서 노드가 변경되고, 그에따라 IP가 변경되는 경우가 많다는 의미인데, 이런 상태에서는 Pod에서 다른 Pod의 주소를 지정해서 통신하는 것이 사실상 불가능하다  
 
 쿠버네티스는 이러한 문제를 해결하기 위해 `서비스` 라는 새로운 리소스를 등장시켰는데, 개념은 대충 아래와 같다  
 ![kubernetes-service-network1](https://joont92.github.io/temp/kubernetes-service-network1.png)  
@@ -84,22 +83,53 @@ echo         ClusterIP   10.3.241.152   <none>        8888/TCP   23s
 이렇게 함으로써 Pod의 IP 변경에 대해 신경쓰지 않아도 되고, 서비스가 요청을 각 파드별로 적절히 로드밸런싱 해주는 효과까지 얻을 수 있게 된다  
 
 ## 어떻게 처리되는 걸까?(feat. kube-proxy)
-그렇다면 서비스 IP를 Pod 의 IP로 바꿔주는 역할은 어디서 수행하게 되는걸까?  
+그렇다면 클라이언트가 서비스 IP를 호출했을 때, 서비스 IP를 Pod 의 IP로 바꿔주는 역할은 어디서 수행하게 되는걸까?  
 실제로 서비스에 부여된 ClusterIP의 경우 어디에도 연결되어 있는 네트워크 인터페이스가 없다  
 이는 어딘가 다른데서 이를 처리해주고 있음을 의미하는데, 그곳이 어디일까?  
 
 이 역할은 각 노드마다 하나씩 떠 있는 kube-proxy 라는 도커 컨테이너가 담당한다  
+이 kube-proxy는 총 3가지의 모드가 있는데, 다음과 같다  
 
-서비스는 결국 `ClusterIP : Pod IP 들` 의 형태로 이루어진 iptables로 보면 된다  
-iptables에서 로드밸런싱 기능을 구현하여 서비스의 load balancing 을 달성했으며, 이 iptables 정보는 kube-proxy에 의해 계속해서 관리된다  
+1. userspace mode  
+`ClusterIP : Pod IPs` 의 매핑을 kube-proxy가 담당해주는 형태이다  
+서비스 IP를 가지고 라우터로 가기전에 iptables에 의해 kube-proxy로 요청이 전송되고, kube-proxy에서 해당 ClusterIP에 속한 Pod의 IP를 찾아서 바꾼 뒤 요청을 내보내는 방식이다  
 
-Pod가 서비스 IP를 요청하면 cbr0 까지 올라가고 노드의 네트워크 인터페이스를 통해 나갈떄 iptables에 의해 변경되어서 나간다  
-그러므로 갔다가 다시 똑같은 노드로 돌아올 수도 있다  
+2. iptables mode  
+kube-proxy가 하던 행위를 iptables가 직접 하는 방식이다  
+iptables에는 로드밸런싱 기능이 원래 없지만, iptables의 기능들을 잘 조합하여 kube-proxy가 하던 행위를 수행하는 방식이다  
+이로인해 매번 kube-proxy를 거치지 않아도 되니 속도가 더 빨라지게 된다  
+그렇다고 kube-proxy가 사라진것은 아니고, 매번 이 iptables의 내용을 업데이트해주는 역할을 수행한다  
+
+3. ipvs mode  
+사실상 iptables는 기본적으로 로드밸런싱을 제공하지 않으므로, 이를 더 잘해줄 수 있는 ipvs 를 이용하는 방법이다  
+
+현재는 iptables mode가 default mode 이다  
+즉 다시한번 요약하면, Pod가 서비스 IP를 요청하고, 해당 요청이 외부로 나가기 전 iptables에 의해 Pod의 IP로 변경되어서 나가게 되는 것이다  
+그리고 라우터는 라우팅 테이블을 참조하여 해당 Pod가 있는 노드로 요청을 넘겨주게 되는 것이다  
+
+---
+
+클라이언트가 해당 라우터에 직접 연결되어 있거나, 클라이언트가 연결된 라우터의 라우팅 테이블에 ClusterIP를 기록해줘야하는데..?  
+
+# Ingress
+라우터의 시리얼 인터페이스, 호스트? 인터페이스  
+특정 IP를 가지고 다른 Router로 어떻게 이동하는지 알아야 한다  
+
+1번 방법  
+외부 로드밸런서 연결하고, 외부 로드밸런서에서 cluster ip로 바꿔서 클러스터로 전달하는 방법  
+클러스터 내에 있는 라우터에서 cluster ip : node ip 로 포워딩  
+라우팅 테이블에 node ip를 직접 박기에는 node도 scalable 하다는 것이 문제이다  
+
+2번 방법  
+로드밸런서에서 node의 ip로 전달하는법  
+iptables에 매핑된 내용이 ClusterIP : Pod IPs 이기 때문에 찾을 수 있는 방법이 없다  
+
+
+
 
 노드에 해당 포트로 들어왔을 때 해당 서비스로 연결하는 것이 노드포트이다  
 NodePort로 31111 지정했다는 것은, 해당 노드의 31111 포트로 들어왔을 때 서비스 ClusterIP로 포워딩 됨을 의미한다  
 해당 가상 IP로 연결되면 다시 위의 구조를 타서 Pod로 연결된다  
-
 
 서비스의 loadBalancer 타입은 클라우드에 로드밸런서를 하나 생성해주고,  
 이 로드밸런서를 클러스터 내의 서비스들에게 NodePort 타입으로 연결한다  
@@ -119,13 +149,12 @@ ingress는 어디에 있는가? 마스터 노드에 있는가? 클러스터 내�
 
 라우팅과 로드밸런싱의 차이?  
 
-kube proxy : https://arisu1000.tistory.com/27839
-service network : https://coffeewhale.com/k8s/network/2019/05/11/k8s-network-02/
-
 # External Network(feat. Ingress)
-라우터의 IP를 치고 들어오는것이 아닌..가..  
-기본적인 DNS와 Route에 대한 개념이 필요하다
-
+라우터에 대한 명확한 이해가 필요하다  
+IP를 받았을 때 특정 IP를 찾기 위해 넘겨주는 것인데,  
+외부에서 시리얼 포트로 공인 IP를 받으면 내부 네트워크로 전환?  
+어떻게 공인 IP를 받고 내부 IP를 찾아갈 수 있지?  
+NAT에 대한 이해?  
 
 #### 쿠버네티스 로드밸런싱(알아봐야함)
 각 노드별로 kube-proxy가 들어가있다  
@@ -149,5 +178,8 @@ VM의 서비스(kube-proxy)로 왔을때, 적절히 다른 Pod로 넘겨준다
 Iptables에서 랜덤으로 다른 Pod로 넘긴다  
 그러므로 IPvs 로 가라고 했다..?  
 
-https://coffeewhale.com/k8s/network/2019/04/19/k8s-network-01/
 https://rootkey.tistory.com/10
+
+- 쿠버네티스 Pod 네트워크 <https://coffeewhale.com/k8s/network/2019/04/19/k8s-network-01/>
+- 쿠버네티스 Service 네트워크 <https://coffeewhale.com/k8s/network/2019/05/11/k8s-network-02/>
+- kube-proxy <https://arisu1000.tistory.com/27839>

@@ -1,5 +1,5 @@
 ---
-title: 리포지터리와 모델구현(JPA)
+title: '[ddd] 리포지터리와 모델구현(JPA)'
 date: 2019-05-29 22:14:21
 tags:
     - DDD start!

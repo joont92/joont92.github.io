@@ -1,5 +1,5 @@
 ---
-title: transaction
+title: '[db] transaction'
 date: 2018-07-13 20:22:21
 tags:
     - 트랜잭션  

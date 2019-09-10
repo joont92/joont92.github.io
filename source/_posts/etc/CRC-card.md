@@ -1,5 +1,5 @@
 ---
-title: CRC card
+title: 'CRC card'
 date: 2019-03-16 13:58:01
 tags:
 ---

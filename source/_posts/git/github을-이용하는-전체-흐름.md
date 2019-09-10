@@ -1,5 +1,5 @@
 ---
-title: github을 이용하는 전체 흐름
+title: '[git] github을 이용하는 전체 흐름'
 date: 2019-01-03 14:27:08
 tags:
     - pull request

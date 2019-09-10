@@ -1,5 +1,5 @@
 ---
-title: git pull request checkout
+title: '[git] git pull request checkout'
 date: 2019-05-01 16:55:27
 tags:
     - github PR

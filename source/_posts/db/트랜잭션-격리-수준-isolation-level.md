@@ -1,5 +1,5 @@
 ---
-title: 트랜잭션 격리 수준(isolation level)
+title: '[db] 트랜잭션 격리 수준(isolation level)'
 date: 2019-01-06 17:33:41
 tags:
     - Real MySQL

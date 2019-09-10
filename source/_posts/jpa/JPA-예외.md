@@ -1,5 +1,5 @@
 ---
-title: JPA 예외
+title: '[jpa] JPA 예외'
 date: 2019-02-15 22:10:36
 tags:
     - 자바 ORM 표준 JPA 프로그래밍

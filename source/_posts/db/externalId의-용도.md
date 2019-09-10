@@ -1,5 +1,5 @@
 ---
-title: externalId의 용도
+title: '[db] externalId의 용도'
 date: 2018-12-16 21:23:44
 tags:
     - externalId

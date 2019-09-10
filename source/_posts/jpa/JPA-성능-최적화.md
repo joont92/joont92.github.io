@@ -1,5 +1,5 @@
 ---
-title: JPA 성능 최적화
+title: '[jpa] JPA 성능 최적화'
 date: 2019-02-15 23:58:36
 tags:
     - 자바 ORM 표준 JPA 프로그래밍

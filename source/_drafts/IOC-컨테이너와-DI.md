@@ -1,5 +1,5 @@
 ---
-title: IOC 컨테이너와 DI
+title: 'IOC 컨테이너와 DI'
 tags:
 ---
 

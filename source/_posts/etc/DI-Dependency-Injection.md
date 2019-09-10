@@ -1,5 +1,5 @@
 ---
-title: DI(Dependency Injection)
+title: 'DI(Dependency Injection)'
 date: 2019-05-03 00:32:15
 tags:
     - DI

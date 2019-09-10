@@ -1,5 +1,5 @@
 ---
-title: aws saas 세미나
+title: 'aws saas 세미나'
 tags:
 ---
 

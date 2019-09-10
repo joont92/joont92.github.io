@@ -1,5 +1,5 @@
 ---
-title: mac virtualbox 설치 실패
+title: 'mac virtualbox 설치 실패'
 date: 2019-01-23 12:01:49
 tags:
 ---

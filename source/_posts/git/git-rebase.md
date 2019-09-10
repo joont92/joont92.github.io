@@ -1,5 +1,5 @@
 ---
-title: git rebase
+title: '[git] git rebase'
 date: 2018-06-04 17:12:40
 tags:
     - rebase

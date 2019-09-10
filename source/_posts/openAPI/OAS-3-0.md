@@ -1,5 +1,5 @@
 ---
-title: OAS 3.0
+title: 'OAS 3.0'
 date: 2019-01-28 17:29:22
 tags:
     - swagger 3.0

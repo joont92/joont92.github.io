@@ -1,5 +1,5 @@
 ---
-title: java mysql 연동시 오류
+title: '[java] java mysql 연동시 오류'
 date: 2018-12-13 22:07:16
 tags:
     - The server time zone value 'KST' is unrecognized or represents more than one time zone

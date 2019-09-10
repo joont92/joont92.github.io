@@ -1,5 +1,5 @@
 ---
-title: entity callback method
+title: '[jpa] entity callback method'
 date: 2019-01-25 12:15:59
 tags:
     - '@PostLoad'

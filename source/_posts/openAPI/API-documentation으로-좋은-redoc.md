@@ -1,5 +1,5 @@
 ---
-title: API documentation으로 좋은 redoc
+title: 'API documentation으로 좋은 redoc'
 date: 2019-01-31 18:36:48
 tags:
     - redoc

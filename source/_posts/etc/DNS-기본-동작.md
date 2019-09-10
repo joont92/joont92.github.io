@@ -1,5 +1,5 @@
 ---
-title: DNS 기본 동작
+title: 'DNS 기본 동작'
 date: 2018-11-25 23:35:30
 tags:
     - DNS

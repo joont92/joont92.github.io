@@ -1,5 +1,5 @@
 ---
-title: MultipleBagException
+title: '[jpa] MultipleBagException'
 date: 2019-01-31 18:58:51
 tags:
     - queryDSL
