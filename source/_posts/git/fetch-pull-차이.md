@@ -1,20 +1,18 @@
 ---
-title: '[git] git fetch, pull 차이'
+title: '[git] fetch, pull 차이'
 date: 2018-01-03 11:50:41
 tags:
     - fetch
     - pull
 ---
 
-<https://backlog.com/git-tutorial/kr/stepup/stepup3_2.html>  
-
 fetch는 원격 저장소의 변경 내역을 가져오는 것이고 직접 로컬 branch에 반영하진 않는다  
-push는 fetch 한 내역을 로컬 branch에 merge까지 한다.  
+반면 pull은 fetch 한 내역을 로컬 branch에 merge까지 한다  
 
 그러므로 pull은 branch를 지정해야 가져올 수 있고,  
-fetch는 branch를 지정해도 되고, 원격 저장소를 지정해도 된다.  
+fetch는 branch를 지정해도 되고, 그냥 원격 저장소만 지정해도 된다  
 
-fetch로 가져온 내용은 checkout할 수 있다.  
+fetch로 가져온 내용은 checkout할 수 있다  
 ```
 git checkout origin/develop
 git checkout another-origin/develop

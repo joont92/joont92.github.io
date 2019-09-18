@@ -1,5 +1,5 @@
 ---
-title: ''자료구조1(stack,queue,deck) ''
+title: '자료구조1(stack,queue,deck) '
 date: 2018-08-11 08:48:37
 tags:
 ---

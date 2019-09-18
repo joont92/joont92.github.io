@@ -84,5 +84,8 @@ Instant instant = LocalDateTime.now().toInstant(seoulZone);
 
 ## Period, Duration  
 
+# instant 자르기
+<https://stackoverflow.com/questions/27813691/how-to-compare-two-instant-based-on-the-date-not-time>
+
 
 <!-- more -->

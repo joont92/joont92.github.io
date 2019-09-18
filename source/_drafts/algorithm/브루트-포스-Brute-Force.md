@@ -1,5 +1,5 @@
 ---
-title: ''브루트 포스(Brute Force) ''
+title: '브루트 포스(Brute Force) '
 tags:
 ---
 

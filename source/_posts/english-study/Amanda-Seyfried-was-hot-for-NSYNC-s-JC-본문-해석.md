@@ -1,5 +1,5 @@
 ---
-title: '[english-study] Amanda Seyfried was hot for NSYNC's JC'
+title: '[english-study] Amanda Seyfried was hot for NSYNC`s JC'
 date: 2018-01-07 22:28:13
 tags:
     - Conan O'brien

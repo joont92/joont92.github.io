@@ -1,5 +1,5 @@
 ---
-title: ''[DDD] event''
+title: '[DDD] event'
 date: 2019-07-03 00:15:20
 tags:
 ---

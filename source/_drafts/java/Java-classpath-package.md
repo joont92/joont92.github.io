@@ -1,5 +1,5 @@
 ---
-title: ''Java classpath, package''
+title: 'Java classpath, package'
 tags:
 ---
 

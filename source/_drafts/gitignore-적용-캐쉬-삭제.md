@@ -1,5 +1,5 @@
 ---
-title: ''gitignore 적용, 캐쉬 삭제''
+title: 'gitignore 적용, 캐쉬 삭제'
 date: 2019-06-16 11:19:37
 tags:
 ---
