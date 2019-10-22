@@ -1,5 +1,5 @@
 ---
-title: '[db] group_concat'
+title: '[db] mysql group_concat'
 date: 2019-03-12 12:08:29
 tags:
     - mysql
@@ -7,7 +7,7 @@ tags:
     - group_concat 구분자
 ---
 
-지정한 컬럼을 구분자 묶어서 출력해줌  
+그룹화된 컬럼을 쭉 나열할 때 쓸 수 있는 함수이다  
 
 ```sql
 select team, group_concat(id) from user group by team;
@@ -20,13 +20,12 @@ C_team | 7,8,9
 ...
 ```
 
-기본 구분자는 `,`이고, 변경가능  
-
+기본 구분자는 `,`이고, 변경 가능하다  
 ```sql
 select team, group_concat(id separator '|') from user group by team;
 ```
 
-앞뒤로 문자를 붙일수도 있음  
+앞뒤로 문자를 붙일수도 있다  
 ```sql
 -- 1__, 2__, 3__
 select team, group_concat(id, '__') from user group by team;
