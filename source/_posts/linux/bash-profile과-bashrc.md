@@ -18,7 +18,7 @@ tags:
 
 # bashrc
 profile과 달리 Login 과정이 없으므로 shell을 실행시키는 사용자로 구분한다.  
-\/etc\/bashrc의 경우 모든 사용자가 shell을 실행시킬 때 마다 실행되며,  그
+\/etc\/bashrc의 경우 모든 사용자가 shell을 실행시킬 때 마다 실행되며,  
 ~\/.bashrc의 경우 해당하는 사용자가 shell 실행시킬 때 실행된다.  
 
 
@@ -28,13 +28,13 @@ profile과 달리 Login 과정이 없으므로 shell을 실행시키는 사용�
 ## Login Shell
 Shell을 실행할 때 로그인이 필요한 경우를 말한다.  
 ssh로 접속하거나, su 명령어로 다른계정을 들어갈 때 등이 해당된다.  
-> \/etc\/profile, ~\/.bash_profile 파일이 이 Shell이 뜰 때 실행되는 파일이다.  
+> \/etc\/profile, ~\/.bash_profile  
 
 ## Non-Login Shell
 Shell을 실행할 떄 로그인이 필요하지 않은 경우를 말한다.  
 즉 Shell이 실행되는 모든 상황을 의마한다.  
 GUI에서 터미널을 띄울때나, bash 명령어로 다시 bash를 실행하는 경우 등이 해당된다.  
-> \/etc\/bashrc, ~\/.bashrc 파일이 이 Shell이 뜰 때 실행되는 파일이다.  
+> \/etc\/bashrc, ~\/.bashrc  
 
 Non-Login Shell은 Login Shell을 포함한다.  
 Login Shell이 실행될 때 profile과 bashrc 파일이 모두 실행되게 되고,  
