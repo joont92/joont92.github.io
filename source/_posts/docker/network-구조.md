@@ -20,7 +20,7 @@ tags:
 # veth interface, NET namespace
 도커의 네트워크 구조를 이해하기 위해선 먼저 리눅스의 `NET namespace`와 `veth interface`에 대해 알아야한다  
 
-- veth interface 
+- veth interface
     > 간단히 말해 랜카드에 연결된 실제 네트워크 인터페이스가 아니라, 가상으로 생성한 네트워크 인터페이스이다  
     > 일반적인 네트워크 인터페이스와는 달리 패킷을 전달받으면, 자신에게 연결된 다른 네트워크 인터페이스로 패킷을 보내주는 식으로 동작하기 때문에 항상 쌍(pair)로 생성해줘야 한다  
 
