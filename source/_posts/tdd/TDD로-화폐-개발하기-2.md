@@ -121,13 +121,13 @@ public boolean equals(Object object) {
 ```java
 class Dollar {
     Money times(int multiplier) {
-        return Money.dollar(amount * multiplier);
+        return new Dollar(amount * multiplier);
     }
 }
 
 class Franc {
     Money times(int multiplier) {
-        return Money.franc(amount * multiplier);
+        return new Franc(amount * multiplier);
     }
 }
 ```
@@ -143,8 +143,8 @@ class Franc {
 // DollarTest
 @Test
 public void testEquality() {
-    assertThat(Money.dollar(5)).isEqualTo(Money.dollar(5));
-    assertThat(Money.dollar(5)).isNotEqualTo(Money.dollar(6));
+    assertThat(Money.dollar(5)).isEqualTo(new Dollar(5));
+    assertThat(Money.dollar(5)).isNotEqualTo(new Dollar(6));
 }
 
 public void testMultiplication() {
