@@ -1,0 +1,2394 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Spring Data JPA는 스프링에서 JPA를 편리하게 사용할 수 있도록 지원하는 프로젝트다. 데이터 접근 계층을 개발할 때 지루하게 반복되는 CRUD 문제를 세련된 방법으로 해결할 수 있게 해준다.  CRUD 처리를 위한 공통 인터페이스 제공 인터페이스만 작성하면 동적으로 구현체를 생성해서 주입해줌 따라서 인터페이스만 작성해도 개발을 완료할 수 있음">
+<meta name="keywords" content="findBy,@Query">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[jpa] Spring Data JPA">
+<meta property="og:url" content="https://joont92.github.io/jpa/Spring-Data-JPA/index.html">
+<meta property="og:site_name" content="기록은 기억의 연장선">
+<meta property="og:description" content="Spring Data JPA는 스프링에서 JPA를 편리하게 사용할 수 있도록 지원하는 프로젝트다. 데이터 접근 계층을 개발할 때 지루하게 반복되는 CRUD 문제를 세련된 방법으로 해결할 수 있게 해준다.  CRUD 처리를 위한 공통 인터페이스 제공 인터페이스만 작성하면 동적으로 구현체를 생성해서 주입해줌 따라서 인터페이스만 작성해도 개발을 완료할 수 있음">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://joont92.github.io/temp/JpaRepository-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.jpeg">
+<meta property="og:updated_time" content="2020-11-02T10:09:30.453Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[jpa] Spring Data JPA">
+<meta name="twitter:description" content="Spring Data JPA는 스프링에서 JPA를 편리하게 사용할 수 있도록 지원하는 프로젝트다. 데이터 접근 계층을 개발할 때 지루하게 반복되는 CRUD 문제를 세련된 방법으로 해결할 수 있게 해준다.  CRUD 처리를 위한 공통 인터페이스 제공 인터페이스만 작성하면 동적으로 구현체를 생성해서 주입해줌 따라서 인터페이스만 작성해도 개발을 완료할 수 있음">
+<meta name="twitter:image" content="https://joont92.github.io/temp/JpaRepository-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.jpeg">
+
+
+
+  <link rel="alternate" href="/feed.xml" title="기록은 기억의 연장선" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://joont92.github.io/jpa/Spring-Data-JPA/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[jpa] Spring Data JPA | 기록은 기억의 연장선</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-110551662-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110551662-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">기록은 기억의 연장선</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">더 많은 것을 기억하기 위해 기록합니다</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/joont92" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joont92.github.io/jpa/Spring-Data-JPA/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYoung Park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="기록은 기억의 연장선">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[jpa] Spring Data JPA
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-24 21:35:04" itemprop="dateCreated datePublished" datetime="2019-01-24T21:35:04+00:00">2019-01-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-02 10:09:30" itemprop="dateModified" datetime="2020-11-02T10:09:30+00:00">2020-11-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/jpa/" itemprop="url" rel="index"><span itemprop="name">jpa</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/jpa/Spring-Data-JPA/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="jpa/Spring-Data-JPA/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Spring Data JPA는 스프링에서 JPA를 편리하게 사용할 수 있도록 지원하는 프로젝트다.<br>
+데이터 접근 계층을 개발할 때 지루하게 반복되는 CRUD 문제를 세련된 방법으로 해결할 수 있게 해준다.</p>
+<ul>
+<li>CRUD 처리를 위한 공통 인터페이스 제공</li>
+<li>인터페이스만 작성하면 동적으로 구현체를 생성해서 주입해줌</li>
+<li>따라서 인터페이스만 작성해도 개발을 완료할 수 있음</li>
+</ul>
+<h1 id="설정"><a class="markdownIt-Anchor" href="#설정"></a> 설정</h1>
+<p>maven repository에서 <code>Spring Data Jpa</code> 검색해서 gradle에 추가하면 된다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">group:</span> <span class="string">'org.springframework.data'</span>, <span class="string">name:</span> <span class="string">'spring-data-jpa'</span>, <span class="string">version:</span> <span class="string">'2.1.2.RELEASE'</span></span><br></pre></td></tr></table></figure>
+<p>spring boot를 사용할 경우 <code>Spring Boot Data JPA Starter</code>를 사용해주는 것이 좋다.</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile <span class="string">group:</span> <span class="string">'org.springframework.boot'</span>, <span class="string">name:</span> <span class="string">'spring-boot-starter-data-jpa'</span>, <span class="string">version:</span> <span class="string">'2.1.1.RELEASE'</span></span><br></pre></td></tr></table></figure>
+<p>이후 spring config에 아래와 같이 작성한다.</p>
+<ul>
+<li>
+<p>xml config</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">jpa:repositories</span> <span class="attr">base-package</span>=<span class="string">"com.joon.repository"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>java config</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableJpaRepositories</span>(basePackages = <span class="string">"com.joont.repository"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> class <span class="title">AppConfig</span><span class="params">()</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>이렇게 설정해두면 Spring Data Jpa는 base package에 있는 레파지토리 인터페이스들을 찾아서 해당 인터페이스를 구현한 클래스들을 동적으로 생성한 다음, 빈으로 등록한다.</p>
+<h1 id="jparepository공통-인터페이스"><a class="markdownIt-Anchor" href="#jparepository공통-인터페이스"></a> JpaRepository(공통 인터페이스)</h1>
+<p>JpaRepository는 앞서 언급했던 CRUD 처리를 위한 공통 인터페이스이다.<br>
+이 인터페이스를 상속받은 인터페이스만 생성하면 해당 엔티티에 대한 CRUD를 공짜로 사용할 수 있게된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>제네릭에는 엔티티 클래스와 엔티티 클래스가 사용하는 식별자 타입을 넣어주면 된다.</p>
+<p>JpaRepository의 계층구조는 아래와 같다.<br>
+<img src="/temp/JpaRepository-%EA%B3%84%EC%B8%B5%EA%B5%AC%EC%A1%B0.jpeg" alt="JpaRepository 계층구조"></p>
+<p>보다시피 스프링 데이터 프로젝트가 공통으로 사용하는 인터페이스를 사용하고<br>
+JpaRepository에서 JPA에 특화된 기능을 추가로 제공한다.</p>
+<h2 id="실제-구현체"><a class="markdownIt-Anchor" href="#실제-구현체"></a> 실제 구현체</h2>
+<p>공통 인터페이스인 <code>JpaRespository</code>는 <code>org.springframework.data.jpa.repository.support.SimpleJpaRepository</code> 클래스가 구현한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span> <span class="comment">// 1</span></span><br><span class="line"><span class="meta">@Transactional</span>(readOnly = <span class="keyword">true</span>) <span class="comment">// 2</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleJpaRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt; <span class="keyword">implements</span> <span class="title">JpaRepository</span>&lt;<span class="title">T</span>, <span class="title">ID</span>&gt;, <span class="title">JpaSpecificationExecutor</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Transactional</span> <span class="comment">// 3</span></span><br><span class="line">	<span class="keyword">public</span> &lt;S extends T&gt; <span class="function">S <span class="title">save</span><span class="params">(S entity)</span> </span>&#123; <span class="comment">// 4</span></span><br><span class="line">		<span class="keyword">if</span> (entityInformation.isNew(entity)) &#123;</span><br><span class="line">			em.persist(entity);</span><br><span class="line">			<span class="keyword">return</span> entity;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> em.merge(entity);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ....</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>@Repository 적용
+<blockquote>
+<p>JPA 예외를 스프링이 추상화 한 예외로 변환한다.</p>
+</blockquote>
+</li>
+<li>Transactional(readOnly = true) 적용
+<ul>
+<li>전체적으로 트랜잭션이 적용되어 있다. 이로인해 서비스에서 트랜잭션을 적용하지 않으면 레파지토리에서 트랜잭션을 시작하게 된다.</li>
+<li>공통 인터페이스에는 조회하는 메서드가 많으므로 전체적으로 <code>readOnly=true</code>를 적용해서 약간의 성능향상을 얻는다.</li>
+</ul>
+</li>
+<li>Transactional
+<ul>
+<li>조회 메서드가 아니라서 readOnly=true가 빠지게 한다.</li>
+</ul>
+</li>
+<li>save
+<ul>
+<li>보다시피 저장할 엔티티가 새로운 엔티티면 저장하고 이미 있는 엔티티면 병합한다.</li>
+<li>여기서 사용되는 <code>entityInformation.isNew</code>는 식별자가 객체일때는 null, primitive 타입일때는 0이면 새로운 객체라고 판단한다.</li>
+<li><code>Persistable</code> 인터페이스를 구현한 객체를 빈으로 등록하면 위의 조건을 직접 정의할 수 있다.</li>
+</ul>
+</li>
+</ol>
+<h1 id="사용"><a class="markdownIt-Anchor" href="#사용"></a> 사용</h1>
+<h2 id="메서드-이름으로-쿼리-생성"><a class="markdownIt-Anchor" href="#메서드-이름으로-쿼리-생성"></a> 메서드 이름으로 쿼리 생성</h2>
+<p>인터페이스에 선언한 메서드의 이름으로 적절한 JPQL 쿼리를 생성해주는 마법같은(ㅋㅋ) 기능이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function">List&lt;Member&gt; <span class="title">findByEmailAndName</span><span class="params">(String email, String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이렇게만 작성하면 Spring Data JPA가 메서드 이름을 분석해서 JPQL을 생성한다.<br>
+위의 메서드를 통해 생성되는 JPQL은 아래와 같다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m <span class="keyword">FROM</span> <span class="keyword">Member</span> m <span class="keyword">WHERE</span> m.email = ?<span class="number">1</span> <span class="keyword">AND</span> m.name = ?<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>물론 정해진 규칙은 있다.<br>
+현재 보니까 생각보다 굉장히 많은 기능을 지원한다.<br>
+<a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.details" rel="external nofollow noopener noreferrer" target="_blank">https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories.query-methods.details</a></p>
+<ul>
+<li>findByNameAndEmail 의 형태로 작성. <code>By</code> 뒤부터 파싱 (<a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation" rel="external nofollow noopener noreferrer" target="_blank">조건은 여기에</a>)</li>
+<li>findDistinctBy 로 <code>distinct</code> 가능</li>
+<li>엔티티 탐색 가능. camel case로 해도 되지만 애매하니 findByAddress_ZipCode 처럼 <code>_</code>로 이어주는게 좋을 듯</li>
+<li>findFirst3By, findTop10By, findFirstBy(1건) 로 <code>limit</code> 기능을 사용할 수 있다. findLast3By 같은건 없음</li>
+<li>findByAgeOrderByNameDesc 처럼 <code>order by</code> 가능</li>
+<li>findBy 말고 countBy, deleteBy도 있음</li>
+</ul>
+<h2 id="반환-타입"><a class="markdownIt-Anchor" href="#반환-타입"></a> 반환 타입</h2>
+<p>Spring Data JPA는 유연한 반환 타입을 지원한다.<br>
+<a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-return-types" rel="external nofollow noopener noreferrer" target="_blank">https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repository-query-return-types</a><br>
+기본적으로 결과가 한건 이상이면 컬렉션 인터페이스를 사용하고, 단건이면 반환 타입을 지정한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List&lt;Member&gt; <span class="title">findByMember</span><span class="params">(String name)</span></span>; <span class="comment">// 컬렉션  </span></span><br><span class="line"><span class="function">Member <span class="title">findByEmail</span><span class="params">(String email)</span></span>; <span class="comment">// 단건</span></span><br></pre></td></tr></table></figure>
+<p>단건의 경우 <code>T</code> 형태와 <code>Optional&lt;T&gt;</code> 형태 2개로 받을 수 있다.<br>
+결과가 2건이상 나오면 <code>javax.persistence.NonUniqueResultException</code> 예외가 발생하고,<br>
+결과가 0건일 경우 <code>T</code>는 null, <code>Optional&lt;T&gt;</code>는 Optional.empty() 를 리턴한다.</p>
+<blockquote>
+<p>참고로 단건의 경우 내부적으로 <code>query.getSingleResult()</code>를 사용해서 결과가 0건일 경우 <code>javax.persistence.NoResultException</code>이 발생해야하지만, 이는 다루기가 까다로우므로 exception을 발생시키지 않는 방향으로 기능을 제공한다.</p>
+</blockquote>
+<h2 id="named-query"><a class="markdownIt-Anchor" href="#named-query"></a> Named Query</h2>
+<p>엔티티나 xml에 작성한 Named Query도 찾아갈 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@NamedQuery</span>(</span><br><span class="line">    name = <span class="string">"Member.findByName"</span>,</span><br><span class="line">    query = <span class="string">"select m from Member m where m.name = :name"</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function">List&lt;Member&gt; <span class="title">findByName</span><span class="params">(@Param(<span class="string">"name"</span>)</span> String name)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Spring Data JPA는 메서드 이름으로 쿼리를 생성하기 전에 해당 이름의 Named Query를 먼저 찾는다(전략 변경 가능)<br>
+<code>도메인 클래스 + .(점) + 메서드 이름</code>으로 먼저 찾고, 없으면 JPQL을 생성한다.<br>
+위의 상황에서는 <code>Member.findByName</code> Named Query를 찾게 된다.</p>
+<h2 id="jpql-직접-정의"><a class="markdownIt-Anchor" href="#jpql-직접-정의"></a> JPQL 직접 정의</h2>
+<p><code>org.springframework.data.jpa.repository.Query</code> 어노테이션을 사용하면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 위치기반 파라미터</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt;</span>&#123;</span><br><span class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT m FROM Member m WHERE m.name = ?1"</span>)</span><br><span class="line">    <span class="function">Member <span class="title">findByName</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이름기반 파라미터</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt;</span>&#123;</span><br><span class="line">    <span class="meta">@Query</span>(<span class="string">"SELECT m FROM Member m WHERE m.name = :name"</span>)</span><br><span class="line">    <span class="function">Member <span class="title">findByName</span><span class="params">(@Param(<span class="string">"name"</span>)</span> String name)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>아무리봐도 위치기반 파라미터는 개극혐이다.<br>
+내 주변사람에는 위치기반 파라미터를 쓰는 사람이 없으면 좋겠다.</p>
+<p>네티티브 쿼리도 사용할 수 있다. <code>nativeQuery = true</code> 옵션만 주면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt;</span>&#123;</span><br><span class="line">    <span class="meta">@Query</span>(value = <span class="string">"SELECT * FROM Member WHERE name = ?0"</span>, nativeQuery = <span class="keyword">true</span>)</span><br><span class="line">    <span class="function">Member <span class="title">findByName</span><span class="params">(String name)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>네이티브 쿼리는 위치기반 파라미터가 0부터 시작한다.</p>
+<h2 id="벌크-연산"><a class="markdownIt-Anchor" href="#벌크-연산"></a> 벌크 연산</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt;</span>&#123;</span><br><span class="line">    <span class="meta">@Modifying</span></span><br><span class="line">    <span class="meta">@Query</span>(<span class="string">"UPDATE Product p SET p.price = p.price * 1.1 WHERE p.stockAmount &lt; :stockAmount"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">updatePrice</span><span class="params">(@Param(<span class="string">"stockAmount"</span>)</span> String stockAmount)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>@Modifying</code>을 명시해줘야 한다.<br>
+기존 벌크 연산처럼 영향받은 엔티티의 개수를 반환한다.</p>
+<p>알다시피 벌크 연산은 영속성 컨텍스트를 무시한다.<br>
+벌크 연산후에 영속성 컨텍스트를 초기화하고 싶으면 clearAutomatically 옵션을 true로 주면 된다. 기본값은 false이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Modifying</span>(clearAutomatically = <span class="keyword">true</span>)</span><br><span class="line"><span class="meta">@Query</span>(<span class="string">"~~"</span>)</span><br><span class="line"><span class="comment">// ~~~</span></span><br></pre></td></tr></table></figure>
+<h2 id="페이징과-정렬"><a class="markdownIt-Anchor" href="#페이징과-정렬"></a> 페이징과 정렬</h2>
+<p>아래의 두 파라미터를 사용하면 쿼리 메서드에 페이징과 정렬 기능을 추가할 수 있다.</p>
+<ul>
+<li><code>org.springframework.data.domain.Sort</code> : 정렬기능</li>
+<li><code>org.springframework.data.domain.Pageable</code> : 페이징기능(Sort 포함)</li>
+</ul>
+<p>사용법은 간단하다. 위의 두 클래스를 파라미터에 사용하기만 하면 된다.</p>
+<p><code>Pageable</code>을 사용하면 반환타입으로 <code>Page</code>를 받을 수 있다.<br>
+해당 클래스를 사용하면 페이징과 관련된 다양항 정보들을 얻을 수 있다. 참고로 <code>Page</code>를 반환타입으로 받으면 전체 데이터 건수를 조회하는 <code>count</code> 쿼리가 추가로 날라간다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Page</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Slice</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; <span class="function">Page&lt;T&gt; <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> empty(Pageable.unpaged());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; <span class="function">Page&lt;T&gt; <span class="title">empty</span><span class="params">(Pageable pageable)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> PageImpl(Collections.emptyList(), pageable, <span class="number">0L</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getTotalPages</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="title">getTotalElements</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    &lt;U&gt; <span class="function">Page&lt;U&gt; <span class="title">map</span><span class="params">(Function&lt;? <span class="keyword">super</span> T, ? extends U&gt; var1)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Slice</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Streamable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getNumber</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getNumberOfElements</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;T&gt; <span class="title">getContent</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasContent</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Sort <span class="title">getSort</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isFirst</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isLast</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Pageable <span class="title">getPageable</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> PageRequest.of(<span class="keyword">this</span>.getNumber(), <span class="keyword">this</span>.getSize(), <span class="keyword">this</span>.getSort());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">Pageable <span class="title">nextPageable</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Pageable <span class="title">previousPageable</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    &lt;U&gt; <span class="function">Slice&lt;U&gt; <span class="title">map</span><span class="params">(Function&lt;? <span class="keyword">super</span> T, ? extends U&gt; var1)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>아래는 간단한 사용 예제이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Pageable은 interface 이므로 구현체인 PageRequest 를 사용해야 한다.  </span></span><br><span class="line"><span class="comment">// 페이지, limit수, Sort 객체를 주면 된다  </span></span><br><span class="line">PageRequest pageRequest = PageRequest.of(<span class="number">0</span>, <span class="number">10</span>, <span class="keyword">new</span> Sort(Direction.DESC, <span class="string">"name"</span>));</span><br><span class="line"></span><br><span class="line">Page&lt;Member&gt; result = memberRepository.findByNameStartingWith(<span class="string">"김"</span>, pageRequest);</span><br><span class="line"></span><br><span class="line">result.getContet(); <span class="comment">// 조회된 데이터  </span></span><br><span class="line">result.getTotalPages(); <span class="comment">// 전체 페이지 수  </span></span><br><span class="line">result.hasNextPage(); <span class="comment">// 다음 페이지 존재 여부</span></span><br></pre></td></tr></table></figure>
+<h3 id="컨트롤러에서-사용"><a class="markdownIt-Anchor" href="#컨트롤러에서-사용"></a> 컨트롤러에서 사용</h3>
+<ul>
+<li>
+<p>Pageable 객체를 Controller parameter로 직접 받을수도 있다</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/members"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">list</span><span class="params">(Pageable pageable)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/members?page=0&amp;limit=10&amp;sort=name,asc&amp;sort=age,desc</span><br></pre></td></tr></table></figure>
+<p>pageable 기본값은 <code>page=0, size=20</code>이다.<br>
+정렬을 추가하고 싶으면 sort 파라미터를 계속 붙여주면 된다.</p>
+</li>
+<li>
+<p>페이징 정보가 둘 이상이면 접두사를 사용해서 구분할 수 있다</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/members"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">list</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">    @Qualifier(<span class="string">"member"</span>)</span> Pageable memberPageable, </span></span><br><span class="line"><span class="function">    @<span class="title">Qualifier</span><span class="params">(<span class="string">"order"</span>)</span>Pageable orderPageable)</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/members?member_page=0&amp;order_page=1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="사용자-정의-레파지토리-구현"><a class="markdownIt-Anchor" href="#사용자-정의-레파지토리-구현"></a> 사용자 정의 레파지토리 구현</h1>
+<p>Spring Data JPA로 개발하면 인터페이스만 정의하고 구현체는 만들지 않는데, 다양한 이유로 메서드를 직접 구현해야 할 때도 있다.<br>
+그렇다고 레파지토리 자체를 직접 구현하면 공통 인터페이스가 제공하는 모든 기능까지 다 구현해야 한다.<br>
+Spring Data JPA는 이런 문제를 우회해서 필요한 메서드만 구현할 수 있는 방법을 제공한다.</p>
+<ol>
+<li>
+<p>먼저 사용자가 직접 구현할 메서드를 위한 정의 인터페이스를 작성한다.</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepositoryCustom</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Member&gt; <span class="title">search</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>위의 사용자정의 인터페이스를 구현한 클래스를 작성한다.<br>
+이떄 클래스 이름은 <code>레파지토리 인터페이스 이름 + Impl</code>로 지어야한다.<br>
+이렇게 해야 <code>Spring Data JPA가 사용자 정의 구현 클래스로 인식한다</code>.</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MemberRepositoryImpl</span> <span class="keyword">implements</span> <span class="title">MemberRepositoryCustom</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Member&gt; <span class="title">search</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// ....</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이 클래스 이름 규칙은 변경할 수 있다.<br>
+config에 설정했던 spring data jpa 설정의 속성값인 <code>repository-impl-postfix</code> 값을 지정해주면 된다. 기본값은 Impl 이다.</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableJpaRepositories</span>(basePackages = <span class="string">"com.joont.repository"</span>, repositoryImplementationPostfix = <span class="string">"impl"</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>마지막으로 레파지토리 인터페이스에서 사용자정의 인터페이스를 상속받으면 된다.</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemberRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Member</span>, <span class="title">Long</span>&gt;, <span class="title">MemberRepositoryCustom</span></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="spring-data-jpa-querydsl"><a class="markdownIt-Anchor" href="#spring-data-jpa-querydsl"></a> spring data jpa + QueryDSL</h1>
+<p>spring은 2가지 방법으로 QueryDSL을 지원하지만,<br>
+하나는 기능에 조금 한계가 있어서 다양한 기능을 사용하려면 <code>JPAQuery</code>를 직접 사용하거나 Spring Data JPA가 제공하는 <code>QueryDslRepositorySupport</code>를 사용하면 된다.</p>
+<p>아래는 사용 예제이다.<br>
+코드를 직접 써야하므로 사용자 정의 레파지토리를 구현해야한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderRepositoryImpl</span> <span class="keyword">extends</span> <span class="title">QueryDslRepositorySupport</span> <span class="keyword">implements</span> <span class="title">OrderRepositoryCustom</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OrderRepositoryImpl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(Order.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Order&gt; <span class="title">search</span><span class="params">(OrderSearch orderSearch, Pageable pa)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        QOrder order = QOrder.order;</span><br><span class="line">        QMember member = QMember.member;</span><br><span class="line"></span><br><span class="line">        JPQLQuery query = from(order);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (StringUtils.hasText(orderSearch.getMemberName())) &#123;</span><br><span class="line">            query.leftJoin(order.member, member)</span><br><span class="line">                    .where(member.name.contains(orderSearch.getMemberName()));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (orderSearch.getOrderStatus() != <span class="keyword">null</span>) &#123;</span><br><span class="line">            query.where(order.status.eq(orderSearch.getOrderStatus()));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> query.list(order);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>QueryDslRepositorySupport</code> 클래스를 상속받아서 사용하고 있다.<br>
+참고로 생성자에서 <code>QueryDslRepositorySupport</code>에 클래스 정보를 넘겨줘야 한다.</p>
+<p>기존에 생성하기 나름 번거로웠던 JPAQuery, JPAUpdateClause, JPADeleteClause 등을 간단하게 생성할 수 있다.<br>
+참고로 반환은 전부 인터페이스 타입인 JPQLQuery, UpdateClause, DeleteClause 등을 반환한다.<br>
+이 외에도 EntityManager, QueryDSL헬퍼 등을 반환하는 메서드도 구현되어 있다.</p>
+<h2 id="querydsl에-pageable-적용하기"><a class="markdownIt-Anchor" href="#querydsl에-pageable-적용하기"></a> QueryDSL에 Pageable 적용하기</h2>
+<p>QueryDslRepositorySupport를 사용하면 Spring Data JPA의 Pageable을 간단하게 적용할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">QItem item = QItem.item;</span><br><span class="line">JPQLQuery&lt;Item&gt; query = from(item);</span><br><span class="line"><span class="comment">// making condition</span></span><br><span class="line">query.where(condition).distinct();</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> totalCount = query.fetchCount();</span><br><span class="line">List&lt;Item&gt; results = getQuerydsl().applyPagination(pageable, query).fetch();</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> PageImpl&lt;&gt;(results, pageable, totalCount);</span><br></pre></td></tr></table></figure>
+<p>Page를 리턴함으로써 완벽하게 Pageable을 사용할 수 있다.</p>
+<a id="more"></a>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/findBy/" rel="tag"># findBy</a>
+          
+            <a href="/tags/Query/" rel="tag"># @Query</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/etc/mac-virtualbox-설치-실패/" rel="next" title="mac virtualbox 설치 실패">
+                <i class="fa fa-chevron-left"></i> mac virtualbox 설치 실패
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/jpa/entity-callback-method/" rel="prev" title="[jpa] entity callback method">
+                [jpa] entity callback method <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JunYoung Park</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">182</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">344</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feed.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#설정"><span class="nav-number">1.</span> <span class="nav-text"> 설정</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jparepository공통-인터페이스"><span class="nav-number">2.</span> <span class="nav-text"> JpaRepository(공통 인터페이스)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#실제-구현체"><span class="nav-number">2.1.</span> <span class="nav-text"> 실제 구현체</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#사용"><span class="nav-number">3.</span> <span class="nav-text"> 사용</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#메서드-이름으로-쿼리-생성"><span class="nav-number">3.1.</span> <span class="nav-text"> 메서드 이름으로 쿼리 생성</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#반환-타입"><span class="nav-number">3.2.</span> <span class="nav-text"> 반환 타입</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#named-query"><span class="nav-number">3.3.</span> <span class="nav-text"> Named Query</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jpql-직접-정의"><span class="nav-number">3.4.</span> <span class="nav-text"> JPQL 직접 정의</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#벌크-연산"><span class="nav-number">3.5.</span> <span class="nav-text"> 벌크 연산</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#페이징과-정렬"><span class="nav-number">3.6.</span> <span class="nav-text"> 페이징과 정렬</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#컨트롤러에서-사용"><span class="nav-number">3.6.1.</span> <span class="nav-text"> 컨트롤러에서 사용</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#사용자-정의-레파지토리-구현"><span class="nav-number">4.</span> <span class="nav-text"> 사용자 정의 레파지토리 구현</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#spring-data-jpa-querydsl"><span class="nav-number">5.</span> <span class="nav-text"> spring data jpa + QueryDSL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#querydsl에-pageable-적용하기"><span class="nav-number">5.1.</span> <span class="nav-text"> QueryDSL에 Pageable 적용하기</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunYoung Park</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://joont92.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://joont92.github.io/jpa/Spring-Data-JPA/";
+    this.page.identifier = "jpa/Spring-Data-JPA/";
+    this.page.title = '[jpa] Spring Data JPA';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://joont92.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

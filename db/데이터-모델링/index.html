@@ -1,0 +1,2513 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="데이터 모델링은 DBMS 사용에 가장 중요한 부분이면서 가장 쉽게 간과되는 부분이기도 하다. 데이터 모델링은 크게 논리 모델링과 물리 모델링으로 나눌 수 있다. 제대로 표현되고 있는 곳은 잘 없지만, 원래 논리 모델링과 물리 모델링의 차이는 테이블/칼럼 등의 이름이 영어냐 한글이냐가 아니라, 모델에 표현하려는 것이 업무냐 시스템이냐의 차이다. 업무를 분석하">
+<meta name="keywords" content="Real MySQL,데이터 모델링,논리 모델링,물리 모델링,정규화,반정규화">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[db] 데이터 모델링">
+<meta property="og:url" content="https://joont92.github.io/db/데이터-모델링/index.html">
+<meta property="og:site_name" content="기록은 기억의 연장선">
+<meta property="og:description" content="데이터 모델링은 DBMS 사용에 가장 중요한 부분이면서 가장 쉽게 간과되는 부분이기도 하다. 데이터 모델링은 크게 논리 모델링과 물리 모델링으로 나눌 수 있다. 제대로 표현되고 있는 곳은 잘 없지만, 원래 논리 모델링과 물리 모델링의 차이는 테이블/칼럼 등의 이름이 영어냐 한글이냐가 아니라, 모델에 표현하려는 것이 업무냐 시스템이냐의 차이다. 업무를 분석하">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://joont92.github.io/temp/%EC%97%94%ED%8B%B0%ED%8B%B0.png#width30">
+<meta property="og:image" content="https://joont92.github.io/temp/%EB%A9%94%EC%9D%B8-%EC%97%94%ED%8B%B0%ED%8B%B0.png#width80">
+<meta property="og:image" content="https://joont92.github.io/temp/%EA%B0%84%EB%9E%B5%ED%95%9C-%EC%96%B4%ED%8A%B8%EB%A6%AC%EB%B7%B0%ED%8A%B8.png#width30">
+<meta property="og:image" content="https://joont92.github.io/temp/%EC%9D%B8%EC%A1%B0-%EC%8B%9D%EB%B3%84%EC%9E%90-%EC%82%AC%EC%9A%A9.png#width30">
+<meta property="og:image" content="https://joont92.github.io/temp/%EC%8B%9D%EB%B3%84%EA%B4%80%EA%B3%84%EC%99%80-%EB%B9%84%EC%8B%9D%EB%B3%84%EA%B4%80%EA%B3%84.png#width80">
+<meta property="og:image" content="https://joont92.github.io/temp/%EA%B4%80%EA%B3%84%EC%9D%98-%EA%B8%B0%EC%88%98%EC%84%B1.png#width40">
+<meta property="og:image" content="https://joont92.github.io/temp/%EA%B4%80%EA%B3%84%EC%9D%98-%EA%B8%B0%EC%88%98%EC%84%B1-%ED%91%9C%EA%B8%B0.png#width40">
+<meta property="og:image" content="https://joont92.github.io/temp/%ED%9A%8C%EC%9B%90-%EC%A3%BC%EB%AC%B8-%EA%B4%80%EA%B3%84.png#width80">
+<meta property="og:image" content="https://joont92.github.io/temp/%EA%B2%8C%EC%B8%B5-%EA%B4%80%EA%B3%84.png">
+<meta property="og:image" content="https://joont92.github.io/temp/%EC%88%9C%ED%99%98-%EA%B4%80%EA%B3%84.png#width40">
+<meta property="og:image" content="https://joont92.github.io/temp/M-N%EC%9D%98-%EB%85%BC%EB%A6%AC-%ED%91%9C%ED%98%84%EB%B2%95.png#width80">
+<meta property="og:image" content="https://joont92.github.io/temp//M-N%EC%9D%98-%EB%AC%BC%EB%A6%AC-%ED%91%9C%ED%98%84%EB%B2%95.png#width80">
+<meta property="og:image" content="https://joont92.github.io/temp/SNS%EC%9D%98-%ED%8C%94%EB%A1%9C%EC%9E%89-%ED%8C%94%EB%A1%9C%EC%9B%8C-%EB%AA%A8%EB%8D%B8.png#width80">
+<meta property="og:image" content="https://joont92.github.io/temp/%EC%97%94%ED%8B%B0%ED%8B%B0-%ED%86%B5%ED%95%A9.png">
+<meta property="og:image" content="https://joont92.github.io/temp/%EA%B4%80%EA%B3%84-%ED%86%B5%ED%95%A9.png">
+<meta property="og:image" content="https://joont92.github.io/temp/%EC%A0%9C-1-%EC%A0%95%EA%B7%9C%ED%99%94.png#width70">
+<meta property="og:image" content="https://joont92.github.io/temp/%EC%A0%9C-2-%EC%A0%95%EA%B7%9C%ED%99%94.png#width80">
+<meta property="og:image" content="https://joont92.github.io/temp/%EC%A0%9C-3-%EC%A0%95%EA%B7%9C%ED%99%94.png#width80">
+<meta property="og:image" content="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTY5NjY2NTEmdHlwZT1sJno9MjMvMDQvMjAxOCAwMToxMw==#width70">
+<meta property="og:image" content="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTY5NTUxNDUmdHlwZT1sJno9MjMvMDQvMjAxOCAwMTowNQ==#width30">
+<meta property="og:updated_time" content="2020-11-02T10:09:30.449Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[db] 데이터 모델링">
+<meta name="twitter:description" content="데이터 모델링은 DBMS 사용에 가장 중요한 부분이면서 가장 쉽게 간과되는 부분이기도 하다. 데이터 모델링은 크게 논리 모델링과 물리 모델링으로 나눌 수 있다. 제대로 표현되고 있는 곳은 잘 없지만, 원래 논리 모델링과 물리 모델링의 차이는 테이블/칼럼 등의 이름이 영어냐 한글이냐가 아니라, 모델에 표현하려는 것이 업무냐 시스템이냐의 차이다. 업무를 분석하">
+<meta name="twitter:image" content="https://joont92.github.io/temp/%EC%97%94%ED%8B%B0%ED%8B%B0.png#width30">
+
+
+
+  <link rel="alternate" href="/feed.xml" title="기록은 기억의 연장선" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://joont92.github.io/db/데이터-모델링/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[db] 데이터 모델링 | 기록은 기억의 연장선</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-110551662-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110551662-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">기록은 기억의 연장선</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">더 많은 것을 기억하기 위해 기록합니다</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/joont92" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joont92.github.io/db/데이터-모델링/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYoung Park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="기록은 기억의 연장선">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[db] 데이터 모델링
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-04-18 23:45:09" itemprop="dateCreated datePublished" datetime="2018-04-18T23:45:09+00:00">2018-04-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-02 10:09:30" itemprop="dateModified" datetime="2020-11-02T10:09:30+00:00">2020-11-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/db/" itemprop="url" rel="index"><span itemprop="name">db</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/db/데이터-모델링/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="db/데이터-모델링/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>데이터 모델링은 DBMS 사용에 가장 중요한 부분이면서 가장 쉽게 간과되는 부분이기도 하다.<br>
+데이터 모델링은 크게 <code>논리 모델링</code>과 <code>물리 모델링</code>으로 나눌 수 있다.<br>
+제대로 표현되고 있는 곳은 잘 없지만,<br>
+원래 논리 모델링과 물리 모델링의 차이는 테이블/칼럼 등의 이름이 영어냐 한글이냐가 아니라, <strong>모델에 표현하려는 것이 업무냐 시스템이냐의 차이</strong>다.<br>
+업무를 분석하여 그에 대한 데이터 집합/관계를 중점적으로 표현하는 것이 <code>논리 모델링</code>이고,<br>
+그 산출물을 시스템으로 어떻게 표현할지 고려하는 것을 <code>물리 모델링</code>이라고 볼 수 있다.</p>
+<hr>
+<h1 id="모델링-용어"><a class="markdownIt-Anchor" href="#모델링-용어"></a> 모델링 용어</h1>
+<p>ERD상에 표현되는 오브젝트는 논리 모델링이냐 물리 모델링이냐에 따라 각각 이름이 다르게 표현된다.</p>
+<table>
+<thead>
+<tr>
+<th>논리 모델</th>
+<th>물리 모델</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>엔티티(Entity)</td>
+<td>테이블(Table)</td>
+</tr>
+<tr>
+<td>속성, 어트리뷰트(Attribute)</td>
+<td>컬럼(Column)</td>
+</tr>
+<tr>
+<td>관계, 릴레이션(Relation)</td>
+<td>관계, 릴레이션(Relation)</td>
+</tr>
+<tr>
+<td>키 그룹(Key group)</td>
+<td>인덱스(Index)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="논리-모델링"><a class="markdownIt-Anchor" href="#논리-모델링"></a> 논리 모델링</h1>
+<h2 id="엔티티"><a class="markdownIt-Anchor" href="#엔티티"></a> 엔티티</h2>
+<p>객체지향 언어에서 클래스와 동급의 의미다.<br>
+일반적으로 2개 이상의 속성을 가지고, 1개 이상의 레코드를 가지는 오브젝트를 말한다.<br>
+엔티티를 도출할 때 가장 중요한 것은 용어의 정의다.<br>
+해당 용어가 의미하는 범위가 어디까지인지 명확히 하고, 그에 걸맞는 이름을 부여해야 한다.<br>
+그래야만 다음으로 도출할 속성이나 식별자, 관계가 명확해질 수 있다.</p>
+<p><img src="https://joont92.github.io/temp/%EC%97%94%ED%8B%B0%ED%8B%B0.png#width30" alt="엔티티"></p>
+<blockquote>
+<p>ERD 에서 엔티티는 이와 같이 표현한다<br>
+박스 외부에는 엔티티의 이름을 적고, 박스 내부 상단에는 PK, 하단에는 일반 속성을 나열한다</p>
+</blockquote>
+<h3 id="엔티티-종류"><a class="markdownIt-Anchor" href="#엔티티-종류"></a> 엔티티 종류</h3>
+<p>엔티티는 크게 <code>키 엔티티</code>, <code>메인 엔티티</code>, <code>액션 엔티티</code>로 구분할 수 있다.</p>
+<p><code>키 엔티티</code>는 대상 데이터 중 가장 최상위에 존재하는 엔티티이며, 일반적으로 메인 엔티티와 액션 엔티티를 만들어내는 부모 역할을 한다<br>
+일반적으로 현실에 존재하는 객체를 표현하는 경우가 많다. 사원, 고객, 상품 등의 엔티티는 대표적인 키 엔티티이다.</p>
+<p>이러한 <code>키 엔티티</code>간의 작용으로 만들어지는 엔티티를 <code>액션 엔티티</code>라고 한다<br>
+예로는 구매, 계약 등이 있다</p>
+<p>이러한 액션 엔티티들 중 서비스에서 상당히 중요한 역할을 하는 엔티티들을 <code>메인 엔티티</code> 라고 한다<br>
+위에서 언급한 구매, 계약 등은 사실상 메인 엔티티의 대표적인 예시이다<br>
+액션 엔티티도 나중에 업무가 변화하고 확장되면 메인 엔티티로 향상될 수 있다.</p>
+<p><img src="https://joont92.github.io/temp/%EB%A9%94%EC%9D%B8-%EC%97%94%ED%8B%B0%ED%8B%B0.png#width80" alt="메인 엔티티"></p>
+<h3 id="엔티티-작명"><a class="markdownIt-Anchor" href="#엔티티-작명"></a> 엔티티 작명</h3>
+<p>엔티티의 이름은 복수형 표현을 사용하지 않고 별도의 수식어가 없는 단순 또는 복합 명사 형태를 사용한다.</p>
+<ol>
+<li>복수형 표현의 예로 목록, 리스트 등의 단어가 있는데, 테이블 자체가 이미 레코드의 목록을 저장하는 객체이므로 이 같은 이름을 사용할 필요는 없다.</li>
+<li>엔티티의 이름에 수식어가 있다면 주의해서 검토하고, 필요하다면 통합하는 것이 좋다. ex) 상품(O), 고객용상품(X), 직원용상품(X)</li>
+<li>애매모호한 단어도 피하는 것이 좋다. ex) 사원(O), 사원정보(X)</li>
+</ol>
+<h2 id="어트리뷰트속성"><a class="markdownIt-Anchor" href="#어트리뷰트속성"></a> 어트리뷰트(속성)</h2>
+<p>엔티티가 가지고 있는 속성으로써, 더 이상 분리될 수 없는 최소의 데이터 보관 단위이다.</p>
+<h3 id="어트리뷰트-원자성"><a class="markdownIt-Anchor" href="#어트리뷰트-원자성"></a> 어트리뷰트 원자성</h3>
+<p>어트리뷰트는 반드시 독자적인 성질을 가지는 하나의 값만을 저장해야 한다.<br>
+그런데 값의 최소 단위(하나의 값)라는 것이, 표현되는 서비스에 따라 달라질 수 있다.<br>
+예를 들면 주소가 있다<br>
+주소를 시군구, 읍면동 단위로 조작하는 행위가 많다면 속성이 시, 군, 구 등으로 잘개 쪼개지겠지만, 그렇지 않다면 굳이 잘게 쪼개어 관리를 어렵게 할 이유는 없다.</p>
+<p>위와 같은 이유가 아닌 상태에서 어트리뷰트에 여러 값을 저장하는 행위는 지양해야 한다.<br>
+예를 들면 회원 취미 정보를 하나의 어트리뷰트에 구분자로 한꺼번에 저장하는 경우이다.<br>
+이는 어트리뷰트의 원자성에 위배되며 물리 모델링(성능)에 나쁜 영향을 미칠 가능성이 크다.</p>
+<h3 id="어트리뷰트-작명"><a class="markdownIt-Anchor" href="#어트리뷰트-작명"></a> 어트리뷰트 작명</h3>
+<p>어트리뷰트는 그 이름 자체만으로 그 의미를 이해할 수 있게 작명하는 것이 좋다.<br>
+사람들은 대부분 어트리뷰트의 이름을 최대한 간단히 작명하려는 경향이 있는데, 이름을 너무 간략히 작성하면 나중에 그 의미를 혼동하기 쉽다.<br>
+아래는 잘못된 어트리뷰트 명명의 예시이다.</p>
+<p><img src="https://joont92.github.io/temp/%EA%B0%84%EB%9E%B5%ED%95%9C-%EC%96%B4%ED%8A%B8%EB%A6%AC%EB%B7%B0%ED%8A%B8.png#width30" alt="너무 간략히 작명된 속성명"></p>
+<p>속성을 하나씩 살펴보자.</p>
+<ol>
+<li>번호<br>
+어트리뷰트의 이름은 최소한 <code>범위를 한정하는 한정자</code>와 <code>값을 표현하는 명사</code>로 구성해줘야 한다.<br>
+<code>번호</code>의 경우 <code>값을 표현하는 명사</code>만 사용되어 가독성이 떨어진다. 누군가는 이를 회원번호가 아니라 전화번호라고 생각할 수도 있다.<br>
+회원아이디, 회원일련번호 등으로 변경하는 것이 좋다.</li>
+<li>주소<br>
+지금은 어느정도 전달력이 있지만 만약 이 외에 <code>사무실 주소</code>라는 어트리뷰트가 추가로 있다면, 이 어트리뷰트가 자택 주소를 나타낸다는 보장이 없어진다.<br>
+이러한 경우 때문에 단어 하나로만 구성된 어트리뷰트는 배제하도록 노력해야 한다.</li>
+<li>상태<br>
+이게 무슨 상태를 나타내는 것인지는 ERD를 설계한 사람만이 알 것이다.<br>
+게다가 실수로라도 여기에 설계자가 의도한 값 외의 값이 들어가게 된다면, 이 어트리뷰트는 거의 쓰레기 수준으로 관리될 것이다.</li>
+<li>로그인<br>
+<code>번호</code>와는 반대로 <code>범위를 한정하는 한정자</code>만 사용된 케이스이다.<br>
+로그인 일시를 의미하는건지, 로그인 IP를 의미하는 건지 전혀 알 수 없다.</li>
+</ol>
+<p>1번에서 언급하였듯이 어트리뷰트의 이름은 <strong>범위를 한정하는 한정자 + 값을 표현하는 명사</strong>로 구성하는 것이 가장 이상적이다.<br>
+어트리뷰트의 이름이 너무 길어지면 물리모델링 과정에서 까다로워지므로 단어 2~4개 정도를 결합해서 사용하는 것이 좋다.</p>
+<h2 id="식별자프라이머리-키"><a class="markdownIt-Anchor" href="#식별자프라이머리-키"></a> 식별자(프라이머리 키)</h2>
+<p>식별자는 <code>본질 식별자</code>와 <code>실질 식별자</code>로 나눌 수 있다.<br>
+본질 식별자는 엔티티의 레코드가 생성될 수 있는 조건을 알려주는 식별자를 의미한다.<br>
+위의 <code>구매</code> 테이블에서 보이듯이, <code>고객아이디 + 상품코드 + 구매일자</code>가 있어야 레코드가 한건 생성될 수 있으므로, 이 3개의 어트리뷰트가 묶여서 본질 식별자가 되는 것이다<br>
+<code>실질 식별자</code>란 실질적으로 테이블에서 식별자로 사용하고 있는 값을 의미하느데, <code>구매</code> 테이블의 경우 본질 식별자를 그대로 실질 식별자로 사용하고 있다</p>
+<p>근데 여기서 문제가 되는게, 보통 구매 엔티티의 경우 주문이력, 상태변화 등 수많은 자식 엔티티를 가질 가능성이 상당히 높다.<br>
+근데 현재와 같이 본질 식별자를 식별자로 사용할 경우, 자식 엔티티의 경우 부담해야하는 어트리뷰트의 개수가 계속해서 많아지게 된다.<br>
+그러므로 인위적인 값을 생성하여 이를 실질 실별자로 사용하는 경우가 많다.<br>
+이때 사용되는 식별자를 <code>인조 식별자</code>라고 한다.</p>
+<p><img src="https://joont92.github.io/temp/%EC%9D%B8%EC%A1%B0-%EC%8B%9D%EB%B3%84%EC%9E%90-%EC%82%AC%EC%9A%A9.png#width30" alt="인조 식별자 사용"></p>
+<h2 id="관계릴레이션"><a class="markdownIt-Anchor" href="#관계릴레이션"></a> 관계(릴레이션)</h2>
+<p>엔티티간 상호작용을 표현해주는 것을 말한다.<br>
+엔티티와 동일하게 매우 중요한 역할을 수행한다. 관계없이 엔티티만 있는 ERD는 ERD로 볼 수 없다.</p>
+<h3 id="식별-관계와-비식별-관계"><a class="markdownIt-Anchor" href="#식별-관계와-비식별-관계"></a> 식별 관계와 비식별 관계</h3>
+<p>부모 엔티티의 식별자가 자식 엔티티의 식별자로 포함될 경우 <code>식별 관계</code>, 그냥 일반 어트리뷰트로 포함될 경우 <code>비식별 관계</code>라고 한다.</p>
+<p><img src="https://joont92.github.io/temp/%EC%8B%9D%EB%B3%84%EA%B4%80%EA%B3%84%EC%99%80-%EB%B9%84%EC%8B%9D%EB%B3%84%EA%B4%80%EA%B3%84.png#width80" alt="식별 관계와 비식별 관계"><br>
+부모 엔티티가 자식 엔티티를 만들어 내는데 필수적인 역할을 하고 있을 경우 식별 관계를 형성할 대상이 될 수 있다.<br>
+하지만 그 대상을 모두 식별 관계로 형성하면 자식의 식별자가 너무 많아지므로 관계 중 유일성을 보장할 수 있는 최소한의 대표 관계만 식별 관계로 선택하고, 나머지는 비식별 관계로 선택하는 것이 좋다.</p>
+<h3 id="관계의-기수성cardinality"><a class="markdownIt-Anchor" href="#관계의-기수성cardinality"></a> 관계의 기수성(Cardinality)</h3>
+<p>부모 엔티티의 레코드 하나에 자식 엔티티의 레코드가 얼마나 만들어질 수 있는지를 의미한다.<br>
+정확히 몇 건이냐를 표시하는 것이 아니라, <code>0건, 1건, N건(1건 이상)</code> 으로 구분해서 표시한다.<br>
+기수성은 관계선의 양쪽 끝에 표시하며, 나타내는 법은 아래와 같다.</p>
+<p><img src="https://joont92.github.io/temp/%EA%B4%80%EA%B3%84%EC%9D%98-%EA%B8%B0%EC%88%98%EC%84%B1.png#width40" alt="관계의 기수성"><br>
+(이 그림 하나 그린다고 30분을 넘게 썼다… 역시 난 미술이랑 안맞다 ㅋㅋㅋ)<br>
+그리고 아래는 실제 표시되는 형태이다.</p>
+<p><img src="https://joont92.github.io/temp/%EA%B4%80%EA%B3%84%EC%9D%98-%EA%B8%B0%EC%88%98%EC%84%B1-%ED%91%9C%EA%B8%B0.png#width40" alt="관계의 기수성 표기"></p>
+<p>아래는 간단한 예시이다.</p>
+<p><img src="https://joont92.github.io/temp/%ED%9A%8C%EC%9B%90-%EC%A3%BC%EB%AC%B8-%EA%B4%80%EA%B3%84.png#width80" alt="회원,주문 관계"><br>
+한명의 회원은 한번도 구매를 하지 않을수도, 1번 이상 구매할 수도 있음을 나타낸다.</p>
+<h3 id="관계의-형태"><a class="markdownIt-Anchor" href="#관계의-형태"></a> 관계의 형태</h3>
+<p>모델링에는 수많은 관계들이 나타나겠지만, 대표적으로 많이 나타나는 몇개의 패턴들이 있다.</p>
+<ol>
+<li>
+<p>계층 관계<br>
+부모와 자식간의 직선적인 관계가 연속되는 형태를 말한다.<br>
+<img src="https://joont92.github.io/temp/%EA%B2%8C%EC%B8%B5-%EA%B4%80%EA%B3%84.png" alt="계층 관계"><br>
+자식 엔티티로 갈수록 식별자의 개수가 많아지므로, 적절한 수준에서 식별자를 인조 식별자로 대체하는 것이 좋다.<br>
+업무에 따라 다르지만 보통은 2~4단계에서 대체하는 것이 일반적이다.</p>
+</li>
+<li>
+<p>순환 관계<br>
+하나의 엔티티가 부모임과 동시에 자식이 되는 재귀적인 형태를 말한다.<br>
+<img src="https://joont92.github.io/temp/%EC%88%9C%ED%99%98-%EA%B4%80%EA%B3%84.png#width40" alt="순환 관계"><br>
+MySQL은 Oracle과 달리 재귀 쿼리가 지원되지 않는데, 이를 이유로 순환 관계를 피하는 모델링은 잘못된 방식이다.<br>
+그러한 이유로 순환 관계를 계층 관계로 풀어봤자 나아지는 것은 아무것도 없고, 결국에 더 복잡해질 뿐이다.</p>
+</li>
+<li>
+<p>N:N 관계<br>
+보통의 데이터 모델에서는 1:N 관계가 90% 정도를 차지할 정도로 많이 존재히나, 가끔씩 N:N(다대다) 관계도 등장한다.<br>
+아래는 N:N 관계의 대표적인 예시다.<br>
+<img src="https://joont92.github.io/temp/M-N%EC%9D%98-%EB%85%BC%EB%A6%AC-%ED%91%9C%ED%98%84%EB%B2%95.png#width80" alt="N:N의 논리표현법"><br>
+학생은 여러개의 과목을 수강할 수 있고, 과목은 여러 학생에 의해 수강될 수 있다<br>
+그러나 이런 표기법은 논리모델에서나 가능하고, 물리모델에서는 불가능하다.<br>
+즉 물리모델에서는 다른 방식으로 풀어야한다.<br>
+<img src="https://joont92.github.io/temp//M-N%EC%9D%98-%EB%AC%BC%EB%A6%AC-%ED%91%9C%ED%98%84%EB%B2%95.png#width80" alt="N:N의 물리표현법"><br>
+이처럼 2개의 1:N 관계로 풀어줘야 한다. 이를 <code>N:N 관계 해소</code> 라고 한다.<br>
+<code>수강</code>과 같은 엔티티를 <code>관계 엔티티</code>라고 표현한다.</p>
+</li>
+</ol>
+<blockquote>
+<p><img src="https://joont92.github.io/temp/SNS%EC%9D%98-%ED%8C%94%EB%A1%9C%EC%9E%89-%ED%8C%94%EB%A1%9C%EC%9B%8C-%EB%AA%A8%EB%8D%B8.png#width80" alt="SNS의 팔로잉,팔로워"><br>
+이는 요즘에 유행하는 SNS의 팔로잉, 팔로워의 대표적인 예시이다.</p>
+</blockquote>
+<h2 id="엔티티-통합"><a class="markdownIt-Anchor" href="#엔티티-통합"></a> 엔티티 통합</h2>
+<p>ERD를 작성하다 보면 엔티티를 구성하는 어트리뷰트와 관계가 비슷한 엔티티를 자주 보게 된다.<br>
+관계가 비슷하다는 것은 용도가 비슷하다는 의미인데, 이런 엔티티는 통합의 대상이 아닌지 주의깊게 살펴보는 것이 좋다.<br>
+아래는 통합의 간단한 예시다.</p>
+<p><img src="https://joont92.github.io/temp/%EC%97%94%ED%8B%B0%ED%8B%B0-%ED%86%B5%ED%95%A9.png" alt="엔티티 통합"><br>
+법인고객과 개인고객이 서로 많은 어트리뷰트를 공유하고 있어 이를 하나의 엔티티로 합친 예시이다.<br>
+만약 두 엔티티의 어트리뷰트 차이가 꽤나 난다면, 둘의 공통 속성을 모아서 하나의 통합 엔티티로 만드는 방법도 고려해볼 수 있다.<br>
+또한 이 서비스에서 어떤식으로 엔티티나 어트리뷰트에 접근하게 될 지도 고려하면서 통합이나 분리를 선택하는 것이 가장 좋다.</p>
+<h2 id="관계-통합"><a class="markdownIt-Anchor" href="#관계-통합"></a> 관계 통합</h2>
+<p>관계 또한 통합하는 과정을 거치는 것이 좋다.</p>
+<p><img src="https://joont92.github.io/temp/%EA%B4%80%EA%B3%84-%ED%86%B5%ED%95%A9.png" alt="관계 통합"><br>
+왼쪽 관계의 경우 고객의 수가 늘어나는 등의 요구사항에 대응하기 어려우므로, 오른쪽과 같이 고객들을 별도의 엔티티로 분리해주는 것이 좋다.<br>
+참고로 관계를 통합하면 조인이나 저장되는 테이블이 늘어나서 개발이 번거로워질수 있다.<br>
+하지만 대체로 관계의 통합은 성능적 이슈보다는 업무에 유연하게 대응하기 위한 것이다.</p>
+<h2 id="모델-정규화"><a class="markdownIt-Anchor" href="#모델-정규화"></a> 모델 정규화</h2>
+<p>만약 데이터를 하나의 테이블에 다 때려넣으면 어떻게 될까?<br>
+불필요한 공간 낭비는 기본이고 사람이 관리하기도 매우 힘들것이며<br>
+삽입이상, 갱신이상, 삭제이상과 같은 부작용 또한 초래할 수 있게 된다</p>
+<blockquote>
+<p>이상현상(abnomaly) : <a href="https://yaboong.github.io/database/2018/03/09/database-anomaly-and-functional-dependency/" rel="external nofollow noopener noreferrer" target="_blank">https://yaboong.github.io/database/2018/03/09/database-anomaly-and-functional-dependency/</a></p>
+</blockquote>
+<p>정규화란 중복과 이상현상이 발생하지 않도록 데이터를 적절한 기준으로 나눠서 저장하는 것을 말한다<br>
+객체지향 프로그래밍에서 중복을 제거하기 위해 객체들의 관심사를 분리하는 과정과 비슷하다고 보면 된다<br>
+(데이터베이스에서 관심사를 발생하지 않아 발생하는 문제의 경우 코드보다 훨씬 치명적이다)</p>
+<h3 id="제1정규화no-reapeating-group"><a class="markdownIt-Anchor" href="#제1정규화no-reapeating-group"></a> 제1정규화(No Reapeating Group)</h3>
+<p>제1정규화의 요건은 <code>모든 속성은 반드시 하나의 값을 가져야 한다</code>이다.<br>
+아래와 같이 하나의 어트리뷰트에 여러개의 값을 저장하거나, 하나의 엔티티에서 똑같은 성격의 어트리뷰트가 여러번 나열되는 것은 제1정규화를 위반한 것이다.</p>
+<p><img src="https://joont92.github.io/temp/%EC%A0%9C-1-%EC%A0%95%EA%B7%9C%ED%99%94.png#width70" alt="제1정규화"></p>
+<h3 id="제2정규화whole-key-dependent"><a class="markdownIt-Anchor" href="#제2정규화whole-key-dependent"></a> 제2정규화(Whole Key Dependent)</h3>
+<p>제2정규화의 요건은 <code>식별자 일부에 종속되는 어트리뷰트는 제거해야 한다</code>이다.<br>
+엔티티의 식별자를 구성하는 어트리뷰트가 2개일떄, 그 엔티티의 모든 어트리뷰트가 식별자 모두에 완전하게 종속적이어야 한다.</p>
+<p><img src="https://joont92.github.io/temp/%EC%A0%9C-2-%EC%A0%95%EA%B7%9C%ED%99%94.png#width80" alt="제2정규화"><br>
+<code>친구회원명</code>이라는 어트리뷰트는 식별자 중 <code>친구회원번호</code>에만 종속관계를 가진다.<br>
+이는 제2정규화를 위반한 것이다</p>
+<h3 id="제3정규화non-key-independent"><a class="markdownIt-Anchor" href="#제3정규화non-key-independent"></a> 제3정규화(Non-Key Independent)</h3>
+<p>제3정규화의 요건은 <code>식별자 이외의 속성간에 종속관계가 존재하면 안된다</code>이다.</p>
+<p><img src="https://joont92.github.io/temp/%EC%A0%9C-3-%EC%A0%95%EA%B7%9C%ED%99%94.png#width80" alt="제3정규화"><br>
+<code>직업명</code>은 <code>직업코드</code>에 종속적인 어트리뷰트이므로, 따로 엔티티로 분리하며 제거하였다.</p>
+<hr>
+<h1 id="물리-모델링"><a class="markdownIt-Anchor" href="#물리-모델링"></a> 물리 모델링</h1>
+<p>논리 모델링을 통해 나온 산출물을 RDBMS의 특성에 맞게 변환하는 작업이다.</p>
+<h2 id="프라이머리-키-선택"><a class="markdownIt-Anchor" href="#프라이머리-키-선택"></a> 프라이머리 키 선택</h2>
+<p>물리 모델링에서는 <code>인덱스</code>라는 존재 때문에 프라이머리 키 선택을 더욱 신중하게 해야 한다.</p>
+<p>앞의 논리 모델링에서도 고려했던 <code>인조 식별자</code> 사용 여부를 물리 모델링에서도 고려하게 되는데, 여기서 인덱스의 성능까지 추가적으로 생각해줘야 한다.<br>
+<code>InnoDB</code>는 프라이머리키에 의해 클러스터링 되는 스토리지 엔진인데, 이러한 엔진에서는 프라이머리 키를 레코드의 주소 대신 사용하기 때문에 프라이머리키를 구성하는 컬럼의 개수가 많아지면 성능적으로 이슈가 발생할 수 있다</p>
+<p>알다시피 인덱스는 레코드의 주소를 가지고 있고, 이 말인 즉 프라이머리 키가 많을 경우 인덱스의 크기도 같이 비대해짐을 의미한다<br>
+인덱스의 크기가 작을 경우 차이가 미비하지만, 크기가 커질 경우 그 차이가 확연하게 드러나게 된다.</p>
+<blockquote>
+<p>디스크를 차지하는 크기가 커진다는 것은 그만큼 많은 디스크 입출력을 필요로 하고, 메모리에 캐시나 버퍼링을 하기 위해 더 많은 물리적 메모리가 필요하다는 것을 의미한다.</p>
+</blockquote>
+<p>그러므로 프라이머리 키는 적절한 선에서 인조 식별자를 선택해주는 것이 좋다<br>
+그리고 추가로, 프라이머리 키 또한 인덱스로 사용되므로 반드시 SELECT의 조건절에 자주 사용되는 컬럼 위주로 순서를 배치해줘야 한다</p>
+<h2 id="데이터-타입-선정"><a class="markdownIt-Anchor" href="#데이터-타입-선정"></a> 데이터 타입 선정</h2>
+<p>물리 모델링에서 칼럼의 데이터 타입은 가능한 한 최소 단위의 타입을 부여해야 한다.<br>
+레코드의 개수가 많아지면 데이터 타입 한 바이트라도 많은 차이를 만들어내기 때문이다.</p>
+<h3 id="데이터의-타입"><a class="markdownIt-Anchor" href="#데이터의-타입"></a> 데이터의 타입</h3>
+<p>데이터의 타입은 저장하려는 데이터의 성격 그대로 타입을 선정하는 것이 가장 좋다.<br>
+숫자나 날짜 데이터를 모두 문자열 칼럼에 저장해도 아무런 차이가 없다면 처음부터 MySQL에 이렇게 많은 데이터 타입이 제공되지 않았을 것이다.</p>
+<p>만약 저장할 데이터 타입이 명확하지 않고 두개의 데이터 타입 중간쯤 위치해 애매하다면, 그 두 데이터 타입의 장단점을 비교해 선택하는 것이 좋다.<br>
+대표적 예시로는 IP주소가 있다.</p>
+<h3 id="컬럼의-길이"><a class="markdownIt-Anchor" href="#컬럼의-길이"></a> 컬럼의 길이</h3>
+<p>항상 우리는 칼럼에 저장될 데이터의 최대 길이만을 생각하여 길이를 지정하는 경향이 있는데, 이것보다는 <strong>우리가 저장할 데이터가 어떤 특성을 가지느냐에 따라</strong> 칼럼의 길이를 결정해야 한다.<br>
+예를 들어 URL 데이터를 저장하는 칼럼의 경우,<br>
+URL의 최대 길이에 집중할 것이 아니라 우리 서비스에 필요한 URL 길이만을 생각하면 된다.<br>
+그리고 인조식별자에 <code>INTEGER</code> 대신 <code>BIGINT</code>를 사용하는 것도 어떻게 보면 너무 과도하게 멀리 생각하는 행위라고 볼수도 있다.</p>
+<h3 id="문자집합"><a class="markdownIt-Anchor" href="#문자집합"></a> 문자집합</h3>
+<p>문자열 타입에서 문자열이 어떤 문자집합을 가지는지도 상당히 중요한 문제이다.<br>
+특별히 지정하지 않으면 MySQL 서버의 <code>default-character-set</code>에 지정된 문자집합을 사용한다.<br>
+하지만 명확한 기준이 있다면 <code>latin1</code>, <code>utf8</code>를 같이 사용하여 데이터 저장 공간을 줄이는 것도 좋다.</p>
+<blockquote>
+<p>컬럼의 길이나 문자집합을 신경쓰는 이유는 데이터가 디스크를 많이 사용하는 것을 막기 위함이다.<br>
+MySQL에서는 임시테이블/버퍼작업(정렬, 그룹핑 등)을 위해 별도의 메모리 할당이 필요하다.<br>
+이때 <strong>MySQL 서버는 실제 저장된 데이터 길이로 메모리를 할당하는 것이 아니라, 데이터 타입에 명시된 길이를 기준으로 메모리를 할당하고 사용한다.</strong><br>
+그런데 이 메모리 공간이 일정 크기 이상을 초과하면 메모리가 아니라 디스크에서 처리된다.<br>
+즉, 테이블 컬럼이 과도하게 크게 설정되면 메모리로 처리되어야 할 것이 디스크로 처리될 수도 있다.</p>
+</blockquote>
+<h3 id="null-not-null"><a class="markdownIt-Anchor" href="#null-not-null"></a> NULL, NOT NULL</h3>
+<p><code>InnoDB</code>의 경우 <code>NULL</code>이 저장되는 칼럼은 전혀 디스크 공간을 사용하지 않는 특징이 있다.<br>
+즉 <code>NULL</code>을 저장함으로써 디스크 공간을 줄일 수 있는 것이다.<br>
+하지만 <code>SELECT</code>가 많이 발생하는 컬럼의 경우 <code>NULL</code>을 저장하는 행위를 지양하는 것이 좋다.<br>
+MySQL에서 <code>NULLABLE</code> 컬럼에 <code>IN 연산</code>등을 했을 경우 굉장히 이상한 비교 작업을 내부적으로 하기 때문이다.</p>
+<h2 id="반정규화"><a class="markdownIt-Anchor" href="#반정규화"></a> 반정규화</h2>
+<p>정규화는 데이터의 저장 비용을 최소화하는 역할을 담당하기 때문에,<br>
+진행할수록 테이블의 개수나 컬럼의 개수가 증가하게 되고, 이는 결국 <code>SELECT</code>의 부담으로 이어진다.<br>
+반정규화는 <code>COUNT</code>나 <code>GROUP BY</code> 같은 컬럼들을 미리 집계하여 별도로 저장하여 데이터를 읽어오는 비용을 최소화하는 작업을 말한다.</p>
+<h3 id="컬럼-복사"><a class="markdownIt-Anchor" href="#컬럼-복사"></a> 컬럼 복사</h3>
+<p>조인을 없애기 위해 원본 컬럼의 값을 변경하지 않고 그대로 다른 테이블로 복사해두는 형태를 말한다.<br>
+복사해온 컬럼을 이용해 <code>GROUP BY</code>나 <code>ORDER BY</code>를 인덱스로 할수있다면 성능에 상당히 도움이 될 수 있다.<br>
+하지만 복사해온 컬럼이 자주 변경된다면 비효율적인 작업이 될 것이다.<br>
+그러므로 읽기와 변경의 비율을 따져보고 컬럼 복사를 진행하는 것이 좋다.</p>
+<h3 id="요약-칼럼"><a class="markdownIt-Anchor" href="#요약-칼럼"></a> 요약 칼럼</h3>
+<p>어떠한 계산의 결과로 만들어진 값을 저장해두는 컬럼을 의미한다.<br>
+대부분 여러 레코드의 건수, 최대값, 최소값등을 미리 계산해서 저장해두는데 사용한다.<br>
+계산된 결과가 빈번히 호출되고, 매번 계산하기가 부담스러울 때 사용하면 좋은 방법이다.</p>
+<p><img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTY5NjY2NTEmdHlwZT1sJno9MjMvMDQvMjAxOCAwMToxMw==#width70" alt="요약 컬럼"><br>
+하지만 계산의 결과가 빈번히 변경된다면 문제가 될수있다.<br>
+이처럼 잦은 데이터의 변경은 문제가 될 수 있으므로, 20-30분에 한번씩 도는 배치를 통해 계산 컬럼을 변경해주는 것이 가장 효율적인 방법이다.</p>
+<h3 id="해시-인덱스"><a class="markdownIt-Anchor" href="#해시-인덱스"></a> 해시 인덱스</h3>
+<p>해시 인덱스는 칼럼의 원래 값을 인덱싱하는 것이 아니라, 길이를 훨씬 줄인 해시값으로 인덱스를 구성하는 방식이다.<br>
+하지만 MyISAM이나 InnoDB에서는 이를 지원하지 않으므로, MD5 함수를 통해 이를 흉내내야 한다.<br>
+방식은 간단하다. 별도의 해시 저장용 컬럼을 만들고 그곳에 인덱스를 생성하는 것이다.</p>
+<p><img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTIwOTY5NTUxNDUmdHlwZT1sJno9MjMvMDQvMjAxOCAwMTowNQ==#width30" alt="해시 인덱스"><br>
+그리곤 아래와 같이 사용할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> temp</span><br><span class="line"><span class="keyword">WHERE</span> hash_url=<span class="keyword">MD5</span>(<span class="string">'http://....'</span>);</span><br></pre></td></tr></table></figure>
+<p>url에 직접 인덱스를 생성할 필요도 없고, 만약 url컬럼에 인덱스를 생성하지 못하는 경우에도 유용하게 사용할 수 있다.<br>
+기본적으로 <code>InnoDB</code>는 <code>767바이트</code>까지만 인덱스를 생성할 수 있기 때문이다.</p>
+<p>참고 : <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&amp;mallGb=KOR&amp;barcode=9788992939003&amp;orderClick=LEA&amp;Kc=" rel="external nofollow noopener noreferrer" target="_blank">이성욱, 『Real MySQL』, 위키북스(2012)</a></p>
+<a id="more"></a>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Real-MySQL/" rel="tag"># Real MySQL</a>
+          
+            <a href="/tags/데이터-모델링/" rel="tag"># 데이터 모델링</a>
+          
+            <a href="/tags/논리-모델링/" rel="tag"># 논리 모델링</a>
+          
+            <a href="/tags/물리-모델링/" rel="tag"># 물리 모델링</a>
+          
+            <a href="/tags/정규화/" rel="tag"># 정규화</a>
+          
+            <a href="/tags/반정규화/" rel="tag"># 반정규화</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/db/mysql-dump/" rel="next" title="[db] mysql dump">
+                <i class="fa fa-chevron-left"></i> [db] mysql dump
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/db/실행계획/" rel="prev" title="[db] 실행계획">
+                [db] 실행계획 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JunYoung Park</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">182</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">344</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feed.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#모델링-용어"><span class="nav-number">1.</span> <span class="nav-text"> 모델링 용어</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#논리-모델링"><span class="nav-number">2.</span> <span class="nav-text"> 논리 모델링</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#엔티티"><span class="nav-number">2.1.</span> <span class="nav-text"> 엔티티</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#엔티티-종류"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 엔티티 종류</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#엔티티-작명"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 엔티티 작명</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#어트리뷰트속성"><span class="nav-number">2.2.</span> <span class="nav-text"> 어트리뷰트(속성)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#어트리뷰트-원자성"><span class="nav-number">2.2.1.</span> <span class="nav-text"> 어트리뷰트 원자성</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#어트리뷰트-작명"><span class="nav-number">2.2.2.</span> <span class="nav-text"> 어트리뷰트 작명</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#식별자프라이머리-키"><span class="nav-number">2.3.</span> <span class="nav-text"> 식별자(프라이머리 키)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#관계릴레이션"><span class="nav-number">2.4.</span> <span class="nav-text"> 관계(릴레이션)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#식별-관계와-비식별-관계"><span class="nav-number">2.4.1.</span> <span class="nav-text"> 식별 관계와 비식별 관계</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#관계의-기수성cardinality"><span class="nav-number">2.4.2.</span> <span class="nav-text"> 관계의 기수성(Cardinality)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#관계의-형태"><span class="nav-number">2.4.3.</span> <span class="nav-text"> 관계의 형태</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#엔티티-통합"><span class="nav-number">2.5.</span> <span class="nav-text"> 엔티티 통합</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#관계-통합"><span class="nav-number">2.6.</span> <span class="nav-text"> 관계 통합</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#모델-정규화"><span class="nav-number">2.7.</span> <span class="nav-text"> 모델 정규화</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#제1정규화no-reapeating-group"><span class="nav-number">2.7.1.</span> <span class="nav-text"> 제1정규화(No Reapeating Group)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#제2정규화whole-key-dependent"><span class="nav-number">2.7.2.</span> <span class="nav-text"> 제2정규화(Whole Key Dependent)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#제3정규화non-key-independent"><span class="nav-number">2.7.3.</span> <span class="nav-text"> 제3정규화(Non-Key Independent)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#물리-모델링"><span class="nav-number">3.</span> <span class="nav-text"> 물리 모델링</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#프라이머리-키-선택"><span class="nav-number">3.1.</span> <span class="nav-text"> 프라이머리 키 선택</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-타입-선정"><span class="nav-number">3.2.</span> <span class="nav-text"> 데이터 타입 선정</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#데이터의-타입"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 데이터의 타입</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#컬럼의-길이"><span class="nav-number">3.2.2.</span> <span class="nav-text"> 컬럼의 길이</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#문자집합"><span class="nav-number">3.2.3.</span> <span class="nav-text"> 문자집합</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#null-not-null"><span class="nav-number">3.2.4.</span> <span class="nav-text"> NULL, NOT NULL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#반정규화"><span class="nav-number">3.3.</span> <span class="nav-text"> 반정규화</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#컬럼-복사"><span class="nav-number">3.3.1.</span> <span class="nav-text"> 컬럼 복사</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#요약-칼럼"><span class="nav-number">3.3.2.</span> <span class="nav-text"> 요약 칼럼</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#해시-인덱스"><span class="nav-number">3.3.3.</span> <span class="nav-text"> 해시 인덱스</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunYoung Park</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://joont92.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://joont92.github.io/db/데이터-모델링/";
+    this.page.identifier = "db/데이터-모델링/";
+    this.page.title = '[db] 데이터 모델링';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://joont92.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

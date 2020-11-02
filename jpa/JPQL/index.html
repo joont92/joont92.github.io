@@ -1,0 +1,3024 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="JPA에서 현재까지 사용했던 검색은 아래와 같다.  식별자로 조회 EntityManager.find() 객체 그래프 탐색 e.g. a.getB().getC()  하지만 현실적으로 이 기능만으로 어플리케이션을 개발하기에는 무리이다. 그렇다고 모든 엔티티를 메모리에 올려두고 어플리케이션 내에서 필터하는 것은 현실성이 없는 소리이다. 즉, 데이터베이스에서 필터해">
+<meta name="keywords" content="자바 ORM 표준 JPA 프로그래밍,객체지향 쿼리 언어,JPQL 문법,네이티브 쿼리,벌크 연산">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[jpa] JPQL">
+<meta property="og:url" content="https://joont92.github.io/jpa/JPQL/index.html">
+<meta property="og:site_name" content="기록은 기억의 연장선">
+<meta property="og:description" content="JPA에서 현재까지 사용했던 검색은 아래와 같다.  식별자로 조회 EntityManager.find() 객체 그래프 탐색 e.g. a.getB().getC()  하지만 현실적으로 이 기능만으로 어플리케이션을 개발하기에는 무리이다. 그렇다고 모든 엔티티를 메모리에 올려두고 어플리케이션 내에서 필터하는 것은 현실성이 없는 소리이다. 즉, 데이터베이스에서 필터해">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://joont92.github.io/temp/JPQL-%EC%A1%B0%ED%9A%8C%EC%8B%9C-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.jpeg">
+<meta property="og:image" content="https://joont92.github.io/temp/JPQL-%EC%8B%A4%ED%96%89%EC%8B%9C-%ED%94%8C%EB%A1%9C%EC%9A%B0.jpeg">
+<meta property="og:updated_time" content="2020-11-02T10:09:30.453Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[jpa] JPQL">
+<meta name="twitter:description" content="JPA에서 현재까지 사용했던 검색은 아래와 같다.  식별자로 조회 EntityManager.find() 객체 그래프 탐색 e.g. a.getB().getC()  하지만 현실적으로 이 기능만으로 어플리케이션을 개발하기에는 무리이다. 그렇다고 모든 엔티티를 메모리에 올려두고 어플리케이션 내에서 필터하는 것은 현실성이 없는 소리이다. 즉, 데이터베이스에서 필터해">
+<meta name="twitter:image" content="https://joont92.github.io/temp/JPQL-%EC%A1%B0%ED%9A%8C%EC%8B%9C-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.jpeg">
+
+
+
+  <link rel="alternate" href="/feed.xml" title="기록은 기억의 연장선" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://joont92.github.io/jpa/JPQL/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[jpa] JPQL | 기록은 기억의 연장선</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-110551662-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110551662-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">기록은 기억의 연장선</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">더 많은 것을 기억하기 위해 기록합니다</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/joont92" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joont92.github.io/jpa/JPQL/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYoung Park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="기록은 기억의 연장선">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[jpa] JPQL
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-01 21:24:46" itemprop="dateCreated datePublished" datetime="2019-01-01T21:24:46+00:00">2019-01-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-02 10:09:30" itemprop="dateModified" datetime="2020-11-02T10:09:30+00:00">2020-11-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/jpa/" itemprop="url" rel="index"><span itemprop="name">jpa</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/jpa/JPQL/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="jpa/JPQL/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JPA에서 현재까지 사용했던 <code>검색</code>은 아래와 같다.</p>
+<ul>
+<li>식별자로 조회 EntityManager.find()</li>
+<li>객체 그래프 탐색 e.g. a.getB().getC()</li>
+</ul>
+<p>하지만 현실적으로 이 기능만으로 어플리케이션을 개발하기에는 무리이다.<br>
+그렇다고 모든 엔티티를 메모리에 올려두고 어플리케이션 내에서 필터하는 것은 현실성이 없는 소리이다.<br>
+즉, 데이터베이스에서 필터해서 조회해올 무언가가 필요하고, 그게 <code>객체지향 쿼리 언어(JPQL)</code>이다.</p>
+<p>JPQL은 엔티티 객체를 조회하는 객체지향 쿼리 언어이다.<br>
+문법은 SQL과 비슷한데, 실제론 SQL을 추상화 한것이기 때문에 특정 데이터베이스에 의존하지 않는 특징이 있다.</p>
+<p>SQL과 비슷하게 SELECT, UPDATE, DELETE 문을 사용할 수 있다.<br>
+(참고로 엔티티 저장은 그냥 entityManager.persist를 사용하면 되므로 INSERT 문은 없다.)<br>
+JPQL에서 UPDATE, DELETE 문은 벌크 연산이라고 해서 뒤에서 따로 설명할 것이므로, SELECT 문만 작성하겠다.</p>
+<h1 id="기본-문법"><a class="markdownIt-Anchor" href="#기본-문법"></a> 기본 문법</h1>
+<p>기본 형태는 아래와 같다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m <span class="keyword">FROM</span> <span class="keyword">Member</span> <span class="keyword">AS</span> m <span class="keyword">WHERE</span> m.username = <span class="string">'Hello'</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>대소문자 구문
+<ul>
+<li>엔티티와 속성은 대소문자를 구분한다. Member와 member는 다르고 username과 USERNAME은 다르다.</li>
+<li>SELECT, FROM 같은 JPQL 키워드는 대소문자를 구분하지 않는다.</li>
+</ul>
+</li>
+<li>엔티티 이름
+<ul>
+<li>FROM 이후에 오는 대상은 테이블 이름이 아니라 엔티티 이름이다.</li>
+<li>기본값인 클래스명을 엔티티명으로 사용하는 것을 추천한다.</li>
+</ul>
+</li>
+<li>별칭은 필수
+<ul>
+<li>JPQL은 별칭을 필수로 사용해야 한다. AS 뒤에 <code>m</code>이 Member의 별칭이다.</li>
+<li>AS는 생략 가능하다.</li>
+</ul>
+</li>
+</ol>
+<h2 id="typedquery-query"><a class="markdownIt-Anchor" href="#typedquery-query"></a> TypedQuery, Query</h2>
+<p>작성한 JPQL을 실행시키기 위해 만드는 <code>쿼리 객체</code>이다.<br>
+JPQL이 반환할 타입을 명확하게 지정할 수 있으면 TypedQuery를 사용하고, 명확하게 지정할 수 없으면 Query를 사용하면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 조회대상이 정확히 Member 엔티티이므로 TypedQuery 사용 가능</span></span><br><span class="line">TypedQuery&lt;Member&gt; query = em.createQuery(<span class="string">"SELECT m FROM Member m"</span>, Member.class);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 조회대상이 String, Integer로 명확하지 않으므로 Query 사용</span></span><br><span class="line">Query query = em.createQuery(<span class="string">"SELECT m.username, m.age FROM Member m"</span>);</span><br></pre></td></tr></table></figure>
+<p>TypedQuery로 실행된 쿼리는 두번쨰 인자로 주어진 클래스를 반환하고,<br>
+Query의 경우 예제처럼 조회 컬럼이 1개 이상일 경우 <code>Object[]</code>, 1개일 경우 <code>Object</code>를 반환한다.</p>
+<blockquote>
+<p>참고로 String 타입의 필드만 조회하고 TypedQuery&lt;String[]&gt; 를 사용하는 방식은 안된다.<br>
+하나하나 다 체크하기에는 너무 많으니까…</p>
+</blockquote>
+<h2 id="결과-조회"><a class="markdownIt-Anchor" href="#결과-조회"></a> 결과 조회</h2>
+<p>쿼리 객체에서 아래의 메서드들을 사용해 JPQL을 실행한다.</p>
+<ul>
+<li>query.getResultList()
+<blockquote>
+<p>결과를 컬렉션으로 반환한다. 결과가 없으면 빈 컬렉션이 반환된다. 1건이면 1건만 들어간 컬렉션이 반환된다.</p>
+</blockquote>
+</li>
+<li>query.getSingleResult()
+<blockquote>
+<p>결과가 정확히 1건 일때 사용한다.<br>
+결과가 없으면 javax.persistence.NoResultException, 결과가 1건 이상이면 javax.persistence.NonUniqueResultException이 발생한다.<br>
+근데 얘는 <code>Optional</code>을 반환해야 하지 않을까?</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="파라미터-바인딩"><a class="markdownIt-Anchor" href="#파라미터-바인딩"></a> 파라미터 바인딩</h1>
+<p>아래와 같은 <code>이름 기준 파라미터 바인딩</code>을 지원한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TypedQuery&lt;Member&gt; query = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member m WHERE m.username = :username"</span>, Member.class)</span><br><span class="line">    .setParameter(<span class="string">"username"</span>, <span class="string">"joont1"</span>); <span class="comment">// JPQL은 대부분 메서드 체인 방식으로 되어있어서 이렇게 연속해서 작성하는 것이 가능하다</span></span><br><span class="line"></span><br><span class="line">List&lt;Member&gt; result = query.getResultLst();</span><br></pre></td></tr></table></figure>
+<p>username은 Member 클래스에 정의된 프로퍼티 이름이다. 앞에 <code>:</code>를 붙여서 바인딩한다.<br>
+username 에 joont1 이 바인딩 될 것이다.</p>
+<p>참고로 아래와 같이 위치 기준 파라미터 바인딩도 지원하기는 한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TypedQuery&lt;Member&gt; query = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member m WHERE m.username = ?1"</span>, Member.class)</span><br><span class="line">    .setParameter(<span class="number">1</span>, <span class="string">"joont1"</span>);</span><br></pre></td></tr></table></figure>
+<p>이것보다는 전자가 더 명확하다.</p>
+<p>참고로 LIKE 연산처럼 <code>%</code> 같은 특수문자가 필요할 경우 전달하는 파라미터에 붙여서 사용하면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TypedQuery&lt;Member&gt; query = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member m WHERE m.username LIKE :username"</span>, Member.class)</span><br><span class="line">    .setParameter(<span class="string">"username"</span>, <span class="string">"%joont%"</span>); <span class="comment">// 이런식으로</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>파라미터 바인딩 방식은 선택이 아닌 필수이다</strong></p>
+<ul>
+<li>JPQL에 직접 문자를 더하면 SQL Injection을 당할 수 있다</li>
+<li>JPA에서 파라미터만 다를 뿐 같은 쿼리로 인식하므로, JPQL을 SQL로 파싱한 결과를 재사용할 수 있다</li>
+<li>SQL 내에서도 같은 쿼리는 결과를 재사용한다</li>
+</ul>
+</blockquote>
+<h1 id="프로젝션"><a class="markdownIt-Anchor" href="#프로젝션"></a> 프로젝션</h1>
+<p>조회할 대상을 지정하는 것을 프로젝션이라고 한다.<br>
+<code>SELECT [프로젝션 대상] FROM</code> 으로 대상을 지정한다.<br>
+대상은 엔티티 타입, 임베디드 타입, 스칼라 타입이 있다.</p>
+<h2 id="엔티티-프로젝션"><a class="markdownIt-Anchor" href="#엔티티-프로젝션"></a> 엔티티 프로젝션</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m <span class="keyword">FROM</span> <span class="keyword">Member</span> m // <span class="keyword">member</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> m.team <span class="keyword">FROM</span> Memher m // team</span><br></pre></td></tr></table></figure>
+<p>둘 다 엔티티를 프로젝션 대상으로 사용했다.<br>
+참고로 이렇게 조회한 엔티티는 영속성 컨텍스트에서 관리된다.</p>
+<h2 id="임베디드-타입-프로젝션"><a class="markdownIt-Anchor" href="#임베디드-타입-프로젝션"></a> 임베디드 타입 프로젝션</h2>
+<p>엔티티를 통해서 조회한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Address address = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m.address FROM Member m"</span>, Address.class)</span><br><span class="line">    .getSingleResult();</span><br></pre></td></tr></table></figure>
+<p>임베디드 타입은 엔티티 타입이 아닌 값 타입이므로<br>
+이렇게 조회한 임베디드 타입은 영속성 컨텍스트에서 관리되지 않는다.</p>
+<h2 id="스칼라-타입-프로젝션"><a class="markdownIt-Anchor" href="#스칼라-타입-프로젝션"></a> 스칼라 타입 프로젝션</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 이름조회</span></span><br><span class="line">TypedQuery&lt;String&gt; query = em.createQuery(<span class="string">"SELECT m.username FROM Member m"</span>, String.class);</span><br><span class="line">List&lt;String&gt; resultList = query.getResultList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 이름조회(중복제거)</span></span><br><span class="line">TypedQuery&lt;String&gt; query = em.createQuery(<span class="string">"SELECT DISTINCT m.username FROM Member m"</span>, String.class);</span><br><span class="line">List&lt;String&gt; resultList = query.getResultList();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 통계 쿼리</span></span><br><span class="line">TypedQuery&lt;Double&gt; query = em.createQuery(<span class="string">"SELECT AVG(o.orderAmount) FROM Order o"</span>, Double.class);</span><br><span class="line">List&lt;Double&gt; resultList = query.getResultList();</span><br></pre></td></tr></table></figure>
+<p>조회되는 컬럼이 1건이라 TypedQuery를 사용하였다. 보다시피 통계 쿼리도 스칼라 타입으로 조회할 수 있다.</p>
+<h2 id="여러-값-조회"><a class="markdownIt-Anchor" href="#여러-값-조회"></a> 여러 값 조회</h2>
+<p>아래와 같이 여러값으로 조회했을 때는 TypedQuery를 사용할 수 없고, Query만 사용할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Query query = em.createQuery(<span class="string">"SELECT m.username, m.age, m.team FROM Member m"</span>);</span><br><span class="line">List&lt;Object[]&gt; resultList = query.getResultList();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Object[] row : resultList)&#123;</span><br><span class="line">    String username = (String)row[<span class="number">0</span>];</span><br><span class="line">    Integer age = (Integer)row[<span class="number">1</span>];</span><br><span class="line">    Team team = (Team)row[<span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>물론 아때도 조회한 엔티티는 영속성 컨텍스트에서 관리된다.</p>
+<h2 id="new-명령어"><a class="markdownIt-Anchor" href="#new-명령어"></a> NEW 명령어</h2>
+<p>NEW 명령어를 사용하면 Object[] 대신 바로 객체로 생성해서 받아볼 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TypedQuery&lt;UserDTO&gt; query = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT NEW com.joont.dto.UserDTO(m.username, m.age, m.team) FROM Member m"</span>, UserDTO.class);</span><br><span class="line"></span><br><span class="line">List&lt;UserDTO&gt; resultList = query.getResultList();</span><br></pre></td></tr></table></figure>
+<p>기존이라면 하나하나 번거롭게 변환했어야 했을 작업을 NEW 명령어를 사용해서 간단하게 처리했다.<br>
+NEW 명령어를 사용하려면 아래 2가지를 주의해야 한다.</p>
+<ul>
+<li>패키지명을 포함한 클래스명을 입력해야 한다.</li>
+<li>순서와 타입이 일치하는 생성자가 필요하다.</li>
+</ul>
+<p>직접 쓰라고 있는 기능은 아닌 것 같다.<br>
+라이브러리들이 적절히 구현해라고 만들어놓은 기능인듯(QueryDSL 등)</p>
+<h1 id="페이징-api"><a class="markdownIt-Anchor" href="#페이징-api"></a> 페이징 API</h1>
+<p>JPA는 데이터베이스들의 페이징들을 아래의 두 API로 추상화했다.<br>
+(페이징은 데이터베이스마다 문법이 다 다르다)</p>
+<ul>
+<li>setFirstResult(int startPosition) : 조회 시작 위치(0부터 시작)</li>
+<li>setMaxResult(int maxResult) : 조회할 데이터 수</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TypedQuery&lt;Member&gt; query = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member m ORDER BY m.username DESC"</span>, Member.class);</span><br><span class="line"></span><br><span class="line">query.setFirstResult(<span class="number">10</span>);</span><br><span class="line">query.setMaxResult(<span class="number">20</span>);</span><br><span class="line">query.getResultList();</span><br></pre></td></tr></table></figure>
+<p>11번쨰 데이터부터 시작해서 20개를 조회한다. 즉 11~30번 데이터를 조회하게 된다.<br>
+지원하는 모든 데이터베이스를 추상화했기 때문에 데이터베이스가 바껴도 방언만 바꿔주면 된다.</p>
+<h1 id="집합과-정렬"><a class="markdownIt-Anchor" href="#집합과-정렬"></a> 집합과 정렬</h1>
+<h2 id="집합-함수"><a class="markdownIt-Anchor" href="#집합-함수"></a> 집합 함수</h2>
+<table>
+<thead>
+<tr>
+<th>함수</th>
+<th>설명</th>
+<th>리턴타입</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COUNT</td>
+<td>결과 수를 구한다</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>MAX, MIN</td>
+<td>최대, 최소값을 구한다</td>
+<td>대상에 따라 다름</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>평균값을 구한다. 숫자타입만 사용할 수 있다. 숫자가 아니면 0을 리턴한다.</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>SUM</td>
+<td>합을 구한다. 숫자타입만 사용할 수 있다.</td>
+<td>정수합 : Long<br>소수합 : Double<br></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>집합 함수 사용 시 참고사항</strong></p>
+<ul>
+<li>통계를 계산할 때 NULL값은 무시된다(<code>COUNT(*)</code>은 제외).</li>
+<li>값이 없을 때 SUM, AVG, MAX, MIN를 사용하면 NULL을 리턴한다. COUNT는 0을 리턴한다.</li>
+<li>DISTINCT를 집합 함수안에 사용하면 중복된 값을 제거하고 집합을 구한다.</li>
+</ul>
+</blockquote>
+<h2 id="그룹핑"><a class="markdownIt-Anchor" href="#그룹핑"></a> 그룹핑</h2>
+<p>GROUP BY, HAVING도 사용할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t.name, <span class="keyword">COUNT</span>(m.age), <span class="keyword">SUM</span>(m.age), <span class="keyword">AVG</span>(m.age), <span class="keyword">MAX</span>(m.age), <span class="keyword">MIN</span>(m.age)</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> m.team t</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> t.name  </span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">AVG</span>(m.age) &gt;= <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>(team의 이름으로 그룹화한 뒤 나이의 평균이 10살 이상인 그룹에 대해서 집합을 구했다.)<br>
+문법은 아래와 같다.</p>
+<blockquote>
+<p>group by절 : GROUP BY {단일값 경로 | 별칭}<br>
+having절 : HAVING 조건식</p>
+</blockquote>
+<p>이런식의 통계 쿼리는 보통 전체 데이터를 기준으로 사용하므로 실시간으로 사용하기에는 부담이 많다.</p>
+<h2 id="정렬"><a class="markdownIt-Anchor" href="#정렬"></a> 정렬</h2>
+<p>ORDER BY도 사용할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t.name, <span class="keyword">COUNT</span>(m.age) <span class="keyword">AS</span> cnt  </span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> m.team t  </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> t.name  </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> t.name <span class="keyword">ASC</span>, cnt <span class="keyword">DESC</span></span><br></pre></td></tr></table></figure>
+<p>문법은 아래와 같다.</p>
+<blockquote>
+<p>order by절 : ORDER BY {상태필드 경로 | 결과변수 [ASC | DESC]}</p>
+</blockquote>
+<p>상태필드는 <a href="http://m.name" rel="external nofollow noopener noreferrer" target="_blank">m.name</a> 같이 객체의 상태를 나타내는 필드를 말하고,<br>
+결과변수는 SELECT 절에 나타나는 값을 말한다. 위의 예제에서는 cnt가 결과변수이다.</p>
+<h1 id="조인"><a class="markdownIt-Anchor" href="#조인"></a> 조인</h1>
+<h2 id="내부-조인"><a class="markdownIt-Anchor" href="#내부-조인"></a> 내부 조인</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m <span class="keyword">FROM</span> <span class="keyword">Member</span> m <span class="keyword">INNER</span> <span class="keyword">JOIN</span> m.team t</span><br></pre></td></tr></table></figure>
+<p>보다시피 일반적인 SQL 조인과 조금 다르다.<br>
+가장 큰 특징은 <code>연관 필드</code>를 사용해서 조인한다는 점이다.<br>
+즉, 조인을 사용하려면 엔티티에 연관관계 명시는 필수적으로 되어있어야 한다.<br>
+(위와 같이 작성하면 Member의 team 필드에서 관계의 정보를 얻은 뒤 조인할 것이다)</p>
+<p>아래는 잘못 작성된 JPQL 조인이다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m <span class="keyword">FROM</span> <span class="keyword">Member</span> m <span class="keyword">INNER</span> <span class="keyword">JOIN</span> Team t // 잘못된 조인</span><br></pre></td></tr></table></figure>
+<p>만약 조인한 두 개의 엔티티를 조회하려면 다음과 같이 작성하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m,t</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m <span class="keyword">INNER</span> <span class="keyword">JOIN</span> m.team t</span><br></pre></td></tr></table></figure>
+<p>서로 다른 타입의 두 엔티티를 조회했으므로 TypedQuery는 사용할 수 없다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object[]&gt; list = em.createQuery(jpql).getResultList(); <span class="comment">// 위에서 작성한 쿼리</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Object[] o : list)&#123;</span><br><span class="line">    Member m = (Member)o[<span class="number">0</span>];</span><br><span class="line">    Team t = (Team)o[<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="외부-조인"><a class="markdownIt-Anchor" href="#외부-조인"></a> 외부 조인</h2>
+<p>키워드만 바꿔주면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m <span class="keyword">FROM</span> <span class="keyword">Member</span> m <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> m.team t</span><br></pre></td></tr></table></figure>
+<h2 id="컬렉션-조인"><a class="markdownIt-Anchor" href="#컬렉션-조인"></a> 컬렉션 조인</h2>
+<p>일대다 관계나 다대다 관계처럼 컬렉션을 사용하는 곳에 조인하는 것을 말한다.<br>
+아래와 같이 <code>컬렉션 값 연관 필드</code>를 사용하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t, m <span class="keyword">FROM</span> Team t <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> t.members m</span><br></pre></td></tr></table></figure>
+<h2 id="세타-조인"><a class="markdownIt-Anchor" href="#세타-조인"></a> 세타 조인</h2>
+<p>CROSS JOIN을 말한다.<br>
+CROSS JOIN이란 일반적으로 INNER JOIN에 ON절을 주지 않을 것을 말한다.<br>
+그러므로 JPQL에서는 CROSS JOIN으로 외부 조인을 사용할 수 없다.<br>
+(조인시 ON절이 자동 생성되므로)</p>
+<h2 id="on절"><a class="markdownIt-Anchor" href="#on절"></a> ON절</h2>
+<p>JPA 2.1부터 조인할 때 ON 절을 지원한다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m, t </span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> m.team t</span><br><span class="line"><span class="keyword">ON</span> t.name = <span class="string">'A'</span></span><br></pre></td></tr></table></figure>
+<p>실행 결과는 아래와 같다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m.*, t.*</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> Team t <span class="keyword">ON</span> m.team_id = t.id <span class="keyword">AND</span> t.name = <span class="string">'A'</span></span><br></pre></td></tr></table></figure>
+<p>ON 절을 사용하면 조인 대상을 필터링 하고 사용할 수 있다.</p>
+<h1 id="패치-조인"><a class="markdownIt-Anchor" href="#패치-조인"></a> 패치 조인</h1>
+<p>패치조인은 SQL에 있는 개념은 아니고 JPQL에서 성능 최적화를 위해 제공하는 기능이다.<br>
+간단하게 말해서 연관된 엔티티나 컬렉션을 한번에 같이 조회한 뒤에 대상 객체의 필드에 set 해서 내려주는 것이다.<br>
+문법은 아래와 같다.</p>
+<blockquote>
+<p>fetch join : <code>[ LEFT [ OUTER ] | INNER ] JOIN FETCH 조인경로</code></p>
+</blockquote>
+<h2 id="엔티티-패치-조인"><a class="markdownIt-Anchor" href="#엔티티-패치-조인"></a> 엔티티 패치 조인</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m </span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m <span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">FETCH</span> m.team</span><br></pre></td></tr></table></figure>
+<p>실행해보면 연관 엔티티의 값을 채워주기 위해 <code>M.*, T.*</code>의 형태로 연관된 팀까지 함께 조회한다.<br>
+그리고 기존의 INNER JOIN 에서 Object[] 로 받아야 했던것 과는 달리, Member의 team 변수에 값이 다 채워진 상태로 리턴된다.<br>
+즉, <code>객체 그래프를 그대로 유지하면서 받을 수 있는 방법</code>이다. 그러므로 성능 최적화를 위해 제공화는 기능이라고 하는 것이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Member&gt; list = </span><br><span class="line">    em.createQuery(jpql <span class="comment">/* 위에서 작성한 쿼리 */</span>, Member.class).getResultList();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Member m : list)&#123;</span><br><span class="line">    System.out.println(m.getTeam().getName()); <span class="comment">// LAZY 로딩 발생 안함</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(Member의 Team은 fetch가 LAZY라고 가정한다)<br>
+패치 조인을 통해 이미 연관된 팀을 같이 조히했으므로 위와 같이 수행해도 LAZY 로딩이 발생하지 않는다.</p>
+<h2 id="컬렉션-패치-조인"><a class="markdownIt-Anchor" href="#컬렉션-패치-조인"></a> 컬렉션 패치 조인</h2>
+<p>일대다 관계에서도 패치 조인을 사용할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t</span><br><span class="line"><span class="keyword">FROM</span> Team t <span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">FETCH</span> t.members</span><br></pre></td></tr></table></figure>
+<p>이것 또한 SELECT 절에 t 만 명시했음에도 불구하고, <code>T.*, M.*</code>의 형태로 연관된 회원까지 함께 조회된다.<br>
+근데 여기서 주의할 점이 있는데, 쿼리의 결과가 증가해서 그런지 위 jpql의 결과를 리스트로 받아보면 Team의 개수가 Member의 개수와 동일함을 볼 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Team&gt; list = em.createQuery(jpql, Team.class).getResultList(); <span class="comment">// 위에서 작성한 쿼리</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Team t : list)&#123;</span><br><span class="line">    System.out.println(t);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(Member m : t.getMembers())&#123;</span><br><span class="line">        System.out.println(<span class="string">"-&gt; "</span> + m);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Team@0x100<br>
+-&gt; Member@0x200<br>
+-&gt; Member@0x300<br>
+Team@0x100<br>
+-&gt; Member@0x200<br>
+-&gt; Member@0x300</p>
+</blockquote>
+<p>이렇듯 일대다 조인은 결과가 증가할 수 있음에 주의해야 한다.</p>
+<h2 id="distinct"><a class="markdownIt-Anchor" href="#distinct"></a> DISTINCT</h2>
+<p>JPQL의 DISTINCT는 SQL에 DISTINCT를 추가하는 것은 물론이고, 어플리케이션에서 한번 더 중복을 제거한다.<br>
+이 특징을 이용해서 위의 컬렉션 패치 조인에서 리스트가 중복되서 나오는 문제를 해결할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> t</span><br><span class="line"><span class="keyword">FROM</span> Team t <span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">FETCH</span> t.members</span><br></pre></td></tr></table></figure>
+<p>이렇게 작성하면 먼저 SQL에 DISTINCT가 적용된다.<br>
+하지면 지금은 로우의 데이터가 다르므로 DISTINCT는 효과가 없다.</p>
+<p>다음으로 어플리케이션에서 DISTINCT 명령을 보고 중복된 데이터를 걸러낸다.<br>
+<code>SELECT DISTINCT t</code>는 Team 엔티티의 중복을 제거하라는 의미이므로, 여기에서 중복이 제거되고, 예상했던 결과를 받아볼 수 있게된다.</p>
+<h2 id="패치조인과-일반조인의-차이"><a class="markdownIt-Anchor" href="#패치조인과-일반조인의-차이"></a> 패치조인과 일반조인의 차이</h2>
+<p>위에서도 언급했지만, 일반조인의 경우 결과를 반환할 때 연관관계까지 고려하지 않는다.<br>
+단지 SELECT 절에 지정한 엔티티만을 조회하고, 연관된 엔티티에 대해서는 프록시나 컬렉션 래퍼를 반환한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Team&gt; list = em.createQuery(jpql, Team.class).getResultList(); <span class="comment">// 일반 조인 쿼리</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Team t : list)&#123;</span><br><span class="line">    System.out.println(t.getMembers.get(<span class="number">0</span>)); <span class="comment">// ?</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>그러므로 위와 같이 조회하면<br>
+fetchType이 LAZY일 경우 <code>?</code> 부분에서 LAZY 로딩이 발생할 것이고,<br>
+fetchType이 EAGER일 경우 회원 컬렉션을 즉시 로딩하기 위해 쿼리를 한번 더 실핼하게 된다.</p>
+<h2 id="패치조인의-특징과-한계"><a class="markdownIt-Anchor" href="#패치조인의-특징과-한계"></a> 패치조인의 특징과 한계</h2>
+<p>패치조인은 글로벌 전략보다 우선한다. (글로벌 전략 : 엔티티에 직접 적용하는 로딩 전략 e.g. <code>fetch=FetchType.LAZY</code>)<br>
+그러므로 최적화를 위해 글로벌 로딩 전략을 즉시 로딩으로 설정하기 보다는,<br>
+글로벌 전략은 지연 로딩으로 설정하고 최적화가 필요한 곳에서 패치조인을 사용하는 것이 전체적으로 봤을때 훨씬 효과적이다.</p>
+<p>물론 이런 좋은 패치조인에도 한계가 있다.</p>
+<ul>
+<li>패치조인 대상에는 별칭을 줄 수 없다</li>
+</ul>
+<blockquote>
+<p>별칭을 줄 수 없다는 말인 즉 SELECT, WHERE, 서브쿼리에 패치조인 대상을 사용할 수 없음을 말한다.<br>
+하이버네이트를 포함한 몇몇 구현체들은 패치조인에 별칭을 지정하는 것을 허용해주나 잘못 사용하면 무결성이 깨질 수 있으므로 조심해서 사용해야 한다.</p>
+</blockquote>
+<ul>
+<li>둘 이상의 컬렉션을 패치할 수 없다</li>
+</ul>
+<blockquote>
+<p>컬렉션 * 컬렉션의 카테시안 곱이 만들어지므로 주의해야한다.<br>
+하이버네이트를 사용할 경우 <code>MultipleBagFetchException</code>이 발생한다.<br>
+(근데 컬렉션이 Set이면 왜 될까?)</p>
+</blockquote>
+<ul>
+<li>컬렉션을 패치 조인하면 페이징 API를 사용할 수 없다</li>
+</ul>
+<blockquote>
+<p><code>HHH000104: firstResult/maxResults specified with collection fetch; applying in memory!</code><br>
+와 같은 경고로그를 남기면서 메모리에서 페이징한다.<br>
+데이터가 적으면 상관없겠지만 많으면 성능 이슈가 발생할 수 있어서 위험하다.</p>
+<blockquote>
+<p>driven 엔티티의 중복이 제거된 다음 페이징을 하려고 메모리에서 하는건데… 왜 그런걸까?<br>
+DISTINCT 없는 패치조인일 때는 그냥 다 뿌려줬으면서… 이것도 그냥 다 뿌려진 데이터에 페이징을 넣으면 되는 것 아닌지?</p>
+</blockquote>
+</blockquote>
+<p>이렇듯 패치조인으로 모든것을 해결할수는 없다. 필요할 때만 사용하여 성능 최적화를 꾀하는 것이 좋다.</p>
+<h1 id="경로-표현식"><a class="markdownIt-Anchor" href="#경로-표현식"></a> 경로 표현식</h1>
+<p>경로 표현식이란 <code>.(점)</code>을 찍어 그래프를 탐색하는 것을 말한다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m.username</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m</span><br><span class="line">    <span class="keyword">INNER</span> <span class="keyword">JOIN</span> m.team t</span><br><span class="line">    <span class="keyword">INNER</span> <span class="keyword">JOIN</span> m.orders o</span><br><span class="line"><span class="keyword">WHERE</span> t.name = <span class="string">'TeamA'</span>;</span><br></pre></td></tr></table></figure>
+<p>여기서 <code>m.username, m.team, m.orders, t.name</code> 모두 경로 표현식이다.</p>
+<p>아래는 경로 표현식의 종류와 특징들이다.</p>
+<ul>
+<li>상태필드 : 단순히 값을 저장하기 위한 필드. 일반적인 자바 기본 타입의 컬럼들을 말한다.
+<ul>
+<li><code>m.username</code>, <code>t.name</code>이 해당한다.</li>
+<li>더는 탐색할 수 없다</li>
+</ul>
+</li>
+<li>연관필드 : 연관관계를 위한 필드, 임베디드 타입
+<ul>
+<li>단일 값 연관 필드 : 대상이 엔티티인것을 말한다. (<code>@ManyToOne</code>, <code>@OneToOne</code>)
+<ul>
+<li><code>m.team</code>이 해당된다.</li>
+<li>묵시적으로 내부 조인이 일어난다.</li>
+<li>계속 탐색할 수 있다</li>
+<li>임베디드 타입도 단일 값 연관 필드이지만 연관관계가 없으므로 조인이 일어나지 않는다.</li>
+</ul>
+</li>
+<li>컬렉션 값 연관 필드 : 대상이 컬렉션것을 말한다. (<code>@OneTomany</code>, <code>@ManyToMany</code>)
+<ul>
+<li><code>m.order</code>가 해당된다.</li>
+<li>묵시적으로 내부 조인이 일어난다.</li>
+<li>기본적으로 더는 탐색할 수 없으나, FROM 절에서 별칭을 얻으면 별칭으로 탐색할 수 있다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="단일-값-연관-경로-탐색-예제"><a class="markdownIt-Anchor" href="#단일-값-연관-경로-탐색-예제"></a> 단일 값 연관 경로 탐색 예제</h2>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> o.member <span class="keyword">from</span> <span class="keyword">Order</span> o</span><br></pre></td></tr></table></figure>
+<p>위 JPQL은 아래와 같이 변환된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m.*</span><br><span class="line"><span class="keyword">FROM</span> Order_ o</span><br><span class="line">    <span class="keyword">INNER</span> <span class="keyword">JOIN</span> <span class="keyword">Member</span> m <span class="keyword">ON</span> o.member_id = m.id</span><br></pre></td></tr></table></figure>
+<p>위처럼 JPQL에 JOIN을 적어주지 않았는데 JOIN이 발생하는 것을 <code>묵시적 조인</code>이라고 하고, JOIN을 직접 적어주는 것을 <code>명시적 조인</code>이라고 한다.<br>
+묵시적 조인은 <code>내부 조인만 가능</code> 하다. 외부 조인을 하고 싶으면 <code>명시적 조인</code>을 사용해야 한다.</p>
+<h2 id="컬렉션-값-연관-경로-탐색"><a class="markdownIt-Anchor" href="#컬렉션-값-연관-경로-탐색"></a> 컬렉션 값 연관 경로 탐색</h2>
+<p>컬렉션 값에서는 경로 탐색이 불가능하다(가장 많이 하는 실수)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t.members.username <span class="keyword">FROM</span> Team t // 실패</span><br></pre></td></tr></table></figure>
+<p>만약 경로 탐색을 하고 싶으면 명시적 조인을 사용해서 외부 별칭을 획득해야 한다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m.username</span><br><span class="line"><span class="keyword">FROM</span> Team t  </span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> t.members m</span><br></pre></td></tr></table></figure>
+<p>참고로 컬렉션을 컬렉션의 크기를 구할 수 있는 <code>size</code>라는 특별한 기능을 제공한다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> t.member.size <span class="keyword">FROM</span> Team t</span><br></pre></td></tr></table></figure>
+<p>는 COUNT 함수를 사용하는 함수로 적절히 변환된다.</p>
+<blockquote>
+<p>기본적으로 쿼리에서 조인이 성능상 차지하는 부분은 아주 크다.<br>
+단순하면 별로 문제될 것 없으나, 복잡하고 성능이 중요하면 분석이 용이하도록 명시적 조인을 사용하는 것이 좋다.</p>
+</blockquote>
+<h1 id="서브쿼리"><a class="markdownIt-Anchor" href="#서브쿼리"></a> 서브쿼리</h1>
+<p>JPQL에서는 서브쿼리를 WHERE, HAVING 절에서만 사용할 수 있다.<br>
+SELECT, FROM 절에서는 사용할 수 없다.<br>
+아래는 간단한 서브쿼리 예시이다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 회원들의 평균 나이를 넘는 회원 조회</span><br><span class="line"><span class="keyword">SELECT</span> m</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m</span><br><span class="line"><span class="keyword">WHERE</span> m.age &gt; (<span class="keyword">SELECT</span> <span class="keyword">AVG</span>(m2.age) <span class="keyword">FROM</span> <span class="keyword">Member</span> m2)</span><br></pre></td></tr></table></figure>
+<h2 id="서브쿼리-함수"><a class="markdownIt-Anchor" href="#서브쿼리-함수"></a> 서브쿼리 함수</h2>
+<ul>
+<li>
+<p><strong>EXISTS</strong></p>
+<ul>
+<li>문법 : [NOT] EXISTS {subquery}</li>
+<li>설명 : 서브쿼리가 결과에 존재하면 참이다(NOT은 반대)</li>
+</ul>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// teamA에 소속인 회원</span><br><span class="line"><span class="keyword">SELECT</span> m </span><br><span class="line"><span class="keyword">FROM</span> Memner m </span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> t</span><br><span class="line">    <span class="keyword">FROM</span> m.team t</span><br><span class="line">    <span class="keyword">WHERE</span> t.name = <span class="string">'teamA'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>ALL | ANY | SOME</strong></p>
+<ul>
+<li>문법 : { ALL | ANY | SOME } {subquery}</li>
+<li>설명 : 비교 연산자와 같이 사용한다
+<ul>
+<li>ALL : 조건을 모두 만족하면 참</li>
+<li>ANY, SOME : 둘은 같은 의미임. 조건을 하나라도 만족하면 참</li>
+</ul>
+</li>
+</ul>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 전체 상품 각각의 재고보다 주문량이 많은 주문들  </span><br><span class="line"><span class="keyword">SELECT</span> o</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Order</span> o</span><br><span class="line"><span class="keyword">WHERE</span> o.orderAmoun &gt; ALL(</span><br><span class="line">    <span class="keyword">SELECT</span> p.stockAmoun <span class="keyword">from</span> Product p // o.p가 아니고?</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// 어떤 팀이든 팀에 소속된 회원  </span><br><span class="line"><span class="keyword">SELECT</span> m</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m</span><br><span class="line"><span class="keyword">WHERE</span> m.team = <span class="keyword">ANY</span>(</span><br><span class="line">    <span class="keyword">SELECT</span> t</span><br><span class="line">    <span class="keyword">FROM</span> Team t // 이것도 좀 이상한데...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>IN</strong></p>
+<ul>
+<li>문법 : [NOT] IN {subquery}</li>
+<li>설명 : 서브쿼리의 결과 중 하나라도 같은 것이 있으면 참이다. IN은 서브쿼리가 아닌 곳에서도 사용할 수 있다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="조건식"><a class="markdownIt-Anchor" href="#조건식"></a> 조건식</h1>
+<h2 id="타입-표현"><a class="markdownIt-Anchor" href="#타입-표현"></a> 타입 표현</h2>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>설명</th>
+<th>예제</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>문자</td>
+<td>작은 따옴표 사이에 표현.<br>작음 따옴표를 표현하고 싶으면 작은 따옴표 2개(’’) 사용</td>
+<td>‘HELLO’<br>‘She’'s ’</td>
+</tr>
+<tr>
+<td>숫자</td>
+<td>L(Long 타입 지정)<br>D(Double 타입 지정)<br>F(Float 타입 지정)</td>
+<td>10L<br>10D<br>10F<br></td>
+</tr>
+<tr>
+<td>날짜</td>
+<td>DATE {d ‘yyyy-mm-dd’}<br>TIME {t ‘hh:mm:ss’}<br>TIMESTAMP {ts 'yyyy-mm-dd hh:mm:ss.f}</td>
+<td>m.createDate = {d ‘2012-03-24’}</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>TRUE, FALSE</td>
+<td></td>
+</tr>
+<tr>
+<td>Enum</td>
+<td>패키지명을 포함한 전체 이름</td>
+<td>com.joont.MemberType.Admin</td>
+</tr>
+<tr>
+<td>엔티티 타입</td>
+<td>엔티티의 타입을 표현함. 주로 상속과 관련해 사용.</td>
+<td>TYPE(m) = Member</td>
+</tr>
+</tbody>
+</table>
+<h2 id="연산자-우선-순위"><a class="markdownIt-Anchor" href="#연산자-우선-순위"></a> 연산자 우선 순위</h2>
+<ol>
+<li>경로 탐색 연산 : <code>.</code></li>
+<li>수학 연산 : <code>+(단항 연산), -(단항 연산), *, /, +, -</code></li>
+<li>비교 연산 : <code>=, &gt;, &gt;=, &lt;, &lt;=, &lt;&gt;,</code><br>
+<code>[NOT] BETWEEN, [NOT] LIKE, [NOT] IN,</code><br>
+<code>IS [NOT] NULL, IS [NOT] EMPTY, [NOT] MEMBER [OF], [NOT] EXISTS</code></li>
+<li>논리연산 : NOT, AND, OR</li>
+</ol>
+<p><code>IS [NOT] EMPTY</code>, <code>[NOT] MEMBER [OF]</code> 만 뺴면 사용법은 일반적인 SQL과 동일하다.<br>
+이 두개는 <code>컬렉션 식</code>으로써 JPA에서 제공하는, 컬렉션에만 사용가능환 특별 기능이다.</p>
+<h2 id="컬렉션-식"><a class="markdownIt-Anchor" href="#컬렉션-식"></a> 컬렉션 식</h2>
+<p>컬렉션에만 사용될 수 있음에 주의해야 한다. 컬렉션이 아닌 곳에 사용하면 오류가 발생한다.</p>
+<ul>
+<li>
+<p><strong>빈 컬렉션 비교 식</strong></p>
+<ul>
+<li>문법 : {컬렉션 값 연관 경로} IS [NOT] EMPTY</li>
+<li>설명 : 컬렉션에 값이 비었으면 참</li>
+</ul>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m</span><br><span class="line"><span class="keyword">WHERE</span> m.orders <span class="keyword">IS</span> <span class="keyword">EMPTY</span></span><br></pre></td></tr></table></figure>
+<p>는 아래와 같이 실행된다.</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m.*</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> o.id</span><br><span class="line">    <span class="keyword">FROM</span> Order_ o</span><br><span class="line">    <span class="keyword">WHERE</span> o.member_id = m.id</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>컬렉션 멤버 식</strong></p>
+<ul>
+<li>문법 : {엔티티나 값} [NOT] MEMBER [OF] {컬렉션 값 연관경로}</li>
+<li>설명 : 엔티티나 값이 컬렉션에 포함되어 있으면 참</li>
+</ul>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 전달된 멤버가 포함되어 있는 팀 조회  </span><br><span class="line"><span class="keyword">SELECT</span> t</span><br><span class="line"><span class="keyword">FROM</span> Team t</span><br><span class="line"><span class="keyword">WHERE</span> :memberParam <span class="keyword">MEMBER</span> <span class="keyword">OF</span> t.members</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="스칼라-식"><a class="markdownIt-Anchor" href="#스칼라-식"></a> 스칼라 식</h2>
+<p>숫자, 문자, 날짜, case, 엔티티 타입 같은 가장 기본적인 타입들을 스칼라 타입이라고 한다.</p>
+<ul>
+<li>
+<p><strong>문자함수</strong></p>
+<table>
+<thead>
+<tr>
+<th>함수</th>
+<th>설명</th>
+<th>예제</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONCAT(문자1, 문자2)</td>
+<td>문자를 합한다</td>
+<td>CONCAT(‘A’, ‘B’) = AB</td>
+</tr>
+<tr>
+<td>SUBSTRING(문자, 위치[, 길이])</td>
+<td>위치부터 시작해 길이만큼 문자를 구한다. 길이 값이 없으면 나머지 전체 길이를 뜻한다</td>
+<td>SUBSTRING(‘ABCDEF’, 2, 3) = BCD</td>
+</tr>
+<tr>
+<td>TRIM([[LEADING</td>
+<td>TRAILING</td>
+<td>BOTH] [트림 문자] FROM] 문자)</td>
+</tr>
+<tr>
+<td>LOWER(문자)</td>
+<td>소문자로 변경</td>
+<td>LOWER(‘ABC’) = abc</td>
+</tr>
+<tr>
+<td>UPPER(문자)</td>
+<td>대문자로 변경</td>
+<td>UPPER(‘abc’) = ABC</td>
+</tr>
+<tr>
+<td>LENGTH(문자)</td>
+<td>문자 길이</td>
+<td>LENGTH(‘ABC’) = 3</td>
+</tr>
+<tr>
+<td>LOCATE(찾을 문자, 원본 문자[, 검색 시작 위치])</td>
+<td>검색위치부터 문자를 검색한다. 1부터 시작하고 못찾으면 0을 반환한다.</td>
+<td>LOCATE(‘DE’, ‘ABCDEFG’) = 4</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>수학함수</strong></p>
+<table>
+<thead>
+<tr>
+<th>함수</th>
+<th>설명</th>
+<th>예제</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ABS(식수학식)</td>
+<td>절대값을 구한다</td>
+<td>ABS(-10) = 10</td>
+</tr>
+<tr>
+<td>SQRT(수학식)</td>
+<td>제곱근을 구한다</td>
+<td>SQRT(4) = 2.0</td>
+</tr>
+<tr>
+<td>MOD(수학식, 나눌 수)</td>
+<td>나머지를 구한다</td>
+<td>MOD(4, 3) = 1</td>
+</tr>
+<tr>
+<td>SIZE(컬렉션 값 연관 경로식)</td>
+<td>컬렉션의 크기를 구한다</td>
+<td>SIZE(t.members)</td>
+</tr>
+<tr>
+<td>INDEX(별칭)</td>
+<td>LIST 타입 컬렉션의 위치값을 구함. 단 컬렉션이 @OrderColumn을 사용하는 LIST 타입일 때만 사용할 수 있다</td>
+<td>t.members m where INDEX(m) &gt; 3</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>날짜함수</strong></p>
+<table>
+<thead>
+<tr>
+<th>함수</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURRENT_DATE</td>
+<td>현재 날짜</td>
+</tr>
+<tr>
+<td>CURRENT_TIME</td>
+<td>현재 시간</td>
+</tr>
+<tr>
+<td>CURRENT_TIMESTAMP</td>
+<td>현재 날짜 + 시간</td>
+</tr>
+</tbody>
+</table>
+<p>하이버네이트는 날짜 타입에서 년,월,일,시,분,초 값을 구하는 기능을 지원한다<br>
+(YEAR,MONTH,DAY,HOUR,MINUTE,SECOND)</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">YEAR</span>(m.createdDate), <span class="keyword">MONTH</span>(m.createdDate), <span class="keyword">DAY</span>(m.createdDate) <span class="keyword">FROM</span> <span class="keyword">Member</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="case-식"><a class="markdownIt-Anchor" href="#case-식"></a> CASE 식</h2>
+<ul>
+<li>
+<p><strong>기본 CASE</strong></p>
+<ul>
+<li>문법 :  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CASE  </span><br><span class="line">    &#123;WHEN &lt;조건식&gt; THEN &lt;스칼라식&gt;&#125;+  </span><br><span class="line">    ELSE &lt;스칼라식&gt;  </span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>심플 CASE</strong></p>
+<ul>
+<li>문법 :  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CASE &lt;조건대상&gt;  </span><br><span class="line">    &#123;WHEN &lt;스칼라식1&gt; THEN &lt;스칼라식2&gt;&#125;+</span><br><span class="line">    ELSE &lt;스칼라식&gt;</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>COALESCE</strong></p>
+<ul>
+<li>문법 : <code>COALESCE(&lt;스칼라식&gt;, {,&lt;스칼라식&gt;}+)</code></li>
+<li>설명 : 스칼라식을 차례대로 조회해서 null이 아니면 반환한다. IFNULL과 약간 비슷하다.</li>
+</ul>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COALESCE</span>(m.usernae, <span class="string">'nobody'</span>) </span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>NULLIF</strong></p>
+<ul>
+<li>문법 : <code>NULLIF(&lt;스칼라식&gt;, &lt;스칼라식&gt;)</code></li>
+<li>설명 : 두 값이 같으면 null 반환, 다르면 첫번째 값을 반환한다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="다형성-쿼리"><a class="markdownIt-Anchor" href="#다형성-쿼리"></a> 다형성 쿼리</h1>
+<p>상속관계(<code>@Inheritance</code>)로 구성된 엔티티를 JPA에서 조회하면 그 자식 엔티티도 같이 조회한다.<br>
+이건 기존과 동일하다.</p>
+<h2 id="type"><a class="markdownIt-Anchor" href="#type"></a> TYPE</h2>
+<p>상속 구조에서 조회 대상을 특정 타입으로 한정할 때 사용한다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> i</span><br><span class="line"><span class="keyword">FROM</span> Item i</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">TYPE</span>(i) <span class="keyword">IN</span>(Book, Movie)</span><br></pre></td></tr></table></figure>
+<p>는 아래와 같이 실행된다</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> i.*</span><br><span class="line"><span class="keyword">FROM</span> Item i</span><br><span class="line"><span class="keyword">WHERE</span> i.DTYPE <span class="keyword">IN</span>(<span class="string">'B'</span>, <span class="string">'M'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="treat"><a class="markdownIt-Anchor" href="#treat"></a> TREAT</h2>
+<p>상속 구조에서 부모 타입을 특정 타입으로 다룰 때 사용한다.(자바의 타입 캐스팅과 비슷하다)<br>
+JPA 표준은 FROM, WHERE절에서만 사용 가능하고, 하이버네이트의 경우 SELECT에서도 가능하다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> i</span><br><span class="line"><span class="keyword">FROM</span> Item i</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">TREAT</span>(i <span class="keyword">as</span> Book).author = <span class="string">'kim'</span></span><br></pre></td></tr></table></figure>
+<p>Item을 자식 타입인 Book으로 다뤘다. 그래서 Book의 필드인 author에 접근할 수 있다.</p>
+<h1 id="사용자-정의-함수-호출since-jpa21"><a class="markdownIt-Anchor" href="#사용자-정의-함수-호출since-jpa21"></a> 사용자 정의 함수 호출(since JPA2.1)</h1>
+<p>JPA 2.1부터 사용자 정의 함수를 지원한다.</p>
+<blockquote>
+<p>문법 : <code>FUNCTION(function_name {, function_arg}*)</code></p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">FUNCTION</span>(<span class="string">'group_concat'</span>, i.name)</span><br><span class="line"><span class="keyword">FROM</span> Item i</span><br></pre></td></tr></table></figure>
+<p>하이버네이트를 사용할 경우 아래와 같이 방언 클래스를 상속해서 사용할 데이터베이스 함수를 미리 등록해야 한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyH2Dialect</span> <span class="keyword">extends</span> <span class="title">H2Dialect</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyH2Dialect</span><span class="params">()</span></span>&#123;</span><br><span class="line">        registerFunction(</span><br><span class="line">            <span class="string">"group_concat"</span>, </span><br><span class="line">            <span class="keyword">new</span> StandardFunction(<span class="string">"group_concat"</span>, StandardBasicTypes.STRING)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>registerFunction</code>의 두번째 인자로는 하이버네이트의 <code>SQLFunction</code> 구현체를 주면 된다.<br>
+지금은 기본 함수를 사용하겠다는 의미로 <code>StandardFunction</code>을 사용하였고,<br>
+첫번째 인자로 <code>함수 이름</code>, 두번째 인자로 <code>리턴 타입</code>을 주고 있는 모습이다.</p>
+<p>상속한 Dialect는 아래와 같이 등록하면 되고,</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.dialect"</span> <span class="attr">value</span>=<span class="string">"com.joont.dialect.MyH2Dialect"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>하이버네이트를 사용하면 기본 문법보다 축약해서 사용할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">group_concat</span>(i.name)</span><br><span class="line"><span class="keyword">FROM</span> Item i</span><br></pre></td></tr></table></figure>
+<h1 id="엔티티-직접-사용"><a class="markdownIt-Anchor" href="#엔티티-직접-사용"></a> 엔티티 직접 사용</h1>
+<p>객체 인스턴스는 참조 값으로 식별하고 테이블 로우는 기본 키 값으로 식별하기 때문에<br>
+JPQL에서 엔티티 객체를 직접 사용하면 SQL에서는 해당 엔티티의 기본 키 값을 사용한다.<br>
+몇 가지 예시를 보자.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(m)</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m</span><br></pre></td></tr></table></figure>
+<p>은 아래와 같이 변환된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(m.id)</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>기본키 비교에 엔티티 사용</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Member&gt; result = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member m WHERE m = :member"</span>)</span><br><span class="line">    .setParameter(<span class="string">"member"</span>, member) <span class="comment">// 엔티티 객체 직접 사용</span></span><br><span class="line">    .getResultList();</span><br></pre></td></tr></table></figure>
+<p>member가 영속성 컨텍스트에 있을 필요는 없다. 그냥 식별자만 가지고 있으면 된다.<br>
+실행되는 sql은 아래와 같다.</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m.*</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m </span><br><span class="line"><span class="keyword">WHERE</span> m.id = ? <span class="comment">-- member 파라미터 id 값</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>외래키 비교도 마찬가지다</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Member&gt; result = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member m WHERE m.team = :team"</span>)</span><br><span class="line">    .setParameter(<span class="string">"team"</span>, team) <span class="comment">// 엔티티 객체 직접 사용</span></span><br><span class="line">    .getResultList();</span><br></pre></td></tr></table></figure>
+<p>실행되는 sql은 아래와 같다.</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> m.*</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">Member</span> m </span><br><span class="line"><span class="keyword">WHERE</span> m.team_id = ? <span class="comment">-- team 파라미터 id 값</span></span><br></pre></td></tr></table></figure>
+<p>MEMBER 테이블은 이미 TEAM의 식별자 값을 가지고 있기 때문에 묵시적 조인은 일어나지 않는다.</p>
+</li>
+</ul>
+<h1 id="named-쿼리정적-쿼리"><a class="markdownIt-Anchor" href="#named-쿼리정적-쿼리"></a> Named 쿼리(정적 쿼리)</h1>
+<p><code>em.createQuery(&quot;select ... &quot;)</code> 처럼 JPQL을 직접 문자로 넘기는 것을 동적 쿼리라고 하고,<br>
+미리 정의한 쿼리에 이름을 부여해서 해당 이름으로 사용하는 것을 <code>Named 쿼리(정적 쿼리)</code>라고 한다.</p>
+<p>Named 쿼리는 어플리케이션 로딩 시점에 JPQL 문법을 체크하고 미리 파싱해두므로 오류를 빨리 확인할 수 있고, 사용하는 시점에는 파싱된 결과를 재사용하므로 성능상 이점도 있다.</p>
+<p>Named 쿼리는 <code>@NamedQuery</code> 어노테이션을 사용해서 자바 코드에 작성하거나 XML 문서에 작성할 수 있다.</p>
+<h2 id="어노테이션에-정의"><a class="markdownIt-Anchor" href="#어노테이션에-정의"></a> 어노테이션에 정의</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@NamedQueries</span>(&#123;</span><br><span class="line">    <span class="meta">@NamedQuery</span>(</span><br><span class="line">        name = <span class="string">"Member.findByUsername"</span>,</span><br><span class="line">        query = <span class="string">"SELECT m FROM Member WHERE m.username = :username"</span></span><br><span class="line">    ),</span><br><span class="line">    <span class="meta">@NamedQuery</span>(</span><br><span class="line">        name = <span class="string">"Member.count"</span>,</span><br><span class="line">        query = <span class="string">"SELECT COUNT(m) FROM Member m"</span></span><br><span class="line">    )</span><br><span class="line">&#125;)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위처럼 엔티티에 <code>@NamedQuery</code>, <code>@NamedQueries</code> 어노테이션을 사용해서 직접 정의해주면 된다.<br>
+(Named 쿼리의 이름에 있는 <code>Member</code>가 뭔가 기능적으로 하는게 있는 것은 아니다. 그냥 관리의 편의성을 위함이다.<br>
+그리고 Named 쿼리는 영속성 유닛 단위로 관리되므로 충돌을 방지하기 위해 이름으로 구분한 것이기도 하다)<br>
+그리고 아래와 같아 사용해주면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Member&gt; result = </span><br><span class="line">    em.createNamedQuery(<span class="string">"Member.findByName"</span>, Member.class)</span><br><span class="line">    .setParameter(<span class="string">"username"</span>, <span class="string">"joont"</span>)</span><br><span class="line">    .getResultList();</span><br></pre></td></tr></table></figure>
+<h2 id="xml에-정의"><a class="markdownIt-Anchor" href="#xml에-정의"></a> XML에 정의</h2>
+<p>사실상 자바로 멀티라인 문자를 다루는 것은 상당히 귀찮은 일이므로, Named 쿼리를 작성할 때는 XML을 사용하는 것이 더 편리하다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--xml version="1.0" encoding="UTF-8"?--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">entity-mappings</span> <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/persistence/orm"</span> <span class="attr">version</span>=<span class="string">"2.0"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">named-query</span> <span class="attr">name</span>=<span class="string">"Member.findByUserName"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">query</span>&gt;</span></span><br><span class="line">            select m </span><br><span class="line">            from Member m </span><br><span class="line">            where m.username = :username</span><br><span class="line">        <span class="tag">&lt;/<span class="name">query</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">named-query</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">named-query</span> <span class="attr">name</span>=<span class="string">"Member.findByAgeOver"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">query</span>&gt;</span>&lt;![CDATA[</span><br><span class="line">            select m </span><br><span class="line">            from Member m </span><br><span class="line">            where m.age &gt; :age</span><br><span class="line">        ]]&gt;<span class="tag">&lt;/<span class="name">query</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">named-query</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">named-native-query</span> <span class="attr">name</span>=<span class="string">"Inter.findByAlal"</span> <span class="attr">result-class</span>=<span class="string">"sample.jpa.Inter"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">query</span>&gt;</span>select a.inter_seq, a.inter_name_ko, a.inter_name_en from tb_inter a where a.inter_name_ko = ?<span class="tag">&lt;/<span class="name">query</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">named-native-query</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">entity-mappings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>XML에서 <code>&amp;, &lt;, &gt;,</code>는 예약문자어 이므로 <code>&amp;amp;, &amp;lt;, &amp;gt;</code>를 사용해야 한다.<br>
+<code>&lt;![CDATA[ ]]&gt;</code>를 사용하면 그 사이에 있는 문자를 그대로 출력하므로 예약 문자도 사용할 수 있다.</p>
+<h1 id="기타"><a class="markdownIt-Anchor" href="#기타"></a> 기타</h1>
+<ul>
+<li>
+<p><code>Enum은 = 비교연산만 지원한다</code> 는 JPQL 명세이고, 하이버네이트에서는 아래가 가능하다</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Delivery delivery = </span><br><span class="line">    em.createQuery(<span class="string">"select d from Delivery d where d.deliveryStatus like '%CO%'"</span>, Delivery.class)</span><br><span class="line">    .getSingleResult();</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><code>임베디드 타입은 비교를 지원하지 않는다</code> 또한 JPQL 명세이고, 하이버네이트에서는 아래가 가능하다</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Delivery foundDelivery = </span><br><span class="line">    em.createQuery(<span class="string">"select d from Delivery d where d.address = :address"</span>, Delivery.class)</span><br><span class="line">    .setParameter(<span class="string">"address"</span>, <span class="keyword">new</span> Address(<span class="string">"seoul"</span>, <span class="string">"새마을로"</span>, <span class="string">"1111-1111"</span>))</span><br><span class="line">    .getSingleResult();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>하이버네이트에서만 지원하는건가?</p>
+</blockquote>
+<ul>
+<li>JPA는 <code>''</code>를 길이 0인 Empty String으로 정했지만 데이터베이스에 따라 <code>''</code>를 <code>null</code>로 사용하는 곳이 있으니 확인하고 사용해야 한다.</li>
+<li><strong>NULL 정의</strong>
+<ul>
+<li>조건을 만족하는 데이터가 하나도 없으면 <code>NULL</code> 이다</li>
+<li>NULL은 알수 없는 값이다. NULL과의 모든 수학적 연산은 NULL이다.</li>
+<li>JPA 표준명세에서 정하는 NULL과의 논리연산은<br>
+NULL과 False를 AND 연산하면 False.<br>
+NULL과 True를 OR 연산하면 True이다.</li>
+</ul>
+</li>
+</ul>
+<h1 id="네이티브-sql"><a class="markdownIt-Anchor" href="#네이티브-sql"></a> 네이티브 SQL</h1>
+<p>JPA는 표준 SQL이 지원하는 대부분의 SQL 문법과 함수들을 지원하지만,<br>
+특정 데이터베이스만 지원하는 함수나 문법, SQL 쿼리 힌트 같은 것들은 지원하지 않는다.<br>
+이런 기능을 사용하기 위해선 <code>네이티브 SQL</code>을 사용해야 한다.<br>
+네이티브 SQL이란 JPA에서 일반 SQL을 직접 사용하는 것을 말한다.</p>
+<p>실제 데이터베이스 쿼리를 사용한다는 점 외에는 JPQL을 사용할때와 거의 비슷하다.<br>
+(원래는 위치기반 파라미터만 지원하지만 하이버네이트는 이름기반 파라미터까지 지원한다)</p>
+<h2 id="엔티티-조회"><a class="markdownIt-Anchor" href="#엔티티-조회"></a> 엔티티 조회</h2>
+<p><code>Query createNativeQuery(String sqlString, Class resultClass)</code> 를 말한다.</p>
+<blockquote>
+<p>반환타입을 줘도 TypedQuery가 아닌 Query를 반환하는 이유는,<br>
+JPA 1.0에서 규약이 그렇게 정의되어 버렸기 때문에 그렇다고하니 신경쓰지 않아도 된다.</p>
+</blockquote>
+<ul>
+<li>이 메서드로 조회해온 엔티티는 영속성 컨텍스트에서 관리된다.</li>
+<li>그러므로 모든 필드를 다 조회하는 SQL을 실행해야 한다</li>
+<li>특정 필드만 조회해오면 오류가 발생한다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"SELECT * FROM Member WHERE id = 1"</span>;</span><br><span class="line"></span><br><span class="line">Member memberFromNative = (Member)em.createNativeQuery(sql, Member.class).getSingleResult();</span><br><span class="line">Member memberFromJPQL = em.find(member.class, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">assertSame(memberFromnNative, memberFromJPQL); <span class="comment">// success</span></span><br></pre></td></tr></table></figure>
+<h2 id="값-조회"><a class="markdownIt-Anchor" href="#값-조회"></a> 값 조회</h2>
+<p><code>Query createNativeQuery(String sqlString)</code> 를 말한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"SELECT id, name, age FROM Member"</span>;</span><br><span class="line"></span><br><span class="line">List&lt;Object[]&gt; list = em.createNativeQuery(sql).getResultList();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(Object[] row : list)&#123;</span><br><span class="line">    Integer id = row[<span class="number">0</span>];</span><br><span class="line">    String name = row[<span class="number">1</span>];</span><br><span class="line">    Integer age = row[<span class="number">2</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="결과-매핑-사용"><a class="markdownIt-Anchor" href="#결과-매핑-사용"></a> 결과 매핑 사용</h2>
+<p>네이티브 쿼리에서 여러값들이 나올 때 결과를 여러 엔티티나 엔티티+스칼라 형태로 적절히 합치는건데… 굳이 이것까지…</p>
+<h2 id="named-네이티브-쿼리"><a class="markdownIt-Anchor" href="#named-네이티브-쿼리"></a> Named 네이티브 쿼리</h2>
+<p>어노테이션의 경우 <code>@NamedNativeQuery</code> 사용하면 되고,<br>
+XML의 경우 <code>&lt;named-native-query&gt;</code> 사용하면 된다.</p>
+<blockquote>
+<p>될수 있으면 JPQL을 사용하고, 기능이 부족하면 HQL 등을 사용해보고, 그래도 안되면 네이티브 SQL을 사용하자</p>
+</blockquote>
+<h1 id="스토어드-프로시저"><a class="markdownIt-Anchor" href="#스토어드-프로시저"></a> 스토어드 프로시저</h1>
+<p>JPQL에서 사용 가능하지만(Named 스토어드 프로시저도 가능) MySQL에서 성능 이점이 그리 많지 않아 잘 사용되지 않으니 패스</p>
+<h1 id="벌크-연산update-delete"><a class="markdownIt-Anchor" href="#벌크-연산update-delete"></a> 벌크 연산(UPDATE, DELETE)</h1>
+<p>JPQL로 여러 건을 한번에 수정하거나 삭제할 떄 사용한다.<br>
+아래는 UPDATE 벌크 연산이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"UPDATE Product p "</span> +</span><br><span class="line">    <span class="string">"SET p.prce = p.price * 1.1 "</span> +</span><br><span class="line">    <span class="string">"WHERE p.stockAmount &lt; :stockAmount"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> resultCount = em.createQuery(sql)</span><br><span class="line">        .setParameter(<span class="string">"stockAmount"</span>, <span class="number">10</span>)</span><br><span class="line">        .executeUpdate();</span><br></pre></td></tr></table></figure>
+<p><code>executeUpdate</code> 메서드를 사용한다. 벌크 연산으로 영향을 받은 엔티티 건수를 반환한다.<br>
+아래는 DELETE 벌크 연산이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"DELETE FROM Product p "</span> +</span><br><span class="line">    <span class="string">"WHERE p.price &lt; :price"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> resultCount = em.createQuery(sql)</span><br><span class="line">        .setParameter(<span class="string">"price"</span>, <span class="number">100</span>)</span><br><span class="line">        .executeUpdate();</span><br></pre></td></tr></table></figure>
+<h2 id="벌크-연산시-주의사항"><a class="markdownIt-Anchor" href="#벌크-연산시-주의사항"></a> 벌크 연산시 주의사항</h2>
+<p>벌크 연산은 영속성 컨텍스트를 무시하고 데이터베이스에 직접 쿼리한다는 특징이 있으므로 주의해야 한다.<br>
+아래는 발생가능한 문제 상황이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Product product = em.find(Product.class, <span class="number">1</span>);</span><br><span class="line">assertThat(product.getPrice(), is(<span class="number">1000</span>));</span><br><span class="line"></span><br><span class="line">String sql = <span class="string">"UPDATE Product p "</span> +</span><br><span class="line">    <span class="string">"SET p.prce = p.price * 1.1"</span>;</span><br><span class="line">em.createQuery(sql).executeUpdate();</span><br><span class="line"></span><br><span class="line">assertThat(product.getPrice(), is(<span class="number">1100</span>)); <span class="comment">// FAIL!!</span></span><br></pre></td></tr></table></figure>
+<p>벌크 연산은 영속성 컨텍스트와 2차 캐시를 무시하고 데이터베이스에 직접 쿼리한다.<br>
+따라서 위와 같이 영속성 컨텍스트와 데이터베이스 간에 데이터 차이가 발생할 수 있는 것이다.<br>
+이를 해결하기 위한 방법은 아래와 같다.</p>
+<ul>
+<li><code>em.refrest(entity)</code> 사용
+<blockquote>
+<p>벌크 연산 직후에 <code>em.refresh(entity)</code>를 사용하여 데이터베이스에서 다시 상품을 조회하면 된다.</p>
+</blockquote>
+</li>
+<li>벌크 연산 먼저 실행
+<blockquote>
+<p>벌크 연산을 가장 먼저 실행하면 이미 변경된 내용을 데이터베이스에서 가져온다.<br>
+가장 실용적인 해결책이다.</p>
+</blockquote>
+</li>
+<li>벌크 연산 수행 후 영속성 컨텍스트 초기화
+<blockquote>
+<p>영속성 컨텍스트가 초기화되면 데이터베이스에서 다시 조회해오기 때문에 이것도 방법이다.</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="영속성-컨텍스트와-jpql"><a class="markdownIt-Anchor" href="#영속성-컨텍스트와-jpql"></a> 영속성 컨텍스트와 JPQL</h1>
+<p>영속성 컨텍스트에 이미 있는 엔티티를 JPQL로 다시 조회해올 경우 어떻게 처리될까?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Member member1 = em.find(Member.class, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">List&lt;Member&gt; list = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member m"</span>, Member.class)</span><br><span class="line">    .getResultLst();</span><br></pre></td></tr></table></figure>
+<p>이미 영속성 컨텍스트에 들어있는 1번 member가 JPQL에 의해 다시 한번 조회되는 상황이다.<br>
+결과부터 말하자면 JPQL 쿼리는 쿼리대로 다 날라가고, 조회한 엔티티를 영속성 컨텍스트에 다 저장한다.<br>
+여기서 중요한 점은 1번 member의 경우 영속성 컨텍스트에 이미 들어있으므로, JPQL로 조회해온 1번 member는 그냥 버려진다는 것이다.</p>
+<p><img src="/temp/JPQL-%EC%A1%B0%ED%9A%8C%EC%8B%9C-%EC%98%81%EC%86%8D%EC%84%B1-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8.jpeg" alt="JPQL 조회시 영속성 컨텍스트"></p>
+<p>보다시피 조회해온 member들 중 1번 member는 영속성 컨텍스트에 이미 있으므로 그 결과가 버려진다.<br>
+영속성 컨텍스트에 없는 2번 member의 경우 영속성 컨텍스트에 저장된다.</p>
+<p>새로 조회해온 결과를 기존 영속성 컨텍스트에 덮어쓰지 않는 이유는 <code>영속 상태인 엔티티의 동일성을 보장해야하기 때문</code>이다.</p>
+<blockquote>
+<p>find로 들고오든, JPQL로 들고오든 동일한 엔티티를 반환해야 한다.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Member member1 = em.find(Member.class, <span class="number">1</span>);</span><br><span class="line">Member member2 = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member WHERE m.id = :id"</span>, Member.class)</span><br><span class="line">    .setParameter(<span class="string">"id"</span>, <span class="number">1</span>)</span><br><span class="line">    .getSingleResult();</span><br><span class="line"></span><br><span class="line">assertSame(member1, member2); <span class="comment">// SUCCESS</span></span><br></pre></td></tr></table></figure>
+<p><img src="/temp/JPQL-%EC%8B%A4%ED%96%89%EC%8B%9C-%ED%94%8C%EB%A1%9C%EC%9A%B0.jpeg" alt="JPQL 실행시 플로우"></p>
+<p>보다시피 영속성 컨텍스트에 1번 member 엔티티가 있더라도 무조건 SQL을 실행해서 조회해온다.<br>
+(JPQL을 분석해서 영속성 컨텍스트를 조회하는 것은 너무 힘들기 때문이다.)<br>
+그리고 조회해온 엔티티를 영속성 컨텍스트에 넣을 때, 이미 있는 엔티티일 경우 결과를 버린다.</p>
+<h2 id="jpql과-플러시-모드"><a class="markdownIt-Anchor" href="#jpql과-플러시-모드"></a> JPQL과 플러시 모드</h2>
+<p>플러시 모드는 <code>FlushMode.AUTO(Default)</code>, <code>FlushMode.COMMIT</code>이 있다.<br>
+이때까지 <code>FlushMode.AUTO</code> 는 트랜잭션이 끝날때나 커밋될 때만 플러시를 호출하는 것으로 알고 있었으나, 사실은 시점이 하나 더 있다. JPQL 쿼리를 실행하기 직전이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Member member1 = em.find(Member.class, <span class="number">1</span>);</span><br><span class="line">member1.setName(<span class="string">"modified name"</span>);</span><br><span class="line"></span><br><span class="line">Member member2 = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member WHERE m.id = :id"</span>, Member.class)</span><br><span class="line">    .setParameter(<span class="string">"id"</span>, <span class="number">1</span>)</span><br><span class="line">    .getSingleResult();</span><br><span class="line"></span><br><span class="line">assertThat(member1.getName(), member2.getName());</span><br></pre></td></tr></table></figure>
+<p>변경감지는 플러시 될때 발생하므로, JPQL에서 아직 변경되지 않은 name 값을 가진 1번 member를 가져올 것이라고 생각할 수 있지만,<br>
+<code>FlushMode.AUTO</code>는 영속 상태인 엔티티의 동일성을 보장하기 위해 <code>JPQL 실행 전에 플러시를 수행한다</code>.<br>
+그러므로 위의 테스트는 성공한다.</p>
+<blockquote>
+<p>어떻게 동작하는지 정확히는 모르겠으나, 영속성 컨텍스트에 있는 엔티티에 대해 JPQL을 실행할 떄만 플러시를 수행한다.<br>
+즉, 위의 상황에서 JPQL로 Team을 조회해올 경우 플러시가 발생하지 않는다.</p>
+</blockquote>
+<p>여기서 플러시 모드를 <code>FlushMode.COMMIT</code>으로 설정하면 쿼리전에 플러시를 수행하지 않으므로 위의 테스트가 실패하게 된다.<br>
+이때는 직접 <code>em.flush</code>를 호출해주거나, Query 객체에 직접 플러시 모드를 설정해주면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">em.setFlushMode(FlushMode.COMMIT); <span class="comment">// 커밋시에만 플러시</span></span><br><span class="line"></span><br><span class="line">Member member1 = em.find(Member.class, <span class="number">1</span>);</span><br><span class="line">member1.setName(<span class="string">"modified name"</span>);</span><br><span class="line"></span><br><span class="line">em.flush(); <span class="comment">// 1. em.flush 직접 호출</span></span><br><span class="line"></span><br><span class="line">Member member2 = </span><br><span class="line">    em.createQuery(<span class="string">"SELECT m FROM Member WHERE m.id = :id"</span>, Member.class)</span><br><span class="line">    .setParameter(<span class="string">"id"</span>, <span class="number">1</span>)</span><br><span class="line">    .setFlushMode(FlushMode.AUTO) <span class="comment">// 2. setFlushMode 설정</span></span><br><span class="line">    .getSingleResult();</span><br><span class="line"></span><br><span class="line">assertThat(member1.getName(), member2.getName());</span><br></pre></td></tr></table></figure>
+<p>FlushMode.COMMIT은 너무 잦은 플러시가 일어나는 경우, 플러시 횟수를 줄여서 성능을 최적화하고자 할 때 사용할 수 있다.</p>
+<blockquote>
+<p>한 트랜잭션 안에서 특정 엔티티에 대한 insert, update, delete를 수행하고<br>
+그 뒤에서 JPQL로 전혀 다른 엔티티의 값을 읽어올 경우 불필요한 flush가 날라가게 된다.</p>
+</blockquote>
+<a id="more"></a>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/자바-ORM-표준-JPA-프로그래밍/" rel="tag"># 자바 ORM 표준 JPA 프로그래밍</a>
+          
+            <a href="/tags/객체지향-쿼리-언어/" rel="tag"># 객체지향 쿼리 언어</a>
+          
+            <a href="/tags/JPQL-문법/" rel="tag"># JPQL 문법</a>
+          
+            <a href="/tags/네이티브-쿼리/" rel="tag"># 네이티브 쿼리</a>
+          
+            <a href="/tags/벌크-연산/" rel="tag"># 벌크 연산</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/jpa/값-타입/" rel="next" title="[jpa] 값 타입">
+                <i class="fa fa-chevron-left"></i> [jpa] 값 타입
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/java/stacktrace-읽는법/" rel="prev" title="[java] stacktrace 읽는법">
+                [java] stacktrace 읽는법 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JunYoung Park</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">182</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">344</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feed.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#기본-문법"><span class="nav-number">1.</span> <span class="nav-text"> 기본 문법</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#typedquery-query"><span class="nav-number">1.1.</span> <span class="nav-text"> TypedQuery, Query</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#결과-조회"><span class="nav-number">1.2.</span> <span class="nav-text"> 결과 조회</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#파라미터-바인딩"><span class="nav-number">2.</span> <span class="nav-text"> 파라미터 바인딩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#프로젝션"><span class="nav-number">3.</span> <span class="nav-text"> 프로젝션</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#엔티티-프로젝션"><span class="nav-number">3.1.</span> <span class="nav-text"> 엔티티 프로젝션</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#임베디드-타입-프로젝션"><span class="nav-number">3.2.</span> <span class="nav-text"> 임베디드 타입 프로젝션</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#스칼라-타입-프로젝션"><span class="nav-number">3.3.</span> <span class="nav-text"> 스칼라 타입 프로젝션</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#여러-값-조회"><span class="nav-number">3.4.</span> <span class="nav-text"> 여러 값 조회</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new-명령어"><span class="nav-number">3.5.</span> <span class="nav-text"> NEW 명령어</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#페이징-api"><span class="nav-number">4.</span> <span class="nav-text"> 페이징 API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#집합과-정렬"><span class="nav-number">5.</span> <span class="nav-text"> 집합과 정렬</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#집합-함수"><span class="nav-number">5.1.</span> <span class="nav-text"> 집합 함수</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#그룹핑"><span class="nav-number">5.2.</span> <span class="nav-text"> 그룹핑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#정렬"><span class="nav-number">5.3.</span> <span class="nav-text"> 정렬</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#조인"><span class="nav-number">6.</span> <span class="nav-text"> 조인</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#내부-조인"><span class="nav-number">6.1.</span> <span class="nav-text"> 내부 조인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#외부-조인"><span class="nav-number">6.2.</span> <span class="nav-text"> 외부 조인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#컬렉션-조인"><span class="nav-number">6.3.</span> <span class="nav-text"> 컬렉션 조인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#세타-조인"><span class="nav-number">6.4.</span> <span class="nav-text"> 세타 조인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#on절"><span class="nav-number">6.5.</span> <span class="nav-text"> ON절</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#패치-조인"><span class="nav-number">7.</span> <span class="nav-text"> 패치 조인</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#엔티티-패치-조인"><span class="nav-number">7.1.</span> <span class="nav-text"> 엔티티 패치 조인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#컬렉션-패치-조인"><span class="nav-number">7.2.</span> <span class="nav-text"> 컬렉션 패치 조인</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#distinct"><span class="nav-number">7.3.</span> <span class="nav-text"> DISTINCT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#패치조인과-일반조인의-차이"><span class="nav-number">7.4.</span> <span class="nav-text"> 패치조인과 일반조인의 차이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#패치조인의-특징과-한계"><span class="nav-number">7.5.</span> <span class="nav-text"> 패치조인의 특징과 한계</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#경로-표현식"><span class="nav-number">8.</span> <span class="nav-text"> 경로 표현식</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#단일-값-연관-경로-탐색-예제"><span class="nav-number">8.1.</span> <span class="nav-text"> 단일 값 연관 경로 탐색 예제</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#컬렉션-값-연관-경로-탐색"><span class="nav-number">8.2.</span> <span class="nav-text"> 컬렉션 값 연관 경로 탐색</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#서브쿼리"><span class="nav-number">9.</span> <span class="nav-text"> 서브쿼리</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#서브쿼리-함수"><span class="nav-number">9.1.</span> <span class="nav-text"> 서브쿼리 함수</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#조건식"><span class="nav-number">10.</span> <span class="nav-text"> 조건식</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#타입-표현"><span class="nav-number">10.1.</span> <span class="nav-text"> 타입 표현</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#연산자-우선-순위"><span class="nav-number">10.2.</span> <span class="nav-text"> 연산자 우선 순위</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#컬렉션-식"><span class="nav-number">10.3.</span> <span class="nav-text"> 컬렉션 식</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#스칼라-식"><span class="nav-number">10.4.</span> <span class="nav-text"> 스칼라 식</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#case-식"><span class="nav-number">10.5.</span> <span class="nav-text"> CASE 식</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#다형성-쿼리"><span class="nav-number">11.</span> <span class="nav-text"> 다형성 쿼리</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#type"><span class="nav-number">11.1.</span> <span class="nav-text"> TYPE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#treat"><span class="nav-number">11.2.</span> <span class="nav-text"> TREAT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#사용자-정의-함수-호출since-jpa21"><span class="nav-number">12.</span> <span class="nav-text"> 사용자 정의 함수 호출(since JPA2.1)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#엔티티-직접-사용"><span class="nav-number">13.</span> <span class="nav-text"> 엔티티 직접 사용</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#named-쿼리정적-쿼리"><span class="nav-number">14.</span> <span class="nav-text"> Named 쿼리(정적 쿼리)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#어노테이션에-정의"><span class="nav-number">14.1.</span> <span class="nav-text"> 어노테이션에 정의</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xml에-정의"><span class="nav-number">14.2.</span> <span class="nav-text"> XML에 정의</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#기타"><span class="nav-number">15.</span> <span class="nav-text"> 기타</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#네이티브-sql"><span class="nav-number">16.</span> <span class="nav-text"> 네이티브 SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#엔티티-조회"><span class="nav-number">16.1.</span> <span class="nav-text"> 엔티티 조회</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#값-조회"><span class="nav-number">16.2.</span> <span class="nav-text"> 값 조회</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#결과-매핑-사용"><span class="nav-number">16.3.</span> <span class="nav-text"> 결과 매핑 사용</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#named-네이티브-쿼리"><span class="nav-number">16.4.</span> <span class="nav-text"> Named 네이티브 쿼리</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#스토어드-프로시저"><span class="nav-number">17.</span> <span class="nav-text"> 스토어드 프로시저</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#벌크-연산update-delete"><span class="nav-number">18.</span> <span class="nav-text"> 벌크 연산(UPDATE, DELETE)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#벌크-연산시-주의사항"><span class="nav-number">18.1.</span> <span class="nav-text"> 벌크 연산시 주의사항</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#영속성-컨텍스트와-jpql"><span class="nav-number">19.</span> <span class="nav-text"> 영속성 컨텍스트와 JPQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jpql과-플러시-모드"><span class="nav-number">19.1.</span> <span class="nav-text"> JPQL과 플러시 모드</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunYoung Park</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://joont92.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://joont92.github.io/jpa/JPQL/";
+    this.page.identifier = "jpa/JPQL/";
+    this.page.title = '[jpa] JPQL';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://joont92.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

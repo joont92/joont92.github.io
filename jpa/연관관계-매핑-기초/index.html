@@ -1,0 +1,2413 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="태아불(엔티티)이 서로 연관관계를 가질 때 드러나는 JPA와 SQL 패러다임 차이가 있다. 바로 조인과 참조이다. SQL은 외래키라는 것을 통해 테이블끼리 관계를 가지고, 조인이라는 것을 통해 두 테이블의 모든 데이터에 접근 가능하다. SQL의 경우 외래키만 있으면 어느쪽에서든 조회가 가능하다. 기본적으로 양방향이다. 하지만 객체에서는 이런 행위가 불가능하">
+<meta name="keywords" content="자바 ORM 표준 JPA 프로그래밍,@OneToMany,@ManyToOne,@JoinColumn,연관관계">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[jpa] 연관관계 매핑 기초">
+<meta property="og:url" content="https://joont92.github.io/jpa/연관관계-매핑-기초/index.html">
+<meta property="og:site_name" content="기록은 기억의 연장선">
+<meta property="og:description" content="태아불(엔티티)이 서로 연관관계를 가질 때 드러나는 JPA와 SQL 패러다임 차이가 있다. 바로 조인과 참조이다. SQL은 외래키라는 것을 통해 테이블끼리 관계를 가지고, 조인이라는 것을 통해 두 테이블의 모든 데이터에 접근 가능하다. SQL의 경우 외래키만 있으면 어느쪽에서든 조회가 가능하다. 기본적으로 양방향이다. 하지만 객체에서는 이런 행위가 불가능하">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-11-02T10:09:30.457Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[jpa] 연관관계 매핑 기초">
+<meta name="twitter:description" content="태아불(엔티티)이 서로 연관관계를 가질 때 드러나는 JPA와 SQL 패러다임 차이가 있다. 바로 조인과 참조이다. SQL은 외래키라는 것을 통해 테이블끼리 관계를 가지고, 조인이라는 것을 통해 두 테이블의 모든 데이터에 접근 가능하다. SQL의 경우 외래키만 있으면 어느쪽에서든 조회가 가능하다. 기본적으로 양방향이다. 하지만 객체에서는 이런 행위가 불가능하">
+
+
+
+  <link rel="alternate" href="/feed.xml" title="기록은 기억의 연장선" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://joont92.github.io/jpa/연관관계-매핑-기초/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[jpa] 연관관계 매핑 기초 | 기록은 기억의 연장선</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-110551662-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110551662-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">기록은 기억의 연장선</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">더 많은 것을 기억하기 위해 기록합니다</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/joont92" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joont92.github.io/jpa/연관관계-매핑-기초/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYoung Park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="기록은 기억의 연장선">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[jpa] 연관관계 매핑 기초
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-12-01 00:21:22" itemprop="dateCreated datePublished" datetime="2018-12-01T00:21:22+00:00">2018-12-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-02 10:09:30" itemprop="dateModified" datetime="2020-11-02T10:09:30+00:00">2020-11-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/jpa/" itemprop="url" rel="index"><span itemprop="name">jpa</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/jpa/연관관계-매핑-기초/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="jpa/연관관계-매핑-기초/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>태아불(엔티티)이 서로 연관관계를 가질 때 드러나는 JPA와 SQL 패러다임 차이가 있다.<br>
+바로 <code>조인</code>과 <code>참조</code>이다.</p>
+<p>SQL은 <code>외래키</code>라는 것을 통해 테이블끼리 관계를 가지고, <code>조인</code>이라는 것을 통해 두 테이블의 모든 데이터에 접근 가능하다.<br>
+SQL의 경우 외래키만 있으면 어느쪽에서든 조회가 가능하다. 기본적으로 양방향이다.</p>
+<p>하지만 객체에서는 이런 행위가 불가능하다.<br>
+엔티티간의 관계는 <code>참조</code>를 통해 형성된다.<br>
+클래스의 필드로 다른 클래스를 가지고 있어야하며, 한쪽으로만 접근, 즉 단방향 탐색만 가능하다.</p>
+<h1 id="객체-연관관계-vs-테이블-연관관계"><a class="markdownIt-Anchor" href="#객체-연관관계-vs-테이블-연관관계"></a> 객체 연관관계 vs 테이블 연관관계</h1>
+<ol>
+<li>객체</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mamber</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Team team;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Team</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 연관관계 세팅</span></span><br><span class="line">    Team team = <span class="keyword">new</span> Team(<span class="string">"team1"</span>, <span class="string">"어벤져스"</span>);</span><br><span class="line">    Member member1 = <span class="keyword">new</span> Member(<span class="string">"member1"</span>, <span class="string">"멤버1"</span>);</span><br><span class="line">    Member member2 = <span class="keyword">new</span> Member(<span class="string">"member2"</span>, <span class="string">"멤버2"</span>);</span><br><span class="line"></span><br><span class="line">    member1.setTeam(team);</span><br><span class="line">    member2.setTeam(team);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 연관관계 탐색</span></span><br><span class="line">    Team foundTeam = member1.getTeam();</span><br><span class="line">    assertThat(foundTeam.getName(), is(<span class="string">"어벤져스"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위처럼 참조를 통해 연관관계를 탐색하는 것을 <code>객체 그래프 탐색</code> 이라고 한다.</p>
+<ol start="2">
+<li>테이블</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> T.*</span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">MEMBER</span> M</span><br><span class="line">    <span class="keyword">INNER</span> <span class="keyword">JOIN</span> TEAM T <span class="keyword">ON</span> M.TEAM_ID = T.ID</span><br><span class="line"><span class="keyword">WHERE</span> M.MEMBER_ID = <span class="string">'member1'</span></span><br></pre></td></tr></table></figure>
+<p>위처럼 외래키를 통해 연관관계를 탐색하는 것을 <code>조인</code> 이라고 한다.</p>
+<p>위와같은 패러다임을 풀기위해 나온것이 <code>방향</code>이라는 개념이고,<br>
+여기서 <code>단방향</code>, <code>양방향</code>의 개념이 나온다.</p>
+<h1 id="단방향-연관관계"><a class="markdownIt-Anchor" href="#단방향-연관관계"></a> 단방향 연관관계</h1>
+<p>우리는 ORM을 사용중이다. 위의 객체연관 관계를 그대로 활용하되, JPA에게 알려주기만 하면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ManyToOne</span></span><br><span class="line">    <span class="meta">@JoinColumn</span>(name = <span class="string">"TEAM_ID"</span>)</span><br><span class="line">    <span class="keyword">private</span> Team team;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>단방향이므로 <code>Team</code> 쪽에 따로 해줄것은 없다.</p>
+<ol>
+<li>@ManyToOne<br>
+N:1의 관계라는 것을 나타내주는 어노테이션이다.<br>
+Teamp 하나에 Member 여러개가 소속될 수 있기 때문이다.<br>
+사용할 수 있는 옵션은 아래와 같다.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>기능</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>optional</td>
+<td>FK nullable 한지의 여부이다</td>
+<td>true</td>
+</tr>
+<tr>
+<td>referencedColumnName</td>
+<td>외래 키가 참조하는 대상 테이블의 컬럼명</td>
+<td>참조하는 테이블의 기본키 컬럼명</td>
+</tr>
+<tr>
+<td>fetch</td>
+<td>lazy로딩, eager 로딩을 설정할 수 있다.</td>
+<td>@ManyToOne = FetchType.EAGER, @OneToMany = FetchType.LAZY</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>optonal 속성에 따른 쿼리 방식</strong><br>
+이 값이 <code>true</code>일 경우 JPA는 N쪽 테이블을 조회해온 후, fk 값에 따라 조회를 1쪽 테이블을 추가로 조회하거나(null일 경우 조회하지 않음) <code>LEFT OUTER JOIN</code>을 사용한다.<br>
+무작정 <code>INNER JOIN</code>을 하면 fk가 null일 경우 출력되지 않을 것이므로, 당연한 결과다.</p>
+<p>반대로 <code>false</code>로 설정하면 바로 <code>INNER JOIN</code>으로 처리한다.<br>
+테이블 설계를 <code>FK NOT NULL</code>로 해도 이 속성값이 <code>true</code>일 경우 <code>LEFT OUTER JOIN</code> 등으로 처리하므로, <code>FK NOT NULL</code>일 경우에는 <code>false</code>로 주는 것이 좋다.</p>
+</blockquote>
+<ol start="2">
+<li>@JoinColumn<br>
+관계에 사용되는 외래키를 작성하는 부분이다.<br>
+(이 외래키(<code>TEAM_ID</code>)에 해당하는 엔티티는 이것(<code>Team</code>)이다 라고 보면 편하다)<br>
+결과적으로 객체를 RDB와 매핑할 것이기 때문에, 이렇게 하나라도 더 알려줘야 탐색의 시간을 줄일 수 있다.(리플렉션으로 객체의 모든 값을 탐색하며 관계를 알아내기에는 너무 낭비이기 떄문에)<br>
+사용할 수 있는 옵션은 아래와 같다.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>속성</th>
+<th>기능</th>
+<th>기본값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>매핑할 외래키 이름</td>
+<td>필드명 + _ + 참조하는 테이블의 기본 키 컬럼명</td>
+</tr>
+<tr>
+<td>referencedColumnName</td>
+<td>외래키가 참조하는 대상 테이블의 컬럼명</td>
+<td>참조하는 테이블의 기본키 컬럼명</td>
+</tr>
+<tr>
+<td>foreignKey(DDL)</td>
+<td>외래키 제약조건 설정 가능</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="연관관계-사용"><a class="markdownIt-Anchor" href="#연관관계-사용"></a> 연관관계 사용</h2>
+<h3 id="저장"><a class="markdownIt-Anchor" href="#저장"></a> 저장</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Team team = <span class="keyword">new</span> Team(<span class="string">"team1"</span>, <span class="string">"어벤져스"</span>);</span><br><span class="line">    em.persist(team);</span><br><span class="line"></span><br><span class="line">    Member member1 = <span class="keyword">new</span> Member(<span class="string">"member1"</span>, <span class="string">"멤버1"</span>);</span><br><span class="line">    member1.setTeam(team);</span><br><span class="line"></span><br><span class="line">    Member member2 = <span class="keyword">new</span> Member(<span class="string">"member2"</span>, <span class="string">"멤버2"</span>);</span><br><span class="line">    member2.setTeam(team);</span><br><span class="line"></span><br><span class="line">    em.persist(member1);</span><br><span class="line">    em.persist(member2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>객체간에 관계를 맺고 persist를 땋! 때려주면</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> TEAM <span class="keyword">VALUES</span>(<span class="string">"team1"</span>, <span class="string">"어벤져스"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">MEMBER</span> <span class="keyword">VALUES</span>(<span class="string">"member1"</span>, <span class="string">"멤버1"</span>, <span class="string">"team1"</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">MEMBER</span> <span class="keyword">VALUES</span>(<span class="string">"member2"</span>, <span class="string">"멤버2"</span>, <span class="string">"team1"</span>);</span><br></pre></td></tr></table></figure>
+<p>처럼 team의 id값이 member의 외래키 값으로 세팅되어 저장된다.</p>
+<blockquote>
+<p>엔티티 저장 시 연관된 모든 엔티티는 영속 상태여야 한다.<br>
+존재하는 엔티티라는 것이 보장되어야 하기 때문이다.</p>
+<p>이러한 특징 때문에 비효율적이라고 생각할 수 있다.<br>
+외부에서 명확한 identity가 넘어왔음에도 불구하고, find로 조회해서 영속성 컨텍스트에 넣어줘야 하기 때문이다.<br>
+사실상 <code>외부에서 명확한 identity가 넘어왔음에도 불구하고</code>는 우리의 입장이지, framework는 그것을 모른다. 그러므로 고집을 부릴수는 없는 노릇…<br>
+조금 다른 방식으로 풀어볼 수는 있다(em.getReference)</p>
+</blockquote>
+<h3 id="조회"><a class="markdownIt-Anchor" href="#조회"></a> 조회</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">find</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Member memver = em.find(Member.class, <span class="string">"member1"</span>);</span><br><span class="line">    Team team = member.getTeam();</span><br><span class="line"></span><br><span class="line">    assertThat(team.getName(), is(<span class="string">"어벤져스"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>객체 그래프 탐색으로 매우 간단하게 찾아갈 수 있다.<br>
+(또는 JPQL로도 조회 가능하다)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- optional = false</span></span><br><span class="line"><span class="keyword">SELECT</span> M.* </span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">MEMBER</span> M</span><br><span class="line">    <span class="keyword">INNER</span> <span class="keyword">JOIN</span> TEAM T <span class="keyword">ON</span> M.TEAM_ID = T.ID</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    M.ID = <span class="string">"member1"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="수정"><a class="markdownIt-Anchor" href="#수정"></a> 수정</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Team team = em.find(Team.class, <span class="string">"team2"</span>);</span><br><span class="line"></span><br><span class="line">    Member givenMember = em.find(Member.class, <span class="string">"member1"</span>);</span><br><span class="line">    givenMember.setTeam(team);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>변경감지가 동일하게 동작하여 update문이 발생하게 된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">MEMBER</span></span><br><span class="line"><span class="keyword">SET</span></span><br><span class="line">    TEAM_ID = <span class="string">'team2'</span>, ...</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    <span class="keyword">ID</span> = <span class="string">'member1'</span></span><br></pre></td></tr></table></figure>
+<h3 id="연관관계-제거"><a class="markdownIt-Anchor" href="#연관관계-제거"></a> 연관관계 제거</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Member givenMember = em.find(Member.class, <span class="string">"member1"</span>);</span><br><span class="line">    givenMember.setTeam(<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>위처럼 null로 세팅해 연관관계를 제거해줄 수도 있다.<br>
+fk인 team_id가 null로 세팅된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">MEMBER</span></span><br><span class="line"><span class="keyword">SET</span></span><br><span class="line">    TEAM_ID = <span class="literal">null</span>, ...</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    <span class="keyword">ID</span> = <span class="string">'member1'</span></span><br></pre></td></tr></table></figure>
+<h3 id="삭제"><a class="markdownIt-Anchor" href="#삭제"></a> 삭제</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">save</span><span class="params">()</span></span>&#123;</span><br><span class="line">    member1.setTeam(<span class="keyword">null</span>);</span><br><span class="line">    member2.setTeam(<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">    em.remove(team);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>연관관계를 제거해주지 않고 삭제할 경우 외래키 제약조건에 걸리므로, 관계 제거를 선행해줘야 한다.</p>
+<h1 id="양방향-연관관계"><a class="markdownIt-Anchor" href="#양방향-연관관계"></a> 양방향 연관관계</h1>
+<p>현재는 Member -&gt; Team의 관계만 형성되어있는데(객체지향 관점에서)<br>
+Team -&gt; Member의 관계까지 추가하면 양방향 연관관계가 성립된다.</p>
+<p>Member -&gt; Team이 N:1 관계였으므로, Team -&gt; Member는 1:N의 관계를 가진다.</p>
+<blockquote>
+<p>관계는 반대편 관계에 달려있다. 반대편이 1:N 관계일 경우 N:1, 1:1일 경우 1:1 관계를 가진다.<br>
+자바에서 1:N의 관계를 표현하려면 배열을 사용해야하는데, JPA에서는 여기서 Collection을 사용한다.(List, Set, Map 등)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Team</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OneToMany</span>(mappedBy = <span class="string">"team"</span>)</span><br><span class="line">    <span class="keyword">private</span> List&lt;Member&gt; memberList;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">find</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Team givenTeam = em.find(Team.class, <span class="string">"team"</span>);</span><br><span class="line">    </span><br><span class="line">    List&lt;Member&gt; givenMembers = givenTeam.getMembers();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// do something...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>mappedBy</code> 속성은 양방향 매핑일 떄 사용하는데 반대쪽 매핑의 필드 이름을 값으로 주면 된다.</p>
+<h1 id="연관관계의-주인"><a class="markdownIt-Anchor" href="#연관관계의-주인"></a> 연관관계의 주인</h1>
+<p>SQL의 경우 기본적으로 양방향 연관관계를 가지지만,</p>
+<blockquote>
+<p>위에서도 언급했지만, SQL의 경우 <code>외래키</code> 하나로 양방향 연관관계가 형성된다</p>
+</blockquote>
+<p>객체지향의 경우 양방향 연관관계라는 것이 애초에 없다.<br>
+단방향 연관관계 2개를 로직으로 잘 묶어서 양방향 연관관계처럼 보이게 하는 것 일 뿐이다.</p>
+<p>근데 이렇게 양방향으로 연관관계를 형성해주면 결과적으로 연관관계를 컨트롤 해줄 수 있는 곳이 2군데가 생기게 된다.<br>
+하지만 SQL의 경우 언급했다시피, 연관관계를 컨트롤 하는 곳은 단 한군데(외래키)이다.<br>
+즉 이 객체들이 SQL로 매핑되려면, 누가 연관관계를 컨트롤하는지 알려줘야 하고, 컨트롤하는 주체를 <code>연관관계의 주인</code> 이라고 하는 것이다.</p>
+<p>말이 거창하지만, 그냥 <code>외래키 관리자</code>를 말하는 것이다.<br>
+일반적인 상황에서는 그냥 테이블상에서 외래키를 갖고있는 엔티티가 연관관계의 주인이 된다.</p>
+<p>연관관계의 주인은 양방향 연관관계를 가졌을떄만 지정해주면 된다.<br>
+단방향으로 지정했을 경우에는 ORM 입장에서 혼동스러울 부분이 없기 때문이다.</p>
+<p>아까 위에서 양방향 연관관계를 맺으면서 <code>mappedBy</code> 속성을 사용했는데, 이 속성이 곧 연관관계의 주인을 알려주는 속성이다.<br>
+<code>mappedBy</code> 속성 지정에는 아래와 같은 룰이 존재하는데, 이를 보면 용도를 알 수 있다.</p>
+<ul>
+<li>주인은 <code>mappedBy</code> 속성을 사용하지 않는다</li>
+<li>주인이 아니면 <code>mappedBy</code> 속성을 사용해서 연관관계의 주인을 지정해야 한다.</li>
+</ul>
+<p>결국 위에서도 <code>mappedBy</code> 속성을 사용함으로써 내가 연관관계의 주인이 아니라고 알려주는 것이다.</p>
+<blockquote>
+<p>ORM 입장에서는 @OneToMay에서 참조하는 클래스를 탐색한 뒤, mappedBy에 명시된 필드를 찾아가 외래키 정보를 얻을 것이다(아마도)</p>
+</blockquote>
+<p>1:N 관계에서 외래키를 관리하는 쪽은 N 쪽이기 때문이다.<br>
+(그래서 @ManyToOne에 <code>mappedBy</code> 속성이 없다)</p>
+<p>ORM 입장에서도 이 개념이 중요하게 작용하는게,<br>
+연관관계의 주인만이 연관관계와 매핑되는 외래키를 관리(등록, 수정, 삭제)할 수 있고,<br>
+주인이 아닌 쪽은 읽기만 가능하게 된다.</p>
+<blockquote>
+<p>Team의 @OneToMany에 있는 members의 원소들을 백날 더하고 빼고 해봤자 아무일도 일어나지 않는다(ㅋㅋ)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">owner</span><span class="params">()</span></span>&#123;</span><br><span class="line">    Team team = em.find(Team.class, <span class="string">"team1"</span>);</span><br><span class="line"></span><br><span class="line">    Member member1 = em.find(Member.class, <span class="string">"member1"</span>);</span><br><span class="line">    Member member2 = em.find(Member.class, <span class="string">"member1"</span>);</span><br><span class="line"></span><br><span class="line">    team.getMembers().add(member1); <span class="comment">// 무시됨</span></span><br><span class="line">    team.getMembers().add(member2); <span class="comment">// 무시됨</span></span><br><span class="line"></span><br><span class="line">    member.setTeam(team); <span class="comment">// 설정됨  </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>연관관계의 주인만이 연관관계(외래키)를 컨트롤 할 수 있다는걸 명심하자.</p>
+<h2 id="연관관계-편의-메서드"><a class="markdownIt-Anchor" href="#연관관계-편의-메서드"></a> 연관관계 편의 메서드</h2>
+<p>사실상 위의 행위는 객체지향 관점에서 보면 좀 문제가 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> save&#123;</span><br><span class="line">    Team team = <span class="keyword">new</span> Team(<span class="string">"team1"</span>, <span class="string">"어벤져스"</span>);</span><br><span class="line">    em.persist(team);</span><br><span class="line"></span><br><span class="line">    Member member1 = <span class="keyword">new</span> Member(<span class="string">"member1"</span>, <span class="string">"멤버1"</span>);</span><br><span class="line">    Member member2 = <span class="keyword">new</span> Member(<span class="string">"member2"</span>, <span class="string">"멤버2"</span>);</span><br><span class="line"></span><br><span class="line">    member1.setTeam(team);</span><br><span class="line">    member2.setTeam(team);</span><br><span class="line"></span><br><span class="line">    em.persist(member1);</span><br><span class="line">    em.persist(member2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> find&#123;</span><br><span class="line">    Team team = em.find(Team.class, <span class="string">"team1"</span>);</span><br><span class="line"></span><br><span class="line">    List&lt;Member&gt; members = team.getMembers();</span><br><span class="line">    assertThat(members.size(), is(<span class="number">2</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Team 내에 있는 List<member> 에 아무도 값을 넣어준적이 없는데 find 메서드가 정상 동작한다.<br>
+이는 hibernate라는 애가 중간에 있기 때문인데, 객체지향을 중요시하는 ORM을 사용하면서 위처럼만 놔두게 되면 결국 RDB 와 다를게 없다고 생각된다.<br>
+(만약 ORM Framework가 중간에 없었다면 심각한 오류를 발생시켰을 것이다.)</member></p>
+<p>그러므로 순수한 객체까지 고려하는, 연관관계 편의 메서드라는 것을 작성해줘야 한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTeam</span><span class="params">(Team team)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.team = team;</span><br><span class="line">        <span class="keyword">this</span>.team.getMembers().add(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Team</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addMembers</span><span class="params">(Member member)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.members.add(member);</span><br><span class="line">        member.setTeam(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>N 쪽에 set, 1 쪽에 add</code>가 항상 묶여서 수행되도록 작성했다.</p>
+<h2 id="연관관계-편의-메서드-작성-시-주의사항"><a class="markdownIt-Anchor" href="#연관관계-편의-메서드-작성-시-주의사항"></a> 연관관계 편의 메서드 작성 시 주의사항</h2>
+<p>사실상 위의 연관관계 편의 메서드는 싱크를 완벽히 맞춰주는 메서드는 아니다.<br>
+위와 같은 편의메서드를 사용할 경우 아레와 같은 버그를 막을 수 없다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">member1.setTeam(team1);</span><br><span class="line">member1.setTeam(team2); <span class="comment">// team2로 변경</span></span><br><span class="line"></span><br><span class="line">Member foundMember = team1.getMember(); <span class="comment">// member1이 여전히 조회된다</span></span><br></pre></td></tr></table></figure>
+<p>별로 마주할 일 없는 시나리오라고 생각할 수 있으나, 그렇게 따지면 항상 hibernate를 거치면 되므로 연관관계 편의 메서드 자체도 필요가 없어지게 된다.<br>
+하지만… 위에서도 언급했지만 그건 정말 위험한 코드이다. 언제 어디서 예기치 못한 오류가 발생할지 모른다.</p>
+<p>ORM으로 바라보기 보다 객체지향으로 먼저 바라봐야 한다고 (나는) 생각한다.(ㅋㅋ)<br>
+좀 더 완벽하게 만들어보자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Member</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTeam</span><span class="params">(Team team)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.team != <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">this</span>.team.getMembers().remove(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.team = team;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(team != <span class="keyword">null</span> &amp;&amp; !team.getMembers().contains(<span class="keyword">this</span>))&#123;</span><br><span class="line">            <span class="keyword">this</span>.team.getMembers().add(<span class="keyword">this</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Team</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addMember</span><span class="params">(Member member)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">this</span>.members.contains(member))&#123;</span><br><span class="line">            <span class="keyword">this</span>.members.add(member);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        member.setTeam(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>무한루프에 빠질 수 있는 가성성과 위의 버그를 제거하였다.<br>
+양방향 연관관계를 형성할 때는 항상 위처럼 연관관계 편의 메서드를 만들어줘야 한다(필수!).</p>
+<a id="more"></a>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/자바-ORM-표준-JPA-프로그래밍/" rel="tag"># 자바 ORM 표준 JPA 프로그래밍</a>
+          
+            <a href="/tags/OneToMany/" rel="tag"># @OneToMany</a>
+          
+            <a href="/tags/ManyToOne/" rel="tag"># @ManyToOne</a>
+          
+            <a href="/tags/JoinColumn/" rel="tag"># @JoinColumn</a>
+          
+            <a href="/tags/연관관계/" rel="tag"># 연관관계</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/etc/DNS-기본-동작/" rel="next" title="DNS 기본 동작">
+                <i class="fa fa-chevron-left"></i> DNS 기본 동작
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/os/process-concept/" rel="prev" title="process concept">
+                process concept <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JunYoung Park</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">182</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">344</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feed.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#객체-연관관계-vs-테이블-연관관계"><span class="nav-number">1.</span> <span class="nav-text"> 객체 연관관계 vs 테이블 연관관계</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#단방향-연관관계"><span class="nav-number">2.</span> <span class="nav-text"> 단방향 연관관계</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#연관관계-사용"><span class="nav-number">2.1.</span> <span class="nav-text"> 연관관계 사용</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#저장"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 저장</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#조회"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 조회</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#수정"><span class="nav-number">2.1.3.</span> <span class="nav-text"> 수정</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#연관관계-제거"><span class="nav-number">2.1.4.</span> <span class="nav-text"> 연관관계 제거</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#삭제"><span class="nav-number">2.1.5.</span> <span class="nav-text"> 삭제</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#양방향-연관관계"><span class="nav-number">3.</span> <span class="nav-text"> 양방향 연관관계</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#연관관계의-주인"><span class="nav-number">4.</span> <span class="nav-text"> 연관관계의 주인</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#연관관계-편의-메서드"><span class="nav-number">4.1.</span> <span class="nav-text"> 연관관계 편의 메서드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#연관관계-편의-메서드-작성-시-주의사항"><span class="nav-number">4.2.</span> <span class="nav-text"> 연관관계 편의 메서드 작성 시 주의사항</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunYoung Park</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://joont92.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://joont92.github.io/jpa/연관관계-매핑-기초/";
+    this.page.identifier = "jpa/연관관계-매핑-기초/";
+    this.page.title = '[jpa] 연관관계 매핑 기초';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://joont92.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

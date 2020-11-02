@@ -1,0 +1,2511 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="시스템 설정  SQL 모드 MySql 서버에는 sql_mode 라는 시스템 설정이 있다. 이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.  STRICT_ALL_TABLES : 저장하려는 값의 길이가 컬럼의 길이보다 길 경우 오류 발생시킴. 원래는 초과된 부분만큼 자르고 저장하였음. STRICT_TRANS_TABLE : 컬럼의 타입과 값의 타">
+<meta name="keywords" content="Real MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[db] 쿼리작성 및 최적화">
+<meta property="og:url" content="https://joont92.github.io/db/쿼리작성-및-최적화/index.html">
+<meta property="og:site_name" content="기록은 기억의 연장선">
+<meta property="og:description" content="시스템 설정  SQL 모드 MySql 서버에는 sql_mode 라는 시스템 설정이 있다. 이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.  STRICT_ALL_TABLES : 저장하려는 값의 길이가 컬럼의 길이보다 길 경우 오류 발생시킴. 원래는 초과된 부분만큼 자르고 저장하였음. STRICT_TRANS_TABLE : 컬럼의 타입과 값의 타">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://user-images.githubusercontent.com/18513953/33943893-c5f3443a-e05d-11e7-8ebd-fbff301bbf42.png">
+<meta property="og:updated_time" content="2020-11-02T10:09:30.453Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[db] 쿼리작성 및 최적화">
+<meta name="twitter:description" content="시스템 설정  SQL 모드 MySql 서버에는 sql_mode 라는 시스템 설정이 있다. 이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.  STRICT_ALL_TABLES : 저장하려는 값의 길이가 컬럼의 길이보다 길 경우 오류 발생시킴. 원래는 초과된 부분만큼 자르고 저장하였음. STRICT_TRANS_TABLE : 컬럼의 타입과 값의 타">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/18513953/33943893-c5f3443a-e05d-11e7-8ebd-fbff301bbf42.png">
+
+
+
+  <link rel="alternate" href="/feed.xml" title="기록은 기억의 연장선" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://joont92.github.io/db/쿼리작성-및-최적화/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[db] 쿼리작성 및 최적화 | 기록은 기억의 연장선</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-110551662-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110551662-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">기록은 기억의 연장선</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">더 많은 것을 기억하기 위해 기록합니다</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/joont92" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joont92.github.io/db/쿼리작성-및-최적화/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYoung Park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="기록은 기억의 연장선">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[db] 쿼리작성 및 최적화
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-12-13 23:07:04" itemprop="dateCreated datePublished" datetime="2017-12-13T23:07:04+00:00">2017-12-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-02 10:09:30" itemprop="dateModified" datetime="2020-11-02T10:09:30+00:00">2020-11-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/db/" itemprop="url" rel="index"><span itemprop="name">db</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/db/쿼리작성-및-최적화/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="db/쿼리작성-및-최적화/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="시스템-설정"><a class="markdownIt-Anchor" href="#시스템-설정"></a> 시스템 설정</h3>
+<h4 id="sql-모드"><a class="markdownIt-Anchor" href="#sql-모드"></a> SQL 모드</h4>
+<p>MySql 서버에는 sql_mode 라는 시스템 설정이 있다.<br>
+이 설정을 통해 SQL의 작성, 결과 등에 영향을 주게 된다.</p>
+<ol>
+<li>STRICT_ALL_TABLES : 저장하려는 값의 길이가 컬럼의 길이보다 길 경우 오류 발생시킴. 원래는 초과된 부분만큼 자르고 저장하였음.</li>
+<li>STRICT_TRANS_TABLE : 컬럼의 타입과 값의 타입이 일치하지 않을 경우 오류 발생시킴. 원래는 비슷한 타입으로 최대한 변환시켜서 저장했음.</li>
+<li>ANSI_QUOTES : 문자열 표현에 오직 싱글쿼터만 사용가능. 더블쿼터는 컬럼명이나 테이블명만 사용 가능. 원래는 문자열에 싱글/더블 쿼터 모두 사용 가능했음.</li>
+<li>ONLY_FULL_GROUP_BY : GROUP BY 절에 포함되지 않은 컬럼을 출력하거나 HAVING에 사용할 수 없음. 원래는 가능했음… MySQL의 이상했던 점.</li>
+<li>PIPE_AS_CONCAT : 오라클 처럼 || 문자로 문자열 연결 가능. 원래는 불가능.</li>
+</ol>
+<p>등등…</p>
+<p>적용하는법은 <code>my.cnf</code> 파일에</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql_mode=STRICT_TRANS_TABLES,ANSI</span><br></pre></td></tr></table></figure>
+<p>의 형태로 작성해주면 된다. ,로 구분하여 여러개 지정할 수 있다.</p>
+<p>sql_mode에서 알 수 있는 MySQL의 특징은?</p>
+<h4 id="영문-대소문자"><a class="markdownIt-Anchor" href="#영문-대소문자"></a> 영문 대소문자</h4>
+<p>MySql은 설치된 운영체제에 따라 테이블의 대소문자를 구분한다.<br>
+ex) 윈도우 : 구분X, 리눅스 : 구분O<br>
+DB나 테이블이 디스크의 디렉터리나 파일로 매핑되기 때문이다.<br>
+가능하면 대문자만 또는 소문자만으로 통일하는 것이 좋다.</p>
+<h4 id="예약어"><a class="markdownIt-Anchor" href="#예약어"></a> 예약어</h4>
+<p>일반적으로 테이블이나 컬럼 생성 시 예약어를 이름으로 사용하면 에러가 발생한다.<br>
+그러나 역따옴표(`)나 쌍따옴표(&quot;)로 감싸면 이를 피할 수 있다.<br>
+예를 들면 테이블 생성 시 역따옴표(`)로 둘러싸면 에러를 발생시키지 않는다.<br>
+하지만 역따옴표로 둘러싸서 생성하는 것을 권장하지는 않는다.</p>
+<hr>
+<h3 id="메뉴얼-읽는-법"><a class="markdownIt-Anchor" href="#메뉴얼-읽는-법"></a> 메뉴얼 읽는 법</h3>
+<p><img src="https://user-images.githubusercontent.com/18513953/33943893-c5f3443a-e05d-11e7-8ebd-fbff301bbf42.png" alt="image"></p>
+<blockquote>
+<ul>
+<li>대문자는 키워드를 의미한다.</li>
+<li>이텔릭체는 사용자가 작성하는 이름 또는 표현식을 의미한다.</li>
+<li>대괄호( [] )는 선택사항임을 의미한다.</li>
+<li>파이프( | )는 연결된 것 중 단 하나만 선택할 수 있음을 의미한다.</li>
+<li>중괄호( {} )는 괄호 내 선택사항 중 반드시 하나를 선택해야 함을 의미한다.</li>
+<li>…는 앞에 명시된 키워드나 표현이 반복될 수 있음을 의미한다.</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="mysql-연산자-내장함수"><a class="markdownIt-Anchor" href="#mysql-연산자-내장함수"></a> MySQL 연산자, 내장함수</h3>
+<h4 id="리터럴"><a class="markdownIt-Anchor" href="#리터럴"></a> 리터럴</h4>
+<h5 id="문자열"><a class="markdownIt-Anchor" href="#문자열"></a> 문자열</h5>
+<p>항상 홑따옴표(’)를 사용해서 표시한다.<br>
+홑따옴표 자체를 사용하고 싶을 때는 홑따옴표를 두번 연속 입력하면 된다.<br>
+쌍따옴표와 홑따옴표의 조합으로 위의 행위를 할 수 있지만 MySql만 지원되는 방식이다.</p>
+<h5 id="숫자"><a class="markdownIt-Anchor" href="#숫자"></a> 숫자</h5>
+<p>다른 시스템들과 동일하게 ’ 나 &quot; 없이 숫자 값을 입력하면 된다.</p>
+<blockquote>
+<p><strong>※ 자동 형 변환</strong><br>
+MySql에서는 문자와 숫자를 비교할 때 자동으로 숫자값으로 형 변환해준다. (숫자 &gt; 문자)</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE number_col = &apos;10001&apos;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>와 같은 경우는 문제가 되지 않지만,</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WHERE string_col = 10001;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>의 경우에는 문제가 발생할 수 있다.<br>
+위와 같은 경우 오른쪽 숫자가 우선순위가 더 높으므로<br>
+왼쪽의 string_col이 숫자로 형 변환하는 상황이 발생하는데,<br>
+이로 인해 string_col은 인덱스를 사용하지 못하고,<br>
+만약 문자값이 포함된 데이터가 있다면 SQL 실행 오류로도 이어진다.</p>
+</blockquote>
+<h5 id="날짜"><a class="markdownIt-Anchor" href="#날짜"></a> 날짜</h5>
+<p>MySql에서 정해진 형태의 포멧으로 날짜를 입력하면(문자열로),<br>
+MySql에서 자동으로 DATE나 DATETIME으로 변환하여 준다.<br>
+위의 숫자 리터럴과 동일하다. (날짜 &gt; 문자)</p>
+<h5 id="불리언"><a class="markdownIt-Anchor" href="#불리언"></a> 불리언</h5>
+<p>BOOLEAN이란 타입이 있긴 하나 실상 TINYINT에 대한 동의어일 뿐이다.<br>
+(테이블 컬럼 타입을 BOOLEAN으로 생성한 뒤 확인해보면 TINYINT 이다.)<br>
+BOOLEAN의 TRUE는 1을 의미하고, FALSE는 0을 의미한다.<br>
+0과 1만을 사용한다는 점을 주의해야 한다!!</p>
+<h4 id="연산자"><a class="markdownIt-Anchor" href="#연산자"></a> 연산자</h4>
+<h5 id="동등-비교"><a class="markdownIt-Anchor" href="#동등-비교"></a> 동등 비교</h5>
+<p>=, &lt;=&gt;<br>
+기본적으로 NULL과의 연산은 결과값이 모두 NULL이다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="literal">NULL</span>=<span class="number">1</span> <span class="keyword">FROM</span> DUAL;</span><br></pre></td></tr></table></figure>
+<p>&gt; NULL</p>
+<p>그래서 NULL의 경우 IS NULL등의 연산자로 비교해야 하는데, <code>&lt;=&gt;</code> 의 경우에는 <code>NULL</code> 또한 하나의 값으로 인식하여 계산한다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="literal">NULL</span>&lt;=&gt;<span class="literal">NULL</span> <span class="keyword">FROM</span> DUAL;</span><br></pre></td></tr></table></figure>
+<p>&gt; 1</p>
+<h5 id="부정-비교"><a class="markdownIt-Anchor" href="#부정-비교"></a> 부정 비교</h5>
+<p>&lt;&gt;, !=<br>
+둘중 어느것을 사용하든 상관없지만 통일하는 것이 좋다.</p>
+<h5 id="not-연산자"><a class="markdownIt-Anchor" href="#not-연산자"></a> NOT 연산자</h5>
+<p>결과를 반대로 만든다. 부정의 결과를 정확히 예측할 수 없는 경우 사용하지 말자.<br>
+ex) !‘test’</p>
+<h5 id="and-or-연산자"><a class="markdownIt-Anchor" href="#and-or-연산자"></a> AND, OR 연산자</h5>
+<p>&amp;&amp;, ||로 대체할 수 있으나 혼란을 야기하니 사용하지 말자.</p>
+<h5 id="나누기-나머지-연산자"><a class="markdownIt-Anchor" href="#나누기-나머지-연산자"></a> 나누기, 나머지 연산자</h5>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="number">29</span>/<span class="number">9</span> <span class="keyword">FROM</span> DUAL;</span><br><span class="line"><span class="comment">-- 3.222.. // 몫 + 나머지</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">29</span> <span class="keyword">DIV</span> <span class="number">9</span> <span class="keyword">FROM</span> DUAL;</span><br><span class="line"><span class="comment">-- 3 // 몫</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="number">29</span> <span class="keyword">MOD</span> <span class="number">9</span> <span class="keyword">FROM</span> DUAL;</span><br><span class="line"><span class="comment">-- 2 // 나머지</span></span><br></pre></td></tr></table></figure>
+<h5 id="like-연산자"><a class="markdownIt-Anchor" href="#like-연산자"></a> LIKE 연산자</h5>
+<p>상수 문자열이 있는지 없는지 정도만을 판단한다.<br>
+와일드 카드는 딱 2개만 사용가능하다.</p>
+<blockquote>
+<p><strong>%</strong> : 0개 또는 1개 이상 일치<br>
+<strong>_</strong> : 정확히 1개 일치</p>
+</blockquote>
+<p>와일드카드 문자가 검색어의 뒤쪽에 있다면 인덱스 레인지 스캔을 사용할 수 있다!<br>
+와일드카드가 앞쪽에 올 경우 인덱스 풀 스캔 또는 테이블 풀 스캔을 하게 된다.(B-Tree 인덱스의 특징 때문)</p>
+<p>와일드카드 문자를 검색에 사용하고 싶을 경우 ESCAPE 구문을 사용한다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">'a%'</span> <span class="keyword">LIKE</span> <span class="string">'a/%'</span> ESCAPE <span class="string">'/'</span> <span class="keyword">FROM</span> DUAL;</span><br></pre></td></tr></table></figure>
+<h5 id="between-연산자"><a class="markdownIt-Anchor" href="#between-연산자"></a> BETWEEN 연산자</h5>
+<p>&gt;= 연산자와 &lt;= 연산자를 합친 기능을 수행한다.<br>
+BETWEEN을 위의 연산자로 풀어도 성능상 차이가 없으니 크게 고려하지 않아도 된다.</p>
+<h5 id="in-연산자"><a class="markdownIt-Anchor" href="#in-연산자"></a> IN 연산자</h5>
+<p><strong>동등비교를 여러번</strong> 하는 연산자이다. 즉 일반적으로 빠르게 처리된다.<br>
+연산자의 입력이 상수가 아니라 서브쿼리일 경우 상당히 느려질 수 있으니 주의해야 한다.<br>
+NOT IN의 경우 부정형 비교여서 인덱스 풀 스캔을 사용한다.</p>
+<blockquote>
+<p><strong>※ BETWEEN 연산자와 IN 연산자 차이점</strong><br>
+BETWEEN의 경우 범위만큼 인덱스를 다 읽어야 하는 반면,<br>
+IN의 경우 위에서 언급했듯이 동등 연산자를 여러번 수행하는 것과 같다.<br>
+실행계획을 비교해보면 인덱스를 타고 있지만 rows에서 차이가 나는것을 확인할 수 있다.</p>
+</blockquote>
+<h4 id="내장함수"><a class="markdownIt-Anchor" href="#내장함수"></a> 내장함수</h4>
+<h5 id="null-값-비교"><a class="markdownIt-Anchor" href="#null-값-비교"></a> NULL 값 비교</h5>
+<ul>
+<li><strong>IFNULL</strong> : 값이 NULL인지 비교하고 NULL이면 다른 값으로 대체한다.<br>
+첫번째 인자는 NULL인지 비교할 값, 두번째 인자는 NULL일시 대체값이다.<br>
+첫번째 인자가 NULL이 아닐경우 그대로 출력된다.</li>
+<li><strong>ISNULL</strong> : 값이 NULL인지 아닌지 비교. NULL일 경우 TRUE(1), 아닐경우 FALSE(0)</li>
+</ul>
+<h5 id="현재-시각-조회"><a class="markdownIt-Anchor" href="#현재-시각-조회"></a> 현재 시각 조회</h5>
+<ul>
+<li><strong>NOW</strong> : 시간 조회. 하나의 SQL내면 모두 같은 값을 가진다.</li>
+<li><strong>SYSDATE</strong> : 시간 조회. 하나의 SQL내에서도 호출 시점에 따라 결과값이 달라진다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">NOW</span>(), <span class="keyword">SLEEP</span>(<span class="number">1</span>), <span class="keyword">NOW</span>() <span class="keyword">FROM</span> DUAL;</span><br><span class="line"><span class="comment">-- '2017-12-19 22:39:52' | '0' | '2017-12-19 22:39:52'</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SYSDATE</span>(), <span class="keyword">SLEEP</span>(<span class="number">1</span>), <span class="keyword">SYSDATE</span>() <span class="keyword">FROM</span> DUAL;</span><br><span class="line"><span class="comment">-- '2017-12-19 22:40:27' | '0' | '2017-12-19 22:40:28'</span></span><br></pre></td></tr></table></figure>
+<p>보다시피 SYSDATE의 경우 SLEEP(1)로 인해 1초가 차이난다.<br>
+SYSDATE의 경우 호출때마다 다른 값을 반환하므로 상수가 아니다.<br>
+그래서 인덱스를 효율적으로 사용하지 못한다. (인덱스라기 보단 캐싱을 못한다는게 더 맞지 않을까?)<br>
+이러한 문제점이 있으니 SYSDATE는 가급적 사용하지 않는것이 좋다.<br>
+CURRENT_TIMESTAMP, CURRNET_DATE, CURRENT_TIME은 NOW와 동일한데다 출력을 다양하게 활용할 수 있으니 이것을 사용해도 좋을 것 같다.</p>
+<h5 id="날짜-문자"><a class="markdownIt-Anchor" href="#날짜-문자"></a> 날짜 &lt;&gt; 문자</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">지정 문자</th>
+<th style="text-align:left">내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">%Y                    </td>
+<td style="text-align:left">4자리 연도</td>
+</tr>
+<tr>
+<td style="text-align:left">%y</td>
+<td style="text-align:left">2자리 연도</td>
+</tr>
+<tr>
+<td style="text-align:left">%m</td>
+<td style="text-align:left">월</td>
+</tr>
+<tr>
+<td style="text-align:left">%d</td>
+<td style="text-align:left">일자</td>
+</tr>
+<tr>
+<td style="text-align:left">%H</td>
+<td style="text-align:left">24h 시간(00 ~ 23)</td>
+</tr>
+<tr>
+<td style="text-align:left">%h</td>
+<td style="text-align:left">12h 시간(01 ~ 12)</td>
+</tr>
+<tr>
+<td style="text-align:left">%i</td>
+<td style="text-align:left">분</td>
+</tr>
+<tr>
+<td style="text-align:left">%s</td>
+<td style="text-align:left">초</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>DATE_FORMAT</strong> : 날짜를 문자열로 변환한다.<br>
+ex) DATE_FORMAT(NOW(), %Y-%m-%d)<br>
+&gt; 2017-12-19</li>
+<li><strong>STR_TO_DATE</strong> : 문자를 날짜로 변환한다. 여기서 주는 포멧은 기존 문자열의 포멧을 알려주는 것이다.<br>
+ex) STR_TO_DATE(‘1992<sup>02</sup>07<sup>’,’%Y</sup>%m^%d’)<br>
+&gt; 1992-02-07<br>
+참고로 SQL 표준형태로 입력된 문자열은 STR_TO_DATE를 사용하지 않아도 자동으로 DATETIME으로 변환되어 처리된다.</li>
+</ul>
+<h5 id="날짜-연산"><a class="markdownIt-Anchor" href="#날짜-연산"></a> 날짜 연산</h5>
+<ul>
+<li><strong>DATE_ADD</strong> : 첫번째 인자로 날짜, 두번째 인자로 더할 날짜를 주면 된다.<br>
+두번째 인자는 INTERVAL n {KEYWORD} 의 형태로 줘야 한다.<br>
+DATE_SUB 함수도 있으나 두번째 인자로 음수값을 줄 수 있기 때문에 DATE_ADD만으로도 충분하다.<br>
+ex) DATE_ADD(NOW(), INTERVAL 3 DAY)<br>
+※ KEYWORD : YEAR, MONTH, WEEK, DAY, HOUR …</li>
+</ul>
+<h5 id="문자열-처리"><a class="markdownIt-Anchor" href="#문자열-처리"></a> 문자열 처리</h5>
+<ul>
+<li><strong>LPAD, RPAD</strong> : 좌측 혹은 우측에 특정한 문자를 지정한 바이트 만큼 채우는 함수이다.<br>
+첫번째 인자로 대상 문자열, 두번째 인자로 채울 바이트(기존 문자열 포함), 세번째 인자로 채울 문자를 넣는다.</li>
+<li><strong>LTRIM, RTRIM, TRIM</strong> : 연속된 공백문자를 제거하는 함수이다.<br>
+LTRIM은 왼쪽, RTRIM은 오른쪽, TRIM은 양쪽의 공백을 제거한다.</li>
+</ul>
+<h5 id="문자열-결합"><a class="markdownIt-Anchor" href="#문자열-결합"></a> 문자열 결합</h5>
+<ul>
+<li><strong>CONCAT</strong> : 문자열을 결합해서 하나의 문자열로 합치는 함수로 인자 개수는 제한이 없다.<br>
+ex) CONCAT('My name is ', 'JoonT. ', 'Nice to ', ‘meet you.’);<br>
+&gt; My name is JoonT. Nice to meet you.</li>
+<li><strong>CONCAT_WS</strong> : CONCAT과 같은데 첫번째 인자로 구분할 문자열을 넣어줄 수 있다.<br>
+ex) CONCAT_WS(’-’, ‘a’, ‘b’, ‘c’);<br>
+&gt; a-b-c</li>
+<li><strong>GROUP_CONCAT</strong> :  GROUP BY 로 그룹핑된 집합을 문자열로 연결시킬 수 있다.<br>
+단순 문자열 연결 외에도 구분자 추가, 정렬, 중복 제거 등을 할 수 있으므로 상당히 유용하다.</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">GROUP_CONCAT</span>(emp_no) <span class="keyword">FROM</span> dept_emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> dept_no;</span><br><span class="line"><span class="comment">-- 1,2,3,4,5... : 기본적으로 ,로 연결됨</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">GROUP_CONCAT</span>(emp_no SEPARATOR <span class="string">'-'</span>) <span class="keyword">FROM</span> dept_emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> dept_no;</span><br><span class="line"><span class="comment">-- 1-2-3-4-5... : 구분자를 줄 수 있음</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">GROUP_CONCAT</span>(emp_no <span class="keyword">ORDER</span> <span class="keyword">BY</span> from_date <span class="keyword">DESC</span>) <span class="keyword">FROM</span> dept_emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> dept_no;</span><br><span class="line"><span class="comment">-- dept_emp에 있는 컬럼으로 정렬 가능</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">GROUP_CONCAT</span>(<span class="keyword">DISTINCT</span> emp_no) <span class="keyword">FROM</span> dept_emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> dept_no;</span><br><span class="line"><span class="comment">-- 중복제거도 가능</span></span><br></pre></td></tr></table></figure>
+<h5 id="값의-비교와-대체case-whenthenend"><a class="markdownIt-Anchor" href="#값의-비교와-대체case-whenthenend"></a> 값의 비교와 대체(CASE WHEN…THEN…END)</h5>
+<p>CASE WHEN…THEN…END<br>
+switch문과 비슷하다.<br>
+CASE str<br>
+WHEN ‘A’ THEN ‘A matched’<br>
+WHEN ‘B’ THEN ‘B matched’<br>
+ELSE ‘Nothing matched’<br>
+END<br>
+각각의 부분에 대해 동등(=) 연산을 한다.</p>
+<p>아래처럼 따로 조건을 줄 수도 있다.<br>
+CASE<br>
+WHEN str &gt;= 65 AND str &lt;= 90 THEN ‘Upper Case’<br>
+WHEN str &gt;= 97 AND str &lt;= 122 THEN ‘Lower Case’<br>
+END</p>
+<p>THEN 부분에 쿼리를 실행해서 조건별 쿼리 실행도 가능하다.<br>
+CASE sex<br>
+WHEN ‘M’ THEN (SELECT salary from salaries WHERE ~~ LIMIT 1)<br>
+WHEN ‘F’ THEN 0<br>
+END<br>
+남자일때는 쿼리를 실행하고, 여자일떄는 쿼리를 실행하지 않는다.<br>
+이로 인해 불필요한 쿼리가 실행되는 것을 막을 수 있다.</p>
+<h5 id="타입-변환"><a class="markdownIt-Anchor" href="#타입-변환"></a> 타입 변환</h5>
+<ul>
+<li><strong>CAST</strong> : 명시적 형 변환을 하는 함수이다.변환할 값과 변환할 타입을 지정해주면 된다. 둘은 AS 로 연결한다.<br>
+ex) CAST(‘1234’ AS INTEGER)</li>
+<li><strong>CONVERT</strong> :  CAST와 동일하게 형 변환을 하는 함수이다.<br>
+형 변환외에 문자집합 변환도 가능하다는 점이 차이점이다.<br>
+ex) CONVERT(1234, UNSIGNED)<br>
+ex) CONVERT(‘asd’ USING ‘utf8’)</li>
+</ul>
+<h5 id="이진값-16진수"><a class="markdownIt-Anchor" href="#이진값-16진수"></a> 이진값 &lt;&gt; 16진수</h5>
+<p>HEX : 이진값 -&gt; 16진수<br>
+UNHEX : 16진수 -&gt; 이진값</p>
+<h5 id="md5-sha"><a class="markdownIt-Anchor" href="#md5-sha"></a> MD5, SHA</h5>
+<p>비대칭형 암호화 알고리즘에 사용된다.<br>
+SHA는 SHA1 알고리즘을 써서 160비트(20바이트) 해시값을 반환하고,<br>
+MD5는 메세지 다이제스트 알고리즘을 사용해서 128비트(16바이트) 해시값을 반환한다.<br>
+비밀번호 암호화 하는 과정에서 자주 사용되며, URL과 같은 긴 문자열에 인덱스를 주고싶을 때 해당 문자열을 해시값으로 변환해 인덱스를 주기도 한다.<br>
+해시값은 거의 진짜 왠만해선 중복되는 일이 없기 때문이다.</p>
+<p>변환된 해시값은 16진수로 출력되기 때문에 값을 저장하려면 변환되는 해시값의 크기보다 2배 큰 값을 할당해줘야 하는데(1바이트 == 16진수 2개), 원래의 16바이트, 20바이트에 저장하고 싶다면 BINARY 타입의 컬럼에 저장하면 된다.<br>
+BINARY로 변환은 위에서 사용한 HEX, UNHEX 함수를 사용하면 된다.</p>
+<h5 id="디버깅용-함수"><a class="markdownIt-Anchor" href="#디버깅용-함수"></a> 디버깅용 함수</h5>
+<p>SLEEP(초) : 실행되면 그 구간만큼 멈춘다. 디버깅 용도로 사용한다.<br>
+BENCHMARK(쿼리문, 실행횟수) : 쿼리문이 실행되는데 몇초 걸리는가 테스트 해볼 수 있다.<br>
+실행횟수로 여러번 반복해볼 수도 있는데… 솔직히 별로 안쓸듯.<br>
+왜냐면 쿼리문은 하나의 컬럼, 레코드인 스칼라값을 반환해야 하고,<br>
+실행횟수도 실제로 10번 실행하는 것과 BENCHMARK로 10번 실행하는것이 다르기 떄문.<br>
+실제 쿼리를 10번 실행하는 서비스 환경에서는 10번의 네트워크 자원, 서버 자원등이 다 요청되지만 BENCHMARK의 경우 단 1번만 요청되기 떄문.</p>
+<h5 id="ip-주소-변환"><a class="markdownIt-Anchor" href="#ip-주소-변환"></a> IP 주소 변환</h5>
+<p>IP주소를 UNSIGNED INTEGER의 형태로 상호변환 가능하다.</p>
+<ul>
+<li><strong>INET_ATON</strong> : IP 주소 -&gt; UNSIGNED INTEGER</li>
+<li><strong>INET_NTOA</strong> : UNSIGNED INTEGER -&gt; IP 주소<br>
+ex)</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span>, <span class="keyword">INET_NTOA</span>(ip_addr) </span><br><span class="line"><span class="keyword">FROM</span> <span class="keyword">TEST</span> </span><br><span class="line"><span class="keyword">WHERE</span> ip_addr <span class="keyword">BETWEEN</span> </span><br><span class="line"><span class="keyword">INET_ATON</span>(<span class="string">'192.168.0.1'</span>) <span class="keyword">AND</span> <span class="keyword">INET_ATON</span>(<span class="string">'192.168.0.100'</span>);</span><br></pre></td></tr></table></figure>
+<p>훨씬 효과적으로 저장 및 조회가 가능하다.</p>
+<h5 id="mysql-전용-암호화"><a class="markdownIt-Anchor" href="#mysql-전용-암호화"></a> MySQL 전용 암호화</h5>
+<p>MySQL내의 user를 생성할때 썼던 PASSWORD 함수를 말한다.<br>
+많은 사람들이 이 함수의 이름만 보고 실제 회원의 비밀번호를 이것으로 암호화하곤 했다.<br>
+하지만 이는 절대 암호화 함수가 아니다. MySQL 내부에서 그냥 사용하는 것이고, 내부 암호화 알고리즘도 명시된것이 없다. 바뀔수도 있다는 것이다.<br>
+실제로도 바뀌었다. MySQL 4.1 이전과 이후로 PASSWORD 함수를 입력하면 변경되는 값이 다름을 볼 수 있다.<br>
+이로인해 DB 버전 업데이트를 했을 경우 사용자가 로그인하지 못하는 심각한 일이 발생할 수 있다.<br>
+이럴 경우 기존의 PASSWORD함수를 OLD_PASSWORD로 바꿔서 임시로 막을 수 있다.<br>
+변경된 PASSWORD 함수에서는 암호화시에 *를 앞에 붙인다. 이로인해 어플리케이션에서 구분할수도 있다. 하지만…<br>
+기본적으로 이 함수를 절대 패스워드 암호화 하는데 쓰지 않도록 해야한다.</p>
+<h5 id="values"><a class="markdownIt-Anchor" href="#values"></a> VALUES</h5>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> table_statistics(member_id, visit_count)</span><br><span class="line">    <span class="keyword">SELECT</span> member_id, <span class="keyword">COUNT</span>(*)</span><br><span class="line">    <span class="keyword">FROM</span> tab_accesslog</span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span> member_id</span><br><span class="line"><span class="keyword">ON</span> <span class="keyword">DUPLICATE</span> <span class="keyword">KEY</span> </span><br><span class="line"><span class="comment">-- UPDATE visit_count = visit_count + COUNT(*) // 불가능</span></span><br><span class="line"><span class="keyword">UPDATE</span> visit_count = visit_count + <span class="keyword">VALUES</span>(visit_count) <span class="comment">-- 인서트하려 했던 값 참조 가능</span></span><br></pre></td></tr></table></figure>
+<p>UPDATE 문은 서브쿼리의 일부가 아니기 때문에 COUNT(*)로 접근이 불가능하다.<br>
+하지만 위와 같이 VALUES 함수를 사용하면 위에 INSERT에서 추가하려고 했던 컬럼에 접근 가능하다.</p>
+<h5 id="count"><a class="markdownIt-Anchor" href="#count"></a> COUNT</h5>
+<p>출력된 레코드의 개수를 세거나, GROUP BY 함수와 같이 사용해 그룹화 된 요소들의 개수를 출력하는데 사용한다.<br>
+COUNT(<em>) 라고 행 전체를 다 읽어오거나… 그런 의미가 아니라,<br>
+그냥 레코드 1개 자체를 의미한다.<br>
+즉 COUNT(</em>), COUNT(‘A’), COUNT(1)은 아무 차이가 없다.<br>
+하지만 COUNT(컬럼명) 으로 했을 경우 NULL인 값은 제외되므로 이부분은 조심해서 사용해야 한다.</p>
+<h4 id="주석"><a class="markdownIt-Anchor" href="#주석"></a> 주석</h4>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--- 한줄 주석(SQL 표준)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">여러줄 주석(SQL 표준)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">여러줄</span></span><br><span class="line"><span class="comment">여러줄</span></span><br><span class="line"><span class="comment">여러분</span></span><br><span class="line"><span class="comment">*/</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">/*! 변형된 C언어 스타일의 주석인데, 이는 SQL에서 힌트로 사용할 수 있다. */</span></span><br><span class="line"><span class="comment">/*! STRAIGHT_JOIN */</span></span><br><span class="line"></span><br><span class="line"># 한줄주석(비표준)</span><br></pre></td></tr></table></figure>
+<h1 id="select"><a class="markdownIt-Anchor" href="#select"></a> SELECT</h1>
+<pre class="highlight"><code class="">
+18, 204, 206, 211, 213, 215, 217, 232, 238</code></pre>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Real-MySQL/" rel="tag"># Real MySQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/java/자료형/" rel="next" title="[java] 자료형">
+                <i class="fa fa-chevron-left"></i> [java] 자료형
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/linux/관리자-권한-전환/" rel="prev" title="[linux] 관리자 권한 전환">
+                [linux] 관리자 권한 전환 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JunYoung Park</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">182</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">344</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feed.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#시스템-설정"><span class="nav-number">1.</span> <span class="nav-text"> 시스템 설정</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sql-모드"><span class="nav-number">1.1.</span> <span class="nav-text"> SQL 모드</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#영문-대소문자"><span class="nav-number">1.2.</span> <span class="nav-text"> 영문 대소문자</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#예약어"><span class="nav-number">1.3.</span> <span class="nav-text"> 예약어</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#메뉴얼-읽는-법"><span class="nav-number">2.</span> <span class="nav-text"> 메뉴얼 읽는 법</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-연산자-내장함수"><span class="nav-number">3.</span> <span class="nav-text"> MySQL 연산자, 내장함수</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#리터럴"><span class="nav-number">3.1.</span> <span class="nav-text"> 리터럴</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#문자열"><span class="nav-number">3.1.1.</span> <span class="nav-text"> 문자열</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#숫자"><span class="nav-number">3.1.2.</span> <span class="nav-text"> 숫자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#날짜"><span class="nav-number">3.1.3.</span> <span class="nav-text"> 날짜</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#불리언"><span class="nav-number">3.1.4.</span> <span class="nav-text"> 불리언</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#연산자"><span class="nav-number">3.2.</span> <span class="nav-text"> 연산자</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#동등-비교"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 동등 비교</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#부정-비교"><span class="nav-number">3.2.2.</span> <span class="nav-text"> 부정 비교</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#not-연산자"><span class="nav-number">3.2.3.</span> <span class="nav-text"> NOT 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#and-or-연산자"><span class="nav-number">3.2.4.</span> <span class="nav-text"> AND, OR 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#나누기-나머지-연산자"><span class="nav-number">3.2.5.</span> <span class="nav-text"> 나누기, 나머지 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#like-연산자"><span class="nav-number">3.2.6.</span> <span class="nav-text"> LIKE 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#between-연산자"><span class="nav-number">3.2.7.</span> <span class="nav-text"> BETWEEN 연산자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#in-연산자"><span class="nav-number">3.2.8.</span> <span class="nav-text"> IN 연산자</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#내장함수"><span class="nav-number">3.3.</span> <span class="nav-text"> 내장함수</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#null-값-비교"><span class="nav-number">3.3.1.</span> <span class="nav-text"> NULL 값 비교</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#현재-시각-조회"><span class="nav-number">3.3.2.</span> <span class="nav-text"> 현재 시각 조회</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#날짜-문자"><span class="nav-number">3.3.3.</span> <span class="nav-text"> 날짜 &lt;&gt; 문자</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#날짜-연산"><span class="nav-number">3.3.4.</span> <span class="nav-text"> 날짜 연산</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#문자열-처리"><span class="nav-number">3.3.5.</span> <span class="nav-text"> 문자열 처리</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#문자열-결합"><span class="nav-number">3.3.6.</span> <span class="nav-text"> 문자열 결합</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#값의-비교와-대체case-whenthenend"><span class="nav-number">3.3.7.</span> <span class="nav-text"> 값의 비교와 대체(CASE WHEN…THEN…END)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#타입-변환"><span class="nav-number">3.3.8.</span> <span class="nav-text"> 타입 변환</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#이진값-16진수"><span class="nav-number">3.3.9.</span> <span class="nav-text"> 이진값 &lt;&gt; 16진수</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#md5-sha"><span class="nav-number">3.3.10.</span> <span class="nav-text"> MD5, SHA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#디버깅용-함수"><span class="nav-number">3.3.11.</span> <span class="nav-text"> 디버깅용 함수</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ip-주소-변환"><span class="nav-number">3.3.12.</span> <span class="nav-text"> IP 주소 변환</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql-전용-암호화"><span class="nav-number">3.3.13.</span> <span class="nav-text"> MySQL 전용 암호화</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#values"><span class="nav-number">3.3.14.</span> <span class="nav-text"> VALUES</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#count"><span class="nav-number">3.3.15.</span> <span class="nav-text"> COUNT</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#주석"><span class="nav-number">3.4.</span> <span class="nav-text"> 주석</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#select"><span class="nav-number"></span> <span class="nav-text"> SELECT</span></a></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunYoung Park</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://joont92.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://joont92.github.io/db/쿼리작성-및-최적화/";
+    this.page.identifier = "db/쿼리작성-및-최적화/";
+    this.page.title = '[db] 쿼리작성 및 최적화';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://joont92.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

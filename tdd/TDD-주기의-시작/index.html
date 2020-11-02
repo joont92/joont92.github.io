@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="되돌아보면 우리는… 개발을 다 진행해놓고 마지막에 통합하면서 피드백을 받았던 것 같다. 이 마지막 순간에 변경되는 부분도 굉장히 많고, 서로가 잘못 이해한 부분도 많이 발생한다. 최악의 경우는 작업을 뒤집거나, 누군가가 포기하고 가야하는 상황도 발생한다. 그러므로 앞서 얘기했듯이, 빠른 피드백을 받을 수 있게끔 시스템을 구성하는 작업(중첩된 피드백 고리)은">
+<meta name="keywords" content="테스트 주도 개발로 배우는 객체지향 설계와 실천">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[tdd] TDD 주기의 시작">
+<meta property="og:url" content="https://joont92.github.io/tdd/TDD-주기의-시작/index.html">
+<meta property="og:site_name" content="기록은 기억의 연장선">
+<meta property="og:description" content="되돌아보면 우리는… 개발을 다 진행해놓고 마지막에 통합하면서 피드백을 받았던 것 같다. 이 마지막 순간에 변경되는 부분도 굉장히 많고, 서로가 잘못 이해한 부분도 많이 발생한다. 최악의 경우는 작업을 뒤집거나, 누군가가 포기하고 가야하는 상황도 발생한다. 그러므로 앞서 얘기했듯이, 빠른 피드백을 받을 수 있게끔 시스템을 구성하는 작업(중첩된 피드백 고리)은">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://lh3.googleusercontent.com/Sclm2o15GcyE3_jdothc4VLXpeBP_ewwY96loaiD8h9xd3QaDf9DaRP-tHaahWKKGALMbm1V6suovTMgh1QJSR5uFh13mAmt9MMDHis_U8uaWoKj_krT4GtoHoEkPMeIKk5KGbSzOpbso31HabNC92LGtKRabQmHVTmkBwsg6iedYZDOEGeOA_MHvuH9K3qQGnUv12qE6XXlWrkRv3BmPnZTD52jbAtpDyIXDcqOlQ7Y4XXHzgzb8IvRRPTr4OSIB1xczYJ3-MU8Cq3Sd6byjjl0pYz_XlTsgKySHNtfA4RLkCZ-sKBx66sgXwUkqcnYE__bZpjlfg6onHnXirq-TzJOamVOxMxjgZzFIeHHaamQYP2Bn4_4rivwGis_sRGoCyhXbm0bXUFJxddbL_z7VLtxtD8DFPjljZXVdeo7k64Qc7JFo2CDSmjSapAyZ9VhzVLyIVq0t3JX0tgSf6kFY4IXRew9eHaooRywVVeYlo2-NbNzAOsOJOw_BBQMxSnLD-JuY1rsfQNHvJfDp-hiLbKK4x-WA1x9m-uaLkGDu5y8_EgJICKhDMTACTohQVKJkp65i62ggMbqGC-YPRcr9pKmSZqECI_9oHTclcs_SZW9xjVIAbCMlPOe04iPHxAdR-HY6fsoLMVGflZY16nPyHfV28e1BNM=w882-h229-no">
+<meta property="og:image" content="https://lh3.googleusercontent.com/GEOVJp8MMcArH1mGIoFPjC8uLNKczgp_SrDmxR4NnecXuHRDYgmbtJannmt58E4tuF3A0zo71_TKsIr3AqQwov7Iy_rB0Un00m_ZCiSiQ4uA0ogb77eIoMxfh4iow95OTCFfe5P5RQLXqs8Lt5eaNM0jsS9_U9nYP43DK019lzYn2RGavF1OseqqoxRYQ9kge5czEX7M7NH_XXdOj2QAXcx_Dot70025msdldoyWHjRDFjItSJFP_evjWZcpc95dqxqbM0cWXBYG0Ifyvy_TwZTIQfV1dsveRhSfNWfhcP2Tj6yMWrmUSz2HZjGZzlQoxP6W-DV-bPFeK2C7hgbVe5qMf37g-_4RGtt-RZIEcmSWXqbT9Bgm1TT0YULSzkxlx3lLTtcZ-SdeEW6K02LlIGb7cikJkfD4y5WdGDzB_AfdryWeW1ntA0jttjOe6lY4RmT2ZNbw292FQ01SfcDegLZ7kRn4F3bON7Jv99f8o34WGJAsaWcEd9VT73ur7lau-4NUVYriJNyCmBvMiLByJt1uv5GYdUKdQ4kl_LHIHp6motBXN8lWDCphg5IVVvf48NtPo6iUBryRtWEiTKj67PU5wLOVSvNY2Q8RTRcJFkSnFXXmJkWDWvtNeiLWYV04bTVe_8WFCJ2EK7DnvE9Vs4FOZ92Z5bA=w872-h351-no">
+<meta property="og:image" content="https://lh3.googleusercontent.com/WZOowcX2_1KjkKHzNQhCF-x0SiMlIFZjuAT1oTsZSwYee0zBcPrvggU64AN952M86987WyWhq1InTB8_z3bOo8VZ04NOP4dPOV5F2b4r-lcmrDqEbLQ6KESACL19EWfShx9DQAFRsKkBfXH363hIKphswwLpJo-u_AEWFZEOTwfD7Di9YaO33Z-Mo80GJhJddpK323W_VrSqvZq7TzAcQuGLsyxdd-OCkh1tA5ZsKmyWqYlgY0s_yBwZUBNPqwli5X4um6O200d-FtifNT4P5Xsh0r02jWW6RWuumJToqbweuOzDa8fN7UQzFViY3DF1Cl9ZdXLFp-HdtgubP74pTGoYGm7rU8ZIdqKt_xkDNdkbGjI8Cf0xiVtWAco1XeSagWDwjvB0O3lAm_cGBXBp-tl22qFlpfMwy8PF1UsvnnNLZ7NBNCrTxOO4gsen0loemkBHmZn3I5k4wMK2fgxNuAlTK-ninGRa8gHK5sXVjK-YOYHZIrU0Di6BPvBRFUKDmxu62ZbSR9G0Dld4sPD8DlihlZNtCiRnA1Z_7XX7B0mX1gVTk9xw34cptI8XTaRBFT5MQKZfymrnf8TKzAHFP0HZm5nb19hG0E5UOvx0CqBriHuPgulR4E0shj66nB8AqM59zlFQnpZt5eXVzniSMq7S0UO4N7Y=w960-h720-no">
+<meta property="og:updated_time" content="2020-11-02T10:09:30.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[tdd] TDD 주기의 시작">
+<meta name="twitter:description" content="되돌아보면 우리는… 개발을 다 진행해놓고 마지막에 통합하면서 피드백을 받았던 것 같다. 이 마지막 순간에 변경되는 부분도 굉장히 많고, 서로가 잘못 이해한 부분도 많이 발생한다. 최악의 경우는 작업을 뒤집거나, 누군가가 포기하고 가야하는 상황도 발생한다. 그러므로 앞서 얘기했듯이, 빠른 피드백을 받을 수 있게끔 시스템을 구성하는 작업(중첩된 피드백 고리)은">
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/Sclm2o15GcyE3_jdothc4VLXpeBP_ewwY96loaiD8h9xd3QaDf9DaRP-tHaahWKKGALMbm1V6suovTMgh1QJSR5uFh13mAmt9MMDHis_U8uaWoKj_krT4GtoHoEkPMeIKk5KGbSzOpbso31HabNC92LGtKRabQmHVTmkBwsg6iedYZDOEGeOA_MHvuH9K3qQGnUv12qE6XXlWrkRv3BmPnZTD52jbAtpDyIXDcqOlQ7Y4XXHzgzb8IvRRPTr4OSIB1xczYJ3-MU8Cq3Sd6byjjl0pYz_XlTsgKySHNtfA4RLkCZ-sKBx66sgXwUkqcnYE__bZpjlfg6onHnXirq-TzJOamVOxMxjgZzFIeHHaamQYP2Bn4_4rivwGis_sRGoCyhXbm0bXUFJxddbL_z7VLtxtD8DFPjljZXVdeo7k64Qc7JFo2CDSmjSapAyZ9VhzVLyIVq0t3JX0tgSf6kFY4IXRew9eHaooRywVVeYlo2-NbNzAOsOJOw_BBQMxSnLD-JuY1rsfQNHvJfDp-hiLbKK4x-WA1x9m-uaLkGDu5y8_EgJICKhDMTACTohQVKJkp65i62ggMbqGC-YPRcr9pKmSZqECI_9oHTclcs_SZW9xjVIAbCMlPOe04iPHxAdR-HY6fsoLMVGflZY16nPyHfV28e1BNM=w882-h229-no">
+
+
+
+  <link rel="alternate" href="/feed.xml" title="기록은 기억의 연장선" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://joont92.github.io/tdd/TDD-주기의-시작/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[tdd] TDD 주기의 시작 | 기록은 기억의 연장선</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-110551662-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110551662-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">기록은 기억의 연장선</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">더 많은 것을 기억하기 위해 기록합니다</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/joont92" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joont92.github.io/tdd/TDD-주기의-시작/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYoung Park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="기록은 기억의 연장선">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[tdd] TDD 주기의 시작
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-22 00:26:34" itemprop="dateCreated datePublished" datetime="2019-03-22T00:26:34+00:00">2019-03-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-02 10:09:30" itemprop="dateModified" datetime="2020-11-02T10:09:30+00:00">2020-11-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/tdd/" itemprop="url" rel="index"><span itemprop="name">tdd</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/tdd/TDD-주기의-시작/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="tdd/TDD-주기의-시작/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>되돌아보면 우리는… 개발을 다 진행해놓고 마지막에 통합하면서 피드백을 받았던 것 같다.<br>
+이 마지막 순간에 변경되는 부분도 굉장히 많고, 서로가 잘못 이해한 부분도 많이 발생한다.<br>
+최악의 경우는 작업을 뒤집거나, 누군가가 포기하고 가야하는 상황도 발생한다.</p>
+<p>그러므로 앞서 얘기했듯이, <strong>빠른 피드백을 받을 수 있게끔 시스템을 구성하는 작업(중첩된 피드백 고리)은 매우 중요</strong>하다.</p>
+<ul>
+<li>위에서도 언급했듯이, 이런 시스템의 구성을 나중으로 미루는 것은 매우 위험하다</li>
+<li>저 정도 예시면 양반이지, 배포할 수 없어서 프로젝트가 취소되거나 마지막에 테스트를 추가했는데도 불구하고 오류율이 너무 높아 시스템이 폐기되기도 한다(저자의 경험)</li>
+<li><strong>피드백은 아주 근본적인 도구이며, 올바른 방향으로 나아가고 있는지 최대한 미리 파악하고자 한다</strong></li>
+</ul>
+<p>그 중에서도 외부와의 피드백 고리를 형성하는 것은 중첩된 피드백 고리를 구성하는 첫번쨰 단추이고, 가장 중요하다.<br>
+이 말인 즉 <code>자동화된 빌드・배포・테스트 주기 전체</code>를 가장 처음부터 구현해야 함을 의미한다.<br>
+근데 사실 말이 쉽지, 이렇게 구성하기에는 할일도 매우 많고, 어렵다.<br>
+그러면 우리는 무엇부터 시작해야 할까?</p>
+<h1 id="우선-동작하는-골격을-대상으로-테스트하라"><a class="markdownIt-Anchor" href="#우선-동작하는-골격을-대상으로-테스트하라"></a> 우선 동작하는 골격을 대상으로 테스트하라</h1>
+<ul>
+<li>먼저 <code>동작하는 골격</code>을 만들어야 한다
+<ul>
+<li>전 구간을 대상으로 자동 빌드・배포・테스트를 할 수 있는 실제 기능을 가장 얇게 구현한 조각을 말한다</li>
+<li>첫 기능을 구현할 수 있을 정도의 자동화, 주요 컴포넌트, 통신 메커니즘이 포함될 것이다</li>
+</ul>
+</li>
+<li>이 구조를 이용해 <code>유의미한 첫 기능에 대한 인수 테스트</code>를 작성한다
+<ul>
+<li>이후로는 시스템의 나머지 부분을 대상으로 테스트 주도 개발을 진행할 수 있게 모든 것이 제자리에 놓일 것이다</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>동작하는 골격을 만드는 과정에 배포 단계를 포함한 이유는 아래와 같다</p>
+<ul>
+<li>배포 단계는 오류가 발생하기 쉬운 활동이므로 실제 환경에 배포해야 할 때 까지 스크립트를 철저히 검증해야 하기 때문이다</li>
+<li>배포 과정을 자동화 하는 것 만큼 프로세스를 이해하는데 도움이 되는 것은 없다</li>
+<li>배포 단계에서 개발팀이 조직의 다른 부문과 접촉하기도 하며, 실제로 어떻게 운영되는지도 배워야하기 때문이다</li>
+</ul>
+</blockquote>
+<p>참고로 동작하는 골격을 만들때는 골격의 구조에만 집중하고, 테스트가 최대한 표현력을 갖추게끔 테스트를 정리하는 일에 대해서는 크게 신경쓰지 않는다<br>
+동작하는 골격과 그것을 보조하는 기반 구조는 테스트 주도 개발을 시작하는 방법을 도와주기 위해 존재하는 것이기 때문이다</p>
+<h1 id="동작하는-골격의-외형-결정"><a class="markdownIt-Anchor" href="#동작하는-골격의-외형-결정"></a> 동작하는 골격의 외형 결정</h1>
+<p>어떤 전체 구조에 관한 구상 없이는 빌드・배포・테스트 주기를 자동화 할 수 없으므로,<br>
+계획한 첫 출시를 달성하는데 필요할 주요 시스템 컴포넌트와 그러한 컴포넌트의 상호 작용 방식에 대한 대략적인 그림은 필요하다.</p>
+<blockquote>
+<p>이는 화이트보드에 몇분만에 그릴 수 있다<br>
+공개된 장소에 이런 구조를 그려놓으면 코드 작성 시 팀이 업무 방향을 참고하는데 도움이 된다(마파 문디)</p>
+</blockquote>
+<p>당연하지만, 이 같은 초기 구조를 설계하려면 시스템의 목적을 어느 정도 이해해야 한다<br>
+<strong>클라이언트의 요구사항(기능적 요구사항, 비기능적 요구사항)을 고수준 관점에서 바라보고 의사결정에 참고해야 한다</strong><br>
+그렇지 않으면 위험을 무릅쓰고 하는 일들이 죄다 의미가 없어진다</p>
+<p><img src="https://lh3.googleusercontent.com/Sclm2o15GcyE3_jdothc4VLXpeBP_ewwY96loaiD8h9xd3QaDf9DaRP-tHaahWKKGALMbm1V6suovTMgh1QJSR5uFh13mAmt9MMDHis_U8uaWoKj_krT4GtoHoEkPMeIKk5KGbSzOpbso31HabNC92LGtKRabQmHVTmkBwsg6iedYZDOEGeOA_MHvuH9K3qQGnUv12qE6XXlWrkRv3BmPnZTD52jbAtpDyIXDcqOlQ7Y4XXHzgzb8IvRRPTr4OSIB1xczYJ3-MU8Cq3Sd6byjjl0pYz_XlTsgKySHNtfA4RLkCZ-sKBx66sgXwUkqcnYE__bZpjlfg6onHnXirq-TzJOamVOxMxjgZzFIeHHaamQYP2Bn4_4rivwGis_sRGoCyhXbm0bXUFJxddbL_z7VLtxtD8DFPjljZXVdeo7k64Qc7JFo2CDSmjSapAyZ9VhzVLyIVq0t3JX0tgSf6kFY4IXRew9eHaooRywVVeYlo2-NbNzAOsOJOw_BBQMxSnLD-JuY1rsfQNHvJfDp-hiLbKK4x-WA1x9m-uaLkGDu5y8_EgJICKhDMTACTohQVKJkp65i62ggMbqGC-YPRcr9pKmSZqECI_9oHTclcs_SZW9xjVIAbCMlPOe04iPHxAdR-HY6fsoLMVGflZY16nPyHfV28e1BNM=w882-h229-no" alt="테스트 주도 주기"></p>
+<p>참고로 이를 <code>과도한 사전 설계</code>와 혼동하지 않아야 한다<br>
+실제 피드백을 토대로 배우고 개선해나가는 과정을 시작할 수 있게(+TDD 주기를 시작할 수 있게)하는데 필요한 최소한의 의사결정만을 내리는 것이 좋다<br>
+(현재 생각하고 있는 바가 틀릴 가능성이 있으므로, 시스템이 성장해가면서 세부 사항을 파악해나간다)</p>
+<h1 id="피드백-소스-구축"><a class="markdownIt-Anchor" href="#피드백-소스-구축"></a> 피드백 소스 구축</h1>
+<p>아래의 글로 <code>피드백의 중요성</code>을 재고하고 있다</p>
+<blockquote>
+<p><strong>어플리케이션 설계에 대해 내린 의사결정이나, 어플리케이션 설계가 근거하는 가정의 옳고 그름에 대해서는 아무것도 보장할 수 없다</strong><br>
+그저 최선을 다할 뿐이며 현재 밟고 있는 절차에 피드백을 적용해 최대한 빨리 의사결정이나 가정을 검증하는데 의지할 뿐이다</p>
+</blockquote>
+<p>아래는 위의 <code>테스트 주도 주기</code>가 주는 피드백에 대해 그려놓은 그림이다</p>
+<p><img src="https://lh3.googleusercontent.com/GEOVJp8MMcArH1mGIoFPjC8uLNKczgp_SrDmxR4NnecXuHRDYgmbtJannmt58E4tuF3A0zo71_TKsIr3AqQwov7Iy_rB0Un00m_ZCiSiQ4uA0ogb77eIoMxfh4iow95OTCFfe5P5RQLXqs8Lt5eaNM0jsS9_U9nYP43DK019lzYn2RGavF1OseqqoxRYQ9kge5czEX7M7NH_XXdOj2QAXcx_Dot70025msdldoyWHjRDFjItSJFP_evjWZcpc95dqxqbM0cWXBYG0Ifyvy_TwZTIQfV1dsveRhSfNWfhcP2Tj6yMWrmUSz2HZjGZzlQoxP6W-DV-bPFeK2C7hgbVe5qMf37g-_4RGtt-RZIEcmSWXqbT9Bgm1TT0YULSzkxlx3lLTtcZ-SdeEW6K02LlIGb7cikJkfD4y5WdGDzB_AfdryWeW1ntA0jttjOe6lY4RmT2ZNbw292FQ01SfcDegLZ7kRn4F3bON7Jv99f8o34WGJAsaWcEd9VT73ur7lau-4NUVYriJNyCmBvMiLByJt1uv5GYdUKdQ4kl_LHIHp6motBXN8lWDCphg5IVVvf48NtPo6iUBryRtWEiTKj67PU5wLOVSvNY2Q8RTRcJFkSnFXXmJkWDWvtNeiLWYV04bTVe_8WFCJ2EK7DnvE9Vs4FOZ92Z5bA=w872-h351-no" alt="요구사항 피드백"></p>
+<p>보다시피 각 과정은 서로에게 피드백이 된다<br>
+이러한 시스템을 구축함으로써 우리의 기능이 요구사항에 얼마나 부합하는지, 우리 시스템 구현은 어떤지 빠르게 평가할 수 있고, 빠르게 반영할 수 있다.<br>
+<code>최종적으로 우리는 안전해지고, 완전한 소프트웨어를 얻게 될 것이다!!!</code></p>
+<blockquote>
+<p>또 하나의 가장 큰 헤택은 <code>뭘 배우늗 거기에 맞춰 시스템을 변경할 수 있으리라</code>는 점이다<br>
+뭐든 테스트를 먼저 작성한다는 것은 <code>철저한 회귀 테스트 모음을 갖게 된다</code>는 것을 의미하기 때문이다<br>
+물론 어떤 테스트도 완벽하지 않지만, 견고한 테스트 모음이 있으면 중대한 변경을 안전하게 할 수 있다는 사실은 확실하다</p>
+</blockquote>
+<hr>
+<p>처음에는 이러한 순서대로 점진적인 개발을 하는 과정이 불안정하고, 활동량도 굉장히 많을 것이지만 자동화가 구축되고 나면 반복적인 과정으로 안정화된다</p>
+<blockquote>
+<p>나중에 통합 절차를 수행하는 프로젝트는 침착한 분위기에서 시작하지만, 처음으로 시스템 통합을 시도하게 되는 후반부에 힘들어지곤 한다<br>
+통합을 나중에 하는 방식의 경우 어떤 일이 일어날지 예측하기 불가능한데, <strong>팀에서 엄청나게 많은 각 부분을 제한된 시간에 짜맞춰야 하고 실패한 부분을 고치는 일도 감안해야 하기 때문이다</strong><br>
+그래서 경험이 풍부한 이해관계자는 프로젝트 초반부에 생기는 불안정성에 고약하게 반응한다<br>
+후반후에 들어가면 상황이 더 악화되리라 예상하기 때문이다<br>
+<strong>비단 통합 뿐만이 아니다. 우리는 각종 테스트들을 먼저 작성함으로써 혼란을 미리 잡고가게 되는 효과를 가지게 된다.</strong></p>
+</blockquote>
+<p><img src="https://lh3.googleusercontent.com/WZOowcX2_1KjkKHzNQhCF-x0SiMlIFZjuAT1oTsZSwYee0zBcPrvggU64AN952M86987WyWhq1InTB8_z3bOo8VZ04NOP4dPOV5F2b4r-lcmrDqEbLQ6KESACL19EWfShx9DQAFRsKkBfXH363hIKphswwLpJo-u_AEWFZEOTwfD7Di9YaO33Z-Mo80GJhJddpK323W_VrSqvZq7TzAcQuGLsyxdd-OCkh1tA5ZsKmyWqYlgY0s_yBwZUBNPqwli5X4um6O200d-FtifNT4P5Xsh0r02jWW6RWuumJToqbweuOzDa8fN7UQzFViY3DF1Cl9ZdXLFp-HdtgubP74pTGoYGm7rU8ZIdqKt_xkDNdkbGjI8Cf0xiVtWAco1XeSagWDwjvB0O3lAm_cGBXBp-tl22qFlpfMwy8PF1UsvnnNLZ7NBNCrTxOO4gsen0loemkBHmZn3I5k4wMK2fgxNuAlTK-ninGRa8gHK5sXVjK-YOYHZIrU0Di6BPvBRFUKDmxu62ZbSR9G0Dld4sPD8DlihlZNtCiRnA1Z_7XX7B0mX1gVTk9xw34cptI8XTaRBFT5MQKZfymrnf8TKzAHFP0HZm5nb19hG0E5UOvx0CqBriHuPgulR4E0shj66nB8AqM59zlFQnpZt5eXVzniSMq7S0UO4N7Y=w960-h720-no" alt="테스트 먼저 vs 테스트 나중에"></p>
+<p>가장 중요한 것은 방향 감각을 확보하는 것과 가정을 테스트할 구체적인 구현을 갖춰야 한다는 것이다<br>
+<code>동작하는 골격</code>은 프로젝트 초기에 각종 쟁점을 드러내지만, 프로젝트 초기라면 아직까지 그러한 쟁점을 해결할 시간과 예산, 의지가 있을 때이다</p>
+<a id="more"></a>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/테스트-주도-개발로-배우는-객체지향-설계와-실천/" rel="tag"># 테스트 주도 개발로 배우는 객체지향 설계와 실천</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/git/commit-message-convention/" rel="next" title="[git] commit message convention">
+                <i class="fa fa-chevron-left"></i> [git] commit message convention
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/tdd/TDD-도구들/" rel="prev" title="[tdd] TDD 도구들">
+                [tdd] TDD 도구들 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JunYoung Park</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">182</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">344</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feed.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#우선-동작하는-골격을-대상으로-테스트하라"><span class="nav-number">1.</span> <span class="nav-text"> 우선 동작하는 골격을 대상으로 테스트하라</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#동작하는-골격의-외형-결정"><span class="nav-number">2.</span> <span class="nav-text"> 동작하는 골격의 외형 결정</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#피드백-소스-구축"><span class="nav-number">3.</span> <span class="nav-text"> 피드백 소스 구축</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunYoung Park</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://joont92.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://joont92.github.io/tdd/TDD-주기의-시작/";
+    this.page.identifier = "tdd/TDD-주기의-시작/";
+    this.page.title = '[tdd] TDD 주기의 시작';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://joont92.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

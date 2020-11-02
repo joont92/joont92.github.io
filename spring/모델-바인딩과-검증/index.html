@@ -1,0 +1,2674 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="메서드에 @ModelAttribute를 파라미터로 선언했을 경우 처리되는 과정은 다음과 같다.   파라미터 타입의 오브젝트를 새로 만든다. 때문에 디폴트 생성자가 필수로 필요하다. @SessionAttributes를 통해 저장된 오브젝트가 있으면 새로 만들지 않고 세션에서 가져온다.   HTTP 요청을 생성(혹은 가져온) 오브젝트 프로퍼티에 바인딩 해준다.">
+<meta name="keywords" content="@ModelAttribute,토비의 스프링,프로퍼티 바인딩,PropertyEditor,Converter,Formatter,WebDataBinder,Validator,BindingResult,Errors,모델 사이클">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[spring] 모델 바인딩과 검증">
+<meta property="og:url" content="https://joont92.github.io/spring/모델-바인딩과-검증/index.html">
+<meta property="og:site_name" content="기록은 기억의 연장선">
+<meta property="og:description" content="메서드에 @ModelAttribute를 파라미터로 선언했을 경우 처리되는 과정은 다음과 같다.   파라미터 타입의 오브젝트를 새로 만든다. 때문에 디폴트 생성자가 필수로 필요하다. @SessionAttributes를 통해 저장된 오브젝트가 있으면 새로 만들지 않고 세션에서 가져온다.   HTTP 요청을 생성(혹은 가져온) 오브젝트 프로퍼티에 바인딩 해준다.">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0Nzc0MDE4OTcmdHlwZT1sJno9MjAxOC8wOC8wNyAxMzowNg==#width90">
+<meta property="og:image" content="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0Nzc2NTc4MjQmdHlwZT1sJno9MDcvMDgvMjAxOCAxNTozNg==">
+<meta property="og:image" content="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0Nzc2Nzc5NTEmdHlwZT1sJno9MDcvMDgvMjAxOCAxNTo1Mw==">
+<meta property="og:image" content="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30">
+<meta property="og:updated_time" content="2020-11-02T10:09:30.461Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[spring] 모델 바인딩과 검증">
+<meta name="twitter:description" content="메서드에 @ModelAttribute를 파라미터로 선언했을 경우 처리되는 과정은 다음과 같다.   파라미터 타입의 오브젝트를 새로 만든다. 때문에 디폴트 생성자가 필수로 필요하다. @SessionAttributes를 통해 저장된 오브젝트가 있으면 새로 만들지 않고 세션에서 가져온다.   HTTP 요청을 생성(혹은 가져온) 오브젝트 프로퍼티에 바인딩 해준다.">
+<meta name="twitter:image" content="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0Nzc0MDE4OTcmdHlwZT1sJno9MjAxOC8wOC8wNyAxMzowNg==#width90">
+
+
+
+  <link rel="alternate" href="/feed.xml" title="기록은 기억의 연장선" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://joont92.github.io/spring/모델-바인딩과-검증/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>[spring] 모델 바인딩과 검증 | 기록은 기억의 연장선</title>
+  
+
+
+
+
+  <script async src="//www.googletagmanager.com/gtag/js?id=UA-110551662-1"></script>
+  <script>
+    var host = window.location.hostname;
+    if (host !== "localhost" || !true) {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-110551662-1');
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">기록은 기억의 연장선</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">더 많은 것을 기억하기 위해 기록합니다</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/joont92" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="external nofollow noopener noreferrer" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://joont92.github.io/spring/모델-바인딩과-검증/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JunYoung Park">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="기록은 기억의 연장선">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">[spring] 모델 바인딩과 검증
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-08 00:51:40" itemprop="dateCreated datePublished" datetime="2018-03-08T00:51:40+00:00">2018-03-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-11-02 10:09:30" itemprop="dateModified" datetime="2020-11-02T10:09:30+00:00">2020-11-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/spring/" itemprop="url" rel="index"><span itemprop="name">spring</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/spring/모델-바인딩과-검증/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="spring/모델-바인딩과-검증/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>메서드에 <code>@ModelAttribute</code>를 파라미터로 선언했을 경우 처리되는 과정은 다음과 같다.</p>
+<ol>
+<li>
+<p>파라미터 타입의 오브젝트를 새로 만든다. 때문에 디폴트 생성자가 필수로 필요하다.<br>
+<code>@SessionAttributes</code>를 통해 저장된 오브젝트가 있으면 새로 만들지 않고 세션에서 가져온다.</p>
+</li>
+<li>
+<p>HTTP 요청을 생성(혹은 가져온) 오브젝트 프로퍼티에 바인딩 해준다.<br>
+이 과정에서 각 프로퍼티에 맞게 타입을 변환해준다.<br>
+만약 타입 변환 오류가 발생할 시 <code>BindingResult</code> 오브젝트에 오류를 저장해서 컨트롤러로 넘겨준다.</p>
+</li>
+<li>
+<p>검증작업을 수행한다. 2번의 과정에서 타입에 대한 검증은 이미 끝냈고, 그 외의 검증은 검증기를 통해 등록할 수 있다.</p>
+</li>
+</ol>
+<hr>
+<h1 id="프로퍼티-바인딩"><a class="markdownIt-Anchor" href="#프로퍼티-바인딩"></a> 프로퍼티 바인딩</h1>
+<p>프로퍼티 바인딩이란 오브젝트의 프로퍼티에 값을 넣는 행위를 말한다.<br>
+프로퍼티에 맞게 타입을 적절히 변환하고 해당 프로퍼티의 수정자 메서드를 호출하는 것이다.</p>
+<p>스프링에선 크게 두가지의 프로퍼티 바인딩을 지원하는데</p>
+<p>첫번째는 애플리케이션 컨텍스트 XML 설정파일로 빈을 정의할 때 사용했던 <code>&lt;property&gt;</code> 태그이다.<br>
+이 태그를 통해 빈의 프로퍼티에 값을 주입했었다.</p>
+<p>두번째는 HTTP 요청 파라미터를 모델 오브젝트 등으로 변환하는 경우이다.<br>
+<code>@ModelAttribute</code> 뿐만 아니라 <code>@RequestParam</code>, <code>@PathVariable</code> 등도 해당된다.</p>
+<p>근데 잘 생각해보면, 프로퍼티 바인딩이 일반 <code>primitive 타입</code>이 아닌 경우에도 가능했던 적이 있었다.<br>
+루트 웹 애플리케이션 컨텍스트에서 <code>dataSource</code> 빈을 설정할 때다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework..SimpleDriverDataSource"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClass"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>보다시피 <code>value</code>에 문자열로 클래스명을 전달하고 있다.<br>
+그런데 <code>driverClass</code> 프로퍼티는 <code>String</code> 타입이 아닌 <code>Class</code> 타입이다. 하지만 잘 바인딩 된다.<br>
+이는 스프링이 제공하는 프로퍼티 바인딩 기능을 사용했기 때문이다.<br>
+스프링은 프로퍼티 바인딩을 위해 2가지 API를 제공한다.</p>
+<h2 id="propertyeditor"><a class="markdownIt-Anchor" href="#propertyeditor"></a> PropertyEditor</h2>
+<p>스프링이 기본적으로 제공하는 바인딩용 타입 변환 API이다.</p>
+<blockquote>
+<p><code>PropertyEditor</code>는 스프링 API가 아니라 자바빈 표준에 정의된 API이다.<br>
+GUI 환경에서 비주얼 컴포넌트를 만들 때 사용하도록 설계되었고, 기본적인 기능은 문자열과 자바빈 프로퍼티 사이의 타입 변환이다.<br>
+스프링은 이 <code>PropertyEditor</code>를 <code>문자열-오브젝트</code> 상호변환이 필요한 XML 설정이나 HTTP 파라미터 변환에 유용하게 사용할 수 있다고 판단하여 이를 일찍부터 사용해왔다.</p>
+</blockquote>
+<p>스프링은 20여가지 정도의 <code>PropertyEditor</code>를 만들어 디폴트로 제공하고 있다.<br>
+아래의 링크에서 확인할 수 있다.<br>
+<a href="https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/propertyeditors/package-summary.html" rel="external nofollow noopener noreferrer" target="_blank">https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/propertyeditors/package-summary.html</a><br>
+이 디폴트 <code>PropertyEditor</code>들은 바인딩 과정에서 파라미터 타입에 맞게 자동으로 선정되어 사용된다.</p>
+<h3 id="propertyeditor-구현"><a class="markdownIt-Anchor" href="#propertyeditor-구현"></a> PropertyEditor 구현</h3>
+<p>디폴트 프로퍼티 데이터에 등록되지 않은 타입을 파라미터로 사용하고 싶을 경우, 직접 <code>PropertyEditor</code>를 만들어 적용할 수 있다.<br>
+아래와 같은 <code>enum</code>이 하나 있고,</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Level &#123;</span><br><span class="line">  GOLD(<span class="number">3</span>), SILVER(<span class="number">2</span>), BASIC(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> Integer level;</span><br><span class="line"></span><br><span class="line">  Level(Integer level)&#123;</span><br><span class="line">      <span class="keyword">this</span>.level = level;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 숫자를 받으면 해당하는 enum을 리턴</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Level <span class="title">convert</span><span class="params">(Integer level)</span></span>&#123;</span><br><span class="line">      <span class="keyword">switch</span>(level)&#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">3</span> : <span class="keyword">return</span> GOLD;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">2</span> : <span class="keyword">return</span> SILVER;</span><br><span class="line">          <span class="keyword">case</span> <span class="number">1</span> : <span class="keyword">return</span> BASIC;</span><br><span class="line">          <span class="keyword">default</span> : <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>아래와 같이 컨트롤러를 등록하고 <code>/user?level=1</code> 과 같이 호출하면 자동으로 <code>Level enum</code>으로 변환해서 받고 싶다고 하자.<br>
+(<code>level</code> 파라미터가 <code>Integer</code>이지만 변환이 간단하므로 문제될 것 없다)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">  <span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>, method=RequestMethod.GET)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">userSearch</span><span class="params">(@RequestParam Level level)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>현재는 당연히 변환이 불가능하므로 오류가 발생한다.</p>
+<p><code>Level</code> 타입에 대한 <code>PropertyEditor</code>를 만들어야 한다.<br>
+아래는 프로퍼티 에디터가 변환할 때의 동작 방식이다.<br>
+<img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0Nzc0MDE4OTcmdHlwZT1sJno9MjAxOC8wOC8wNyAxMzowNg==#width90" alt="프로퍼티 에디터 동작원리"><br>
+<code>setValue()</code>, <code>getValue()</code>는 그냥 <code>getter</code>,<code>setter</code>이기 때문에 손댈 것 없고,<br>
+실제로 우리가 구현해야 할 메서드는 <code>setAsText()</code>와 <code>getAsText()</code>이다.</p>
+<p>현재 우리한테 필요한 부분은 <code>문자열 -&gt; 오브젝트</code>의 과정이므로 <code>setAsText()</code> 메서드를 구현해서 <code>Level enum</code>에 대한 <code>PropertyEditor</code>를 만들어보겠다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LevelPropertyEditor</span> <span class="keyword">extends</span> <span class="title">PropertyEditorSupport</span></span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAsText</span><span class="params">(String text)</span> <span class="keyword">throws</span> IllegalArgumentException </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.setValue(Level.convert(Integer.parseInt(text)));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이제 이 <code>PropertyEditor</code>를 <code>userSearch</code> 메서드에서 사용할 수 있게 등록해줘야 한다.</p>
+<h3 id="propertyeditor-등록"><a class="markdownIt-Anchor" href="#propertyeditor-등록"></a> PropertyEditor 등록</h3>
+<p><code>PropertyEditor</code>를 추가하기 전에 먼저 컨트롤러에서 메서드 바인딩이 일어나는 순서를 알아보자.<br>
+<code>AnnotationMethodHandlerAdapter</code>는 <code>@RequestParam</code>, <code>@PathVariable</code>, <code>@ModelAttribute</code>와 같이 HTTP 요청을 변수에 바인딩하는 애노테이션을 만나면 먼저 <code>WebDataBinder</code>라는 것을 만든다.<br>
+<code>WebDataBinder</code>는 여러가지 기능을 포함하는데, 여기에 HTTP 요청 문자열을 파라미터로 변환하는 기능도 포함되어 있다.<br>
+즉, 우리가 만든 <code>PropertyEditor</code>를 사용하려면 이 <code>WebDataBinder</code>에 직접 등록해줘야 한다.<br>
+근데 <code>WebDataBinder</code>의 변환 과정이 외부로 노출되지 않으므로, 직접 등록해 줄 방법은 없다.<br>
+그래서 스프링이 제공하는 <code>WebDataBinder</code> 초기화 메서드를 사용해야 한다.</p>
+<ol>
+<li>@InitBinder<br>
+컨트롤러 클래스에 아래와 같이 <code>@InitBinder</code> 애노테이션이 부여되고, <code>WebDataBinder</code>를 인자로 받는 메서드를 하나 생성하자.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">  <span class="meta">@InitBinder</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder dataBinder)</span></span>&#123;</span><br><span class="line">    dataBinder.registerCustomEditor(Level.class, <span class="keyword">new</span> LevelPropertyEditor());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>, method=RequestMethod.GET)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">userSearch</span><span class="params">(@RequestParam Level level)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>그리고 <code>WebDataBinder</code>의 <code>registerCustomEditor</code> 메서드에 <code>PropertyEditor</code>를 적용할 타입과 <code>PropertyEditor</code> 인스턴스를 전달해주면 된다.<br>
+이후 다시 <code>/user?level=1</code>을 호출해보면 <code>level</code> 변수에 <code>Level.BASIC</code> 오브젝트가 들어가있는 것을 확인할 수 있다.</p>
+<blockquote>
+<p><code>WebDataBinder</code> 대신 <code>WebRequest</code>를 받을 수도 있다!</p>
+</blockquote>
+<p><code>initBinder</code> 메서드는 클래스내의 모든 메서드에 대해 파라미터를 바인딩하기 전에 자동으로 호출된다.<br>
+바인딩 적용 대상은 <code>@RequestParam</code>, <code>@PathVariable</code>, <code>@CookieValue</code>, <code>@RequestHeader</code>, <code>@ModelAttribute</code>의 프로퍼티 이다.</p>
+<p>기본적으로 <code>PropertyEditor</code>는 지정한 타입과 일치하면 항상 적용된다.<br>
+여기에 프로퍼티 이름을 추가 조건으로 주고, 프로퍼티 이름까지 일치해야만 적용되게 할 수 있다.<br>
+이러한 타입의 <code>PropertyEditor</code>는 이미 <code>PropertyEditor</code>가 존재할 경우 사용한다.<br>
+<code>WebDataBinder</code>는 바인딩 시 커스텀 <code>PropertyEditor</code>가 있을 경우 이를 선적용하고, 없을 경우 디폴트 <code>PropertyEditor</code>를 적용하기 때문이다.<br>
+아래는 적절한 예시이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MinMaxPropertyEditor</span> <span class="keyword">extends</span> <span class="title">PropertyEditorSupport</span></span>&#123;</span><br><span class="line">	Integer min;</span><br><span class="line">	Integer max;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MinMaxPropertyEditor</span><span class="params">(Integer min, Integer max)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.min = min;</span><br><span class="line">		<span class="keyword">this</span>.max = max;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAsText</span><span class="params">(String text)</span> <span class="keyword">throws</span> IllegalArgumentException </span>&#123;</span><br><span class="line">		Integer value = Integer.valueOf(text);</span><br><span class="line">		<span class="keyword">if</span>(value &lt; min)&#123;</span><br><span class="line">			value = min;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(value &gt; max)&#123;</span><br><span class="line">			value = max;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">this</span>.setValue(value);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">  Integer id;</span><br><span class="line">  Integer age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">  <span class="meta">@InitBinder</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder dataBinder)</span></span>&#123;</span><br><span class="line">    dataBinder.registerCustomEditor(Integer.class, <span class="string">"age"</span>, <span class="keyword">new</span> MinMaxPropertyEditor(<span class="number">1</span>, <span class="number">50</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>, method=RequestMethod.POST)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">userAdd</span><span class="params">(@ModelAttribute User user)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이렇게 해두면 추가하는 유저의 <code>age</code>값은 <code>1~50</code>까지로 제한된다.<br>
+<code>PropertyEditor</code>를 등록할 때 프로퍼티 이름으로 <code>age</code>를 지정했기 때문에 id에는 적용되지 않는다.<br>
+참고로 이 방식은 프로퍼티 이름이 필요하므로 <code>@RequestParam</code> 같은 단일 파라미터 바인딩에는 적용되지 않는다.</p>
+<ol start="2">
+<li>WebBindingInitializer<br>
+<code>@InitBinder</code> 방식은 범위가 컨트롤러 하나로만 제한되므로 다른 컨트롤러에서 사용하려면 또 다시 등록해줘야 한다.<br>
+만약 해당 <code>PropertyEditor</code>가 모든 곳에 적용해도 될 만큼 필요한 <code>PropertyEditor</code>라면 등록하는 방법을 달리하여 모든 컨트롤러에 적용해줄 수 있다.<br>
+먼저 <code>WebBindingInitializer</code> 인터페이스를 구현한 클래스를 작성한다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyWebBindingInitializer</span> <span class="keyword">implements</span> <span class="title">WebBindingInitializer</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder binder, WebRequest request)</span> </span>&#123;</span><br><span class="line">		binder.registerCustomEditor(Level.class, <span class="keyword">new</span> LevelPropertyEditor());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이제 이 클래스를 빈으로 등록하고 <code>AnnotationMethodHandlerAdapter</code>의 <code>webBindingInitializer</code> 프로퍼티에 <code>DI</code> 해주면 전체적으로 적용된다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework..AnnotationMethodHandlerAdapter"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"webBindingInitializer"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"MyWebBindingInitializer"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="프로토타입-propertyeditor"><a class="markdownIt-Anchor" href="#프로토타입-propertyeditor"></a> 프로토타입 PropertyEditor</h3>
+<p>앞서 작성했던 <code>PropertyEditor</code> 등록 코드들을 보면, 매번 <code>new 키워드</code>로 <code>PropertyEditor</code>를 생성하고 있다.<br>
+이 부분이 뭔가 부담스럽게 생각되어 <code>PropertyEditor</code>를 빈으로 등록하는 방식을 생각할 수 있는데, 이는 위험한 상황을 초래한다.<br>
+위의 <code>PropertyEditor</code> 동작방식을 다시 살펴보면, 변환과정에서 항상 <code>set -&gt; get</code>의 순서로 2개의 메서드를 사용하고 있음을 볼 수 있다.<br>
+이 말인 즉, <code>PropertyEditor</code>는 <strong>짧은 시간이나마 상태를 가진다</strong>는 것을 의미한다.<br>
+상태를 가지는 오브젝트는 절대 빈으로 등록되서는 안된다.</p>
+<p>매번 <code>new 키워드</code>로 생성되는 부분이 부담스러워 보일 수 있으나, 실상 <code>PropertyEditor</code>는 워낙 간단한 클래스라 자주 생성되도 별로 문제가 되지 않는다.<br>
+그러므로 싱글톤으로 <code>PropertyEditor</code>를 생성하는 실수를 하지 않도록 주의해야 한다.</p>
+<p>근데 개발을 하다보면, <code>PropertyEditor</code>에서 다른 빈을 <code>DI</code> 받아야 할 경우가 가끔 생긴다.<br>
+예를 들면 아래와 같이 변환할 프로퍼티가 하나의 도메인 오브젝트에 대응하는 경우이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">  Integer id;</span><br><span class="line">  String name;</span><br><span class="line">  Code userType; <span class="comment">// 코드 테이블에 대응하는 도메인 오브젝트</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이런 경우, 일반적인 방법으로는 변환할 수 없다. 요청 파라미터는 평범한 문자열이기 때문이다.</p>
+<p>이 상황을 해결할 수 있는 방법은 2가지가 있다.</p>
+<ol>
+<li>모조 PropertyEditor<br>
+<code>Code</code> 오브젝트로 변환하되, 완벽하지 않은 오브젝트로 변환하는 방법이다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodePropertyEditor</span> <span class="keyword">extends</span> <span class="title">PropertyEditorSupport</span></span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAsText</span><span class="params">(String text)</span> <span class="keyword">throws</span> IllegalArgumentException </span>&#123;</span><br><span class="line">		Code code = <span class="keyword">new</span> Code();</span><br><span class="line">    code.setId(Integer.valueOf(text));</span><br><span class="line"></span><br><span class="line">		<span class="keyword">this</span>.setValue(code);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이런식으로 전달받은 <code>id</code>값만 채운 불완전한 <code>Code</code> 오브젝트를 돌려주는 것이다.<br>
+이런 방식을 <code>모조 PropertyEditor</code>라고 부른다.<br>
+하지만 이 방식은 조금 위험하다. 다른 프로퍼티들의 값이 모두 <code>null</code>인 불완전한 오브젝트로 변환해주기 때문이다.<br>
+이런 오브젝트는 업데이트가 발생하면 심각한 문제를 초래할 수 있으나,<br>
+사실상 이러한 코드성 도메인 오브젝트는 다른 테이블에서 참조하는 용도로만 사용하는 것이 대부분이다.<br>
+그래서 이런 부분만 유의해주면 매우 유용하게 활용할 수 있다.</p>
+<ol start="2">
+<li>프로토타입 도메인 오브젝트 PropertyEditor<br>
+<code>PropertyEditor</code>를 프로토타입 빈으로 등록하고, 서비스나 <code>DAO</code> 객체를 <code>DI</code> 받아 <code>Code</code> 오브젝트를 조회해오는 방법이다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Scope</span>(<span class="string">"prototype"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodePropertyEditor</span> <span class="keyword">extends</span> <span class="title">PropertyEditorSupport</span></span>&#123;</span><br><span class="line">  <span class="meta">@Atuworied</span> codeService;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAsText</span><span class="params">(String text)</span> <span class="keyword">throws</span> IllegalArgumentException </span>&#123;</span><br><span class="line">		Code code = codeService.getCode(Integer.valueOf(text));</span><br><span class="line"></span><br><span class="line">		<span class="keyword">this</span>.setValue(code);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">  <span class="meta">@Inject</span> Provider&lt;CodePropertyEditor&gt; codePropertyEditorProvider;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@InitBinder</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder dataBinder)</span></span>&#123;</span><br><span class="line">    dataBinder.registerCustomEditor(Code.class, codePropertyEditorProvider.get());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>, method=RequestMethod.POST)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">userAdd</span><span class="params">(@ModelAttribute User user)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이 방식의 장점은 항상 완전한 도메인 오브젝트를 리턴해주므로, 앞서 제기했던 위험이 없어진다.<br>
+단점으로는 매번 DB에서 조회를 해야하므로 성능에 조금 부담을 주는 단점이 있다.<br>
+하지만 JPA와 같이 엔티티 단위의 캐싱 기법이 발달한 기술을 사용할 경우, DB에서 조회하는 대신 메모리에서 바로 읽어올 수 있으므로 DB 부하에 대한 걱정은 하지 않아도 된다.</p>
+<h2 id="converter"><a class="markdownIt-Anchor" href="#converter"></a> Converter</h2>
+<p><code>PropertyEditor</code>는 근본적인 단점이 있다.<br>
+상태를 가지고 있으므로 싱글톤으로 등록할 수 없고, 항상 새로운 오브젝트를 만들어야 한다는 점이다.<br>
+스프링 3.0이후로 이러한 <code>PropertyEditor</code>의 단점을 보완해주는 <code>Converter</code>라는 타입 변환 API가 등장하였다.<br>
+<code>Converter</code>는 <code>PropertyEditor</code>와 달리 변환과정에서 메서드가 한번만 호출된다.<br>
+즉, 상태를 가지지 않는다는 뜻이고, 싱글톤으로 등록할 수 있다는 뜻이다!</p>
+<h3 id="converter-구현"><a class="markdownIt-Anchor" href="#converter-구현"></a> Converter 구현</h3>
+<p>아래는 <code>Converter</code> 인터페이스이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Converter</span>&lt;<span class="title">S</span>, <span class="title">T</span>&gt;</span>&#123;</span><br><span class="line">  <span class="function">T <span class="title">convert</span><span class="params">(s source)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>양방향 변환을 지원하던 <code>PropertyEditor</code>와는 달리, 단방향 변환만을 지원한다.<br>
+(양방향을 원하면 그냥 반대방향의 <code>Converter</code>를 하나 더 만들면 된다.)<br>
+게다가 한쪽 타입이 무조건 <code>String</code>으로 고정되는 불편함 없이 직접 지정 가능하다.<br>
+아래는 전달받은 파라미터를 <code>Level</code> 타입으로 변환해주는 <code>Converter</code>이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LevelConverter</span> <span class="keyword">implements</span> <span class="title">Convert</span>&lt;<span class="title">Integer</span>, <span class="title">Level</span>&gt;</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> Level <span class="title">convert</span><span class="params">(Integer source)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Level.convert(source)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>타입을 바로 <code>Integer</code>로 지정함으로써 지저분한 타입변환 코드를 제거할 수 있다.</p>
+<h3 id="converter-등록"><a class="markdownIt-Anchor" href="#converter-등록"></a> Converter 등록</h3>
+<p><code>PropertyEditor</code>처럼 직접 등록할 수 없고, <code>ConversionService</code> 타입의 오브젝트를 통해서 <code>WebDataBinder</code>에 등록해야 한다.<br>
+<code>ConversionService</code> 타입의 오브젝트를 빈으로 등록하고 이를 <code>DI</code>받아 <code>WebDataBinder</code>에 등록하는 방식이므로 <code>PropertyEditor</code>에 비해 부담이 적다.</p>
+<p><code>ConversionService</code>를 등록하는 방법은 2가지가 있다.</p>
+<p>첫째로 직접 클래스를 만들고 <code>GenericConversionService</code>를 상속받은 뒤, <code>addConverter()</code> 메서드로 <code>Converter</code>들을 등록하는 방식이다. 이후 빈으로 등록한다.</p>
+<p>둘째는 추가할 <code>Converter</code>들을 빈으로 등록해두고 <code>ConversionServiceFactoryBean</code>을 이용해서 <code>Converter</code>들이 추가된 <code>GenericConversionService</code>를 빈으로 등록하는 방식이다.<br>
+직접 클래스를 만들지 않고 설정만으로 가능하므로 좀 더 편리하다.</p>
+<p>아래는 두번째 방법이다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework..ConversionServiceFactoryBean"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"converters"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"LevelConverter"</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 추가하고 싶은 Converter들... --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>그리고 컨트롤러에서 아래와 같이 해주면 된다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span> ConversionService conversionService;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@InitBinder</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder dataBinder)</span></span>&#123;</span><br><span class="line">    dataBinder.setConversionService(<span class="keyword">this</span>.conversionService);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>, method=RequestMethod.GET)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">userSearch</span><span class="params">(@RequestParam Level level)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>매번 개별적으로 등록해줘야하는 <code>PropertyEditor</code>와는 달리 하나의 <code>ConversionService</code>에 <code>Converter</code>들을 일괄적으로 지정할 수 있어 매우 편리하다.<br>
+때에 따라서는 여러개의 <code>ConversionService</code>를 만들어놓고 사용하기도 한다.<br>
+하지만 <code>WebDataBinder</code>는 하나의 <code>ConversionService</code> 타입 오브젝트만 허용한다는 점은 알고있어야 한다.</p>
+<p><code>Converter</code>도 <code>PropertyEditor</code>처럼 <code>WebBindingInitializer</code>를 이용해 일괄등록 할 수 있다.<br>
+하지만 <code>ConversionService</code>를 등록할 떄는 <code>ConfigurableWebBindingInitializer</code>를 이용하는 것이 더 편리하다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework..ConversionServiceFactoryBean"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"converters"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"LevelConverter"</span> /&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 추가하고 싶은 Converter들... --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"webBindingInitializer"</span> <span class="attr">class</span>=<span class="string">"org.springframework..ConfigurableWebBindingInitializer"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"conversionService"</span> <span class="attr">ref</span>=<span class="string">"conversionService"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework..AnnotationMethodHandlerAdapter"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"webBindingInitializer"</span> <span class="attr">ref</span>=<span class="string">"webBindingInitializer"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>이게 전부 <code>ConversionService</code>를 싱글톤 빈으로 등록할 수 있기에 생겨난 방법들이다.</p>
+<blockquote>
+<p>만약 spring 설정에서 <code>&lt;mvc:annotation-driven /&gt;</code>를 사용했을 경우,<br>
+위의 두 방법처럼 <code>ConversionService</code>를 등록하는 것이 불가능하다.<br>
+이럴경우 <code>&lt;mvc:annotation-driven conversion-service=&quot;conversionService&quot;/&gt;</code> 처럼 엘리먼트를 이용해서 등록해줘야 하며, 이렇게 등록할 경우 모든 클래스에 자동으로 적용된다.</p>
+</blockquote>
+<h2 id="formatter"><a class="markdownIt-Anchor" href="#formatter"></a> Formatter</h2>
+<p>위의 두 가지 외에 <code>Formatter</code>라는 타입 변환 API가 하나 더 있다.<br>
+근데 이는 스프링에서 기본으로 제공하는 API가 아니라서, 절차가 조금 까다롭다.<br>
+일단 <code>Formatter</code>인터페이스는 아래와 같다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Formatter interface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Formatter</span>&lt;<span class="title">T</span>&gt; <span class="keyword">extends</span> <span class="title">Printer</span>&lt;<span class="title">T</span>&gt;, <span class="title">Parser</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Printer interface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Printer</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="function">String <span class="title">print</span><span class="params">(T object, Locale locale)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Parser interface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Parser</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="function">T <span class="title">parse</span><span class="params">(String text, Locale locale)</span> <span class="keyword">throws</span> ParseException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이 인터페이스를 구현해서 <code>Formatter</code>를 만들면 된다. 보다시피 <code>Locale</code>을 파라미터로 받을 수 있어 컨트롤러에 사용하기 좀 더 특화되었다고 할 수 있다.<br>
+근데… <code>Formatter</code>는 스프링 기본 API가 아니라서 <code>GenericConversionService</code>에 직접 등록할 수 없다.<br>
+<code>Formatter</code>를 <code>GenericConverter</code>로 포장해서 등록해주는 <code>FormattingConversionService</code>를 통해서만 등록될 수 있다.<br>
+그리고 <code>Formatter</code>를 본격적으로 사용하려면 이게 끝이 아니라<br>
+애노테이션을 연결시켜야 하므로 <code>AnnotationFormatterFactory</code>도 사용해야 한다.<br>
+이래서 굳이 <code>Locale</code>이 타입 변환에 필요한 경우가 아니라면 <code>Converter</code>를 사용하는 편이 낫다.</p>
+<p>당장은 <code>FormattingConversionServiceFactoryBean</code>을 통해 <code>FormattingConversionService</code>를 등록하고, 거기서 기본으로 등록되는 <code>Formatter</code>만 사용해도 유용하다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework..FormattingConversionServiceFactoryBean"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>이렇게 빈으로 등록하고 위와 같은 방식으로 <code>conversionService</code>를 주입해주면 된다.</p>
+<blockquote>
+<p>이 또한 만약 spring 설정에서 <code>&lt;mvc:annotation-driven /&gt;</code>를 사용했을 경우 사용이 불가능하다.<br>
+참고로 <code>FormattingConversionServiceFactoryBean</code>은 <code>&lt;mvc:annotation-driven /&gt;</code> 사용 시 디폴트로 등록해주는 <code>ConversionService</code>라 위처럼 <code>conversion-service</code> 엘리먼트를 이용해 따로 등록해 줄 필요없다.</p>
+</blockquote>
+<ol>
+<li>@NumberFormat<br>
+첫째로 사용할 수 있는 애노테이션 기반 포멧터이다.<br>
+이는 <code>NumberFormatter</code>, <code>CurrencyFormatter</code>, <code>PercentFormatter</code> 와 연결되어 있다.<br>
+엘리먼트로 <code>style</code>과 <code>pattern</code>을 줄 수 있다.<br>
+<code>style</code>은 <code>Number</code>, <code>Currency</code>, <code>Percent</code> 세 가지를 설정할 수 있고, 각각 위의 <code>Formatter</code>와 연결된다.<br>
+<code>style</code>에 없는 패턴을 사용하고 싶을 경우 <code>pattern</code> 엘리먼트를 통해 직접 지정할 수 있다.<br>
+아래는 <code>pattern</code>엘리먼트를 사용한 예제이다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">  <span class="meta">@NumberFormat</span>(<span class="string">"$###,##0"</span>)</span><br><span class="line">  Long price;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// getter, setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>request 인자로 <code>price=$100,000</code> 과 같이 넘겨줘도 <code>price</code> 프로퍼티에서 변환해서 받을 수 있고, 뷰로 내려줄 때에 <code>$100,000</code>의 형태로 내려줄 수 있다.</p>
+<ol start="2">
+<li>@DateTimeFormat<br>
+강력한 날짜, 시간 라이브러리인 <code>Joda Time</code>을 이용하는 애노테이션 기반 포멧터이다.<br>
+이는 <code>DateTimeFormatter</code>와 연결되어 있다.<br>
+엘리먼트로 <code>style</code>과 <code>pattern</code>을 줄 수 있다.<br>
+<code>S</code>(short), <code>M</code>(medium), <code>L</code>(long), <code>F</code>(full) 4개의 문자를 날짜와 시간에 대해 1글자씩 사용해 스타일을 지정한다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DateTimeFormat</span>(style=<span class="string">"FS"</span>)</span><br><span class="line">Calenadar birthday;</span><br></pre></td></tr></table></figure>
+<p>이는 <code>yyyy'년' M'월' d'일' EEEE a h:mm</code> 포멧으로 매핑된다. 물론 각각의 지역정보에 따라 다르게 출력된다.<br>
+<code>style</code>에서 지정한 패턴이 마음에 들지 않는 경우, <code>pattern</code> 엘리먼트를 통해 직접 지정 가능하다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DateTimeFormat</span>(pattern=<span class="string">"yyyy/MM/dd"</span>)</span><br><span class="line">Calendar birthday;</span><br></pre></td></tr></table></figure>
+<h2 id="바인딩-기술-활용-전략"><a class="markdownIt-Anchor" href="#바인딩-기술-활용-전략"></a> 바인딩 기술 활용 전략</h2>
+<p>위의 3가지 방법은 각기 장단점이 있기 때문에 하나만 골라 사용하는 것은 바람직하지 않다.<br>
+아래는 어떤 경우에 어떤 바인딩 기술을 활용하는 것이 좋은지에 대한 몇 가지 시나리오이다.</p>
+<ol>
+<li>
+<p>사용자 정의 타입 바인딩을 위한 일괄 적용 : <code>Converter</code><br>
+앞의 <code>Level enum</code>처럼 애플리케이션에서 정의한 타입이면서 모델에서 자주 활용되는 타입이라면 <code>Converter</code>로 만들고 <code>ConversionService</code>로 묶어서 일괄 적용하는 것이 편리하다.</p>
+</li>
+<li>
+<p>메타정보를 활용하는 조건부 바인딩 : <code>ConditionalGenericConverter</code><br>
+바인딩이 특정 조건(필드, 메서드 파라미터, 애노테이션 등)에 따라 다르게 동작할 때에는 <code>ConditionalGenericConverter</code>를 이용해야 한다. 구현이 까다롭다.</p>
+</li>
+<li>
+<p>애노테이션을 통한 바인딩 : <code>AnnotationFormatterFactory</code>, <code>Formatter</code><br>
+애노테이션을 통해 바인딩 하고 싶을 경우 사용하면 좋다.</p>
+</li>
+<li>
+<p>특정 필드에만 바인딩 : <code>PropertyEditor</code><br>
+특정 모델의 특정 필드에 제한해서 바인딩을 적용해야 할 경우 <code>PropertyEditor</code>를 사용하는 것이 편리하다. 필드 이름을 메서드 파라미터로 전달할 수 있기 때문이다.</p>
+</li>
+</ol>
+<p>이렇듯 여러 바인딩 기술들을 등록하다 보면 서로 중복되는 부분이 발생할 것이다.<br>
+이럴 경우 우선순위에 의해 바인딩이 적용된다.<br>
+<code>Custom PropertyEditor &gt; ConversionService &gt; Default PropertyEditor</code><br>
+중복 시 위의 순서로 바인딩된다.<br>
+그리고 <code>WebBindingInitializer</code>를 통해 등록한 공통 바인딩은 <code>@InitBinder</code>보다 우선순위가 뒤쳐진다.</p>
+<h2 id="webdatabinder-설정-항목"><a class="markdownIt-Anchor" href="#webdatabinder-설정-항목"></a> WebDataBinder 설정 항목</h2>
+<p><code>WebDatBinder</code>에는 <code>PropertyEditor</code>, <code>ConversionService</code> 등록 외에도 여러 유용한 바인딩 옵션들이 있다.</p>
+<ol>
+<li>allowedFields, disallowedFields<br>
+<code>@ModelAttribute</code>를 사용할 경우 근본적인 보안 문제가 하나 있다.<br>
+<code>@SessionAttributes</code>를 사용해 변경할 필드만 폼에 표출했다고 하더라도 사용자가 임의로 폼을 조작하여 전달하는 값에 대해서는 변경을 막지 못한다는 점이다.<br>
+폼에는 표출하지 않았지만 사용자가 예를 들어 <code>level</code>이라는 필드를 폼에 추가하여 전송할 경우 실제 값이 바뀌는 일이 생길 수도 있다는 것이다.<br>
+이를 대비해 폼에 표출한 필드 외에는 모델에 바인딩 되지 않도록 설정할 필요가 있다.</li>
+</ol>
+<p>여기에 사용되는 것이 위의 두 속성이다.<br>
+<code>allowedFields</code>에는 바인딩을 허용할 필드 목록을 넣을 수 있고, <code>disallowedFields</code>에는 바인딩을 금지할 필드 목록을 넣을 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@InitBinder</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDatBinder dataBinder)</span></span>&#123;</span><br><span class="line">  datBinder.setAllowedFields(<span class="string">"name"</span>, <span class="string">"email"</span>, <span class="string">"tel"</span>, <span class="string">"*level*"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이러면 위의 지정한 필드명 외에 다른 필드는 아무리 HTTP 요청으로 보내봐야 바인딩 되지 않는다.<br>
+게다가 <code>*level*</code>처럼 와일드카드도 사용할 수 있다.</p>
+<ol start="2">
+<li>
+<p>requiredFields<br>
+필수 파라미터를 지정할 수 있다.<br>
+<code>@ModelAttribute</code>의 특성 상 파라미터가 들어오지 않았다고 바로 에러를 발생 시키지 않고 <code>BindingResult</code>에 검증 결과를 저장한다.<br>
+하지만 <code>setRequiredFiedls()</code> 메서드로 필수 파라미터를 지정해 줄 경우, 파라미터가 들어오지 않으면 바로 에러가 발생한다.</p>
+</li>
+<li>
+<p>fieldMarkerPrefix<br>
+<code>input checkbox</code>는 조금 특별한 성질이 있다.</p>
+</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"type"</span> <span class="attr">value</span>=<span class="string">"on"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>폼에 이와 같은 체크박스가 있다고 했을 때, 이를 체크하고 전달하면 <code>type=on</code>의 형태로 데이터가 전달되지만, 체크하지 않고 전달하면 아예 값을 전달하지 않는다는 점이다.<br>
+즉 수정폼에서 기존에 체크되어있던 체크박스를 해제하고 전달할 경우 아무런 값도 전달되지 않기 때문에 사용자는 값을 변경할 수 없는 문제가 발생하게 되는 것이다.<br>
+이럴 때 <code>필드마커</code>라는 것을 이용해 해결 할 수 있는데, 아래와 같다.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"type"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_type"</span> <span class="attr">value</span>=<span class="string">"on"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>_type</code>의 앞에 붙은 <code>_</code>를 <code>필드마커</code>라고 하는데, 스프링은 이런 필드마커가 있는 필드를 발견할 경우, 필드마커를 제외한 이름의 필드가 폼에 존재한다고 생각한다.<br>
+즉, 체크박스를 선택하지 않아 <code>type</code> 파라미터가 전달되지 않았지만, <code>_type</code>필드가 전달 되었으므로 스프링은 <code>type</code>필드가 폼에 있다고 판단하는 것이다.<br>
+그리고 이처럼 <code>_type</code>은 전달되고 <code>type</code>은 전달되지 않았을 경우, 체크박스를 해제했기 때문이라 생각하고 해당 프로퍼티 값을 리셋해준다.<br>
+리셋 방식은 boolean 타입이면 false, 배열타입이면 빈 배열, 그 외라면 null을 넣어주는 것이다.<br>
+<code>WebDataBinder</code>의 <code>setFieldMarkerPrifix()</code> 메서드는 이 필드마커를 변경해주는 메서드이다. 기본값은 <code>_</code>이다.</p>
+<ol start="4">
+<li>fieldDefaultPrefix<br>
+<code>필드 디폴트</code>는 히든 필드를 이용해 체크박스의 디폴트 값을 지정하는데 사용한다.</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"type"</span> <span class="attr">value</span>=<span class="string">"A"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"!type"</span> <span class="attr">value</span>=<span class="string">"Z"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>!type</code> 히든 필드를 지정해서 <code>type</code>필드의 기본값을 지정해줬다.<br>
+이럴 경우 체크박스를 선택하지 않아 <code>type</code>필드가 전달되지 않을 경우, 디폴트 값인 Z가 전달된다.<br>
+모델 프로퍼티 값이 단순값이 아닐 경우 유용하게 사용할 수 있다.<br>
+이 또한 <code>setFieldDefaultPrefix()</code>메서드를 이용해 접두어를 변경해 줄 수 있다. 기본값은 <code>!</code>이다.</p>
+<hr>
+<h1 id="검증"><a class="markdownIt-Anchor" href="#검증"></a> 검증</h1>
+<p><code>@ModelAttribute</code>의 바인딩 작업이 실패로 끝나는 경우는 2가지가 있다.<br>
+첫째로 <code>@ModelAttribute</code>가 기본적으로 실행하는 타입 변환에서 오류가 발생했을 경우이고,<br>
+둘째로 <code>검증기(validator)</code>를 통과하지 못했을 경우이다. 이는 사용자가 직접 정의하는 부분이다.<br>
+사실상 폼의 서브밋을 처리하는 컨트롤러 메서드에서는 <strong>검증기를 이용한 검증 작업은 필수</strong>이다.<br>
+검증 결과에 따라 다음 스텝으로 넘어가든, 다시 폼을 띄워 수정을 요구하든 해야한다.<br>
+이 과정에서 쓰이는 API인 <code>Validator</code>, <code>BindingResult</code>, <code>Errors</code>에 대해 알아보자.</p>
+<h2 id="validator"><a class="markdownIt-Anchor" href="#validator"></a> Validator</h2>
+<p>오브젝트 검증기를 정의할 수 있는 API이다. <code>@ModelAttribute</code> 바인딩 때 주로 사용된다.<br>
+아래는 <code>Validator</code> 인터페이스이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Validator</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(Class&lt;?&gt; clazz)</span></span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">validate</span><span class="params">(Object target, Errors erros)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>supports()</code>는 이 검증기가 검증할 수 있는 타입인지 확인하는 메서드이고,<br>
+이를 통과할 경우 <code>validate()</code>를 통해 검증이 진행된다.<br>
+<code>validate()</code>의 검증과정에서 아무 문제가 없으면 메서드를 정상 종료하면 되고,<br>
+문제가 있을 시 <code>Errors</code> 인터페이스에 오류정보를 등록해주면 된다.<br>
+이후 이 오류정보를 통해 컨트롤러에서 적절한 작업을 해주면 되는 것이다.</p>
+<blockquote>
+<p><strong>자바스크립트로 입력값을 검증했을 경우 서버에서 검증작업을 생략해도 될까?</strong><br>
+안된다. 서버의 검증작업을 생략하면 매우 위험해진다.<br>
+브라우저에서 자바스크립트가 동작하지 않게 할수도 있고, 강제로 폼을 조작할수도 있고, Burp suite 같은 것을 사용하여 전달되는 데이터를 변경할 수도 있다.<br>
+그러므로 서버 검증작업은 필수로 있어야 한다.</p>
+</blockquote>
+<p>아래는 <code>Validator</code> 구현의 예시이다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserValidator</span> <span class="keyword">implements</span> <span class="title">Validator</span></span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(Class&lt;?&gt; clazz)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 자식클래스도 검증 가능하게 하기 위해 isAssignableFrom을 사용</span></span><br><span class="line">    <span class="keyword">return</span> User.class.isAssignableFrom(clazz);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">validate</span><span class="params">(Object target, Errors errors)</span> </span>&#123;</span><br><span class="line">      User user = (User)target; <span class="comment">// supports를 통과했으므로 바로 캐스팅하면 됨</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">// name 필수</span></span><br><span class="line">      <span class="keyword">if</span>(user.getName() == <span class="keyword">null</span> || user.getName().length == <span class="number">0</span>)&#123;</span><br><span class="line">        errors.rejectValue(<span class="string">"name"</span>, <span class="string">"name.required"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// null 체크 &amp; 길이 체크가 귀찮으면 아래와 같이 사용 가능</span></span><br><span class="line">      ValidationUtils.rejectIfEmpty(erros, <span class="string">"name"</span>, <span class="string">"name.required"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(user.getAge() &lt; <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="comment">// argument도 전달 가능</span></span><br><span class="line">        errors.rejectValue(<span class="string">"age"</span>, <span class="string">"age.min"</span>, <span class="keyword">new</span> Object[]&#123;<span class="number">0</span>&#125; <span class="comment">/* arguments */</span>, <span class="keyword">null</span> <span class="comment">/* default message */</span>);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(user.getAge() &lt; <span class="number">20</span> &amp;&amp; !<span class="string">"M"</span>.equals(user.getSex()))&#123;</span><br><span class="line">        <span class="comment">// 필드명을 안 줄수도 있다</span></span><br><span class="line">        errors.reject(<span class="string">"cannot.enter.army"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>주석에도 써놓았지만 오류 정보를 등록하는 방법이 다양하다.<br>
+<code>rejectValue()</code>에 사용된 <code>name</code>은 필드 이름이며, <code>name.required</code>는 에러 코드를 정의한 것이다.<br>
+(이 에러코드는 <code>messageSource</code>와 함께 사용될 수 있다. <a href="#BindingResult%EC%9D%98-%EC%97%90%EB%9F%AC-%EC%BD%94%EB%93%9C">사용 방법 보기</a>)<br>
+<code>age</code> 필드를 검증할때, 보다시피 에러코드에 파라미터를 전달할수도 있으며 디폴트 메세지도 전달할 수 있다.<br>
+제일 아랫부분처럼 2가지 이상의 필드에 대해 검증하는 경우, 필드명을 생략 가능하다.<br>
+<code>ValidationUtils</code> 같은 유틸리티 클래스도 제공되니 잘 활용하면 좋다.</p>
+<p><code>Validator</code>는 싱글톤 빈으로 등록 가능하기 때문에 서비스 로직을 이용하여 검증작업을 진행할 수도 있다. 대표적인 것이 아이디 중복 검사이다.</p>
+<blockquote>
+<p>근데 사실 이 정도 검증까지 가면 좀 모호해지는게 있는데, 검증이 수행되는 계층이다.<br>
+검증 작업을 컨트롤러 로직이라고 보는 개발자도 있는 반면, 대부분이 서비스 계층과 연관이 있으니 서비스 계층의 로직이라고 보는 개발자도 있다.<br>
+이는 개인이 잘 판단하면 될 문제인 것 같다.<br>
+중요한 것은 어느 곳에서 사용하든, 위와 같이 검증로직은 따로 분리되어 있는 것이 좋다.</p>
+</blockquote>
+<h2 id="validator-사용하기"><a class="markdownIt-Anchor" href="#validator-사용하기"></a> Validator 사용하기</h2>
+<ol>
+<li>컨트롤러 메서드 내에서 검증<br>
+<code>Validator</code>는 빈으로 등록 가능하니 이를 컨트롤러에서 <code>DI</code> 받은 뒤, 각 컨트롤러 메서드에서 <code>validate()</code>를 직접 호출해서 검증을 진행하는 방식이다.<br>
+(모델 오브젝트의 타입은 굳이 확인할 필요 없으므로 <code>supports()</code>는 생략 가능하다)</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span> UserValidator userValidator;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>, method=RequestMethod.POST)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">userAdd</span><span class="params">(@ModelAttribute User user, BindingResult result)</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.userValidator.validate(user, result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(result.hasError())&#123;</span><br><span class="line">      <span class="comment">// 오류 정보가 있을 시</span></span><br><span class="line">    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="comment">// 오류 정보가 없을 시</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><code>@Valid</code>를 이용한 자동 검증<br>
+<code>JSR-303의 @javax.validation.Valid</code> 애노테이션을 사용하는 방법이다.<br>
+컨트롤러에서 직접 <code>validate()</code>를 호출하여 검증하던 방식과 달리, 바인딩 과정에서 자동으로 검증이 진행되도록 할 수 있다.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span></span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span> UserValidator userValidator;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@InitBinder</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initBinder</span><span class="params">(WebDataBinder dataBinder)</span></span>&#123;</span><br><span class="line">    dataBinder.setValidator(userValidator);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@RequestMapping</span>(<span class="string">"/user"</span>, method=RequestMethod.POST)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">userAdd</span><span class="params">(@ModelAttribute @Valid User user, BindingResult result)</span></span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>WebDataBinder</code>에는 보다시피 <code>Validator</code> 타입의 검증용 오브젝트도 등록할 수 있다.<br>
+그리고 아래 <code>@ModelAttribute</code>를 사용하는 부분에 추가로 <code>@Valid</code> 애노테이션을 사용해주면 자동으로 검증작업이 수행된다.<br>
+개인적으로 위의 방식보다 훨씬 나아 보인다 ㅋㅋ<br>
+참고로 <code>@InitBinder</code> 말고 <code>WebBindingInitializer</code>를 이용해 모든 컨트롤러에 일괄 적용할 수도 있다.</p>
+<ol start="3">
+<li>서비스 계층에서 검증<br>
+자주 사용되지 않지만 <code>Validator</code>가 싱글톤 빈으로 등록되기에 서비스 계층에서도 얼마든지 DI 받아 사용할 수 있다.<br>
+서비스 계층에서 반복적으로 같은 검증작업을 수행할 경우 사용하기도 한다.<br>
+근데 이럴 경우, <code>BindingResult</code> 타입 오브젝트를 직접 만들어서 <code>validate()</code>에 전달해야 하는데, 이때는 <code>BeanPropertyBindingResult</code>를 사용하는 것이 적당하다.</li>
+</ol>
+<blockquote>
+<p><strong>서비스 계층을 활용하는 <code>Validator</code></strong><br>
+<code>Validator</code>는 싱글톤 빈으로 등록될 수 있으므로 다른 빈을 DI받아 사용할 수 있다.<br>
+앞서 예시로 들었던 ID 중복 검사처럼, <code>Validator</code>내에서 서비스 계층 빈을 사용하여 검증할 수도 있다.<br>
+게다가 이 경우 결과를 <code>BindingResult</code>에 담으면 되므로 서비스 계층에서 번거롭게 예외를 던지던 방식을 제거할 수 있다.<br>
+대신 이 방식을 사용하면 컨트롤러에서 서비스 계층을 두번 호출한다는 단점이 있다.<br>
+하지만 전체적으로 코드가 깔끔해지고 역할 분담이 확실해지는 장점이 있다.</p>
+</blockquote>
+<h2 id="jsr-303-빈-검증-기능"><a class="markdownIt-Anchor" href="#jsr-303-빈-검증-기능"></a> JSR-303 빈 검증 기능</h2>
+<p><code>@Valid</code>를 포함하고 있는 <code>JSR-303</code>의 빈 검증 방식도 스프링에서 사용할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">  <span class="meta">@NotNull</span></span><br><span class="line">  String name;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Min</span>(<span class="number">0</span>)</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이런식으로 모델에 특정 애노테이션만 작성해주면 된다. <code>Validator</code>를 직접 구현해서 검증기를 만들필요 없이 간단하게 검증작업을 진행할 수 있다.<br>
+이 검증 방식을 사용하려면 <code>LocalValidatorFactoryBean</code>을 사용해야 한다.<br>
+<code>LocalValidatorFactoryBean</code>이 생성하는 클래스 타입은 <code>Validator</code>이므로 이를 빈으로 등록한 뒤 <code>DI</code>받아 사용하면 된다.<br>
+(컨트롤러에서 직접 생성해도 되고, <code>WebDataBinder</code>에 등록해도 된다)</p>
+<h2 id="bindingresult의-에러-코드"><a class="markdownIt-Anchor" href="#bindingresult의-에러-코드"></a> BindingResult의 에러 코드</h2>
+<p>앞서 <code>Validator</code>에서 <code>errors.rejectValue(&quot;name&quot;, &quot;name.required&quot;)</code>와 같이 에러코드를 지정하던 작업이 기억날 것이다.<br>
+이 정보는 보통 컨트롤러에 의해 폼을 다시 띄울 때 활용된다.<br>
+스프링은 등록된 에러 코드를 아래의 같은 파일에서 찾아와 에러 메세지로 활용한다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name.required=이름은 필수로 입력하셔야 합니다.</span><br></pre></td></tr></table></figure>
+<p>근데 이렇게 지정한 에러코드로 바로 메세지를 찾는것은 아니고, 스프링의 <code>MessageCodeResolver</code>라는 것을 거쳐 에러코드를 확장하는 작업을 한번 거친다.<br>
+(스프링의 디폴트 <code>MessageCodeResolver</code>는 <code>DefaultMessageCodeResolver</code> 이다.)<br>
+이 리졸버를 거치게 되면 우리가 등록한 에러코드 <code>name.required</code>는 아래와 같이 4가지 에러코드로 확장된다.</p>
+<ol>
+<li>에러코드.모델이름.필드이름 : <a href="http://name.required.user.name" rel="external nofollow noopener noreferrer" target="_blank">name.required.user.name</a></li>
+<li>에러코드.필드이름 : <a href="http://name.required.name" rel="external nofollow noopener noreferrer" target="_blank">name.required.name</a></li>
+<li>에러코드.타입이름 : name.required.User</li>
+<li>에러코드 : name.required</li>
+</ol>
+<p>이 4가지 에러코드는 위에서부터 우선순위를 가진다.<br>
+즉 메세지 파일이 아래와 같다면,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name.required.user.name=무언가 잘못된 메세지</span><br><span class="line">name.required=이름은 필수로 입력하셔야 합니다.</span><br></pre></td></tr></table></figure>
+<p>우리는 에러코드를 분명 <code>name.required</code>라고 지정했지만 계속해서 <code>무언가 잘못된 메세지</code>가 출력될 것이다.<br>
+그러므로 에러코드 지정 시 어떤 에러코드로 확장되는지 정확히 알고 있어야 한다.<br>
+아니면 위처럼 의도하지 않은 상황이 발생할 수 있기 떄문이다.<br>
+(개인적으로 좀 혼란스러운 방식이라고 생각한다…)</p>
+<p>위는 한가지 예시였을 뿐이고, 검증방식(<code>rejectValue</code>, <code>reject</code>, 타입 오류 등, <code>JSR-303</code>)에 따라 에러코드가 확장되는 룰이 다르니 사용할 떄 주의해야 한다.</p>
+<h2 id="messagesource"><a class="markdownIt-Anchor" href="#messagesource"></a> MessageSource</h2>
+<p>위에서 확장된 에러코드는 마지막으로 <code>MessageSourceResolver</code>라는 것을 거쳐 실제 메세지로 생성된다. 이 때 사용하는 것이 이 <code>MessageSource</code>이다.<br>
+이는 디폴트로 등록되지 않으니 스프링의 빈으로 직접 등록해줘야 한다.<br>
+<code>MessageSource</code>는 2가지 종류가 있는데 보통 <code>ResourceBundlerMessageSource</code>를 사용한다.<br>
+이는 일정시간마다 메세지 파일 변경 여부를 확인해서 메세지를 갱신해주므로 서버가 구동중인 상황에도 메세지를 변경해줄 수 있다.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"messageSource"</span> <span class="attr">class</span>=<span class="string">"org.springframework...ResourceBundleMessageSource"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>속성값으로 메세지 파일을 지정해주지 않을 경우 디폴트로 <code>messages.properties</code> 파일이 사용된다.</p>
+<p><code>MessageSource</code>는 아래의 4가지 정보를 활용해 최종 메세지를 생성한다.</p>
+<ol>
+<li>
+<p>코드<br>
+메세지 파일은 <code>키=벨류</code>의 형태로 등록되어 있기 때문에, 메세지를 찾을 키 값은 필수이다.<br>
+앞서 우리가 <code>Errors</code>에 등록했던 에러 코드가 이 키 값인 것이다.</p>
+</li>
+<li>
+<p>메세지 파라미터 배열<br>
+앞서 에러코드를 등록하며 <code>Object[]</code> 타입의 파라미터를 넘겨줬던 것을 기억할 것이다.<br>
+해당 파라미터는 메세지를 생성하는데 사용될 수 있다.<br>
+메세지 파일은 아래와 같이 작성된다.</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">field.min=&#123;0&#125;보다 작은 값을 사용할 수 없습니다.</span><br></pre></td></tr></table></figure>
+<p>파라미터는 1개 이상 올 수 있기때문에 <code>Object</code> 배열을 사용한다.</p>
+<ol start="3">
+<li>
+<p>디폴트 메세지<br>
+코드에 맞는 메세지를 찾지 못하였을때 디폴트 메세지를 지정해줄 수 있다.<br>
+에러코드를 충실히 적용했다면 이 부분은 생략하거나 <code>null</code>로 주면 된다.<br>
+참고로 코드에 해당하는 메세지도 없고, 디폴트도 없을 경우 예외가 발생하니 주의해야 한다.</p>
+</li>
+<li>
+<p>지역정보<br>
+<code>LocaleResolver</code>에 의해 결정된 현재의 지역정보를 사용할 수 있다.<br>
+지역정보에 따라 다른 프로퍼티 파일을 사용 가능하다.<br>
+만약 <code>messages.properties</code> 파일을 사용했다면 <code>Locale</code>이 <code>ENGLISH</code>일 경우 <code>messages_en.properties</code> 파일이 사용된다.<br>
+이를 통해 다국어 서비스를 적용할 수 있다.</p>
+</li>
+</ol>
+<hr>
+<h1 id="모델의-사이클"><a class="markdownIt-Anchor" href="#모델의-사이클"></a> 모델의 사이클</h1>
+<p>모델은 MVC 아키텍쳐에서 정보를 담당하는 컴포넌트이다.<br>
+요청 정보를 담기도 하고, 비즈니스 로직에 사용되기도 하고, 뷰에 출력되기도 한다.<br>
+또한 이 모델은 아주 여러곳을 거쳐가며 만들어지고, 변형된다.<br>
+그러므로 모델의 사이클에 대한 지식은 스프링 MVC를 사용할 떄 가장 중요하다고 할 수 있다.</p>
+<ol>
+<li>
+<p>HTTP 요청에서 컨트롤러 메서드까지<br>
+<img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0Nzc2NTc4MjQmdHlwZT1sJno9MDcvMDgvMjAxOCAxNTozNg==" alt="HTTP 요청으로부터 컨트롤러 메서드까지"><br>
+왼쪽에서 오른쪽으로 보면 된다.</p>
+</li>
+<li>
+<p>컨트롤러 메서드에서 뷰까지<br>
+<img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0Nzc2Nzc5NTEmdHlwZT1sJno9MDcvMDgvMjAxOCAxNTo1Mw==" alt="컨트롤러 메서드에서 뷰까지"><br>
+오른쪽에서 왼쪽으로 보면 된다.</p>
+</li>
+</ol>
+<p>모델의 생성, 변형, 사용이 한눈에 볼 수 있게 잘 표시되어 있다.</p>
+<div style="text-align: right">
+From <img src="https://cloud2.zoolz.com/MyComputers/Images/Image.aspx?q=bT00MDcyNDcma2V5PTI0NzQwNDAxMDkmdHlwZT1sJno9MjAxOC8wOC8wNiAwOTozOA==#width30" style="display:inline-block;">
+</div>
+<a id="more"></a>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ModelAttribute/" rel="tag"># @ModelAttribute</a>
+          
+            <a href="/tags/토비의-스프링/" rel="tag"># 토비의 스프링</a>
+          
+            <a href="/tags/프로퍼티-바인딩/" rel="tag"># 프로퍼티 바인딩</a>
+          
+            <a href="/tags/PropertyEditor/" rel="tag"># PropertyEditor</a>
+          
+            <a href="/tags/Converter/" rel="tag"># Converter</a>
+          
+            <a href="/tags/Formatter/" rel="tag"># Formatter</a>
+          
+            <a href="/tags/WebDataBinder/" rel="tag"># WebDataBinder</a>
+          
+            <a href="/tags/Validator/" rel="tag"># Validator</a>
+          
+            <a href="/tags/BindingResult/" rel="tag"># BindingResult</a>
+          
+            <a href="/tags/Errors/" rel="tag"># Errors</a>
+          
+            <a href="/tags/모델-사이클/" rel="tag"># 모델 사이클</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/db/mysql-index/" rel="next" title="[db] mysql index">
+                <i class="fa fa-chevron-left"></i> [db] mysql index
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/java/Scanner-BufferedReader-StringTokenizer/" rel="prev" title="[java] Scanner, BufferedReader, StringTokenizer">
+                [java] Scanner, BufferedReader, StringTokenizer <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">JunYoung Park</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">182</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">344</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/feed.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#프로퍼티-바인딩"><span class="nav-number">1.</span> <span class="nav-text"> 프로퍼티 바인딩</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#propertyeditor"><span class="nav-number">1.1.</span> <span class="nav-text"> PropertyEditor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#propertyeditor-구현"><span class="nav-number">1.1.1.</span> <span class="nav-text"> PropertyEditor 구현</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#propertyeditor-등록"><span class="nav-number">1.1.2.</span> <span class="nav-text"> PropertyEditor 등록</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#프로토타입-propertyeditor"><span class="nav-number">1.1.3.</span> <span class="nav-text"> 프로토타입 PropertyEditor</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#converter"><span class="nav-number">1.2.</span> <span class="nav-text"> Converter</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#converter-구현"><span class="nav-number">1.2.1.</span> <span class="nav-text"> Converter 구현</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#converter-등록"><span class="nav-number">1.2.2.</span> <span class="nav-text"> Converter 등록</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#formatter"><span class="nav-number">1.3.</span> <span class="nav-text"> Formatter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#바인딩-기술-활용-전략"><span class="nav-number">1.4.</span> <span class="nav-text"> 바인딩 기술 활용 전략</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webdatabinder-설정-항목"><span class="nav-number">1.5.</span> <span class="nav-text"> WebDataBinder 설정 항목</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#검증"><span class="nav-number">2.</span> <span class="nav-text"> 검증</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#validator"><span class="nav-number">2.1.</span> <span class="nav-text"> Validator</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#validator-사용하기"><span class="nav-number">2.2.</span> <span class="nav-text"> Validator 사용하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsr-303-빈-검증-기능"><span class="nav-number">2.3.</span> <span class="nav-text"> JSR-303 빈 검증 기능</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bindingresult의-에러-코드"><span class="nav-number">2.4.</span> <span class="nav-text"> BindingResult의 에러 코드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#messagesource"><span class="nav-number">2.5.</span> <span class="nav-text"> MessageSource</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#모델의-사이클"><span class="nav-number">3.</span> <span class="nav-text"> 모델의 사이클</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JunYoung Park</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a> v3.6.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="external nofollow noopener noreferrer" target="_blank">NexT.Muse</a> v7.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://joont92.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://joont92.github.io/spring/모델-바인딩과-검증/";
+    this.page.identifier = "spring/모델-바인딩과-검증/";
+    this.page.title = '[spring] 모델 바인딩과 검증';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://joont92.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
